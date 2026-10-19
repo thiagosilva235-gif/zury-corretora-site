@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ZURY CORRETORA
 
-## Getting Started
+Landing page Next.js App Router, TypeScript, Tailwind CSS e GSAP. A fonte é Inter Tight, hospedada pela própria aplicação via `next/font`. Requisitos e conteúdo oficiais: `ZURY-SITE-SPEC.md`. Processo: `AGENTS.md`.
 
-First, run the development server:
+## Executar localmente
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+No ambiente Codex auditado, o PATH é configurado somente para a sessão:
+
+```sh
+export PATH="/Users/thiagocareca/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH"
+pnpm install --frozen-lockfile
+pnpm dev --hostname 127.0.0.1 --port 3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Site: http://127.0.0.1:3001/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Escudo isolado: http://127.0.0.1:3001/preview/escudo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Verificações
 
-## Learn More
+```sh
+pnpm typecheck
+pnpm lint
+pnpm test
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Os testes comparam os conteúdos à especificação e verificam simetria, topologia e limites de movimento do escudo. O Node pode emitir um aviso não bloqueante sobre inferência ESM dos arquivos TypeScript nesses testes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Se o executor de scripts do ambiente retornar `binding to a port: Operation not permitted` no Turbopack, o build foi validado diretamente com o mesmo Node, sem reinstalações:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+node node_modules/next/dist/bin/next build
+node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3001
+```
 
-## Deploy on Vercel
+## Estado da entrega
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O redesign utiliza gradientes neutros, divisões luminosas sutis e Flow Glass compartilhado sem spotlight. A navbar tem cápsulas e só reaparece no topo, não ao subir; foco visível e menus abertos são protegidos. CONTATOS é textual à esquerda do rodapé e abre preferencialmente à direita; CONTATO da navbar abre abaixo. O botão WhatsApp separado abre diretamente os três contatos. Serviços são apresentados em caixa alta por CSS, sem numeração no desktop. Diferenciais: SEGURANÇA → SUPORTE → AGILIDADE. Carrosséis mantêm scroll-snap e indicadores selecionáveis, sem setas visuais. Os SVGs oficiais não foram alterados; aumentar sua espessura exige uma variante fiel aprovada. Instagram e TikTok exibem os identificadores informados, mas seus links aguardam validação dos perfis.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O escudo permanece sem aprovação visual e não está integrado ao Hero. O espaço do modelo está reservado; não há poster ou fallback definitivo. Não publicar o site como concluído antes do gate e do checklist da especificação.

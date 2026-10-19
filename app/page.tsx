@@ -1,69 +1,69 @@
 import Image from "next/image";
+import { CarFront, HeartPulse, House, Hourglass, Landmark, Plane, Sprout, Truck } from "lucide-react";
+import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
+import { differentiators, navigation, services } from "@/lib/content";
+import { SiteHeader } from "@/components/site/header";
+import { ChannelsPopover } from "@/components/site/channels-popover";
+import { Carousel } from "@/components/site/carousel";
+import { SiteMotion } from "@/components/site/motion";
+
+const icons = { House, HeartPulse, Sprout, CarFront, Landmark, Plane, Truck, Hourglass };
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+  return <div className="zury-site">
+    <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
+    <SiteHeader />
+    <main id="conteudo">
+      <section id="inicio" className="hero" aria-labelledby="hero-title">
+        <div className="section-light hero-light" aria-hidden="true" />
+        <div className="container hero-content">
+          <h1 id="hero-title"><span>ENTREGAMOS</span><span>VALOR ALÉM</span><span>DE PREÇO</span></h1>
+          <div className="hero-reserve" aria-hidden="true" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+      <section id="servicos" className="content-section solutions section-boundary" aria-labelledby="solutions-title">
+        <div className="section-light solutions-light" aria-hidden="true" />
+        <div className="container">
+          <div className="section-heading" data-reveal><h2 id="solutions-title">NOSSAS SOLUÇÕES</h2></div>
+          <Carousel className="service-grid" label="Nossas soluções">
+            {services.map((service) => {
+              const Icon = icons[service.icon];
+              return <div className="card-reveal" data-reveal key={service.number}><article className="glass glass-card flow-glass service-card" aria-label={`${service.number} de 08: ${service.title}`}>
+                <span className="card-number">{service.number}</span>
+                <div className="card-title"><Icon size={24} strokeWidth={1.4} aria-hidden="true" /><h3>{service.title}</h3></div>
+                <ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
+              </article></div>;
+            })}
+          </Carousel>
         </div>
-      </main>
-    </div>
-  );
+      </section>
+      <section id="sobre" className="content-section about section-boundary" aria-labelledby="differences-title">
+        <div className="section-light about-light" aria-hidden="true" />
+        <div className="container">
+          <div className="section-heading" data-reveal><h2 id="differences-title">NOSSOS DIFERENCIAIS</h2></div>
+          <Carousel className="difference-grid" label="Nossos diferenciais">
+            {differentiators.map((item) => <div className="card-reveal" data-reveal key={item.number}><article className="glass glass-card flow-glass difference-card" aria-label={`${item.number} de 03: ${item.title}`}>
+              <span className="card-number">{item.number}</span><h3>{item.title}</h3><p>{item.description}</p>
+            </article></div>)}
+          </Carousel>
+        </div>
+      </section>
+    </main>
+    <footer id="contato" className="site-footer section-boundary">
+      <div className="container"><div className="footer-panel glass" data-reveal>
+        <Image className="footer-logo" src="/brand/ZURY_Logo_Otimizada_Branco.svg" alt="ZURY CORRETORA" width={1046} height={324} />
+        <div className="footer-columns">
+          <nav aria-label="Navegação do rodapé" className="footer-nav"><h2>Navegação</h2><button className="footer-contact-link" type="button" id="footer-contact-button" popoverTarget="contact-channels" aria-haspopup="dialog">CONTATOS</button>{navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
+          <div className="footer-contact"><button className="glass glass-button whatsapp-button flow-glass" type="button" popoverTarget="whatsapp-channels" aria-haspopup="dialog"><WhatsAppIcon size={22} />WHATSAPP</button></div>
+          <div className="institution" id="institucional" tabIndex={-1}><h2>Institucional</h2><p>ZURY CORRETORA LTDA<br />CNPJ: 49.393.734/0001-77<br />SUSEP: 262180499</p></div>
+        </div>
+        <p className="copyright">© 2026 · Todos os direitos reservados.</p>
+      </div></div>
+    </footer>
+    <ChannelsPopover id="contact-channels" title="Contatos" placement="right" />
+    <ChannelsPopover id="nav-contact-channels" title="Contato" placement="below" />
+    <ChannelsPopover id="social-channels" title="Redes sociais" placement="below" />
+    <ChannelsPopover id="whatsapp-channels" title="WhatsApp" whatsappOnly />
+    <SiteMotion />
+  </div>;
 }
