@@ -7,7 +7,8 @@
 > **Documento complementar:** [`AGENTS.md`](./AGENTS.md) contém somente instruções de execução para o Codex; não substitui este documento.  
 > **Regra essencial:** não inventar textos, produtos, contatos, afirmações comerciais ou áreas extras para preencher o layout.
 > **Revisão visual de 19/10/2026:** Premium Dark Gradient, navegação com cinco opções e contatos em popovers aprovados expressamente no pedido de redesign. Esta revisão substitui as decisões anteriores correspondentes; o escudo continua sem aprovação e isolado.
-> **Refinamento complementar de 19/10/2026:** cápsulas Flow Glass compartilhadas na navbar e nos menus; contato e redes sociais separados; rodapé sem botão WhatsApp; produtos revisados no plural. Header completo com saída conjunta de 475 ms e reaparecimento somente no topo. Listas com marcadores discretos e 12 px entre produtos; diferenciais em caixa alta por CSS, organizados em trechos com marcadores e divisórias. Painel do rodapé compartilha as animações dos cards. Fundos atuais congelados: combinação definitiva ainda aguarda escolha expressa do responsável. Preservar a aplicação existente e o gate do escudo.
+> **Refinamento complementar de 19/10/2026:** cápsulas Flow Glass compartilhadas na navbar e nos menus; contato e redes sociais separados; rodapé sem botão WhatsApp; produtos revisados no plural. Header completo com saída conjunta de 475 ms e reaparecimento somente no topo. Listas com marcadores discretos e 12 px entre produtos; diferenciais em caixa alta por CSS, organizados em trechos com marcadores e divisórias. Painel do rodapé compartilha as animações dos cards. Preservar a aplicação existente e o gate do escudo.
+> **Etapa 2 — identidade visual e Hero:** direção cromática da imagem 4 e nova headline autorizadas pelo responsável. Substituem o congelamento anterior dos fundos e a headline antiga. Implementação visual ainda sujeita à avaliação; não implica aprovação do escudo nem autorização para etapas futuras.
 
 ---
 
@@ -115,11 +116,24 @@ Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nomina
 - Variações de opacidade, luminância e mistura entre tons neutros são permitidas para simular vidro e transições, desde que respeitem a paleta.
 - Contrastes de texto, bordas, indicadores e controles devem ser aferidos sobre o **fundo composto real**, inclusive no movimento, não apenas sobre uma cor ideal. Sobre o cinza `#78716C`, o branco puro passa por margem relativamente pequena para texto comum; transparências e highlights podem diminuir esse contraste e devem ser testados.
 
+**Superfícies da etapa 2 — referência imagem 4:** amostras médias de regiões de 12 × 12 px, sem copiar textos, logos, categorias ou escudo da imagem. As cores técnicas dos SVGs permanecem inalteradas.
+
+| Token semântico | HEX | Função |
+| --- | --- | --- |
+| `--surface-mineral` | `#0A0C0E` | preto mineral, topo do Hero e profundidade do rodapé |
+| `--surface-graphite` | `#1E2022` | grafite, transições e base dos diferenciais |
+| `--surface-metal` | `#2D2E2E` | base metálica escura de Soluções |
+| `--surface-steel` | `#4F4D4B` | luz mineral dos diferenciais, misturada com transparência |
+| `--light-silver` | `#989491` | reflexos prateados difusos, nunca fundo principal claro |
+| `--light-satin` | `#D6D3D1` | alias de `--zury-stone`, filetes acetinados |
+
+Gradientes por seção em `--hero-surface`, `--solutions-surface`, `--about-surface` e `--footer-surface`. Luzes em `--hero-ambient`, `--solutions-ambient`, `--about-ambient`; encontros em `--boundary-line` e `--boundary-light`. Hero concentra luz à direita; Soluções recebe luz no alto à direita e sombra à esquerda; Diferenciais recebe luz lateral esquerda com reflexão diagonal discreta; rodapé retorna ao grafite profundo. Bordas dos gradientes compartilham tons, sem faixas claras. Somente o encontro Hero → Soluções recebe curva luminosa fina, estática, sem novos conteúdos ou loops. A composição aguarda aprovação visual desta etapa.
+
 ### 4.2. Tipografia
 
 - Família principal: **Inter Tight**; carregar de forma otimizada (ex.: `next/font/google`, se a stack final suportar).
 - Peso predominante: **600 / semibold**. Outros pesos apenas se melhorarem hierarquia e leitura; evitar aspecto excessivamente fino.
-- Títulos: prioritariamente **caixa alta**, tracking discreto/compacto, linhas de quebra conscientes e escala responsiva por `clamp()` ou sistema equivalente.
+- Títulos de seções: **caixa alta**, tracking discreto/compacto, linhas de quebra conscientes e escala responsiva por `clamp()` ou sistema equivalente. A headline do Hero preserva a capitalização literal do §6.1.
 - Textos auxiliares: hierarquia clara, corpo com entrelinha confortável e peso suficiente para leitura sobre vidro.
 - Não substituir o lettering vetorizado da logo por Inter Tight; a fonte Inter Tight se destina **ao conteúdo e à interface do site**.
 - Não sacrificar legibilidade para manter tudo em uma única linha; quebras pensadas são preferíveis a fontes microscópicas.
@@ -135,7 +149,7 @@ Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nomina
 | Descrições dos diferenciais | `normal` | referência explícita `0.01em × 1.30` | `0.013em` |
 | Produtos dos serviços | `0.013em` confirmado no CSS | incremento adicional fixo de 15% | `0.01495em` |
 
-`normal` não fornece um incremento numérico útil: nas informações legais, a referência explícita de `0.01em` permite aplicar 20%, em vez de multiplicar zero. Nos diferenciais, preservar o tracking de `0.013em` da revisão anterior. Valores negativos aproximam-se de zero para ampliar visualmente o espaçamento. Não alterar tamanho das fontes ou `word-spacing`, nem reaplicar percentuais sobre estes valores finais.
+`normal` não fornece um incremento numérico útil: nas informações legais, a referência explícita de `0.01em` permite aplicar 20%, em vez de multiplicar zero. Nos diferenciais, preservar o tracking de `0.013em` da revisão anterior. Valores negativos aproximam-se de zero para ampliar visualmente o espaçamento. Preservar tamanhos e `word-spacing` existentes fora do Hero; somente o Hero pode ajustar sua escala para a nova frase. Não reaplicar percentuais sobre estes valores finais.
 
 ### 4.3. Composição e grid
 
@@ -204,7 +218,7 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 
 **Somente:**
 
-1. Headline **exatamente** `ENTREGAMOS VALOR ALÉM DE PREÇO`.
+1. Headline **exatamente** `Seu patrimônio merece a melhor escolha: Zury!`.
 2. **Um escudo 3D** premium, com as características do §7.
 
 **Não adicionar:** subtítulo, CTA/botão, texto de apoio, indicação de scroll, carrossel, números, selo, ícones extras, microcopy ou objetos 3D decorativos adicionais.
@@ -214,9 +228,9 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Desktop: ocupar a altura útil inicial (considerando o header), sem colisão; **40% para headline à esquerda / 60% para escudo à direita** como proporção de referência.
 - O escudo é protagonista visual sem empurrar a tipografia ou invadir margens.
 - Mobile: headline **centralizada acima do escudo**, escudo com largura visual próxima de **75% da área útil**; altura responsiva, sem forçar corte de conteúdo ou viewport excessiva.
-- Headline em caixa alta, Inter Tight, peso predominantemente semibold, com quebras lineares cuidadosamente compostas por largura.
+- Headline em Inter Tight, peso predominantemente semibold, preservando grafia, capitalização, acentuação e pontuação literais. Quebras balanceadas por largura, sem transformar em caixa alta.
 - Tracking conforme §4.2: `-0.017em` desktop e `-0.0136em` mobile, sem mudar a frase, remover espaços entre palavras ou invadir o espaço 40%/60%.
-- Preservar as três linhas e limites de tamanho; escala fluida desktop ajustada de `5.5vw` para `5.45vw` (redução inferior a 1%, sem aumento de fonte) para acomodar o tracking ampliado dentro dos 40%, inclusive em 1440 px. Mobile mantém a escala existente.
+- A composição anterior de três linhas é substituída por quebra natural balanceada da nova frase. Desktop usa escala `clamp(42px, 4.6vw, 70px)` e entrelinha `1.06`, sem invadir os 60% reservados. Mobile mantém escala `clamp(37px, 9.7vw, 69px)`, entrelinha `1.08` e composição centralizada. Sem `nowrap`, espaços removidos, subtítulo ou CTA.
 - Abaixo da composição superior de marca/navbar, incluir somente transição visual por pseudo-elementos: mesmo filete prateado difuso e gradiente tonal usado entre seções, sem conteúdo novo ou borda pesada.
 - Entrada visual: **texto primeiro** e escudo **depois**; uma vez estabilizado, flutuação muito discreta e rotação lenta parcial do escudo.
 - Nenhuma rotação manual do escudo por gesto/toque no mobile.
@@ -400,7 +414,7 @@ Os textos completos da tabela permanecem imutáveis na fonte de dados. É autori
 
 ### 10.1. Aspecto
 
-- Fundo grafite profundo `#1C1C1C`, transição gradual a partir da seção institucional.
+- Fundo grafite profundo derivado dos tokens `--surface-mineral` e `--surface-graphite`, transição gradual a partir da seção institucional. A cor oficial grafite da marca permanece `#1C1C1C`.
 - **Painel Crystalline Liquid Glass** refinado com cantos de raio moderado, contorno fino e luz sutil.
 - Reutilizar a mesma entrada dos cards (850 ms, `power3.out`, opacity e y de 24 px), com reveal no wrapper e hover no painel filho. Compartilhar `glass-card` e `flow-glass`: elevação de 4 px em 400 ms, borda em 350 ms, reflexo em 1200 ms e fade em 380 ms, sem tween concorrente. Foco nos controles internos ilumina o painel; movimento reduzido remove deslocamentos. Não transformar o painel/textos legais em botões nem dar animação de clique ao painel informativo. Arquitetura de contatos permanece intacta.
 - Logo, grupo de navegação, institucional e copyright entram coordenadamente: uma única timeline/ScrollTrigger para o painel, conservando os 24 px de deslocamento compartilhado e fades internos de 850 ms/`power3.out` com stagger de 60 ms. Não somar deslocamentos nos filhos, ocultar conteúdo sem JS ou animar controles concorrentes. Preservar reentrada/cleanup e conteúdo estático com movimento reduzido. CONTATOS continua texto simples, sem cápsula ou ícone; os itens dos popovers mantêm o Flow Glass compartilhado.
@@ -467,7 +481,7 @@ SUSEP: 262180499
 - A sensação deve ser de uma narrativa contínua, **cinematográfica, refinada, suave e não intrusiva**.
 - **Transição progressiva de luminosidade entre os quatro tons**; pode ser implementada com camadas de fundo e interpolação de scroll, respeitando performance.
 - Fundos definidos em tokens únicos: Hero em grafite mais profundo com luz controlada; Soluções em cinza mineral mais luminoso; Diferenciais em grafite com luz cinza-prata diagonal própria; footer em grafite profundo. Tons de encontro compartilhados mantêm continuidade. Separadores existentes, inclusive entre header e Hero: filete de 1 px com prata de opacidade moderadamente ampliada, extremidades dissipadas e halo extremamente suave, sem faixas ou brilho intenso.
-- Nesta etapa os backgrounds, tonalidades, luzes ambientes e separadores atuais estão congelados. Não selecionar outra combinação entre as dez em avaliação nem declarar uma paleta definitiva aprovada antes da escolha expressa do responsável.
+- A etapa 2 substitui o congelamento anterior pela direção cromática da imagem 4, conforme §4.1. Preservar durações, easing e comportamento de todas as animações existentes; somente superfícies, luzes e encontros visuais são refinados. Não declarar a execução visual aprovada antes da avaliação do responsável.
 - Elementos surgem com opacidade e deslocamento mínimos, em tempos coordenados, sem `bounce`, elasticidade excessiva ou trajetórias decorativas.
 - **Revelações devem poder acontecer novamente quando o usuário voltar à seção**; implementar com controle de reentrada estável, sem flicker ou reanimações compulsivas a cada pixel.
 - Navbar inteligente ao rolar; estados ativos e transições de vidro bem sincronizados.
@@ -669,7 +683,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 ### Marca, conteúdo e estrutura
 
 - [ ] Há **exatamente 4 seções**, na ordem Hero → Soluções → Diferenciais → Footer, sem formulário ou seção de contato adicional.
-- [ ] Hero apresenta **exatamente** `ENTREGAMOS VALOR ALÉM DE PREÇO` e escudo aprovado, sem CTA/subtítulo/scroll cue.
+- [ ] Hero apresenta **exatamente** `Seu patrimônio merece a melhor escolha: Zury!`, com capitalização literal, e escudo aprovado, sem CTA/subtítulo/scroll cue. Na etapa 2 o escudo permanece isolado, sem integração.
 - [ ] Navbar contém **exatamente** `SERVIÇOS`, `DIFERENCIAIS`, `SOBRE`, `CONTATO`, `REDES SOCIAIS`; destinos e balões funcionam conforme §5.
 - [ ] Navbar mostra somente texto em repouso, inclusive no ativo, sem cápsula individual permanente; `aria-current`, contraste e foco preservados. Hover conserva exatamente o Liquid Glass aprovado, sem alteração de parâmetros, nunca underline.
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.

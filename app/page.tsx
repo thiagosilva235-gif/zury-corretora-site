@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CarFront, Headset, HeartPulse, House, Hourglass, Landmark, Plane, ShieldCheck, Sprout, Truck, Zap } from "lucide-react";
-import { differentiatorDetails, differentiators, navigation, services } from "@/lib/content";
+import { differentiatorDetails, differentiators, heroHeadline, navigation, services } from "@/lib/content";
 import { SiteHeader } from "@/components/site/header";
 import { ChannelsPopover } from "@/components/site/channels-popover";
 import { Carousel } from "@/components/site/carousel";
@@ -17,7 +17,7 @@ export default function Home() {
       <section id="inicio" className="hero" tabIndex={-1} aria-labelledby="hero-title">
         <div className="section-light hero-light" aria-hidden="true" />
         <div className="container hero-content">
-          <h1 id="hero-title"><span>ENTREGAMOS</span><span>VALOR ALÉM</span><span>DE PREÇO</span></h1>
+          <h1 id="hero-title">{heroHeadline}</h1>
           <div className="hero-reserve" aria-hidden="true" />
         </div>
       </section>
