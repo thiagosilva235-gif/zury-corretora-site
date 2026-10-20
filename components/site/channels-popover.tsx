@@ -5,10 +5,15 @@ import { Mail, Music2, Camera, X } from "lucide-react";
 import { WhatsAppIcon } from "./whatsapp-icon";
 import { contacts, digitalChannels } from "@/lib/content";
 
+function Facebook({ size = 20 }: { size?: number }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 21v-8h3l.5-4H14V7c0-1 .3-2 2-2h2V1.5C17.5 1.3 16 1 14.5 1 11 1 9 3.1 9 7v2H6v4h3v8z" /></svg>;
+}
+
 export function ChannelsPopover({ id, title, kind = "contact", placement = "below" }: { id: string; title: string; kind?: "contact" | "social"; placement?: "below" | "right" }) {
   const panel = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useLayoutEffect(() => {
     const element = panel.current;
@@ -26,7 +31,7 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
       const panelWidth = element.offsetWidth;
       const panelHeight = element.offsetHeight;
       const rightFits = placement === "right" && anchor.right + 16 + panelWidth <= width - 12;
-      const left = rightFits ? anchor.right + 16 : width < 600 ? 12 : Math.min(Math.max(anchor.right - panelWidth, 16), width - panelWidth - 16);
+      const left = rightFits ? anchor.right + 16 : Math.min(Math.max(anchor.left + anchor.width / 2 - panelWidth / 2, 12), width - panelWidth - 12);
       const below = anchor.bottom + 12;
       const above = anchor.top - panelHeight - 12;
       const preferredTop = rightFits ? anchor.top - 20 : width < 600 && placement !== "below" ? height - panelHeight - 12 : below + panelHeight <= height - 12 ? below : above;
@@ -56,15 +61,23 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
     };
   }, [id, open, placement]);
 
-  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass flow-capsule" aria-label={`WhatsApp de ${person.name}, ${person.role}, ${person.phone}`}><span><strong>{person.name.toLocaleUpperCase("pt-BR")} — <small>{person.role.toLocaleUpperCase("pt-BR")}</small></strong><span>{person.phone}</span></span></a>)}</div>;
-  return <div ref={panel} id={id} popover="auto" role="dialog" aria-labelledby={`${id}-title`} className="channel-panel glass" data-placement={placement} data-open={open || undefined} onToggle={(event) => { if (event.newState === "open") { const source = (event.nativeEvent as Event & { source?: Element }).source; opener.current = source instanceof HTMLElement ? source : document.activeElement instanceof HTMLElement && document.activeElement.getAttribute("popovertarget") === id ? document.activeElement : null; } setOpen(event.newState === "open"); }}>
+  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass flow-capsule" aria-label={`WhatsApp de ${person.name}, ${person.role}`}><strong>{person.name} — <span>{person.role}</span></strong></a>)}</div>;
+  return <div ref={panel} id={id} popover="auto" role="dialog" aria-labelledby={`${id}-title`} className="channel-panel glass" data-placement={placement} data-open={open || undefined} onToggle={(event) => {
+    if (event.newState === "open") {
+      const source = (event.nativeEvent as Event & { source?: Element }).source;
+      opener.current = source instanceof HTMLElement ? source : document.activeElement instanceof HTMLElement && document.activeElement.getAttribute("popovertarget") === id ? document.activeElement : null;
+    } else setExpanded(false);
+    setOpen(event.newState === "open");
+  }}>
     <div className="channel-heading"><h2 id={`${id}-title`}>{title}</h2><button className="icon-button popover-close" type="button" popoverTarget={id} popoverTargetAction="hide" aria-label={`Fechar ${title.toLowerCase()}`}><X size={18} aria-hidden="true" /></button></div>
-    {kind === "contact" ? <><details className="whatsapp-options">
-      <summary className="channel-row flow-glass flow-capsule"><WhatsAppIcon /><span><strong>WhatsApp</strong><small>Escolha com quem conversar</small></span><span className="details-toggle" aria-hidden="true" /></summary>
-      {people}
-    </details>
-    <a className="channel-row flow-glass flow-capsule" href={`mailto:${digitalChannels.email}`}><Mail size={20} aria-hidden="true" /><span><strong>E-mail</strong><small>{digitalChannels.email}</small></span></a></> : <>
-    <a className="channel-row flow-glass flow-capsule" href={digitalChannels.instagram.href} target="_blank" rel="noopener noreferrer"><Camera size={20} aria-hidden="true" /><span><strong>Instagram</strong><small>{digitalChannels.instagram.handle}</small></span></a>
-    <a className="channel-row flow-glass flow-capsule" href={digitalChannels.tiktok.href} target="_blank" rel="noopener noreferrer"><Music2 size={20} aria-hidden="true" /><span><strong>TikTok</strong><small>{digitalChannels.tiktok.handle}</small></span></a></>}
+    {kind === "contact" ? <>
+      <button type="button" className="channel-row flow-glass flow-capsule whatsapp-toggle" aria-expanded={expanded} aria-controls={`${id}-people`} onClick={() => setExpanded(!expanded)}><WhatsAppIcon /><span><strong>WhatsApp</strong></span></button>
+      <div id={`${id}-people`} className="whatsapp-collapse" data-expanded={expanded} inert={!expanded} aria-hidden={!expanded}><div>{people}</div></div>
+      <a className="channel-row flow-glass flow-capsule" href={`mailto:${digitalChannels.email}`}><Mail size={20} aria-hidden="true" /><span><strong>E-mail</strong></span></a>
+    </> : <>
+      <a className="channel-row flow-glass flow-capsule" href={digitalChannels.instagram.href} target="_blank" rel="noopener noreferrer"><Camera size={20} aria-hidden="true" /><span><strong>Instagram</strong></span></a>
+      <a className="channel-row flow-glass flow-capsule" href={digitalChannels.tiktok.href} target="_blank" rel="noopener noreferrer"><Music2 size={20} aria-hidden="true" /><span><strong>TikTok</strong></span></a>
+      {digitalChannels.facebook.href ? <a className="channel-row flow-glass flow-capsule" href={digitalChannels.facebook.href} target="_blank" rel="noopener noreferrer"><Facebook size={20} aria-hidden="true" /><span><strong>Facebook</strong></span></a> : <button className="channel-row flow-glass flow-capsule" type="button" disabled><Facebook size={20} aria-hidden="true" /><span><strong>Facebook</strong></span></button>}
+    </>}
   </div>;
 }

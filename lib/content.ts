@@ -40,7 +40,7 @@ export function differentiatorDetails(description: string): string[] {
 }
 
 export const navigation = [
-  { label: "SERVIÇOS", href: "#servicos" },
+  { label: "SOLUÇÕES", href: "#servicos" },
   { label: "DIFERENCIAIS", href: "#sobre" },
   { label: "SOBRE", href: "#institucional" },
 ] as const;
@@ -66,7 +66,7 @@ export const institutionalLinks = {
 export function navigationForSite(includeReferrals: boolean, includeBenefits = false): readonly SiteNavigationItem[] {
   return [
     ...navigation.slice(0, 2),
-    ...(includeReferrals ? [{ label: "REDE DE PARCEIROS", href: "#indicacoes" }] : []),
+    ...(includeReferrals ? [{ label: "INDICAÇÕES", href: "#indicacoes" }] : []),
     ...(includeBenefits ? [{ label: "BENEFÍCIOS", href: "#beneficios" }] : []),
     ...navigation.slice(2),
   ];
@@ -90,8 +90,8 @@ type ReferralOption = {
 
 export const referralProgram = {
   title: "PROGRAMA DE INDICAÇÕES",
-  commercialTitle: "CONDIÇÕES MAIS COMPETITIVAS PARA QUEM VOCÊ INDICA.",
-  commercialDescription: "A ZURY BUSCA OFERECER CONDIÇÕES DIFERENCIADAS AOS CLIENTES INDICADOS, COM UMA POLÍTICA COMERCIAL VOLTADA À COMPETITIVIDADE.",
+  commercialTitle: "QUEM INDICA MERECE MAIS.",
+  commercialDescription: "COMO FORMA DE AGRADECIMENTO PELAS INDICAÇÕES, A ZURY BUSCA OFERECER CONDIÇÕES DIFERENCIADAS PARA AFILIADOS E PARCEIROS COMERCIAIS QUE CONTRATAM NOSSOS SERVIÇOS, INCLUSIVE POR MEIO DE BENEFÍCIOS SOBRE SUA REMUNERAÇÃO, QUANDO APLICÁVEIS.",
   options: [
     {
       id: "affiliate",
@@ -130,6 +130,7 @@ export function referralInquiryHref(mode: ReferralMode): string {
 
 // Owner-provided destinations: preserve these exact links even if public access is blocked.
 export const digitalChannels = {
+  facebook: { href: null as string | null },
   instagram: { handle: "@zury_corretora", href: "https://www.instagram.com/zury_corretora/" },
   tiktok: { handle: "@zury_corretora", href: "https://www.tiktok.com/@zury_corretora" },
   email: "contato@zurycorretora.com",

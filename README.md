@@ -36,19 +36,19 @@ node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3001
 
 ## Estado da entrega
 
-### Revisão tipográfica, comercial e institucional — etapa 6
+### Hero, indicações, benefícios e menus — etapa 7
 
-Tracking centralizado em nove tokens semânticos; Hero preservado em três linhas. Indicações sem subtítulo, com cards verticalmente compactos, três frases do Afiliado sem marcadores/pontos e Parceiro sem lista repetitiva. O bloco comercial abaixo usa a formulação provisória aprovada, sem afirmar renúncia de comissão ou menor preço garantido. Benefícios não apresenta descrição auxiliar.
+Tracking centralizado em nove tokens semânticos; Hero ampliada, com três linhas desktop e reserva 40%/60%. Cards de Indicações com respiro moderadamente maior; novo agradecimento provisório refere-se à contratação própria de afiliados/parceiros, distinto da remuneração por indicação. Benefícios não apresenta descrição auxiliar.
 
 CNPJ e SUSEP abrem as páginas oficiais de consulta da Receita Federal e SUSEP em nova aba, sem parâmetros presumidos. Reutilizam as mesmas classes Flow Glass dos links do rodapé, incluindo repouso, hover e foco. Isso não constitui validação independente dos registros.
 
-Os nomes de apresentação são FARMELHOR UNAÍ, ZAPP e GRUPO MV. Benefícios contém somente três cards estáticos, sem legendas ou avisos; o carrossel de logos foi cancelado e removido. As logos originais estão em `public/partners/`, sem alterações. O card ZAPP usa a nova logo metálica recebida, centralizada verticalmente na área de logo. A UI mantém caixa alta por CSS, e-mails, URLs e mensagens originais; Hero em três linhas e listas de serviços/diferenciais sem divisórias internas.
+FARMELHOR UNAÍ, ZAPP e GRUPO MV permanecem estáticos quando couberem. `BenefitTrack` mede largura real e mínimo legível de 260 px + gap 14 px; excedentes no desktop/tablet ativam cards completos em loop à direita a 42 px/s, pausável por hover/foco/interação. Mobile e reduced motion usam grid estático. A faixa de logos isoladas permanece cancelada. Logos preservadas em `public/partners/`; ZAPP usa o ativo metálico centralizado. Navbar usa SOLUÇÕES e INDICAÇÕES; menus verticais de contato/social compartilham `ChannelsPopover` com o rodapé, sem telefones, e-mail visível ou handles. Facebook sem destino fica desabilitado.
 
 Benefícios aparece em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` durante o build local. Para a prévia completa: `ZURY_REFERRAL_PREVIEW=true ZURY_BENEFITS_PREVIEW=true pnpm build`, seguido do start local. Sem as variáveis, o build público padrão omite as duas ofertas e seus links. Não publicar o artefato de prévia: parcerias, marcas e condições ainda exigem validação. Remover avisos da interface não constitui aprovação comercial. Não há backend, pagamentos ou códigos implementados.
 
 ### Prévia do Programa de Indicações
 
-Em `pnpm dev`, a seção e o link REDE DE PARCEIROS ficam visíveis. Para avaliar um build local de produção, use `ZURY_REFERRAL_PREVIEW=true pnpm build` (ou o mesmo prefixo no comando direto de Node acima) e depois inicie o servidor. A opção é resolvida no build: reiniciar o servidor não altera um artefato já gerado.
+Em `pnpm dev`, a seção e o link INDICAÇÕES ficam visíveis. Para avaliar um build local de produção, use `ZURY_REFERRAL_PREVIEW=true pnpm build` (ou o mesmo prefixo no comando direto de Node acima) e depois inicie o servidor. A opção é resolvida no build: reiniciar o servidor não altera um artefato já gerado.
 
 **Não publicar o artefato de prévia.** Sem essa variável, o build de produção omite seção e link; isso ainda não libera o restante do site, cujo escudo segue pendente. Regras comerciais, regulamento, pagamentos/estornos, atribuição, comissões, privacidade e exigências regulatórias precisam de validação expressa. A headline mensal proposta continua documentada como pendente; a headline provisória anterior foi removida da interface, sem substituta. Confirmar emissão real dos códigos e política de redução/repasse de comissão por produto. CTAs somente abrem uma conversa preparada com o WhatsApp oficial do Thiago, sem enviar mensagens automaticamente.
 
