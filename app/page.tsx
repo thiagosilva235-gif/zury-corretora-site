@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CarFront, Headset, HeartPulse, House, Hourglass, Landmark, Plane, ShieldCheck, Sprout, Truck, Zap } from "lucide-react";
-import { differentiatorDetails, differentiators, heroHeadline, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
+import { differentiatorDetails, differentiators, heroLines, isBenefitsPreviewEnabled, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
+import { ExclusiveBenefits } from "@/components/site/exclusive-benefits";
 import { ReferralProgram } from "@/components/site/referral-program";
 import { SiteHeader } from "@/components/site/header";
 import { ChannelsPopover } from "@/components/site/channels-popover";
@@ -12,6 +13,7 @@ const differenceIcons = [ShieldCheck, Headset, Zap];
 
 export default function Home() {
   const showReferrals = isReferralPreviewEnabled(process.env);
+  const showBenefits = isBenefitsPreviewEnabled(process.env);
   return <div className="zury-site">
     <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
     <SiteHeader items={navigationForSite(showReferrals)} />
@@ -19,7 +21,7 @@ export default function Home() {
       <section id="inicio" className="hero" tabIndex={-1} aria-labelledby="hero-title">
         <div className="section-light hero-light" aria-hidden="true" />
         <div className="container hero-content">
-          <h1 id="hero-title">{heroHeadline}</h1>
+          <h1 id="hero-title">{heroLines.map((line, index) => <span className="hero-line" key={line}>{index > 0 ? " " : ""}{line}</span>)}</h1>
           <div className="hero-reserve" aria-hidden="true" />
         </div>
       </section>
@@ -55,6 +57,7 @@ export default function Home() {
         </div>
       </section>
       {showReferrals && <ReferralProgram />}
+      {showBenefits && <ExclusiveBenefits />}
     </main>
     <footer id="contato" className="site-footer section-boundary">
       <div className="container"><div className="card-reveal" data-reveal><div className="footer-panel glass glass-card flow-glass">

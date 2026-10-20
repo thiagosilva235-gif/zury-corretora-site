@@ -3,13 +3,14 @@
 > **Status:** briefing consolidado e aprovado para implementação.  
 > **Natureza:** fonte única de verdade para marca, conteúdo, experiência, comportamento visual e critérios de aceite.  
 > **Idioma de interface:** português brasileiro (`pt-BR`).  
-> **Escopo:** landing page premium, responsiva, de página única; quatro blocos públicos atuais e Programa de Indicações adicional em prévia de desenvolvimento (§9.3).
+> **Escopo:** landing page premium, responsiva, de página única; quatro blocos públicos atuais, Indicações e Benefícios adicionais em prévia de desenvolvimento (§§9.3–9.4).
 > **Documento complementar:** [`AGENTS.md`](./AGENTS.md) contém somente instruções de execução para o Codex; não substitui este documento.  
 > **Regra essencial:** não inventar textos, produtos, contatos, afirmações comerciais ou áreas extras para preencher o layout.
 > **Revisão visual de 19/10/2026:** Premium Dark Gradient, navegação com cinco opções e contatos em popovers aprovados expressamente no pedido de redesign. Esta revisão substitui as decisões anteriores correspondentes; o escudo continua sem aprovação e isolado.
 > **Refinamento complementar de 19/10/2026:** cápsulas Flow Glass compartilhadas na navbar e nos menus; contato e redes sociais separados; rodapé sem botão WhatsApp; produtos revisados no plural. Header completo com saída conjunta de 475 ms e reaparecimento somente no topo. Listas com marcadores discretos e 12 px entre produtos; diferenciais em caixa alta por CSS, organizados em trechos com marcadores e divisórias. Painel do rodapé compartilha as animações dos cards. Preservar a aplicação existente e o gate do escudo.
 > **Etapa 2 — identidade visual e Hero:** direção cromática da imagem 4 e nova headline autorizadas pelo responsável. Substituem o congelamento anterior dos fundos e a headline antiga. Implementação visual ainda sujeita à avaliação; não implica aprovação do escudo nem autorização para etapas futuras.
 > **Etapa 3 — Indicações:** autorizados Hero em caixa alta, remoção exclusiva das divisórias de produtos e nova seção de indicações em prévia, com acesso na navbar. Preservar a etapa 2 sem reconstrução. A oferta depende de validação comercial/jurídica; escudo continua isolado e sem aprovação.
+> **Etapa 4 — Benefícios e tipografia:** caixa alta global permanente; Hero composto em três linhas; Diferenciais sem divisórias internas; Benefícios exclusivos e faixa de logos autorizados em prévia. Nomes confirmados: FARMA MELHOR UNAÍ, GRUPO ZAPP e GRUPO MV. Preservar integralmente os ativos e o gate independente do escudo.
 
 ---
 
@@ -41,7 +42,7 @@ Se um efeito visual prejudicar a leitura, estabilidade, usabilidade ou desempenh
 
 ## 2. Arquitetura de informação e prévia de Indicações
 
-A página pública padrão mantém os quatro blocos abaixo. A prévia da etapa 3 insere `indicacoes` depois de `sobre` e antes de `contato`, totalizando cinco blocos. Benefícios exclusivos permanece futuro, sem seção ou placeholder nesta etapa.
+A página pública padrão mantém os quatro blocos abaixo. A prévia completa insere `indicacoes` depois de `sobre` e `beneficios` depois de `indicacoes`, antes de `contato`: Hero → Soluções → Diferenciais → Indicações → Benefícios exclusivos → Footer. Cada oferta tem gate de publicação independente.
 
 | Ordem | ID semântico | Seção | Tom de referência |
 | --- | --- | --- | --- |
@@ -53,9 +54,9 @@ A página pública padrão mantém os quatro blocos abaixo. A prévia da etapa 3
 **Esclarecimentos importantes:**
 
 - A navegação/header não é uma quinta seção.
-- A única seção adicional autorizada nesta etapa é PROGRAMA DE INDICAÇÕES, sujeita ao gate do §9.3. Esta autorização substitui a limitação histórica de quatro blocos somente na prévia habilitada.
+- As únicas seções adicionais autorizadas são PROGRAMA DE INDICAÇÕES e BENEFÍCIOS EXCLUSIVOS, sujeitas aos gates dos §§9.3–9.4. Esta autorização substitui a limitação histórica de quatro blocos somente na prévia habilitada.
 - **Não criar seção exclusiva de contato**: o destino `#contato` aponta para o footer.
-- Não criar outras seções de depoimentos, parceiros, FAQ, estatísticas, formulário, newsletter, planos, logos de seguradoras ou chamada final.
+- Não criar seções além das autorizadas, depoimentos, FAQ, estatísticas, formulário, newsletter, planos, logos de seguradoras ou chamada final. As três marcas comerciais do §9.4 pertencem a Benefícios, não a uma seção comercial adicional.
 - O design entre os quatro tons deve parecer **uma transição luminosa contínua ao rolar a página**, com gradientes neutros distintos derivados do rodapé existente. Unir as bordas das seções sem mudanças abruptas; não uniformizar todas no mesmo tom.
 - Entre seções, compartilhar uma transição arquitetônica: filete prateado de aproximadamente 1 px, baixa opacidade e extremidades dissipadas, acompanhado de luminosidade difusa suave. Sem faixas rígidas, linhas pesadas, novas cores ou novas seções.
 - Rotas ou ferramentas locais **de pré-visualização do escudo** são permitidas durante o desenvolvimento, desde que **não integrem a navegação nem sejam publicadas como uma quinta seção/área comercial**.
@@ -132,6 +133,12 @@ Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nomina
 Gradientes por seção em `--hero-surface`, `--solutions-surface`, `--about-surface` e `--footer-surface`. Luzes em `--hero-ambient`, `--solutions-ambient`, `--about-ambient`; encontros em `--boundary-line` e `--boundary-light`. Hero concentra luz à direita; Soluções recebe luz no alto à direita e sombra à esquerda; Diferenciais recebe luz lateral esquerda com reflexão diagonal discreta; rodapé retorna ao grafite profundo. Bordas dos gradientes compartilham tons, sem faixas claras. Somente o encontro Hero → Soluções recebe curva luminosa fina, estática, sem novos conteúdos ou loops. A composição aguarda aprovação visual desta etapa.
 
 ### 4.2. Tipografia
+
+#### REGRA GLOBAL DE CAPITALIZAÇÃO — CAIXA ALTA OBRIGATÓRIA
+
+**TODO O CONTEÚDO TEXTUAL VISÍVEL DO SITE ZURY CORRETORA DEVE SER EXIBIDO EM CAIXA ALTA, EM TODAS AS SEÇÕES, COMPONENTES, INTERAÇÕES E BREAKPOINTS. ESSA É UMA DIRETRIZ GLOBAL, PERMANENTE E PRIORITÁRIA DA IDENTIDADE VISUAL.**
+
+Aplicar a todos os títulos, textos, cards, descontos, avisos, instruções, CTAs, navegação, popovers, rodapé, dados legais e estados visíveis, inclusive em previews locais. Implementar por `text-transform: uppercase` herdado da raiz e pelos controles, preservando os dados originais para busca, cópia e leitura assistiva. Não alterar capitalização de URLs, `href`, e-mails na fonte, identificadores, metadados estruturados ou parâmetros de WhatsApp. Não modificar textos incorporados aos SVGs/PNGs oficiais: identidade visual das marcas é exceção expressa. Rever quebras e dimensões após a transformação. Esta regra substitui qualquer permissão anterior de texto visual em caixa baixa; textos literais mistos neste documento continuam sendo a fonte semântica, não uma exceção de apresentação.
 
 - Família principal: **Inter Tight**; carregar de forma otimizada (ex.: `next/font/google`, se a stack final suportar).
 - Peso predominante: **600 / semibold**. Outros pesos apenas se melhorarem hierarquia e leitura; evitar aspecto excessivamente fino.
@@ -233,7 +240,7 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Mobile: headline **centralizada acima do escudo**, escudo com largura visual próxima de **75% da área útil**; altura responsiva, sem forçar corte de conteúdo ou viewport excessiva.
 - Headline em Inter Tight, peso predominantemente semibold, em caixa alta literal na fonte oficial, preservando acentos e pontuação. Quebras balanceadas por largura, sem remover espaços entre palavras.
 - Tracking conforme §4.2: `-0.017em` desktop e `-0.0136em` mobile, sem mudar a frase, remover espaços entre palavras ou invadir o espaço 40%/60%.
-- Quebras naturais balanceadas recalculadas para caixa alta: desktop usa `clamp(30px, 3.9vw, 60px)` e entrelinha `1.06`, sem invadir os 60% reservados. Mobile usa `clamp(31px, 8.5vw, 60px)`, entrelinha `1.08` e composição centralizada. Tracking preservado, sem `nowrap`, espaços removidos, subtítulo ou CTA.
+- Hero em exatamente três linhas no desktop: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA:` / `ZURY!`. Usar três spans em bloco com espaços semânticos preservados. Desktop: `clamp(23px, 3vw, 44px)`, entrelinha `1.16`, tracking anterior e 40%/60% preservados; ZURY! recebe escala discreta de 1.08. Mobile: `clamp(22px, 6.5vw, 44px)`, entrelinha `1.18`, alinhamento central e tracking anterior. Preservar três linhas sempre que couberem com legibilidade; qualquer exceção em tela estreita deve ser registrada. Não cortar palavras nem invadir a reserva do escudo.
 - Abaixo da composição superior de marca/navbar, incluir somente transição visual por pseudo-elementos: mesmo filete prateado difuso e gradiente tonal usado entre seções, sem conteúdo novo ou borda pesada.
 - Entrada visual: **texto primeiro** e escudo **depois**; uma vez estabilizado, flutuação muito discreta e rotação lenta parcial do escudo.
 - Nenhuma rotação manual do escudo por gesto/toque no mobile.
@@ -296,7 +303,7 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - **Oito cartões, na ordem abaixo**, com informações **sempre visíveis** (sem acordeão, flip, tooltip obrigatório, expansão ou clique para revelar serviços). Numeração `01` a `08` oculta no desktop/tablet em grid; pode permanecer nos cards mobile. Não alterar o contador funcional do carrossel.
 - Cartões são **informativos, não links**: não criar cursores de botão, onClick decorativo ou falsa affordance.
 - Cada cartão contém ícone linear correspondente, título e lista semântica com um marcador nativo discreto por produto, prata neutra e alinhado à primeira linha, com recuo suspenso consistente nas quebras. Usar 12 px de `row-gap` entre produtos (referência 10–14 px), não apenas entrelinha. Todos os textos visualmente em caixa alta por CSS. Preservar grafia, acentos, ordem e capitalização originais nos dados de `lib/content.ts`; numeração visual somente no mobile. A altura uniforme cresce conforme o conteúdo real máximo, sem cortes ou altura fixa limitante.
-- Etapa 3: remover todas as divisórias entre produtos nos oito cards, incluindo bordas, gradientes e pseudoelementos. Preservar marcadores nativos, 12 px de intervalo, tracking, entrelinha e alturas uniformes. As divisórias dos Diferenciais e os separadores entre seções permanecem.
+- Etapa 3: remover todas as divisórias entre produtos nos oito cards, incluindo bordas, gradientes e pseudoelementos. Preservar marcadores nativos, 12 px de intervalo, tracking, entrelinha e alturas uniformes. Etapa 4 remove também as divisórias internas dos Diferenciais. Bordas externas e separadores entre seções permanecem.
 - Ícone **sem fundo, sem círculo, sem quadrado e sem contêiner decorativo**; deve estar ao lado do título, com alinhamento refinado.
 - Conteúdo ancorado no topo; espaços inferiores vazios devem ser apenas consequência natural da altura uniforme.
 
@@ -391,8 +398,8 @@ As denominações foram pluralizadas sem mudar modalidades. Engenharia, logísti
 - Headline **exatamente** `NOSSOS DIFERENCIAIS`.
 - Não apresentar `DIFERENÇA ZURY`, `A DIFERENÇA ZURY` ou qualquer subtítulo substituto acima desse título.
 - Centralizada em todas as larguras, com espaçamento equilibrado até os cartões.
-- Três cartões institucionais sem numeração visual dentro dos cards em qualquer largura, com o mesmo tratamento Liquid Glass da seção anterior, ajustado ao cinza de fundo. Todo o conteúdo dos cards em caixa alta por CSS, preservando dados originais, acentos, ordem e hierarquia. Apresentar cada alegação em item semântico com marcador discreto e divisória CSS prateada de 1 px/baixa opacidade apenas entre itens; não usar caracteres para desenhar linhas. Acomodar naturalmente as quebras e a altura real máxima. Preservar contadores e indicadores do carrossel.
-- Ícones Lucide à esquerda dos títulos: SEGURANÇA `shield-check`, SUPORTE `headset`, AGILIDADE `zap`. Reutilizar o alinhamento e a cor `#d0d2cd` dos serviços, tamanho 24 px, `strokeWidth: 1.4`, gap de 12 px; sem fundo, círculo ou contêiner decorativo. Ícones decorativos ocultos para tecnologias assistivas; títulos, ordem, marcadores e divisórias preservados.
+- Três cartões institucionais sem numeração visual dentro dos cards em qualquer largura, com o mesmo tratamento Liquid Glass da seção anterior. Conteúdo em caixa alta por CSS, preservando dados originais, acentos, ordem e hierarquia. Cada alegação permanece em item semântico com marcador discreto, mas sem qualquer divisória interna, borda, gradiente linear ou pseudoelemento separador. Preservar o ritmo vertical: o espaço antes ocupado pela borda pode ser substituído por 1 px de padding, sem desenhar linha. Manter bordas externas, ícones, alturas uniformes, animações e controles do carrossel.
+- Ícones Lucide à esquerda dos títulos: SEGURANÇA `shield-check`, SUPORTE `headset`, AGILIDADE `zap`. Reutilizar o alinhamento e a cor `#d0d2cd` dos serviços, tamanho 24 px, `strokeWidth: 1.4`, gap de 12 px; sem fundo, círculo ou contêiner decorativo. Ícones decorativos ocultos para tecnologias assistivas; títulos, ordem e marcadores preservados, sem divisórias internas.
 - Desktop: **três cartões lado a lado**, de mesma altura, tendo como referência o texto mais longo.
 - Mobile: carrossel de swipe com próximo cartão parcial, instrução gestual **em caixa alta imediatamente acima**, indicadores selecionáveis sem setas e contador **`01 / 03` a `03 / 03`**. Nenhum conteúdo pode ser truncado.
 - Sem expansão, flip, links falsos ou clickboxes não funcionais.
@@ -415,7 +422,7 @@ Os textos completos da tabela permanecem imutáveis na fonte de dados. É autori
 
 ### 9.3. Programa de Indicações — prévia da etapa 3
 
-Nova seção `#indicacoes`, após Diferenciais e antes do rodapé atual (futuramente, antes de Benefícios exclusivos). Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável.
+Nova seção `#indicacoes`, após Diferenciais e antes de Benefícios exclusivos. Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável. Apresentação integralmente em caixa alta, conforme regra global, sem alterar as mensagens de WhatsApp.
 
 **Conteúdo oficial:**
 
@@ -460,6 +467,28 @@ Não alegar menor preço garantido, ausência de comissão, isenção de taxas n
 **Pendências comerciais/jurídicas — não inventar condições:** regras de participação; elegibilidade; prazos de pagamento; cancelamentos e estornos; atribuição de indicações; regras de comissão; tratamento de dados pessoais; requisitos legais/regulatórios aplicáveis à corretagem e aos produtos financeiros; sustentação e apresentação da chamada de ganhos.
 
 **Integração futura (não implementada):** modalidades com IDs estáveis `affiliate` e `commercial` em dados tipados. Eventual serviço autenticado deverá cuidar de cadastro/consentimento, atribuição, elegibilidade, conciliação de comissões e auditoria, após requisitos e aprovação específicos. Não criar backend, painel, códigos ou regras financeiras nesta etapa.
+
+### 9.4. BENEFÍCIOS EXCLUSIVOS — prévia da etapa 4
+
+Seção `#beneficios` após Indicações e antes do Footer, sem novas funções no rodapé ou mudanças extensas na navbar. Reutilizar paleta grafite/prata, gradientes direcionais, iluminação contida, materiais Liquid Glass/Flow Glass e reveal existentes. Três cards de altura uniforme no grid desktop, empilhados e legíveis no mobile. Sem CTAs, links comerciais, regras de resgate ou condições não fornecidas.
+
+- Título: `BENEFÍCIOS EXCLUSIVOS`.
+- Chamada: `VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.`
+- Descrição: `CLIENTES ZURY TÊM ACESSO A CONDIÇÕES ESPECIAIS EM ESTABELECIMENTOS PARCEIROS.`
+
+| Parceiro confirmado | Oferta sujeita à validação | Descrição |
+| --- | --- | --- |
+| FARMA MELHOR UNAÍ | 10% DE DESCONTO ADICIONAL | CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM COMPRAS ELEGÍVEIS. |
+| GRUPO ZAPP | 10% DE DESCONTO ADICIONAL | VANTAGEM EXCLUSIVA PARA CLIENTES ZURY EM PRODUTOS ELEGÍVEIS. |
+| GRUPO MV | 5% DE DESCONTO EM SERVIÇOS | CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM SERVIÇOS ELEGÍVEIS. |
+
+O responsável confirmou expressamente o nome comercial **GRUPO ZAPP**, em substituição a ZAPP MODAS, mantendo a logo recebida com lettering ZAPP FOR MEN. Confirmou também que o símbolo verde corresponde ao **GRUPO MV**. A logo FarmaMelhor não contém a localização UNAÍ; o nome do briefing permanece. Não alterar desenhos ou lettering para fazê-los coincidir com títulos.
+
+**Ativos oficiais recebidos e preservados byte a byte:** `public/partners/farma-melhor.png` (300 × 72), `grupo-zapp.png` (997 × 379) e `grupo-mv.png` (1057 × 1057). PNGs com canal alpha. Preservar cores de marca, transparência, proporções e respiro com `object-fit: contain`; as cores originais nas logos são exceção à neutralidade cromática da UI. Sem filtros, recoloração, reconstrução, cortes ou fundo branco. A imagem ZAPP recebida apresenta resíduos escuros na transparência aparente; solicitar matriz oficial mais limpa, preferencialmente SVG, sem corrigir destrutivamente o ativo. O lettering preto pequeno de FarmaMelhor merece variante oficial adequada a fundo escuro. Não tratar nome confirmado como autorização comercial comprovada.
+
+**Faixa de parceiros:** marquee CSS linear de 60 s, somente transform, obrigatoriamente esquerda → direita em todos os breakpoints. Duas metades idênticas; cada metade repete a sequência de três logos duas vezes, cobrindo o container desktop. Espaçamento final incluído na distância do loop: `translateX(-50%)` → `translateX(0)`, sem salto no encontro. Duplicatas ocultas da árvore acessível; nomes anunciados uma vez na faixa, sem live region. Sem setas, paginação, scrollbar ou controles visíveis. Pausar no hover fino, foco por teclado, interação de toque, fora da viewport e em documento oculto; retomar na mesma fase. Um único observer e listener de visibilidade, com cleanup. Respeitar movimento reduzido por faixa estática com apenas as três marcas e wrap responsivo. Carrosséis de serviços/diferenciais continuam manuais, sem autoplay; esta faixa é a única exceção autorizada.
+
+**Gate:** em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` no build local, renderizar seção, cards e faixa; produção padrão os omite. Independente do gate de Indicações. Não publicar artefato de prévia nem afirmar parceria/oferta ativa antes da confirmação expressa das parcerias, autorização de uso das marcas e condições comerciais. Não inventar cumulatividade, validade, itens participantes ou procedimento de resgate. Aviso visível: `PRÉVIA DAS OFERTAS. PUBLICAÇÃO SUJEITA À CONFIRMAÇÃO DAS PARCERIAS, AUTORIZAÇÕES DE USO DAS MARCAS E REGRAS COMERCIAIS.`
 
 ## 10. Footer, contatos e dados institucionais
 
@@ -553,7 +582,7 @@ SUSEP: 262180499
 - Usar `gsap.context()` e/ou abstração própria equivalente com limpeza de instâncias em desmontagem; usar `ScrollTrigger.matchMedia`/`gsap.matchMedia` ou equivalentes compatíveis para breakpoints e motion preferences.
 - Debounce/throttle/observers quando adequados, evitando listeners e `requestAnimationFrame` duplicados.
 - Nada de `scroll-jacking`, scroll artificial que impede interação normal, wheel overrides, interceptação agressiva do touch ou `overflow: hidden` no `body` sem motivo.
-- O carrossel deve ser **gestual e manual**, sem autoplay.
+- Carrosséis de serviços e diferenciais são **gestuais e manuais**, sem autoplay. A única exceção é a faixa automática de logos de Benefícios, com as pausas e alternativa estática do §9.4.
 
 ---
 
@@ -587,7 +616,7 @@ Critérios gerais:
 - Não usar animação que cause flashing ou impeça leitura.
 - **Carrosséis mobile:** indicadores selecionáveis nativos sem setas, operáveis por `Enter`/`Space`, grupos/descrição de cartões e anúncio de mudança quando apropriado. Swipes e controles devem atualizar o mesmo estado.
 - Se permitir tecla de seta esquerda/direita dentro do trilho focado, não capturar setas globalmente nem romper rolagem natural de toda a página.
-- **Sem autoplay nos carrosséis**; assim, não há necessidade de controles de pausa.
+- **Sem autoplay nos carrosséis de conteúdo**; a faixa de logos usa foco/hover/toque para pausa, sem controles visíveis, e alternativa estática em reduced motion (§9.4).
 - Preferir `scroll-snap` com detecção robusta da posição efetiva, considerando scroll programático e arrasto nativo, não uma implementação frágil de contador baseada apenas no clique.
 
 ---
@@ -733,15 +762,17 @@ O site **somente** será considerado pronto para publicação depois de todos os
 
 ### Marca, conteúdo e estrutura
 
-- [ ] Build público padrão mantém Hero → Soluções → Diferenciais → Footer. Prévia habilitada insere Indicações entre Diferenciais e Footer; sem formulário ou Benefícios nesta etapa.
+- [ ] Build público padrão mantém Hero → Soluções → Diferenciais → Footer. Prévia completa insere Indicações → Benefícios antes do Footer, respeitando gates independentes; sem formulário ou funções extras de rodapé.
 - [ ] Hero apresenta **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!`, com acentos e pontuação literais, sem CTA/subtítulo/scroll cue. Escudo permanece isolado até aprovação expressa.
 - [ ] Navbar padrão contém `SERVIÇOS`, `DIFERENCIAIS`, `SOBRE`, `CONTATO`, `REDES SOCIAIS`; a prévia insere `INDICAÇÕES` entre DIFERENCIAIS e SOBRE, somente com a seção habilitada. Destinos e balões funcionam conforme §5.
 - [ ] Navbar mostra somente texto em repouso, inclusive no ativo, sem cápsula individual permanente; `aria-current`, contraste e foco preservados. Hover conserva exatamente o Liquid Glass aprovado, sem alteração de parâmetros, nunca underline.
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
 - [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `AGRO`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `PREVIDÊNCIA`.
-- [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Divisórias dos Diferenciais preservadas.
+- [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Diferenciais também não possuem divisórias internas.
 - [ ] Prévia de Indicações exibe as duas modalidades completas, remunerações distintas, ressalva de ganhos, aviso de validação e CTAs oficiais com mensagens literais. Sem códigos fictícios, automação financeira ou promessa de resultado típico.
-- [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2 e apresentação segmentada autorizada, em caixa alta, com marcadores e divisórias discretas em todas as larguras; contador mobile preservado.
+- [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2, apresentação segmentada, marcadores e espaçamentos preservados, sem divisórias internas; contador mobile preservado.
+- [ ] Todos os textos visíveis, inclusive avisos, menus, popovers e rodapé, estão em caixa alta por apresentação; valores técnicos e desenhos oficiais preservados. Hero ocupa exatamente as três linhas do §6.2 no desktop, sem cortes.
+- [ ] Benefícios apresenta os três nomes confirmados, logos originais, ofertas e aviso de validação; faixa corre esquerda → direita sem salto, pausa por interação/visibilidade, não duplica nomes acessíveis e fica estática em reduced motion. Publicação não liberada automaticamente.
 - [ ] Footer tem CONTATOS textual à esquerda acima de SERVIÇOS, menu preferencialmente à direita, sem botão WhatsApp, substituto ou espaço reservado. CONTATO/CONTATOS contêm somente WhatsApp/e-mail; REDES SOCIAIS contém somente os dois links exatos fornecidos. Dados legais e copyright aparecem uma vez.
 - [ ] Balões de contato e redes sociais compartilham lógica, são mutuamente exclusivos e fecham por Escape, clique fora e botão fechar, com foco e posicionamento corretos.
 - [ ] A expressão DIFERENÇA ZURY foi removida; gradientes neutros distintos, vidro cristalino e microinterações refletem o redesign aprovado.
@@ -785,7 +816,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 **NÃO fazer:**
 
 - Criar logos novas ou alterar o monograma, a tipografia e os caminhos SVG oficiais.
-- Criar seções além das autorizadas nos §§2 e 9.3, formulário, CTA no Hero, botão de orçamento genérico, depoimentos inventados ou perguntas frequentes. CONTATOS textual do §10 é autorizado; botão WhatsApp no rodapé não é permitido. Não publicar Indicações sem validar o gate comercial/jurídico.
+- Criar seções além das autorizadas nos §§2, 9.3 e 9.4, formulário, CTA no Hero, botão de orçamento genérico, depoimentos inventados ou perguntas frequentes. CONTATOS textual do §10 é autorizado; botão WhatsApp no rodapé não é permitido. Não publicar Indicações ou Benefícios sem os respectivos gates comerciais/jurídicos.
 - Esconder serviços em accordions, criar cards clicáveis falsos ou cortar linhas longas para uniformizar alturas.
 - Trocar carrossel mobile por empilhamento vertical sem justificativa aceita, remover o peek ou ocultar os controles.
 - Criar hamburger como atalho para resolver o espaço da navbar mobile.

@@ -36,6 +36,12 @@ node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3001
 
 ## Estado da entrega
 
+### Benefícios e tipografia — etapa 4
+
+Os nomes confirmados são FARMA MELHOR UNAÍ, GRUPO ZAPP e GRUPO MV. As logos originais estão em `public/partners/`, sem alterações. A UI usa caixa alta por CSS, mantendo e-mails, URLs e mensagens originais nos dados. O Hero é composto em três linhas e ambas as listas de serviços/diferenciais não têm divisórias internas.
+
+Benefícios aparece em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` durante o build local. Para a prévia completa: `ZURY_REFERRAL_PREVIEW=true ZURY_BENEFITS_PREVIEW=true pnpm build`, seguido do start local. Sem as variáveis, o build público padrão omite as duas ofertas. Não publicar o artefato de prévia: parcerias, marcas e condições ainda exigem validação. O marquee corre esquerda → direita, pausa por interação/visibilidade e fica estático com movimento reduzido. Não há novos pagamentos, códigos ou funcionalidades de rodapé.
+
 ### Prévia do Programa de Indicações — etapa 3
 
 Em `pnpm dev`, a seção e o link INDICAÇÕES ficam visíveis. Para avaliar um build local de produção, use `ZURY_REFERRAL_PREVIEW=true pnpm build` (ou o mesmo prefixo no comando direto de Node acima) e depois inicie o servidor. A opção é resolvida no build: reiniciar o servidor não altera um artefato já gerado.

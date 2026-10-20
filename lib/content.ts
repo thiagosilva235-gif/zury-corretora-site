@@ -1,5 +1,23 @@
 export type Service = { number: string; title: string; icon: "House" | "HeartPulse" | "Sprout" | "CarFront" | "Landmark" | "Plane" | "Truck" | "Hourglass"; items: string[] };
 export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!";
+export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA:", "ZURY!"] as const;
+
+export type BenefitPartner = { id: string; name: string; logo: string; width: number; height: number; offer: string; description: string };
+export const benefitPartners: readonly BenefitPartner[] = [
+  { id: "farma-melhor", name: "FARMA MELHOR UNAÍ", logo: "/partners/farma-melhor.png", width: 300, height: 72, offer: "10% DE DESCONTO ADICIONAL", description: "CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM COMPRAS ELEGÍVEIS." },
+  { id: "grupo-zapp", name: "GRUPO ZAPP", logo: "/partners/grupo-zapp.png", width: 997, height: 379, offer: "10% DE DESCONTO ADICIONAL", description: "VANTAGEM EXCLUSIVA PARA CLIENTES ZURY EM PRODUTOS ELEGÍVEIS." },
+  { id: "grupo-mv", name: "GRUPO MV", logo: "/partners/grupo-mv.png", width: 1057, height: 1057, offer: "5% DE DESCONTO EM SERVIÇOS", description: "CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM SERVIÇOS ELEGÍVEIS." },
+];
+export const benefitsContent = {
+  title: "BENEFÍCIOS EXCLUSIVOS",
+  headline: "VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.",
+  description: "CLIENTES ZURY TÊM ACESSO A CONDIÇÕES ESPECIAIS EM ESTABELECIMENTOS PARCEIROS.",
+  notice: "PRÉVIA DAS OFERTAS. PUBLICAÇÃO SUJEITA À CONFIRMAÇÃO DAS PARCERIAS, AUTORIZAÇÕES DE USO DAS MARCAS E REGRAS COMERCIAIS.",
+};
+
+export function isBenefitsPreviewEnabled(env: { NODE_ENV?: string; ZURY_BENEFITS_PREVIEW?: string }): boolean {
+  return env.NODE_ENV === "development" || env.ZURY_BENEFITS_PREVIEW === "true";
+}
 
 export const services: Service[] = [
   { number: "01", title: "BENS", icon: "House", items: ["Residenciais", "Condomínios", "Imóveis", "Empresariais", "Equipamentos agrícolas", "Industriais", "Armazéns", "Seguros de engenharia", "Usinas"] },
