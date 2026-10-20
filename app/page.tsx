@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CarFront, Headset, HeartPulse, House, Hourglass, Landmark, Plane, ShieldCheck, Sprout, Truck, Zap } from "lucide-react";
-import { differentiatorDetails, differentiators, heroHeadline, navigation, services } from "@/lib/content";
+import { differentiatorDetails, differentiators, heroHeadline, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
+import { ReferralProgram } from "@/components/site/referral-program";
 import { SiteHeader } from "@/components/site/header";
 import { ChannelsPopover } from "@/components/site/channels-popover";
 import { Carousel } from "@/components/site/carousel";
@@ -10,9 +11,10 @@ const icons = { House, HeartPulse, Sprout, CarFront, Landmark, Plane, Truck, Hou
 const differenceIcons = [ShieldCheck, Headset, Zap];
 
 export default function Home() {
+  const showReferrals = isReferralPreviewEnabled(process.env);
   return <div className="zury-site">
     <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
-    <SiteHeader />
+    <SiteHeader items={navigationForSite(showReferrals)} />
     <main id="conteudo" tabIndex={-1}>
       <section id="inicio" className="hero" tabIndex={-1} aria-labelledby="hero-title">
         <div className="section-light hero-light" aria-hidden="true" />
@@ -52,6 +54,7 @@ export default function Home() {
           </Carousel>
         </div>
       </section>
+      {showReferrals && <ReferralProgram />}
     </main>
     <footer id="contato" className="site-footer section-boundary">
       <div className="container"><div className="card-reveal" data-reveal><div className="footer-panel glass glass-card flow-glass">

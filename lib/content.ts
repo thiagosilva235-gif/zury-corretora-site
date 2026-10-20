@@ -1,5 +1,5 @@
 export type Service = { number: string; title: string; icon: "House" | "HeartPulse" | "Sprout" | "CarFront" | "Landmark" | "Plane" | "Truck" | "Hourglass"; items: string[] };
-export const heroHeadline = "Seu patrimônio merece a melhor escolha: Zury!";
+export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!";
 
 export const services: Service[] = [
   { number: "01", title: "BENS", icon: "House", items: ["Residenciais", "Condomínios", "Imóveis", "Empresariais", "Equipamentos agrícolas", "Industriais", "Armazéns", "Seguros de engenharia", "Usinas"] },
@@ -34,6 +34,74 @@ export const contacts = [
   { name: "Valdir", role: "Consultor", phone: "(38) 99961-5862", href: "https://wa.me/5538999615862" },
   { name: "Joana", role: "Saúde", phone: "(61) 98563-8090", href: "https://wa.me/5561985638090" },
 ] as const;
+
+export type SiteNavigationItem = { label: string; href: string };
+
+export function navigationForSite(includeReferrals: boolean): readonly SiteNavigationItem[] {
+  return includeReferrals
+    ? [...navigation.slice(0, 2), { label: "INDICAÇÕES", href: "#indicacoes" }, ...navigation.slice(2)]
+    : navigation;
+}
+
+// Build-time preview only. This is not commercial/legal approval or access control.
+export function isReferralPreviewEnabled(env: { NODE_ENV?: string; ZURY_REFERRAL_PREVIEW?: string }): boolean {
+  return env.NODE_ENV === "development" || env.ZURY_REFERRAL_PREVIEW === "true";
+}
+
+export type ReferralMode = "affiliate" | "commercial";
+type ReferralOption = {
+  id: ReferralMode;
+  title: string;
+  reward: string;
+  paragraphs: readonly string[];
+  benefits: readonly string[];
+  cta: string;
+  message: string;
+};
+
+export const referralProgram = {
+  title: "PROGRAMA DE INDICAÇÕES",
+  headline: "SUAS INDICAÇÕES PODEM RENDER MAIS DE R$ 10 MIL.",
+  introduction: "Transforme suas indicações em oportunidades de ganhos com a ZURY CORRETORA.",
+  previewNotice: "Prévia do programa · publicação sujeita à validação comercial e jurídica.",
+  disclaimer: "Os ganhos dependem de contratações elegíveis e das condições do programa. Não há garantia de renda. A referência de R$ 10 mil não representa resultado típico ou comprovado.",
+  clientTitle: "MAIS VALOR PARA QUEM VOCÊ INDICA.",
+  clientDescription: "Buscamos soluções competitivas, com transparência e atenção às necessidades de cada cliente.",
+  options: [
+    {
+      id: "affiliate",
+      title: "SEJA UM AFILIADO",
+      reward: "R$ 100 POR CONTRATAÇÃO ELEGÍVEL",
+      paragraphs: [
+        "Qualquer pessoa pode solicitar participação no programa e indicar potenciais clientes à ZURY.",
+        "Quando a indicação resultar em contratação confirmada e cumprir as condições do programa, o afiliado receberá R$ 100 via Pix.",
+      ],
+      benefits: ["Participação simples.", "Possibilidade de renda extra.", "Indicações sem necessidade de atuação comercial recorrente.", "Pagamento via Pix após validação.", "Relacionamento com a ZURY."],
+      cta: "QUERO SER AFILIADO",
+      message: "Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.",
+    },
+    {
+      id: "commercial",
+      title: "SEJA UM PARCEIRO COMERCIAL",
+      reward: "10% DA COMISSÃO ELEGÍVEL RECEBIDA PELA ZURY",
+      paragraphs: [
+        "O parceiro comercial mantém uma relação mais próxima com a corretora, realizando indicações recorrentes.",
+        "Cada parceiro aprovado poderá receber um código individual de indicação.",
+        "Quando uma indicação resultar em contratação elegível, a remuneração corresponderá a 10% da comissão efetivamente recebida pela ZURY nessa contratação, conforme as regras do programa.",
+      ],
+      benefits: ["Parceria comercial recorrente.", "Código individual de indicação.", "Identificação de clientes indicados.", "Remuneração proporcional às comissões elegíveis.", "Possibilidade de ganhos crescentes.", "Relacionamento próximo com a corretora."],
+      cta: "QUERO SER PARCEIRO COMERCIAL",
+      message: "Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.",
+    },
+  ] satisfies readonly ReferralOption[],
+};
+
+export function referralInquiryHref(mode: ReferralMode): string {
+  const option = referralProgram.options.find((item) => item.id === mode);
+  if (!option) throw new RangeError("Modalidade de indicação desconhecida");
+  const params = new URLSearchParams({ text: option.message });
+  return `${contacts[0].href}?${params.toString()}`;
+}
 
 // Owner-provided destinations: preserve these exact links even if public access is blocked.
 export const digitalChannels = {
