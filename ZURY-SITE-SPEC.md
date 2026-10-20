@@ -198,8 +198,8 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 ### 5.1. Desktop
 
 - Logo oficial completa branca centralizada e navbar flutuante Liquid Glass, centralizada e bem distribuída sobre os novos fundos escuros.
-- Exatamente cinco opções, nesta ordem: `SERVIÇOS` → `#servicos`; `DIFERENCIAIS` → `#sobre`; `SOBRE` → `#institucional` (conteúdo institucional dentro do footer); `CONTATO` → popover de canais ancorado à navbar; `REDES SOCIAIS` → popover próprio ancorado à navbar. Ambos abrem preferencialmente abaixo, com reposicionamento para caber na viewport.
-- Na prévia habilitada, inserir `INDICAÇÕES` → `#indicacoes` entre DIFERENCIAIS e SOBRE: seis opções. Quando a seção estiver desabilitada, omitir também o link. Não alterar os parâmetros de hover, Flow Glass ou ocultação do header.
+- Ordem final da prévia completa: `SERVIÇOS` → `#servicos`; `DIFERENCIAIS` → `#sobre`; `REDE DE PARCEIROS` → `#indicacoes`; `BENEFÍCIOS` → `#beneficios`; `SOBRE` → `#institucional`; `REDES SOCIAIS` → popover social; `CONTATO` → popover de contato. Os dois popovers abrem preferencialmente abaixo, com reposicionamento para caber na viewport.
+- Os links REDE DE PARCEIROS e BENEFÍCIOS seguem os gates independentes das respectivas seções: omitir somente o link cuja seção estiver desabilitada. Não alterar a cápsula externa, os parâmetros de hover, Flow Glass ou ocultação do header. Esta ordem substitui a antiga entrada INDICAÇÕES e a posição anterior dos dois popovers.
 - Não criar uma quinta seção para SOBRE. O ID `institucional` pertence à coluna legal já existente.
 - Os cinco itens ficam somente textuais em repouso, sem cápsulas visíveis, mantendo posição, padding, tamanho e espaçamento. Em hover, preservar exatamente o Liquid Glass existente e seu raio `9999px`, borda, fundo, reflexos e animação; na saída, retornar ao repouso limpo com os parâmetros existentes. A estrutura externa Liquid Glass permanece intacta. Informar `aria-current` quando aplicável; preservar contraste do ativo, foco acessível, popovers abertos e feedback de toque, sem sublinhado.
 - Header visível inicialmente e no topo; logo, contêiner superior e navbar animam como uma unidade em 475 ms (faixa de referência 400–550 ms), `power2.out` com desaceleração, fade e deslocamento de 24 px para cima. **Não reaparece ao subir: somente ao retornar ao topo.** Usar histerese contra flicker (ocultar a partir de 88 px, revelar até 8 px). Não recolher altura/gap da marca durante o scroll. Não ocultar enquanto popover da navbar estiver aberto ou foco estiver em seus controles visíveis; ao terminar, retomar a política de posição. Oculto fica inert, sem bloquear cliques ou prender foco. Reduced motion mantém a regra sem deslocamento prolongado.
@@ -424,6 +424,8 @@ Os textos completos da tabela permanecem imutáveis na fonte de dados. É autori
 
 Nova seção `#indicacoes`, após Diferenciais e antes de Benefícios exclusivos. Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável. Apresentação integralmente em caixa alta, conforme regra global, sem alterar as mensagens de WhatsApp.
 
+Etapa 5: grid centralizado de no máximo 1120 px, intervalo de 18 px, padding de 26 px e ícones de 20 px. Títulos de 14 px; valores de 20–24 px; descrições de 14 px/1,6; listas de 13,5 px/1,55 com 8 px entre itens. CTAs com largura pelo conteúdo, limitada ao card, mínimo de 44 px de altura e texto de 11 px. No mobile, padding de 24 px, descrições de 15 px e listas de 14 px, sem cortes. Reduzir dimensões reais, nunca usar escala geral; manter conteúdos integrais e alturas uniformes no desktop. Preservar destaque moderado, respiro externo e CTAs alinhados na base.
+
 **Conteúdo oficial:**
 
 - Título: `PROGRAMA DE INDICAÇÕES`.
@@ -470,7 +472,9 @@ Não alegar menor preço garantido, ausência de comissão, isenção de taxas n
 
 ### 9.4. BENEFÍCIOS EXCLUSIVOS — prévia da etapa 4
 
-Seção `#beneficios` após Indicações e antes do Footer, sem novas funções no rodapé ou mudanças extensas na navbar. Reutilizar paleta grafite/prata, gradientes direcionais, iluminação contida, materiais Liquid Glass/Flow Glass e reveal existentes. Três cards de altura uniforme no grid desktop, empilhados e legíveis no mobile. Sem CTAs, links comerciais, regras de resgate ou condições não fornecidas.
+Seção `#beneficios` após Indicações e antes do Footer. Reutilizar paleta grafite/prata, gradientes direcionais, iluminação contida, materiais Liquid Glass/Flow Glass e reveal existentes. Três cards de altura uniforme no grid desktop, empilhados e legíveis no mobile. Sem CTAs, links comerciais, regras de resgate ou condições não fornecidas.
+
+Etapa 5: grid centralizado de no máximo 1080 px, intervalo de 16 px e padding de 24 px. Área de logo com 72 px de altura; imagens proporcionais até 180 × 66 px, símbolo MV até 60 × 60 px, sem editar os ativos. Títulos de 14 px; descontos de 20–22 px; descrições de 13 px/1,65, passando a 14 px no mobile. Não aplicar escala geral nem cortar texto. Títulos de seção mantêm a hierarquia global. Estas dimensões afetam somente os cards; preservar integralmente dimensões, velocidade, direção, pausa e acessibilidade da faixa infinita de marcas.
 
 - Título: `BENEFÍCIOS EXCLUSIVOS`.
 - Chamada: `VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.`
@@ -497,7 +501,7 @@ O responsável confirmou expressamente o nome comercial **GRUPO ZAPP**, em subst
 - Fundo grafite profundo derivado dos tokens `--surface-mineral` e `--surface-graphite`, transição gradual a partir da seção institucional. A cor oficial grafite da marca permanece `#1C1C1C`.
 - **Painel Crystalline Liquid Glass** refinado com cantos de raio moderado, contorno fino e luz sutil.
 - Reutilizar a mesma entrada dos cards (850 ms, `power3.out`, opacity e y de 24 px), com reveal no wrapper e hover no painel filho. Compartilhar `glass-card` e `flow-glass`: elevação de 4 px em 400 ms, borda em 350 ms, reflexo em 1200 ms e fade em 380 ms, sem tween concorrente. Foco nos controles internos ilumina o painel; movimento reduzido remove deslocamentos. Não transformar o painel/textos legais em botões nem dar animação de clique ao painel informativo. Arquitetura de contatos permanece intacta.
-- Logo, grupo de navegação, institucional e copyright entram coordenadamente: uma única timeline/ScrollTrigger para o painel, conservando os 24 px de deslocamento compartilhado e fades internos de 850 ms/`power3.out` com stagger de 60 ms. Não somar deslocamentos nos filhos, ocultar conteúdo sem JS ou animar controles concorrentes. Preservar reentrada/cleanup e conteúdo estático com movimento reduzido. CONTATOS continua texto simples, sem cápsula ou ícone; os itens dos popovers mantêm o Flow Glass compartilhado.
+- Logo, grupo de navegação, institucional e copyright entram coordenadamente: uma única timeline/ScrollTrigger para o painel, conservando os 24 px de deslocamento compartilhado e fades internos de 850 ms/`power3.out` com stagger de 60 ms. Não somar deslocamentos nos filhos, ocultar conteúdo sem JS ou animar controles concorrentes. Preservar reentrada/cleanup e conteúdo estático com movimento reduzido. Links e CONTATOS mostram somente texto no repouso e a mesma cápsula Flow Glass da navbar no hover/foco, sem cápsulas permanentes ou ícones adicionais. Compartilhar reflexo, glow, bordas delicadas, durações e easing; não substituir por simples mudança de cor. Tipografia alinhada aos Diferenciais: títulos 18 px, links e dados legais 16 px, copyright auxiliar 14 px; manter caixa alta global.
 - **Logo oficial completa branca** (SVG otimizado branco), proporcional, visível e nítida.
 - Não inserir um formulário, CTA extra, mapa, links sociais não fornecidos, badges inventados ou áreas promocionais.
 
@@ -508,10 +512,12 @@ O responsável confirmou expressamente o nome comercial **GRUPO ZAPP**, em subst
 
 **Navegação** — links na mesma página, sem duplicar o botão principal de contato:
 
-- `CONTATOS` — gatilho textual do popover, na lateral esquerda imediatamente acima de SERVIÇOS; mesma tipografia e hierarquia dos links, sem ícone, fundo, borda ou cápsula. Operável por clique, toque e teclado, com hover discreto.
+- `CONTATOS` — gatilho textual do popover, na lateral esquerda imediatamente acima de SERVIÇOS; mesma tipografia e hierarquia dos links, sem ícone nem cápsula visível em repouso. Operável por clique, toque e teclado, com Flow Glass compartilhado no hover/foco.
 - `SERVIÇOS` → `#servicos`
 - `DIFERENCIAIS` → `#sobre`
 - `SOBRE` → `#institucional`
+
+`NOS AVALIE NO GOOGLE` é um link textual com o mesmo tratamento, após SOBRE, para `https://share.google/AnNgzLmPy4lMNqHO9`, fornecido pelo usuário e verificado no navegador em 20/10/2026: abre o perfil ZURY CORRETORA em Unaí, com site e telefone oficiais e a opção de avaliar. Abrir em nova aba com `noopener noreferrer`. O endereço leva ao perfil, não diretamente ao formulário; não inventar um link direto ou identificador alternativo. Não enviar avaliações em nome do usuário.
 
 **Contato** — CONTATOS na coluna esquerda abre o mesmo conteúdo de contato da navbar, sem navegar/rolar. **Remover integralmente o botão WhatsApp gradiente e seu popover exclusivo**, sem substituto, ícone flutuante ou espaço reservado. WhatsApps e e-mail são acessados exclusivamente por CONTATO da navbar e CONTATOS do footer, nunca por REDES SOCIAIS. Os três contatos oficiais permanecem individualmente clicáveis, identificados como `THIAGO — CORRETOR`, `VALDIR — CONSULTOR`, `JOANA — SAÚDE`. Reutilizar dados e lógica; nenhum número ou canal em lista estática fora dos menus:
 
@@ -764,7 +770,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 
 - [ ] Build público padrão mantém Hero → Soluções → Diferenciais → Footer. Prévia completa insere Indicações → Benefícios antes do Footer, respeitando gates independentes; sem formulário ou funções extras de rodapé.
 - [ ] Hero apresenta **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!`, com acentos e pontuação literais, sem CTA/subtítulo/scroll cue. Escudo permanece isolado até aprovação expressa.
-- [ ] Navbar padrão contém `SERVIÇOS`, `DIFERENCIAIS`, `SOBRE`, `CONTATO`, `REDES SOCIAIS`; a prévia insere `INDICAÇÕES` entre DIFERENCIAIS e SOBRE, somente com a seção habilitada. Destinos e balões funcionam conforme §5.
+- [ ] Navbar segue a ordem final do §5: SERVIÇOS, DIFERENCIAIS, REDE DE PARCEIROS, BENEFÍCIOS, SOBRE, REDES SOCIAIS, CONTATO; os dois links comerciais são omitidos independentemente quando suas seções estão desabilitadas. Destinos e balões oficiais funcionam.
 - [ ] Navbar mostra somente texto em repouso, inclusive no ativo, sem cápsula individual permanente; `aria-current`, contraste e foco preservados. Hover conserva exatamente o Liquid Glass aprovado, sem alteração de parâmetros, nunca underline.
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
 - [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `AGRO`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `PREVIDÊNCIA`.
@@ -782,7 +788,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - [ ] Desktop: serviços **4 × 2**, oito cartões de altura igual; institucional 3 colunas de altura igual.
 - [ ] Largura intermediária comporta 2 colunas nos serviços quando necessário.
 - [ ] Mobile: serviços e institucionais em carrossel de toque, com **peek**, instrução gestual, indicadores selecionáveis sem setas, contador correto e todos os conteúdos visíveis.
-- [ ] Flow Glass compartilhado substitui spotlight; cápsulas nos cinco itens da navbar com ativo/foco/touch e reduced motion. Navbar oculta após limite, continua oculta ao subir e só reaparece no topo, sem flicker; interações abertas/foco visível são protegidos.
+- [ ] Flow Glass compartilhado substitui spotlight; itens da navbar e links do footer mostram texto em repouso e cápsula no hover/foco, com estados acessíveis e reduced motion. Navbar oculta após limite, continua oculta ao subir e só reaparece no topo, sem flicker; interações abertas/foco visível são protegidos.
 - [ ] Mesma primitiva de cápsula em todos os itens interativos dos popovers, sem reflexos retangulares. Saída conjunta de logo, contêiner e navbar em 475 ms, deslocamento discreto e sem bloqueio quando oculta. Painel do footer compartilha reveal, elevação e Flow Glass dos cards, sem falso clique ou conflito de transforms.
 - [ ] Tracking confere com a tabela fixa do §4.2; produtos no plural e quatro textos novos de TRANSPORTE correspondem ao §8.2. Navegação usa um único tween vertical, cancelável, com alinhamento estável.
 - [ ] Serviços sem números no desktop, textos em caixa alta por CSS e dados originais preservados. Hero com tracking ampliado, sem clipping. Três transições de seção compartilham filete prateado difuso e discreto.

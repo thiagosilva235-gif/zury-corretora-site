@@ -17,7 +17,7 @@ export function ReferralProgram() {
           const Icon = option.id === "affiliate" ? UserRoundPlus : Handshake;
           return <div className="card-reveal" data-reveal-part key={option.id}>
             <article className="glass glass-card flow-glass referral-card" aria-labelledby={`${option.id}-title`}>
-              <div className="referral-card-title"><Icon size={24} strokeWidth={1.4} aria-hidden="true" /><h3 id={`${option.id}-title`}>{option.title}</h3></div>
+              <div className="referral-card-title"><Icon size={20} strokeWidth={1.4} aria-hidden="true" /><h3 id={`${option.id}-title`}>{option.title}</h3></div>
               <p className="referral-reward">{option.reward}</p>
               <div className="referral-description">{option.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
               <ul className="referral-benefits">{option.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>

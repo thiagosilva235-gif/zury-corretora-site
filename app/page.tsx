@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CarFront, Headset, HeartPulse, House, Hourglass, Landmark, Plane, ShieldCheck, Sprout, Truck, Zap } from "lucide-react";
-import { differentiatorDetails, differentiators, heroLines, isBenefitsPreviewEnabled, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
+import { differentiatorDetails, differentiators, googleReviewHref, heroLines, isBenefitsPreviewEnabled, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
 import { ExclusiveBenefits } from "@/components/site/exclusive-benefits";
 import { ReferralProgram } from "@/components/site/referral-program";
 import { SiteHeader } from "@/components/site/header";
@@ -16,7 +16,7 @@ export default function Home() {
   const showBenefits = isBenefitsPreviewEnabled(process.env);
   return <div className="zury-site">
     <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
-    <SiteHeader items={navigationForSite(showReferrals)} />
+    <SiteHeader items={navigationForSite(showReferrals, showBenefits)} />
     <main id="conteudo" tabIndex={-1}>
       <section id="inicio" className="hero" tabIndex={-1} aria-labelledby="hero-title">
         <div className="section-light hero-light" aria-hidden="true" />
@@ -63,7 +63,7 @@ export default function Home() {
       <div className="container"><div className="card-reveal" data-reveal><div className="footer-panel glass glass-card flow-glass">
         <Image className="footer-logo" data-reveal-part src="/brand/ZURY_Logo_Otimizada_Branco.svg" alt="ZURY CORRETORA" width={1046} height={324} />
         <div className="footer-columns">
-          <nav aria-label="Navegação do rodapé" className="footer-nav" data-reveal-part><h2>Navegação</h2><button className="footer-contact-link" type="button" id="footer-contact-button" popoverTarget="contact-channels" aria-haspopup="dialog">CONTATOS</button>{navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
+          <nav aria-label="Navegação do rodapé" className="footer-nav" data-reveal-part><h2>Navegação</h2><button className="footer-contact-link footer-link flow-glass flow-capsule" type="button" id="footer-contact-button" popoverTarget="contact-channels" aria-haspopup="dialog">CONTATOS</button>{navigation.map((item) => <a className="footer-link flow-glass flow-capsule" key={item.href} href={item.href}>{item.label}</a>)}<a className="footer-link flow-glass flow-capsule" href={googleReviewHref} target="_blank" rel="noopener noreferrer">NOS AVALIE NO GOOGLE</a></nav>
           <div className="institution" id="institucional" tabIndex={-1} data-reveal-part><h2>Institucional</h2><p>ZURY CORRETORA LTDA<br />CNPJ: 49.393.734/0001-77<br />SUSEP: 262180499</p></div>
         </div>
         <p className="copyright" data-reveal-part>© 2026 · Todos os direitos reservados.</p>

@@ -30,7 +30,7 @@ export function SiteHeader({ items = navigation }: { items?: readonly SiteNaviga
       }
       element.dataset.scrolled = String(current > 60);
       const institutional = document.getElementById("institucional");
-      const section = institutional && institutional.getBoundingClientRect().top < window.innerHeight * 0.7 ? "#institucional" : ["indicacoes", "sobre", "servicos"].find((id) => (document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) < window.innerHeight * 0.45);
+      const section = institutional && institutional.getBoundingClientRect().top < window.innerHeight * 0.7 ? "#institucional" : ["beneficios", "indicacoes", "sobre", "servicos"].find((id) => (document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) < window.innerHeight * 0.45);
       setActive(section ? section.startsWith("#") ? section : `#${section}` : "");
     };
     const context = gsap.context(() => {
@@ -49,8 +49,8 @@ export function SiteHeader({ items = navigation }: { items?: readonly SiteNaviga
     <a href="#inicio" className="brand-link"><Image src="/brand/ZURY_Logo_Otimizada_Branco.svg" alt="ZURY CORRETORA" width={1046} height={324} priority /></a>
     <nav aria-label="Navegação principal" className="nav-glass glass">
       {items.map((item) => <a className="flow-glass flow-capsule" key={item.href} href={item.href} aria-current={active === item.href ? "location" : undefined}>{item.label}</a>)}
-      <button className="flow-glass flow-capsule" type="button" popoverTarget="nav-contact-channels" aria-haspopup="dialog">CONTATO</button>
       <button className="flow-glass flow-capsule" type="button" popoverTarget="social-channels" aria-haspopup="dialog">REDES SOCIAIS</button>
+      <button className="flow-glass flow-capsule" type="button" popoverTarget="nav-contact-channels" aria-haspopup="dialog">CONTATO</button>
     </nav>
   </header>;
 }

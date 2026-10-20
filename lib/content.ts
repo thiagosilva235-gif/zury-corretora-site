@@ -55,10 +55,16 @@ export const contacts = [
 
 export type SiteNavigationItem = { label: string; href: string };
 
-export function navigationForSite(includeReferrals: boolean): readonly SiteNavigationItem[] {
-  return includeReferrals
-    ? [...navigation.slice(0, 2), { label: "INDICAÇÕES", href: "#indicacoes" }, ...navigation.slice(2)]
-    : navigation;
+// User-supplied and browser-verified business profile, with Google's review entry.
+export const googleReviewHref = "https://share.google/AnNgzLmPy4lMNqHO9";
+
+export function navigationForSite(includeReferrals: boolean, includeBenefits = false): readonly SiteNavigationItem[] {
+  return [
+    ...navigation.slice(0, 2),
+    ...(includeReferrals ? [{ label: "REDE DE PARCEIROS", href: "#indicacoes" }] : []),
+    ...(includeBenefits ? [{ label: "BENEFÍCIOS", href: "#beneficios" }] : []),
+    ...navigation.slice(2),
+  ];
 }
 
 // Build-time preview only. This is not commercial/legal approval or access control.

@@ -94,8 +94,8 @@ button:disabled { cursor: default; opacity: .35; }
 .zury-site:has(#social-channels:popover-open) .nav-glass [popovertarget="social-channels"],
 .zury-site:has(#nav-contact-channels:popover-open) .nav-glass [popovertarget="nav-contact-channels"] { color: #fff; background: linear-gradient(120deg,rgba(234,234,229,.065),rgba(214,211,209,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(234,234,229,.04); }
 /* Rest state only. Approved hover, keyboard focus and open-popover rules stay intact. */
-.nav-glass .flow-capsule:not(:hover):not(:focus-visible):not(:active) { background: transparent; box-shadow: none; }
-.nav-glass .flow-capsule:not(:hover):not(:focus-visible):not(:active)::after { opacity: 0; transform: translateX(-38%) skewX(-12deg); }
+:is(.nav-glass,.footer-nav) .flow-capsule:not(:hover):not(:focus-visible):not(:active) { background: transparent; box-shadow: none; }
+:is(.nav-glass,.footer-nav) .flow-capsule:not(:hover):not(:focus-visible):not(:active)::after { opacity: 0; transform: translateX(-38%) skewX(-12deg); }
 .hero { --boundary-top: 205px; position: relative; overflow: hidden; background: var(--hero-surface); }
 .hero-content { min-height: max(760px, 100svh); display: grid; grid-template-columns: 40% 60%; align-items: center; padding-block: 220px 105px; }
 .hero h1 { margin: 0; position: relative; min-width: 0; font-size: clamp(23px, 3vw, 44px); line-height: 1.16; letter-spacing: var(--hero-tracking); font-weight: 600; z-index: 1; }
@@ -147,18 +147,18 @@ button:disabled { cursor: default; opacity: .35; }
 .referral-introduction { margin: 26px auto 16px; max-width: 62ch; font-size: 18px; line-height: 1.65; color: var(--text); text-wrap: pretty; }
 .referral-disclaimer, .referral-preview { max-width: 80ch; margin: 0 auto; font-size: 13px; line-height: 1.7; color: var(--muted); }
 .referral-preview { margin-top: 12px; }
-.referral-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.referral-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; max-width: 1120px; margin-inline: auto; }
 /* Keep the light sweep clipped without a scroll container that focus can move. */
-.referral-card { display: flex; flex-direction: column; padding: clamp(26px,3vw,44px); overflow: clip; }
-.referral-card-title { display: flex; align-items: flex-start; gap: 12px; min-height: 52px; }
+.referral-card { display: flex; flex-direction: column; padding: 26px; overflow: clip; }
+.referral-card-title { display: flex; align-items: flex-start; gap: 10px; min-height: 42px; }
 .referral-card-title svg { flex-shrink: 0; color: var(--light-satin); }
-.referral-card-title h3 { margin: 0; font-size: 17px; line-height: 1.5; letter-spacing: .035em; font-weight: 600; }
-.referral-reward { margin: 24px 0; min-height: 3.6em; font-size: clamp(24px,2.4vw,34px); line-height: 1.2; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
-.referral-description p { margin: 0 0 16px; font-size: 16px; line-height: 1.7; color: var(--text); text-wrap: pretty; }
-.referral-benefits { margin: 8px 0 32px; padding-left: 18px; display: grid; gap: 12px; font-size: 15px; line-height: 1.65; color: var(--text); }
+.referral-card-title h3 { margin: 0; font-size: 14px; line-height: 1.5; letter-spacing: .035em; font-weight: 600; }
+.referral-reward { margin: 18px 0 20px; min-height: 2.5em; font-size: clamp(20px,1.9vw,24px); line-height: 1.25; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
+.referral-description p { margin: 0 0 10px; font-size: 14px; line-height: 1.6; color: var(--text); text-wrap: pretty; }
+.referral-benefits { margin: 4px 0 24px; padding-left: 18px; display: grid; gap: 8px; font-size: 13.5px; line-height: 1.55; color: var(--text); }
 .referral-benefits li { padding-left: 3px; }
 .referral-benefits li::marker { color: var(--light-satin); font-size: .65em; }
-.referral-cta { display: flex; align-items: center; justify-content: center; min-height: 52px; width: 100%; margin-top: auto; padding: 16px 22px; font-size: 12px; line-height: 1.5; letter-spacing: .04em; font-weight: 600; text-align: center; transition: background-color .25s,transform .2s; }
+.referral-cta { display: flex; align-items: center; justify-content: center; min-height: 44px; width: fit-content; min-width: min(100%,240px); max-width: 100%; align-self: flex-start; margin-top: auto; padding: 12px 20px; font-size: 11px; line-height: 1.5; letter-spacing: .035em; font-weight: 600; text-align: center; transition: background-color .25s,transform .2s; }
 .referral-client { max-width: 720px; margin: 52px auto 0; text-align: center; }
 .referral-client h3 { margin: 0 0 14px; font-size: 19px; font-weight: 600; letter-spacing: .025em; text-wrap: balance; }
 .referral-client p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; text-wrap: pretty; }
@@ -166,15 +166,16 @@ button:disabled { cursor: default; opacity: .35; }
 .benefits-light { background: var(--benefits-ambient); }
 .benefits-headline { margin: 28px 0 14px; font-size: clamp(22px,2.4vw,32px); line-height: 1.3; font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
 .benefits-description { max-width: 68ch; margin: 0 auto; font-size: 16px; line-height: 1.7; color: var(--muted); text-wrap: pretty; }
-.benefits-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-.benefit-card { padding: 32px; overflow: clip; }
-.benefit-logo-well { height: 104px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; }
+.benefits-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; max-width: 1080px; margin-inline: auto; }
+.benefit-card { padding: 24px; overflow: clip; }
+.benefit-logo-well { height: 72px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
 .partner-logo { display: block; width: 100%; height: 100%; object-fit: contain; }
 .partner-logo-grupo-mv { max-width: 80px; max-height: 80px; }
-.benefit-logo-well .partner-logo:not(.partner-logo-grupo-mv) { max-width: 240px; max-height: 92px; }
-.benefit-card h3 { margin: 0 0 22px; font-size: 16px; font-weight: 600; letter-spacing: .035em; line-height: 1.5; }
-.benefit-offer { margin: 0 0 24px; font-size: clamp(24px,2.4vw,32px); line-height: 1.2; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
-.benefit-description { margin: 0; font-size: 14px; line-height: 1.75; color: var(--muted); }
+.benefit-logo-well .partner-logo:not(.partner-logo-grupo-mv) { max-width: 180px; max-height: 66px; }
+.benefit-logo-well .partner-logo-grupo-mv { max-width: 60px; max-height: 60px; }
+.benefit-card h3 { margin: 0 0 16px; font-size: 14px; font-weight: 600; letter-spacing: .035em; line-height: 1.5; }
+.benefit-offer { margin: 0 0 18px; font-size: clamp(20px,1.7vw,22px); line-height: 1.2; letter-spacing: -.02em; font-weight: 600; text-wrap: balance; }
+.benefit-description { margin: 0; font-size: 13px; line-height: 1.65; color: var(--muted); }
 .benefits-notice { max-width: 92ch; margin: 30px auto 46px; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
 .partner-marquee { overflow: clip; position: relative; padding-block: 26px; mask-image: linear-gradient(90deg,transparent,black 7%,black 93%,transparent); }
 .partner-marquee:focus-visible { outline-offset: -3px; }
@@ -186,15 +187,15 @@ button:disabled { cursor: default; opacity: .35; }
 @keyframes partner-drift { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .swipe-hint, .carousel-controls { display: none; }
 .site-footer { position: relative; background: var(--footer-surface); padding: 25px 0 46px; }
-.footer-panel { border-radius: 24px; padding: 50px clamp(28px,4.8vw,70px) 25px; background-image: radial-gradient(ellipse at 100% 0%,rgba(208,211,205,.14),transparent 60%),linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.015) 65%); }
+.footer-panel { overflow: clip; border-radius: 24px; padding: 50px clamp(28px,4.8vw,70px) 25px; background-image: radial-gradient(ellipse at 100% 0%,rgba(208,211,205,.14),transparent 60%),linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.015) 65%); }
 .footer-logo { display: block; width: 224px; max-width: 100%; height: auto; margin-bottom: 50px; }
 .footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.footer-columns h2 { color: #b8bab5; font-size: 10px; font-weight: 500; letter-spacing: .17em; text-transform: uppercase; margin: 0 0 21px; }
+.footer-columns h2 { color: #b8bab5; font-size: 18px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 21px; }
 .footer-nav { display: flex; align-items: flex-start; flex-direction: column; }
-.footer-nav a, .footer-nav .footer-contact-link { font-size: 11px; letter-spacing: .1em; min-height: 44px; display: inline-flex; align-items: center; padding-block: 9px; font-weight: 500; transition: color .2s, opacity .2s; }
-.footer-contact-link { padding: 0; min-height: 44px; border: 0; border-radius: 0; background: none; font-size: 11px; font-weight: 500; letter-spacing: .1em; transition: color .2s, opacity .2s; }
-.institution p { margin: 0; font-size: 13px; font-weight: 500; line-height: 2; color: #d0d2cd; letter-spacing: var(--legal-tracking); }
-.copyright { border-top: 1px solid rgba(234,234,229,.13); padding-top: 22px; margin: 45px 0 0; font-size: 11px; color: #b7b9b3; }
+.footer-nav .footer-link { font-size: 16px; letter-spacing: var(--card-copy-tracking); min-height: 44px; display: inline-flex; align-items: center; padding: 9px 14px; margin-inline-start: -14px; font-weight: 500; border: 0; background: transparent; color: #e5e6e2; transition: background-color .25s,color .25s,transform .2s; }
+.footer-link:focus-visible { color: #fff; background: linear-gradient(120deg,rgba(234,234,229,.065),rgba(214,211,209,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(234,234,229,.04); }
+.institution p { margin: 0; font-size: 16px; font-weight: 500; line-height: 2; color: #d0d2cd; letter-spacing: var(--legal-tracking); }
+.copyright { border-top: 1px solid rgba(234,234,229,.13); padding-top: 22px; margin: 45px 0 0; font-size: 14px; color: #b7b9b3; }
 .icon-button { width: 44px; height: 44px; padding: 0; border-radius: 50%; display: inline-grid; place-items: center; background-color: transparent; border: 1px solid rgba(234,234,229,.22); transition: transform .2s, background-color .25s; }
 .channel-panel { position: fixed; inset: auto; margin: 0; top: 100px; left: 16px; width: min(382px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); padding: 23px; border-radius: 23px; color: #f3f3ef; overflow-y: auto; overscroll-behavior: contain; background-color: rgba(27,29,30,.84); background-image: radial-gradient(ellipse at 10% 0%,rgba(222,225,222,.18),transparent 80%); -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px); box-shadow: inset 0 1px 1px rgba(255,255,255,.23),0 16px 50px rgba(0,0,0,.22); }
 .channel-panel:popover-open { animation: panel-open .28s cubic-bezier(.2,.7,.2,1) both; }
@@ -227,8 +228,7 @@ button:disabled { cursor: default; opacity: .35; }
   .glass-card:hover { transform: translateY(-4px); border-color: rgba(234,234,229,.38); box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.12); }
   .flow-glass:hover::after { opacity: .85; transform: translateX(26%) skewX(-12deg); }
   .person-link:hover, a.channel-row:hover, summary.channel-row:hover { background-color: rgba(255,255,255,.035); }
-  .footer-contact-link:hover { color: #fff; opacity: .75; }
-  .nav-glass :is(a,button):hover { background-color: rgba(255,255,255,.08); color: #fff; }
+  .nav-glass :is(a,button):hover, .footer-link:hover { background-color: rgba(255,255,255,.08); color: #fff; }
   .icon-button:hover { background-color: rgba(255,255,255,.12); }
 }
 .glass-card:focus-within { border-color: rgba(234,234,229,.38); box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.12); }
@@ -238,6 +238,10 @@ button:disabled { cursor: default; opacity: .35; }
   .channel-panel, .nav-glass { background-color: #272829; }
 }
 @media (max-width:1199px) { .service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+/* Seven visible links must also fit tablets without a horizontal menu. */
+@media (min-width:768px) and (max-width:1000px) {
+  .nav-glass { max-width: 100%; flex-wrap: wrap; border-radius: 28px; }
+}
 @media (max-width:767px) {
   html { scroll-padding-top: 96px; }
   .site-header { padding: 18px 12px 12px; gap: 17px; }
@@ -253,9 +257,13 @@ button:disabled { cursor: default; opacity: .35; }
   .referral-introduction { font-size: 16px; }
   .referral-card-title { min-height: 0; }
   .referral-reward { min-height: 0; }
+  .referral-card { padding: 24px; }
+  .referral-description p { font-size: 15px; }
+  .referral-benefits { font-size: 14px; }
   .referral-client { margin-top: 36px; }
   .benefits-grid { grid-template-columns: minmax(0,1fr); }
-  .benefit-card { padding: 28px; }
+  .benefit-card { padding: 24px; }
+  .benefit-description { font-size: 14px; }
   .partner-marquee { --partner-gap: 40px; }
   .partner-logo-slot { flex-basis: 140px; width: 140px; }
   .content-section { padding-block: 85px 105px; }
