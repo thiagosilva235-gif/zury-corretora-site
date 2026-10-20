@@ -5,14 +5,12 @@ export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA:", "ZURY!"
 export type BenefitPartner = { id: string; name: string; logo: string | null; width: number; height: number; offer: string };
 export const benefitPartners: readonly BenefitPartner[] = [
   { id: "farma-melhor", name: "FARMELHOR UNAÍ", logo: "/partners/farma-melhor.png", width: 300, height: 72, offer: "10% DE DESCONTO ADICIONAL" },
-  // Original retained in public/partners; do not display FOR MEN or invent a replacement.
-  { id: "grupo-zapp", name: "ZAPP", logo: null, width: 997, height: 379, offer: "10% DE DESCONTO ADICIONAL" },
+  { id: "grupo-zapp", name: "ZAPP", logo: "/partners/grupo-zapp-metalico.png", width: 2172, height: 724, offer: "10% DE DESCONTO ADICIONAL" },
   { id: "grupo-mv", name: "GRUPO MV", logo: "/partners/grupo-mv.png", width: 1057, height: 1057, offer: "5% DE DESCONTO EM SERVIÇOS" },
 ];
 export const benefitsContent = {
   title: "BENEFÍCIOS EXCLUSIVOS",
   headline: "VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.",
-  description: "CLIENTES ZURY TÊM ACESSO A CONDIÇÕES ESPECIAIS EM ESTABELECIMENTOS PARCEIROS.",
 };
 
 export function isBenefitsPreviewEnabled(env: { NODE_ENV?: string; ZURY_BENEFITS_PREVIEW?: string }): boolean {
@@ -58,6 +56,13 @@ export type SiteNavigationItem = { label: string; href: string };
 // User-supplied and browser-verified business profile, with Google's review entry.
 export const googleReviewHref = "https://share.google/AnNgzLmPy4lMNqHO9";
 
+// Verified official search pages; no documented prefilled lookup was established.
+// Linking to these services does not validate the displayed business registrations.
+export const institutionalLinks = {
+  cnpj: "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/",
+  susep: "https://www2.susep.gov.br/safe/Corretores/pesquisa",
+} as const;
+
 export function navigationForSite(includeReferrals: boolean, includeBenefits = false): readonly SiteNavigationItem[] {
   return [
     ...navigation.slice(0, 2),
@@ -85,7 +90,8 @@ type ReferralOption = {
 
 export const referralProgram = {
   title: "PROGRAMA DE INDICAÇÕES",
-  headline: "SUAS INDICAÇÕES PODEM GERAR NOVAS OPORTUNIDADES.",
+  commercialTitle: "CONDIÇÕES MAIS COMPETITIVAS PARA QUEM VOCÊ INDICA.",
+  commercialDescription: "A ZURY BUSCA OFERECER CONDIÇÕES DIFERENCIADAS AOS CLIENTES INDICADOS, COM UMA POLÍTICA COMERCIAL VOLTADA À COMPETITIVIDADE.",
   options: [
     {
       id: "affiliate",
@@ -95,7 +101,7 @@ export const referralProgram = {
         "QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY.",
         "SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, O AFILIADO RECEBERÁ R$ 100 VIA PIX.",
       ],
-      benefits: ["PARTICIPAÇÃO SIMPLES.", "POSSIBILIDADE DE RENDA EXTRA.", "INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE."],
+      benefits: ["PARTICIPAÇÃO SIMPLES", "POSSIBILIDADE DE RENDA EXTRA", "INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE"],
       cta: "QUERO SER AFILIADO",
       message: "Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.",
     },
@@ -108,7 +114,7 @@ export const referralProgram = {
         "CADA PARCEIRO RECEBERÁ UM CÓDIGO INDIVIDUAL DE INDICAÇÃO.",
         "SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, A REMUNERAÇÃO CORRESPONDERÁ A 10% DA COMISSÃO RECEBIDA PELA ZURY NESSA CONTRATAÇÃO.",
       ],
-      benefits: ["CÓDIGO INDIVIDUAL DE INDICAÇÃO.", "REMUNERAÇÃO PROPORCIONAL ÀS COMISSÕES.", "POSSIBILIDADE DE GANHOS CRESCENTES.", "RELACIONAMENTO PRÓXIMO COM A CORRETORA."],
+      benefits: [],
       cta: "QUERO SER PARCEIRO COMERCIAL",
       message: "Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.",
     },

@@ -36,9 +36,13 @@ node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3001
 
 ## Estado da entrega
 
-### Revisão visual e comercial — etapa 5
+### Revisão tipográfica, comercial e institucional — etapa 6
 
-Os nomes de apresentação são FARMELHOR UNAÍ, ZAPP e GRUPO MV. Benefícios contém somente três cards estáticos, sem legendas ou avisos; o carrossel de logos foi cancelado e removido. As logos originais estão em `public/partners/`, sem alterações. Até receber a versão oficial sem FOR MEN, ZAPP aparece apenas como nome textual. A UI mantém caixa alta por CSS, e-mails, URLs e mensagens originais; Hero em três linhas e listas de serviços/diferenciais sem divisórias internas.
+Tracking centralizado em nove tokens semânticos; Hero preservado em três linhas. Indicações sem subtítulo, com cards verticalmente compactos, três frases do Afiliado sem marcadores/pontos e Parceiro sem lista repetitiva. O bloco comercial abaixo usa a formulação provisória aprovada, sem afirmar renúncia de comissão ou menor preço garantido. Benefícios não apresenta descrição auxiliar.
+
+CNPJ e SUSEP abrem as páginas oficiais de consulta da Receita Federal e SUSEP em nova aba, sem parâmetros presumidos. Reutilizam as mesmas classes Flow Glass dos links do rodapé, incluindo repouso, hover e foco. Isso não constitui validação independente dos registros.
+
+Os nomes de apresentação são FARMELHOR UNAÍ, ZAPP e GRUPO MV. Benefícios contém somente três cards estáticos, sem legendas ou avisos; o carrossel de logos foi cancelado e removido. As logos originais estão em `public/partners/`, sem alterações. O card ZAPP usa a nova logo metálica recebida, centralizada verticalmente na área de logo. A UI mantém caixa alta por CSS, e-mails, URLs e mensagens originais; Hero em três linhas e listas de serviços/diferenciais sem divisórias internas.
 
 Benefícios aparece em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` durante o build local. Para a prévia completa: `ZURY_REFERRAL_PREVIEW=true ZURY_BENEFITS_PREVIEW=true pnpm build`, seguido do start local. Sem as variáveis, o build público padrão omite as duas ofertas e seus links. Não publicar o artefato de prévia: parcerias, marcas e condições ainda exigem validação. Remover avisos da interface não constitui aprovação comercial. Não há backend, pagamentos ou códigos implementados.
 
@@ -46,7 +50,7 @@ Benefícios aparece em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` duran
 
 Em `pnpm dev`, a seção e o link REDE DE PARCEIROS ficam visíveis. Para avaliar um build local de produção, use `ZURY_REFERRAL_PREVIEW=true pnpm build` (ou o mesmo prefixo no comando direto de Node acima) e depois inicie o servidor. A opção é resolvida no build: reiniciar o servidor não altera um artefato já gerado.
 
-**Não publicar o artefato de prévia.** Sem essa variável, o build de produção omite seção e link; isso ainda não libera o restante do site, cujo escudo segue pendente. Regras comerciais, regulamento, pagamentos/estornos, atribuição, comissões, privacidade e exigências regulatórias precisam de validação expressa. A headline mensal proposta está documentada como pendente na especificação; a interface usa alternativa sem valor de rendimento. Confirmar emissão real dos códigos e política de redução/repasse de comissão por produto. CTAs somente abrem uma conversa preparada com o WhatsApp oficial do Thiago, sem enviar mensagens automaticamente.
+**Não publicar o artefato de prévia.** Sem essa variável, o build de produção omite seção e link; isso ainda não libera o restante do site, cujo escudo segue pendente. Regras comerciais, regulamento, pagamentos/estornos, atribuição, comissões, privacidade e exigências regulatórias precisam de validação expressa. A headline mensal proposta continua documentada como pendente; a headline provisória anterior foi removida da interface, sem substituta. Confirmar emissão real dos códigos e política de redução/repasse de comissão por produto. CTAs somente abrem uma conversa preparada com o WhatsApp oficial do Thiago, sem enviar mensagens automaticamente.
 
 O redesign utiliza gradientes neutros, divisões luminosas sutis e Flow Glass compartilhado sem spotlight. A navbar sai em 475 ms e só reaparece no topo; foco visível e menus abertos são protegidos. CONTATOS é textual à esquerda do rodapé e abre preferencialmente à direita; CONTATO da navbar abre abaixo. Ambos contêm somente WhatsApp/e-mail. REDES SOCIAIS contém somente os dois links fornecidos pelo proprietário. O botão WhatsApp do rodapé foi removido, sem espaço reservado. NOS AVALIE NO GOOGLE utiliza o endereço oficial fornecido, que abre o perfil da empresa com acesso à avaliação. Serviços e diferenciais permanecem intactos, com seus carrosséis manuais mobile. Os SVGs oficiais permanecem intactos.
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CarFront, Headset, HeartPulse, House, Hourglass, Landmark, Plane, ShieldCheck, Sprout, Truck, Zap } from "lucide-react";
-import { differentiatorDetails, differentiators, googleReviewHref, heroLines, isBenefitsPreviewEnabled, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
+import { differentiatorDetails, differentiators, googleReviewHref, heroLines, institutionalLinks, isBenefitsPreviewEnabled, isReferralPreviewEnabled, navigation, navigationForSite, services } from "@/lib/content";
 import { ExclusiveBenefits } from "@/components/site/exclusive-benefits";
 import { ReferralProgram } from "@/components/site/referral-program";
 import { SiteHeader } from "@/components/site/header";
@@ -64,7 +64,7 @@ export default function Home() {
         <Image className="footer-logo" data-reveal-part src="/brand/ZURY_Logo_Otimizada_Branco.svg" alt="ZURY CORRETORA" width={1046} height={324} />
         <div className="footer-columns">
           <nav aria-label="Navegação do rodapé" className="footer-nav" data-reveal-part><h2>Navegação</h2><button className="footer-contact-link footer-link flow-glass flow-capsule" type="button" id="footer-contact-button" popoverTarget="contact-channels" aria-haspopup="dialog">CONTATOS</button>{navigation.map((item) => <a className="footer-link flow-glass flow-capsule" key={item.href} href={item.href}>{item.label}</a>)}<a className="footer-link flow-glass flow-capsule" href={googleReviewHref} target="_blank" rel="noopener noreferrer">NOS AVALIE NO GOOGLE</a></nav>
-          <div className="institution" id="institucional" tabIndex={-1} data-reveal-part><h2>Institucional</h2><p>ZURY CORRETORA LTDA<br />CNPJ: 49.393.734/0001-77<br />SUSEP: 262180499</p></div>
+          <div className="institution" id="institucional" tabIndex={-1} data-reveal-part><h2>Institucional</h2><div className="institution-details"><p>ZURY CORRETORA LTDA</p><a className="footer-link flow-glass flow-capsule" href={institutionalLinks.cnpj} target="_blank" rel="noopener noreferrer">CNPJ: 49.393.734/0001-77</a><a className="footer-link flow-glass flow-capsule" href={institutionalLinks.susep} target="_blank" rel="noopener noreferrer">SUSEP: 262180499</a></div></div>
         </div>
         <p className="copyright" data-reveal-part>© 2026 · Todos os direitos reservados.</p>
       </div></div></div>

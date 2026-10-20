@@ -8,7 +8,6 @@ export function ExclusiveBenefits() {
       <div className="section-heading benefits-heading" data-reveal>
         <h2 id="benefits-title">{benefitsContent.title}</h2>
         <p className="benefits-headline">{benefitsContent.headline}</p>
-        <p className="benefits-description">{benefitsContent.description}</p>
       </div>
       <div className="benefits-grid" data-reveal>
         {benefitPartners.map((partner) => <div className="card-reveal" data-reveal-part key={partner.id}>

@@ -7,7 +7,6 @@ export function ReferralProgram() {
     <div className="container">
       <div className="referral-heading" data-reveal>
         <h2 id="referrals-title">{referralProgram.title}</h2>
-        <p className="referral-headline">{referralProgram.headline}</p>
       </div>
       <div className="referral-grid" data-reveal>
         {referralProgram.options.map((option) => {
@@ -17,11 +16,15 @@ export function ReferralProgram() {
               <div className="referral-card-title"><Icon size={18} strokeWidth={1.4} aria-hidden="true" /><h3 id={`${option.id}-title`}>{option.title}</h3></div>
               <p className="referral-reward">{option.reward}</p>
               <div className="referral-description">{option.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-              <ul className="referral-benefits">{option.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
+              {option.benefits.length > 0 && <div className="referral-benefits">{option.benefits.map((benefit) => <p key={benefit}>{benefit}</p>)}</div>}
               <a className="referral-cta glass flow-glass flow-capsule" href={referralInquiryHref(option.id)} target="_blank" rel="noopener noreferrer">{option.cta}</a>
             </article>
           </div>;
         })}
+      </div>
+      <div className="referral-commercial" data-reveal>
+        <h3>{referralProgram.commercialTitle}</h3>
+        <p>{referralProgram.commercialDescription}</p>
       </div>
     </div>
   </section>;
