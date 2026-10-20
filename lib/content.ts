@@ -2,17 +2,17 @@ export type Service = { number: string; title: string; icon: "House" | "HeartPul
 export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!";
 export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA:", "ZURY!"] as const;
 
-export type BenefitPartner = { id: string; name: string; logo: string; width: number; height: number; offer: string; description: string };
+export type BenefitPartner = { id: string; name: string; logo: string | null; width: number; height: number; offer: string };
 export const benefitPartners: readonly BenefitPartner[] = [
-  { id: "farma-melhor", name: "FARMA MELHOR UNAÍ", logo: "/partners/farma-melhor.png", width: 300, height: 72, offer: "10% DE DESCONTO ADICIONAL", description: "CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM COMPRAS ELEGÍVEIS." },
-  { id: "grupo-zapp", name: "GRUPO ZAPP", logo: "/partners/grupo-zapp.png", width: 997, height: 379, offer: "10% DE DESCONTO ADICIONAL", description: "VANTAGEM EXCLUSIVA PARA CLIENTES ZURY EM PRODUTOS ELEGÍVEIS." },
-  { id: "grupo-mv", name: "GRUPO MV", logo: "/partners/grupo-mv.png", width: 1057, height: 1057, offer: "5% DE DESCONTO EM SERVIÇOS", description: "CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM SERVIÇOS ELEGÍVEIS." },
+  { id: "farma-melhor", name: "FARMELHOR UNAÍ", logo: "/partners/farma-melhor.png", width: 300, height: 72, offer: "10% DE DESCONTO ADICIONAL" },
+  // Original retained in public/partners; do not display FOR MEN or invent a replacement.
+  { id: "grupo-zapp", name: "ZAPP", logo: null, width: 997, height: 379, offer: "10% DE DESCONTO ADICIONAL" },
+  { id: "grupo-mv", name: "GRUPO MV", logo: "/partners/grupo-mv.png", width: 1057, height: 1057, offer: "5% DE DESCONTO EM SERVIÇOS" },
 ];
 export const benefitsContent = {
   title: "BENEFÍCIOS EXCLUSIVOS",
   headline: "VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.",
   description: "CLIENTES ZURY TÊM ACESSO A CONDIÇÕES ESPECIAIS EM ESTABELECIMENTOS PARCEIROS.",
-  notice: "PRÉVIA DAS OFERTAS. PUBLICAÇÃO SUJEITA À CONFIRMAÇÃO DAS PARCERIAS, AUTORIZAÇÕES DE USO DAS MARCAS E REGRAS COMERCIAIS.",
 };
 
 export function isBenefitsPreviewEnabled(env: { NODE_ENV?: string; ZURY_BENEFITS_PREVIEW?: string }): boolean {
@@ -85,35 +85,30 @@ type ReferralOption = {
 
 export const referralProgram = {
   title: "PROGRAMA DE INDICAÇÕES",
-  headline: "SUAS INDICAÇÕES PODEM RENDER MAIS DE R$ 10 MIL.",
-  introduction: "Transforme suas indicações em oportunidades de ganhos com a ZURY CORRETORA.",
-  previewNotice: "Prévia do programa · publicação sujeita à validação comercial e jurídica.",
-  disclaimer: "Os ganhos dependem de contratações elegíveis e das condições do programa. Não há garantia de renda. A referência de R$ 10 mil não representa resultado típico ou comprovado.",
-  clientTitle: "MAIS VALOR PARA QUEM VOCÊ INDICA.",
-  clientDescription: "Buscamos soluções competitivas, com transparência e atenção às necessidades de cada cliente.",
+  headline: "SUAS INDICAÇÕES PODEM GERAR NOVAS OPORTUNIDADES.",
   options: [
     {
       id: "affiliate",
       title: "SEJA UM AFILIADO",
-      reward: "R$ 100 POR CONTRATAÇÃO ELEGÍVEL",
+      reward: "R$ 100 POR CONTRATAÇÃO",
       paragraphs: [
-        "Qualquer pessoa pode solicitar participação no programa e indicar potenciais clientes à ZURY.",
-        "Quando a indicação resultar em contratação confirmada e cumprir as condições do programa, o afiliado receberá R$ 100 via Pix.",
+        "QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY.",
+        "SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, O AFILIADO RECEBERÁ R$ 100 VIA PIX.",
       ],
-      benefits: ["Participação simples.", "Possibilidade de renda extra.", "Indicações sem necessidade de atuação comercial recorrente.", "Pagamento via Pix após validação.", "Relacionamento com a ZURY."],
+      benefits: ["PARTICIPAÇÃO SIMPLES.", "POSSIBILIDADE DE RENDA EXTRA.", "INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE."],
       cta: "QUERO SER AFILIADO",
       message: "Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.",
     },
     {
       id: "commercial",
       title: "SEJA UM PARCEIRO COMERCIAL",
-      reward: "10% DA COMISSÃO ELEGÍVEL RECEBIDA PELA ZURY",
+      reward: "10% DA COMISSÃO RECEBIDA PELA ZURY",
       paragraphs: [
-        "O parceiro comercial mantém uma relação mais próxima com a corretora, realizando indicações recorrentes.",
-        "Cada parceiro aprovado poderá receber um código individual de indicação.",
-        "Quando uma indicação resultar em contratação elegível, a remuneração corresponderá a 10% da comissão efetivamente recebida pela ZURY nessa contratação, conforme as regras do programa.",
+        "O PARCEIRO COMERCIAL MANTÉM UMA RELAÇÃO MAIS PRÓXIMA COM A CORRETORA, REALIZANDO INDICAÇÕES RECORRENTES.",
+        "CADA PARCEIRO RECEBERÁ UM CÓDIGO INDIVIDUAL DE INDICAÇÃO.",
+        "SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, A REMUNERAÇÃO CORRESPONDERÁ A 10% DA COMISSÃO RECEBIDA PELA ZURY NESSA CONTRATAÇÃO.",
       ],
-      benefits: ["Parceria comercial recorrente.", "Código individual de indicação.", "Identificação de clientes indicados.", "Remuneração proporcional às comissões elegíveis.", "Possibilidade de ganhos crescentes.", "Relacionamento próximo com a corretora."],
+      benefits: ["CÓDIGO INDIVIDUAL DE INDICAÇÃO.", "REMUNERAÇÃO PROPORCIONAL ÀS COMISSÕES.", "POSSIBILIDADE DE GANHOS CRESCENTES.", "RELACIONAMENTO PRÓXIMO COM A CORRETORA."],
       cta: "QUERO SER PARCEIRO COMERCIAL",
       message: "Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.",
     },

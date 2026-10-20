@@ -10,7 +10,7 @@
 > **Refinamento complementar de 19/10/2026:** cápsulas Flow Glass compartilhadas na navbar e nos menus; contato e redes sociais separados; rodapé sem botão WhatsApp; produtos revisados no plural. Header completo com saída conjunta de 475 ms e reaparecimento somente no topo. Listas com marcadores discretos e 12 px entre produtos; diferenciais em caixa alta por CSS, organizados em trechos com marcadores e divisórias. Painel do rodapé compartilha as animações dos cards. Preservar a aplicação existente e o gate do escudo.
 > **Etapa 2 — identidade visual e Hero:** direção cromática da imagem 4 e nova headline autorizadas pelo responsável. Substituem o congelamento anterior dos fundos e a headline antiga. Implementação visual ainda sujeita à avaliação; não implica aprovação do escudo nem autorização para etapas futuras.
 > **Etapa 3 — Indicações:** autorizados Hero em caixa alta, remoção exclusiva das divisórias de produtos e nova seção de indicações em prévia, com acesso na navbar. Preservar a etapa 2 sem reconstrução. A oferta depende de validação comercial/jurídica; escudo continua isolado e sem aprovação.
-> **Etapa 4 — Benefícios e tipografia:** caixa alta global permanente; Hero composto em três linhas; Diferenciais sem divisórias internas; Benefícios exclusivos e faixa de logos autorizados em prévia. Nomes confirmados: FARMA MELHOR UNAÍ, GRUPO ZAPP e GRUPO MV. Preservar integralmente os ativos e o gate independente do escudo.
+> **Etapa 5 — revisão visual e comercial:** caixa alta global permanente, cards mais compactos e novos textos de Indicações. Benefícios contém somente três cards estáticos: FARMELHOR UNAÍ, ZAPP e GRUPO MV. Faixa de logos cancelada; avisos de prévia removidos da interface, sem liberar publicação comercial. Headline de rendimento mensal e operação de códigos continuam pendentes. ZAPP usa somente nome textual até o recebimento de logo oficial sem FOR MEN. Escudo continua isolado e sem aprovação.
 
 ---
 
@@ -201,13 +201,13 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Ordem final da prévia completa: `SERVIÇOS` → `#servicos`; `DIFERENCIAIS` → `#sobre`; `REDE DE PARCEIROS` → `#indicacoes`; `BENEFÍCIOS` → `#beneficios`; `SOBRE` → `#institucional`; `REDES SOCIAIS` → popover social; `CONTATO` → popover de contato. Os dois popovers abrem preferencialmente abaixo, com reposicionamento para caber na viewport.
 - Os links REDE DE PARCEIROS e BENEFÍCIOS seguem os gates independentes das respectivas seções: omitir somente o link cuja seção estiver desabilitada. Não alterar a cápsula externa, os parâmetros de hover, Flow Glass ou ocultação do header. Esta ordem substitui a antiga entrada INDICAÇÕES e a posição anterior dos dois popovers.
 - Não criar uma quinta seção para SOBRE. O ID `institucional` pertence à coluna legal já existente.
-- Os cinco itens ficam somente textuais em repouso, sem cápsulas visíveis, mantendo posição, padding, tamanho e espaçamento. Em hover, preservar exatamente o Liquid Glass existente e seu raio `9999px`, borda, fundo, reflexos e animação; na saída, retornar ao repouso limpo com os parâmetros existentes. A estrutura externa Liquid Glass permanece intacta. Informar `aria-current` quando aplicável; preservar contraste do ativo, foco acessível, popovers abertos e feedback de toque, sem sublinhado.
+- Os itens ficam somente textuais em repouso, sem cápsulas visíveis, mantendo posição, padding, tamanho e espaçamento. Em hover, preservar exatamente o Liquid Glass existente e seu raio `9999px`, borda, fundo, reflexos e animação; na saída, retornar ao repouso limpo com os parâmetros existentes. A estrutura externa Liquid Glass permanece intacta. Informar `aria-current` quando aplicável; preservar contraste do ativo, foco acessível, popovers abertos e feedback de toque, sem sublinhado.
 - Header visível inicialmente e no topo; logo, contêiner superior e navbar animam como uma unidade em 475 ms (faixa de referência 400–550 ms), `power2.out` com desaceleração, fade e deslocamento de 24 px para cima. **Não reaparece ao subir: somente ao retornar ao topo.** Usar histerese contra flicker (ocultar a partir de 88 px, revelar até 8 px). Não recolher altura/gap da marca durante o scroll. Não ocultar enquanto popover da navbar estiver aberto ou foco estiver em seus controles visíveis; ao terminar, retomar a política de posição. Oculto fica inert, sem bloquear cliques ou prender foco. Reduced motion mantém a regra sem deslocamento prolongado.
 - Contraste e reflexos se ajustam aos fundos, sem troca abrupta de tema.
 
 ### 5.2. Mobile
 
-- Logo oficial completa e **todas as opções acessíveis e visíveis** (seis na prévia de Indicações; cinco no padrão), com distribuição compacta em múltiplas linhas quando necessário.
+- Logo oficial completa e **todas as opções acessíveis e visíveis** (sete na prévia completa; cinco no padrão), com distribuição compacta em múltiplas linhas quando necessário, inclusive em tablets cuja largura não comporte a linha única.
 - **Não usar menu hamburger, dropdown para esconder links nem scroll horizontal da própria navbar**.
 - Verificar obrigatoriamente **320, 360, 375, 390 e 430 px** de largura.
 - Priorizar legibilidade e alvos de toque utilizáveis; não cortar textos ou provocar overflow horizontal para forçar uma linha.
@@ -420,79 +420,74 @@ Os textos completos da tabela permanecem imutáveis na fonte de dados. É autori
 
 ---
 
-### 9.3. Programa de Indicações — prévia da etapa 3
+### 9.3. Programa de Indicações — revisão da etapa 5
 
 Nova seção `#indicacoes`, após Diferenciais e antes de Benefícios exclusivos. Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável. Apresentação integralmente em caixa alta, conforme regra global, sem alterar as mensagens de WhatsApp.
 
-Etapa 5: grid centralizado de no máximo 1120 px, intervalo de 18 px, padding de 26 px e ícones de 20 px. Títulos de 14 px; valores de 20–24 px; descrições de 14 px/1,6; listas de 13,5 px/1,55 com 8 px entre itens. CTAs com largura pelo conteúdo, limitada ao card, mínimo de 44 px de altura e texto de 11 px. No mobile, padding de 24 px, descrições de 15 px e listas de 14 px, sem cortes. Reduzir dimensões reais, nunca usar escala geral; manter conteúdos integrais e alturas uniformes no desktop. Preservar destaque moderado, respiro externo e CTAs alinhados na base.
+Grid centralizado de no máximo 1000 px, intervalo de 16 px, padding de 22 px e ícones de 18 px. Títulos de 13 px; valores de 19–22 px; descrições de 13,5 px/1,6; listas de 13 px/1,55 com 7 px entre itens. CTAs com largura pelo conteúdo, mínimo limitado ao card de 210 px, altura mínima de 44 px e texto de 10,5 px. Não reduzir o alvo de toque abaixo de 44 px. No mobile, padding de 24 px, descrições de 15 px e listas de 14 px, sem cortes. Reduzir dimensões reais, nunca usar escala geral; manter conteúdos integrais e alturas uniformes no desktop. Preservar destaque moderado, respiro externo e CTAs alinhados na base.
 
 **Conteúdo oficial:**
 
 - Título: `PROGRAMA DE INDICAÇÕES`.
-- Headline: `SUAS INDICAÇÕES PODEM RENDER MAIS DE R$ 10 MIL.`
-- Complemento: `Transforme suas indicações em oportunidades de ganhos com a ZURY CORRETORA.`
-- Observação: `Os ganhos dependem de contratações elegíveis e das condições do programa. Não há garantia de renda. A referência de R$ 10 mil não representa resultado típico ou comprovado.`
-- Aviso de prévia: `Prévia do programa · publicação sujeita à validação comercial e jurídica.`
+- Headline provisória sem rendimento específico: `SUAS INDICAÇÕES PODEM GERAR NOVAS OPORTUNIDADES.`
+- Proposta pendente, não renderizada nem publicada: `SUAS INDICAÇÕES PODEM RENDER MAIS DE R$ 10.000 POR MÊS!`. Preservar exatamente esta grafia se vier a ser aprovada; exigir dados reais suficientes e validação comercial/jurídica antes de substituir a alternativa provisória. Não foi fornecida comprovação nesta revisão.
+- Removidos da interface e dos dados renderizáveis: complemento comercial anterior, ressalva de ganhos e aviso de prévia. Não adicionar nova faixa/parágrafo de advertência nem armazenar cópias antigas ocultas nos componentes.
 
-**SEJA UM AFILIADO** — `R$ 100 POR CONTRATAÇÃO ELEGÍVEL`
+**SEJA UM AFILIADO** — `R$ 100 POR CONTRATAÇÃO`
 
-Qualquer pessoa pode solicitar participação no programa e indicar potenciais clientes à ZURY.
+QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY.
 
-Quando a indicação resultar em contratação confirmada e cumprir as condições do programa, o afiliado receberá R$ 100 via Pix.
+SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, O AFILIADO RECEBERÁ R$ 100 VIA PIX.
 
-Benefícios: Participação simples. Possibilidade de renda extra. Indicações sem necessidade de atuação comercial recorrente. Pagamento via Pix após validação. Relacionamento com a ZURY.
+Lista exclusiva: PARTICIPAÇÃO SIMPLES. / POSSIBILIDADE DE RENDA EXTRA. / INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE.
 
 CTA: `QUERO SER AFILIADO`. Mensagem exata: `Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.`
 
-**SEJA UM PARCEIRO COMERCIAL** — `10% DA COMISSÃO ELEGÍVEL RECEBIDA PELA ZURY`
+**SEJA UM PARCEIRO COMERCIAL** — `10% DA COMISSÃO RECEBIDA PELA ZURY`
 
-O parceiro comercial mantém uma relação mais próxima com a corretora, realizando indicações recorrentes.
+O PARCEIRO COMERCIAL MANTÉM UMA RELAÇÃO MAIS PRÓXIMA COM A CORRETORA, REALIZANDO INDICAÇÕES RECORRENTES.
 
-Cada parceiro aprovado poderá receber um código individual de indicação.
+CADA PARCEIRO RECEBERÁ UM CÓDIGO INDIVIDUAL DE INDICAÇÃO.
 
-Quando uma indicação resultar em contratação elegível, a remuneração corresponderá a 10% da comissão efetivamente recebida pela ZURY nessa contratação, conforme as regras do programa.
+SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, A REMUNERAÇÃO CORRESPONDERÁ A 10% DA COMISSÃO RECEBIDA PELA ZURY NESSA CONTRATAÇÃO.
 
-Benefícios: Parceria comercial recorrente. Código individual de indicação. Identificação de clientes indicados. Remuneração proporcional às comissões elegíveis. Possibilidade de ganhos crescentes. Relacionamento próximo com a corretora.
+Lista exclusiva: CÓDIGO INDIVIDUAL DE INDICAÇÃO. / REMUNERAÇÃO PROPORCIONAL ÀS COMISSÕES. / POSSIBILIDADE DE GANHOS CRESCENTES. / RELACIONAMENTO PRÓXIMO COM A CORRETORA.
 
 CTA: `QUERO SER PARCEIRO COMERCIAL`. Mensagem exata: `Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.`
 
 Ambos os CTAs usam Thiago — Corretor, `https://wa.me/5538998645200`, com a mensagem codificada em `text`. Esta é a exceção expressamente autorizada à regra de WhatsApp sem mensagem; menus existentes não mudam. Apenas preparar a conversa, sem envio automático. Não há códigos reais, cadastro, atribuição automatizada ou pagamentos implementados.
 
-**MAIS VALOR PARA QUEM VOCÊ INDICA.**
-
-`Buscamos soluções competitivas, com transparência e atenção às necessidades de cada cliente.`
-
-Não alegar menor preço garantido, ausência de comissão, isenção de taxas não confirmada ou renda típica. A headline de R$ 10 mil não tem comprovação fornecida nesta etapa e não está liberada para publicação.
+O bloco comercial final anterior foi removido integralmente, sem espaço reservado. Se uma chamada comercial for necessária posteriormente, a formulação autorizada é `CONDIÇÕES COMPETITIVAS PARA QUEM VOCÊ INDICA.`; não é necessário um bloco adicional nesta revisão. Não alegar melhor preço garantido, renúncia universal de comissão ou renda típica. Confirmar a política exata: produtos que permitem redução/repasse de comissão, condições e compatibilidade com a remuneração dos parceiros.
 
 **Gate de publicação:** seção e link habilitados em desenvolvimento ou por `ZURY_REFERRAL_PREVIEW=true` durante o build local. Build de produção padrão, sem essa variável, deve omitir ambos. A variável não constitui aprovação nem controle de acesso: o artefato de prévia não deve ser publicado. Exigir validação expressa antes de alterar este gate.
 
-**Pendências comerciais/jurídicas — não inventar condições:** regras de participação; elegibilidade; prazos de pagamento; cancelamentos e estornos; atribuição de indicações; regras de comissão; tratamento de dados pessoais; requisitos legais/regulatórios aplicáveis à corretagem e aos produtos financeiros; sustentação e apresentação da chamada de ganhos.
+**Pendências comerciais/jurídicas — não inventar condições:** regulamento e regras de participação; prazos de pagamento; cancelamentos e estornos; atribuição de indicações; regras de comissão e eventuais reduções/repasse por produto; tratamento de dados pessoais; requisitos legais/regulatórios aplicáveis à corretagem e aos produtos financeiros; sustentação da chamada mensal. Confirmar operação real de emissão dos códigos antes de anunciar o programa como ativo. A frase solicitada sobre códigos existe somente na prévia bloqueada para publicação; não há emissão implementada nem códigos fictícios. Não criar regulamento com critérios presumidos.
 
 **Integração futura (não implementada):** modalidades com IDs estáveis `affiliate` e `commercial` em dados tipados. Eventual serviço autenticado deverá cuidar de cadastro/consentimento, atribuição, elegibilidade, conciliação de comissões e auditoria, após requisitos e aprovação específicos. Não criar backend, painel, códigos ou regras financeiras nesta etapa.
 
-### 9.4. BENEFÍCIOS EXCLUSIVOS — prévia da etapa 4
+### 9.4. BENEFÍCIOS EXCLUSIVOS — cards estáticos da etapa 5
 
 Seção `#beneficios` após Indicações e antes do Footer. Reutilizar paleta grafite/prata, gradientes direcionais, iluminação contida, materiais Liquid Glass/Flow Glass e reveal existentes. Três cards de altura uniforme no grid desktop, empilhados e legíveis no mobile. Sem CTAs, links comerciais, regras de resgate ou condições não fornecidas.
 
-Etapa 5: grid centralizado de no máximo 1080 px, intervalo de 16 px e padding de 24 px. Área de logo com 72 px de altura; imagens proporcionais até 180 × 66 px, símbolo MV até 60 × 60 px, sem editar os ativos. Títulos de 14 px; descontos de 20–22 px; descrições de 13 px/1,65, passando a 14 px no mobile. Não aplicar escala geral nem cortar texto. Títulos de seção mantêm a hierarquia global. Estas dimensões afetam somente os cards; preservar integralmente dimensões, velocidade, direção, pausa e acessibilidade da faixa infinita de marcas.
+Grid centralizado de no máximo 960 px, intervalo de 14 px e padding de 20 px. Área de logo com 56 px de altura, somente quando houver ativo adequado; imagens proporcionais até 150 × 48 px, símbolo MV até 48 × 48 px, sem editar os ativos. Títulos de 13 px; descontos de 18–20 px. No mobile, padding de 22 px, títulos de 14 px e descontos de 20 px. Sem legendas descritivas nos três cards, sem CTAs ou avisos de prévia. Não aplicar escala geral nem cortar texto. Altura uniforme no desktop, sem espaço reservado à logo pendente; composição textual centralizada verticalmente no card ZAPP. Títulos de seção mantêm a hierarquia global.
 
 - Título: `BENEFÍCIOS EXCLUSIVOS`.
 - Chamada: `VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.`
 - Descrição: `CLIENTES ZURY TÊM ACESSO A CONDIÇÕES ESPECIAIS EM ESTABELECIMENTOS PARCEIROS.`
 
-| Parceiro confirmado | Oferta sujeita à validação | Descrição |
-| --- | --- | --- |
-| FARMA MELHOR UNAÍ | 10% DE DESCONTO ADICIONAL | CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM COMPRAS ELEGÍVEIS. |
-| GRUPO ZAPP | 10% DE DESCONTO ADICIONAL | VANTAGEM EXCLUSIVA PARA CLIENTES ZURY EM PRODUTOS ELEGÍVEIS. |
-| GRUPO MV | 5% DE DESCONTO EM SERVIÇOS | CONDIÇÃO ESPECIAL PARA CLIENTES ZURY EM SERVIÇOS ELEGÍVEIS. |
+| Nome de apresentação | Oferta sujeita à validação |
+| --- | --- |
+| FARMELHOR UNAÍ | 10% DE DESCONTO ADICIONAL |
+| ZAPP | 10% DE DESCONTO ADICIONAL |
+| GRUPO MV | 5% DE DESCONTO EM SERVIÇOS |
 
-O responsável confirmou expressamente o nome comercial **GRUPO ZAPP**, em substituição a ZAPP MODAS, mantendo a logo recebida com lettering ZAPP FOR MEN. Confirmou também que o símbolo verde corresponde ao **GRUPO MV**. A logo FarmaMelhor não contém a localização UNAÍ; o nome do briefing permanece. Não alterar desenhos ou lettering para fazê-los coincidir com títulos.
+Esta revisão substitui os nomes anteriores por **FARMELHOR UNAÍ** e **ZAPP**. O símbolo verde corresponde ao **GRUPO MV**. ZAPP deve aparecer sem FOR MEN: não foi localizada uma versão oficial adequada nos ativos do projeto e arquivos fornecidos. Exibir somente o nome textual do card, sem imitar/recriar o lettering ou reservar uma caixa de logo vazia; solicitar SVG ou PNG transparente oficial sem FOR MEN. Preservar o original recebido, sem cortes, filtros ou alterações destrutivas. A logo FarMelhor não contém a localização UNAÍ; o nome textual solicitado permanece distinto do desenho original.
 
 **Ativos oficiais recebidos e preservados byte a byte:** `public/partners/farma-melhor.png` (300 × 72), `grupo-zapp.png` (997 × 379) e `grupo-mv.png` (1057 × 1057). PNGs com canal alpha. Preservar cores de marca, transparência, proporções e respiro com `object-fit: contain`; as cores originais nas logos são exceção à neutralidade cromática da UI. Sem filtros, recoloração, reconstrução, cortes ou fundo branco. A imagem ZAPP recebida apresenta resíduos escuros na transparência aparente; solicitar matriz oficial mais limpa, preferencialmente SVG, sem corrigir destrutivamente o ativo. O lettering preto pequeno de FarmaMelhor merece variante oficial adequada a fundo escuro. Não tratar nome confirmado como autorização comercial comprovada.
 
-**Faixa de parceiros:** marquee CSS linear de 60 s, somente transform, obrigatoriamente esquerda → direita em todos os breakpoints. Duas metades idênticas; cada metade repete a sequência de três logos duas vezes, cobrindo o container desktop. Espaçamento final incluído na distância do loop: `translateX(-50%)` → `translateX(0)`, sem salto no encontro. Duplicatas ocultas da árvore acessível; nomes anunciados uma vez na faixa, sem live region. Sem setas, paginação, scrollbar ou controles visíveis. Pausar no hover fino, foco por teclado, interação de toque, fora da viewport e em documento oculto; retomar na mesma fase. Um único observer e listener de visibilidade, com cleanup. Respeitar movimento reduzido por faixa estática com apenas as três marcas e wrap responsivo. Carrosséis de serviços/diferenciais continuam manuais, sem autoplay; esta faixa é a única exceção autorizada.
+**Carrossel de parceiros CANCELADO expressamente:** remover faixa, trilhas duplicadas, loop, observadores, listeners, controles, tokens, estilos e animações exclusivos. Não deixar espaço vazio. Esta seção contém somente os três cards estáticos, que podem manter reveal e hover Liquid Glass. Não recriar a faixa em etapas futuras sem nova autorização. Carrosséis manuais de serviços e diferenciais não são afetados.
 
-**Gate:** em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` no build local, renderizar seção, cards e faixa; produção padrão os omite. Independente do gate de Indicações. Não publicar artefato de prévia nem afirmar parceria/oferta ativa antes da confirmação expressa das parcerias, autorização de uso das marcas e condições comerciais. Não inventar cumulatividade, validade, itens participantes ou procedimento de resgate. Aviso visível: `PRÉVIA DAS OFERTAS. PUBLICAÇÃO SUJEITA À CONFIRMAÇÃO DAS PARCERIAS, AUTORIZAÇÕES DE USO DAS MARCAS E REGRAS COMERCIAIS.`
+**Gate:** em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` no build local, renderizar seção e três cards; produção padrão os omite. Independente do gate de Indicações. Não publicar artefato de prévia nem afirmar parceria/oferta ativa antes da confirmação expressa das parcerias, autorização de uso das marcas e condições comerciais. Não inventar cumulatividade, validade, itens participantes ou procedimento de resgate. O aviso visível foi removido por solicitação expressa, sem retirar essas pendências ou liberar publicação.
 
 ## 10. Footer, contatos e dados institucionais
 
@@ -588,7 +583,7 @@ SUSEP: 262180499
 - Usar `gsap.context()` e/ou abstração própria equivalente com limpeza de instâncias em desmontagem; usar `ScrollTrigger.matchMedia`/`gsap.matchMedia` ou equivalentes compatíveis para breakpoints e motion preferences.
 - Debounce/throttle/observers quando adequados, evitando listeners e `requestAnimationFrame` duplicados.
 - Nada de `scroll-jacking`, scroll artificial que impede interação normal, wheel overrides, interceptação agressiva do touch ou `overflow: hidden` no `body` sem motivo.
-- Carrosséis de serviços e diferenciais são **gestuais e manuais**, sem autoplay. A única exceção é a faixa automática de logos de Benefícios, com as pausas e alternativa estática do §9.4.
+- Carrosséis de serviços e diferenciais são **gestuais e manuais**, sem autoplay. Benefícios não possui carrossel nem faixa automática, conforme cancelamento do §9.4.
 
 ---
 
@@ -622,7 +617,7 @@ Critérios gerais:
 - Não usar animação que cause flashing ou impeça leitura.
 - **Carrosséis mobile:** indicadores selecionáveis nativos sem setas, operáveis por `Enter`/`Space`, grupos/descrição de cartões e anúncio de mudança quando apropriado. Swipes e controles devem atualizar o mesmo estado.
 - Se permitir tecla de seta esquerda/direita dentro do trilho focado, não capturar setas globalmente nem romper rolagem natural de toda a página.
-- **Sem autoplay nos carrosséis de conteúdo**; a faixa de logos usa foco/hover/toque para pausa, sem controles visíveis, e alternativa estática em reduced motion (§9.4).
+- **Sem autoplay nos carrosséis de conteúdo**. Benefícios contém somente três cards estáticos, sem faixa duplicada ou movimento contínuo (§9.4).
 - Preferir `scroll-snap` com detecção robusta da posição efetiva, considerando scroll programático e arrasto nativo, não uma implementação frágil de contador baseada apenas no clique.
 
 ---
@@ -775,10 +770,10 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
 - [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `AGRO`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `PREVIDÊNCIA`.
 - [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Diferenciais também não possuem divisórias internas.
-- [ ] Prévia de Indicações exibe as duas modalidades completas, remunerações distintas, ressalva de ganhos, aviso de validação e CTAs oficiais com mensagens literais. Sem códigos fictícios, automação financeira ou promessa de resultado típico.
+- [ ] Prévia de Indicações exibe os novos textos e listas exclusivas do §9.3, sem avisos visíveis ou bloco comercial final antigo. Headline provisória sem rendimento mensal; proposta de R$ 10.000/mês somente documentada como pendente. CTAs oficiais e gates preservados, sem códigos fictícios ou automação financeira.
 - [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2, apresentação segmentada, marcadores e espaçamentos preservados, sem divisórias internas; contador mobile preservado.
 - [ ] Todos os textos visíveis, inclusive avisos, menus, popovers e rodapé, estão em caixa alta por apresentação; valores técnicos e desenhos oficiais preservados. Hero ocupa exatamente as três linhas do §6.2 no desktop, sem cortes.
-- [ ] Benefícios apresenta os três nomes confirmados, logos originais, ofertas e aviso de validação; faixa corre esquerda → direita sem salto, pausa por interação/visibilidade, não duplica nomes acessíveis e fica estática em reduced motion. Publicação não liberada automaticamente.
+- [ ] Benefícios apresenta somente três cards estáticos: FARMELHOR UNAÍ, ZAPP e GRUPO MV; percentuais preservados, sem legendas, aviso de prévia, faixa, trilhas ou código de carrossel residual. ZAPP textual até ativo oficial sem FOR MEN; originais intactos e publicação não liberada automaticamente.
 - [ ] Footer tem CONTATOS textual à esquerda acima de SERVIÇOS, menu preferencialmente à direita, sem botão WhatsApp, substituto ou espaço reservado. CONTATO/CONTATOS contêm somente WhatsApp/e-mail; REDES SOCIAIS contém somente os dois links exatos fornecidos. Dados legais e copyright aparecem uma vez.
 - [ ] Balões de contato e redes sociais compartilham lógica, são mutuamente exclusivos e fecham por Escape, clique fora e botão fechar, com foco e posicionamento corretos.
 - [ ] A expressão DIFERENÇA ZURY foi removida; gradientes neutros distintos, vidro cristalino e microinterações refletem o redesign aprovado.
@@ -793,7 +788,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - [ ] Tracking confere com a tabela fixa do §4.2; produtos no plural e quatro textos novos de TRANSPORTE correspondem ao §8.2. Navegação usa um único tween vertical, cancelável, com alinhamento estável.
 - [ ] Serviços sem números no desktop, textos em caixa alta por CSS e dados originais preservados. Hero com tracking ampliado, sem clipping. Três transições de seção compartilham filete prateado difuso e discreto.
 - [ ] BENS com suas 9 linhas está completamente legível em todos os dispositivos.
-- [ ] Navbar mobile mantém todas as opções acessíveis (seis na prévia de Indicações) e logo legível, sem hamburger e sem overflow.
+- [ ] Navbar mobile mantém todas as opções acessíveis (sete na prévia completa) e logo legível, sem hamburger e sem overflow.
 - [ ] Não há clipping, sobreposição, overflow horizontal de página ou header ocultando anchors, nas larguras de §12.1.
 - [ ] Espaçamentos, cores e glass refletem o briefing premium com contraste suficiente.
 
