@@ -9,7 +9,7 @@ function Facebook({ size = 20 }: { size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 21v-8h3l.5-4H14V7c0-1 .3-2 2-2h2V1.5C17.5 1.3 16 1 14.5 1 11 1 9 3.1 9 7v2H6v4h3v8z" /></svg>;
 }
 
-export function ChannelsPopover({ id, title, kind = "contact", placement = "below" }: { id: string; title: string; kind?: "contact" | "social"; placement?: "below" | "right" }) {
+export function ChannelsPopover({ id, title, kind = "contact", placement = "below" }: { id: string; title: string; kind?: "contact" | "social"; placement?: "below" | "above" | "right" }) {
   const panel = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
       const left = rightFits ? anchor.right + 16 : Math.min(Math.max(anchor.left + anchor.width / 2 - panelWidth / 2, 12), width - panelWidth - 12);
       const below = anchor.bottom + 12;
       const above = anchor.top - panelHeight - 12;
-      const preferredTop = rightFits ? anchor.top - 20 : width < 600 && placement !== "below" ? height - panelHeight - 12 : below + panelHeight <= height - 12 ? below : above;
+      const preferredTop = rightFits ? anchor.top - 20 : placement === "above" && above >= 12 ? above : below + panelHeight <= height - 12 ? below : above;
       const top = Math.max(12, Math.min(preferredTop, height - panelHeight - 12));
       element.dataset.side = rightFits ? "right" : "vertical";
       element.style.left = `${left + offsetX}px`;
@@ -61,7 +61,7 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
     };
   }, [id, open, placement]);
 
-  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass flow-capsule" aria-label={`WhatsApp de ${person.name}, ${person.role}`}><strong>{person.name} — <span>{person.role}</span></strong></a>)}</div>;
+  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass flow-capsule" aria-label={`WhatsApp de ${person.name}${person.role ? `, ${person.role}` : ""}`}><strong>{person.name}{person.role && <> — <span>{person.role}</span></>}</strong></a>)}</div>;
   return <div ref={panel} id={id} popover="auto" role="dialog" aria-labelledby={`${id}-title`} className="channel-panel glass" data-placement={placement} data-open={open || undefined} onToggle={(event) => {
     if (event.newState === "open") {
       const source = (event.nativeEvent as Event & { source?: Element }).source;

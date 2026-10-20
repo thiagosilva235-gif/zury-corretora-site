@@ -11,7 +11,7 @@
 > **Etapa 2 — identidade visual e Hero:** direção cromática da imagem 4 e nova headline autorizadas pelo responsável. Substituem o congelamento anterior dos fundos e a headline antiga. Implementação visual ainda sujeita à avaliação; não implica aprovação do escudo nem autorização para etapas futuras.
 > **Etapa 3 — Indicações:** autorizados Hero em caixa alta, remoção exclusiva das divisórias de produtos e nova seção de indicações em prévia, com acesso na navbar. Preservar a etapa 2 sem reconstrução. A oferta depende de validação comercial/jurídica; escudo continua isolado e sem aprovação.
 > **Etapa 5 — revisão visual e comercial:** caixa alta global permanente, cards mais compactos e novos textos de Indicações. Benefícios contém somente três cards estáticos: FARMELHOR UNAÍ, ZAPP e GRUPO MV. Faixa de logos cancelada; avisos de prévia removidos da interface, sem liberar publicação comercial. Headline de rendimento mensal e operação de códigos continuam pendentes. Escudo continua isolado e sem aprovação.
-> **Etapa 7:** Hero ampliada, cards de Indicações com respiro moderadamente maior e agradecimento por contratação própria. Benefícios usa cards completos em movimento condicional por largura real; três parceiros atuais permanecem estáticos no desktop. Menus verticais compartilhados na navbar/rodapé, Facebook sem destino e WhatsApp expansível sem números. Esta revisão substitui as decisões anteriores correspondentes. Tokens, gates comerciais e do escudo permanecem.
+> **Etapa 7 revisada:** Hero ampliada novamente, cards de Indicações perceptivelmente mais altos, título comercial único sem ponto e mensagem branca em negrito, duas linhas quando houver largura. Benefícios perde a chamada auxiliar e conserva o carrossel condicional. Menus aprovados da navbar são reutilizados no rodapé com abertura acima quando necessário. WhatsApp flutuante autorizado com menu horizontal à esquerda; verde-neon exclusivamente na borda/glow de hover/foco do botão. Esta revisão substitui restrições anteriores correspondentes. Gates comerciais e do escudo permanecem.
 
 ---
 
@@ -115,8 +115,8 @@ Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nomina
 | `--zury-white` | `#FFFFFF` | texto de alto contraste sobre fundo escuro |
 | `--zury-logo-black` | `#090909` | cor técnica do SVG preto, **não** uma nova cor de UI |
 
-- **Não acrescentar cores saturadas ou metalizados dourados/champagne** à identidade do site.
-- Prata acetinada permanece o material do escudo; luminosidade cinza-prata neutra também pode compor gradientes e reflexos da interface. Não usar dourado, champagne, neon ou gradientes coloridos.
+- **Não acrescentar cores saturadas ou metalizados dourados/champagne** à identidade do site, exceto o verde de WhatsApp do §10.4, restrito à borda/glow de hover/foco do botão flutuante.
+- Prata acetinada permanece o material do escudo; luminosidade cinza-prata neutra compõe gradientes/reflexos. Sem dourado, champagne ou gradientes coloridos. A única exceção de neon é o §10.4.
 - Variações de opacidade, luminância e mistura entre tons neutros são permitidas para simular vidro e transições, desde que respeitem a paleta.
 - Contrastes de texto, bordas, indicadores e controles devem ser aferidos sobre o **fundo composto real**, inclusive no movimento, não apenas sobre uma cor ideal. Sobre o cinza `#78716C`, o branco puro passa por margem relativamente pequena para texto comum; transparências e highlights podem diminuir esse contraste e devem ser testados.
 
@@ -244,7 +244,7 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Mobile: headline **centralizada acima do escudo**, escudo com largura visual próxima de **75% da área útil**; altura responsiva, sem forçar corte de conteúdo ou viewport excessiva.
 - Headline em Inter Tight, peso predominantemente semibold, em caixa alta literal na fonte oficial, preservando acentos e pontuação. Quebras balanceadas por largura, sem remover espaços entre palavras.
 - Tracking do Hero `0.025em`, conforme §4.2, sem mudar a frase, remover espaços entre palavras ou invadir o espaço 40%/60%.
-- Hero em três linhas no desktop: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA:` / `ZURY!`, spans em bloco com espaços semânticos. Escala ampliada `clamp(22px, 2.9vw, 45px)`, entrelinha `1.18`, tracking e peso preservados; ZURY! com 1.08. Container até 1440 px, margens proporcionais ampliando a largura útil sem retirar a reserva 40%/60%. Mobile: `clamp(21px, 6.3vw, 42px)`, entrelinha `1.2`, centralizada, quebras adaptáveis quando necessárias. Sem quarta linha desktop ou integração do escudo.
+- Hero em três linhas no desktop: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA:` / `ZURY!`, spans com espaços semânticos. Escala `clamp(23px, 3vw, 48px)`, entrelinha `1.22`, tracking/peso preservados; ZURY! com 1.08. Container até 1560 px, margens ampliando a largura útil sem retirar a reserva 40%/60%. Mobile: `clamp(22px, 6.6vw, 44px)`, entrelinha `1.22`, centralizada. Sem quarta linha desktop, colisões ou integração do escudo.
 - Abaixo da composição superior de marca/navbar, incluir somente transição visual por pseudo-elementos: mesmo filete prateado difuso e gradiente tonal usado entre seções, sem conteúdo novo ou borda pesada.
 - Entrada visual: **texto primeiro** e escudo **depois**; uma vez estabilizado, flutuação muito discreta e rotação lenta parcial do escudo.
 - Nenhuma rotação manual do escudo por gesto/toque no mobile.
@@ -428,7 +428,7 @@ Os textos completos da tabela permanecem imutáveis na fonte de dados. É autori
 
 Nova seção `#indicacoes`, após Diferenciais e antes de Benefícios exclusivos. Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável. Apresentação integralmente em caixa alta, conforme regra global, sem alterar as mensagens de WhatsApp.
 
-Grid centralizado até 1000 px, gap 16 px, padding vertical 27 px/horizontal 22 px e ícones 18 px. Aumentar a altura moderadamente (referência 8–12%) em relação à etapa 6 por espaçamento real. Títulos 13 px, valores 19–22 px com margens verticais 15 px; descrições 13,5 px/1,6 e 8 px entre parágrafos, 15 px depois do bloco. Frases 13 px/1,55 sem marcadores, gap 6 px, margem inferior 12 px. CTAs alinhados na base, alvo 44 px, texto 10,5 px e largura pelo conteúdo, mínimo limitado de 210 px. Mobile: padding 29 px/24 px, descrições 15 px e frases 14 px. Sem altura fixa limitante, escala geral, redução de fonte ou largura maior. Tracking por papel conforme §4.2.
+Grid centralizado até 1000 px, gap 16 px, padding vertical 38 px/horizontal 22 px e ícones 18 px. Cards perceptivelmente mais altos, com distribuição real, não somente vazio inferior. Títulos 13 px; valores 19–22 px com margens verticais 24 px; descrições 13,5 px/1,6 em grid com gap 16 px e margem inferior 24 px. Frases 13 px/1,55, sem marcadores, gap uniforme 12 px e margem inferior 26 px. CTAs alinhados na base, alvo 44 px, texto 10,5 px, largura pelo conteúdo e mínimo limitado de 210 px. Mobile: padding 38 px/24 px, descrições 15 px, frases 14 px. Sem altura fixa limitante, escala, redução de fonte ou largura maior. Tracking conforme §4.2.
 
 **Conteúdo oficial:**
 
@@ -467,13 +467,13 @@ CTA: `QUERO SER PARCEIRO COMERCIAL`. Mensagem exata: `Olá! Tenho interesse em m
 
 Ambos os CTAs usam Thiago — Corretor, `https://wa.me/5538998645200`, com a mensagem codificada em `text`. Esta é a exceção expressamente autorizada à regra de WhatsApp sem mensagem; menus existentes não mudam. Apenas preparar a conversa, sem envio automático. Não há códigos reais, cadastro, atribuição automatizada ou pagamentos implementados.
 
-**Bloco comercial abaixo dos dois cards:** centralizado, integrado ao fundo da seção, sem card ou elementos promocionais adicionais; largura máxima de 760 px e margem superior moderada de 34 px. Entrada compartilhada, hierarquia discreta (título de 16–20 px e corpo de 14 px/1,7), caixa alta e tokens do §4.2. Até haver comprovação, usar exatamente:
+**Bloco comercial abaixo dos dois cards:** centralizado, integrado ao fundo, sem card/banner/cápsula. Largura até 1320 px, margem superior 48 px. Título único de 18–22 px sem ponto; corpo branco `#fff`, peso 700, 16–19 px/1,6, tracking de descrição. Distribuição balanceada em exatamente duas linhas no desktop quando houver espaço; mais linhas em telas menores, sem miniaturizar fonte. Até comprovação, usar a formulação objetiva provisória:
 
-`QUEM INDICA MERECE MAIS.`
+`QUEM INDICA MERECE MAIS`
 
-`COMO FORMA DE AGRADECIMENTO PELAS INDICAÇÕES, A ZURY BUSCA OFERECER CONDIÇÕES DIFERENCIADAS PARA AFILIADOS E PARCEIROS COMERCIAIS QUE CONTRATAM NOSSOS SERVIÇOS, INCLUSIVE POR MEIO DE BENEFÍCIOS SOBRE SUA REMUNERAÇÃO, QUANDO APLICÁVEIS.`
+`EM AGRADECIMENTO ÀS INDICAÇÕES, A ZURY BUSCA MELHORES CONDIÇÕES PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES PRÓPRIAS, INCLUSIVE COM POSSÍVEL RENÚNCIA À COMISSÃO, QUANDO APLICÁVEL.`
 
-Este benefício é para contratação própria dos afiliados e parceiros, não dos clientes indicados; é distinto dos R$ 100 e 10% por indicação. Texto pretendido, PENDENTE e não renderizado: `COMO FORMA DE AGRADECIMENTO PELA CONFIANÇA E PELAS INDICAÇÕES, A ZURY ABRE MÃO DE SUA PRÓPRIA COMISSÃO NAS CONTRATAÇÕES REALIZADAS POR AFILIADOS E PARCEIROS COMERCIAIS, PARA OFERECER A ELES OS MELHORES PREÇOS DO MERCADO EM TODOS OS NOSSOS SERVIÇOS.` Confirmar prática, renúncia integral/parcial, abrangência, permissões contratuais/normativas e comprovação objetiva de preços antes de substituir o provisório.
+Este benefício é para contratação própria dos afiliados/parceiros, não dos clientes indicados; é distinto dos R$ 100 e 10%. Texto pretendido, PENDENTE e não renderizado: `COMO FORMA DE AGRADECIMENTO PELAS SUAS INDICAÇÕES, A ZURY ABRE MÃO DE SUA PRÓPRIA COMISSÃO NOS SERVIÇOS CONTRATADOS POR AFILIADOS E PARCEIROS COMERCIAIS, GARANTINDO A ELES OS MELHORES PREÇOS DO MERCADO EM TODOS OS NOSSOS SERVIÇOS.` Confirmar existência, renúncia integral/parcial, abrangência, permissões contratuais/normativas e comprovação objetiva antes de substituir o provisório. Não publicar promessa universal sem comprovação.
 
 Não alegar melhor preço garantido, renúncia universal de comissão ou renda típica. Não foi fornecida comprovação da política: confirmar renúncia total/parcial, produtos e serviços abrangidos, aplicação a contratos com parceiros remunerados, restrições das seguradoras/instituições e documentação comparativa de preços. Não confundir comissão da corretora com preço final. Somente após validação usar uma formulação mais específica compatível com a operação real; gates de publicação permanecem.
 
@@ -490,8 +490,7 @@ Seção `#beneficios` após Indicações e antes do Footer. Reutilizar paleta gr
 Grid centralizado de no máximo 960 px, intervalo de 14 px e padding de 20 px. Área de logo com 56 px de altura; imagens proporcionais até 150 × 48 px, símbolo MV até 48 × 48 px, sem editar os ativos. Títulos de 13 px; descontos de 18–20 px. No mobile, padding de 22 px, títulos de 14 px e descontos de 20 px. Sem legendas descritivas nos três cards, sem CTAs ou avisos de prévia. Não aplicar escala geral nem cortar texto. Altura uniforme no desktop, com cada logo centralizada verticalmente na área reservada. Títulos de seção mantêm a hierarquia global.
 
 - Título: `BENEFÍCIOS EXCLUSIVOS`.
-- Chamada: `VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.`
-- Sem descrição auxiliar abaixo da chamada: remover o texto anterior e suas margens exclusivas, sem substituto. Preservar título, chamada e três cards estáticos.
+- Sem chamada ou descrição auxiliar: remover texto, wrapper e espaçamento exclusivo, sem substituto. Preservar somente título e cards; comportamento condicional abaixo.
 
 | Nome de apresentação | Oferta sujeita à validação |
 | --- | --- |
@@ -533,7 +532,7 @@ Esta revisão substitui os nomes anteriores por **FARMELHOR UNAÍ** e **ZAPP**. 
 
 `NOS AVALIE NO GOOGLE` é um link textual com o mesmo tratamento, após SOBRE, para `https://share.google/AnNgzLmPy4lMNqHO9`, fornecido pelo usuário e verificado no navegador em 20/10/2026: abre o perfil ZURY CORRETORA em Unaí, com site e telefone oficiais e a opção de avaliar. Abrir em nova aba com `noopener noreferrer`. O endereço leva ao perfil, não diretamente ao formulário; não inventar um link direto ou identificador alternativo. Não enviar avaliações em nome do usuário.
 
-**Contato** — CONTATOS na coluna esquerda abre o mesmo conteúdo de contato da navbar, sem navegar/rolar. **Remover integralmente o botão WhatsApp gradiente e seu popover exclusivo**, sem substituto, ícone flutuante ou espaço reservado. WhatsApps e e-mail são acessados exclusivamente por CONTATO da navbar e CONTATOS do footer, nunca por REDES SOCIAIS. Os três contatos oficiais permanecem individualmente clicáveis, identificados como `THIAGO — CORRETOR`, `VALDIR — CONSULTOR`, `JOANA — SAÚDE`. Reutilizar dados e lógica; nenhum número ou canal em lista estática fora dos menus:
+**Contato** — CONTATOS na coluna esquerda usa o mesmo componente da navbar, sem navegar/rolar. O antigo botão WhatsApp gradiente do rodapé permanece removido. O novo botão fixo do §10.4 é uma autorização distinta e não ocupa coluna do rodapé. WhatsApps são acessados pelos três pontos compartilhados; e-mail somente por CONTATO/CONTATOS, nunca por REDES SOCIAIS. Contatos oficiais: `THIAGO — CORRETOR`, `VALDIR — CONSULTOR`, `JOANA — SAÚDE`. Cargos opcionais na tipagem; somente mostrar os confirmados. Uma única fonte tipada em `lib/content.ts` alimenta navbar, rodapé e flutuante:
 
 | Nome | Cargo confirmado | Telefone oficial (não exibir nos menus) | Link exato |
 | --- | --- | --- | --- |
@@ -547,7 +546,7 @@ Esta revisão substitui os nomes anteriores por **FARMELHOR UNAÍ** e **ZAPP**. 
 
 ### 10.3. Balões de contato e redes sociais
 
-- Um único componente-base de contato/social, mesmos dados, estados, animações, estilos e acessibilidade na navbar e rodapé. Popovers `auto` mutuamente exclusivos; clicar novamente fecha, assim como clique fora, Escape e botão fechar. Navbar prioriza abertura abaixo e centralizada no gatilho; rodapé pode abrir para cima/lado. Reposicionar após expansão/resize, dentro da viewport, restaurar foco ao gatilho por Escape.
+- Um único componente-base de contato/social, mesmos dados, estados, animações, estilos e acessibilidade na navbar e rodapé. Preservar os menus aprovados da navbar; no rodapé priorizar abertura acima, centralizada no gatilho e limitada à viewport. Popovers `auto` mutuamente exclusivos; clicar novamente fecha, assim como clique fora, Escape e botão fechar. Reposicionar após expansão/resize e restaurar foco por Escape. Comparar conteúdo/ícones/fontes/padding/blur/bordas/glow/expansão e destinos entre contextos; só posicionamento e título CONTATO/CONTATOS diferem.
 - **Contato:** primeiro nível somente ícone + WHATSAPP e ícone + E-MAIL. WhatsApp é botão com `aria-expanded`/`aria-controls`, expansão vertical suave de 200 ms, reversível, com links THIAGO — CORRETOR, VALDIR — CONSULTOR e JOANA — SAÚDE. Sem telefones, endereço de e-mail ou explicações visíveis. E-mail preserva `mailto:contato@zurycorretora.com`. Lista recolhida fica fora da navegação/árvore acessível. Reduced motion elimina transição prolongada.
 - **Redes sociais:** linhas verticais com ícone à esquerda e nome à direita: INSTAGRAM, TIKTOK e FACEBOOK, sem handles/URLs/legendas. Destinos Instagram `https://www.instagram.com/zury_corretora/` e TikTok `https://www.tiktok.com/@zury_corretora`. Facebook é botão desabilitado até URL oficial ser fornecida, configuração nula, nunca `href="#"`. Mesma cápsula Flow Glass e alvos mínimos de 44 px.
 - Inspeção pública nesta revisão: ambos os destinos abriram no navegador integrado e exibiram o identificador `zury_corretora`, sem login. Isto confirma acessibilidade pública dos destinos, não a titularidade das contas.
@@ -582,6 +581,14 @@ Reutilizar exatamente `footer-link flow-glass flow-capsule` e os estilos compart
 - Repetições técnicas necessárias em metadados estruturados de SEO não contam como repetição **visual**, mas não devem causar conteúdo visível duplicado.
 
 ---
+
+### 10.4. WhatsApp flutuante — exceção autorizada da etapa 7 revisada
+
+Botão fixo no canto inferior direito, 56 px (52 px no mobile estreito), distância confortável com safe areas. Usar o ícone WhatsApp existente, Liquid Glass escuro, reflexos neutros e borda delicada. Entrada única com fade/translate de 8 px em 400 ms, sem pulso contínuo. A única cor nova autorizada é `#25D366` na borda fina e glow externo contido de hover/foco deste botão, fade-in/out de opacity em 320 ms com `cubic-bezier(.23,1,.32,1)`. Corpo continua escuro; não aplicar verde a outros elementos.
+
+Até 420 px, CTAs de Indicações usam largura de até 210 px e quebra natural de texto, sem reduzir fonte; manter faixa lateral livre para o botão flutuante e alvo mínimo de 44 px.
+
+Clique abre menu horizontal à esquerda, na mesma altura, com THIAGO / VALDIR / JOANA e cargos confirmados, sem telefone/e-mail. Mesma fonte `contacts`; nunca duplicar destinos. Uma linha desktop, três itens compactos e alvos de pelo menos 44 px no mobile, dentro da viewport. Reveal horizontal originado à direita, fade/translate em 240 ms, saída correspondente e sem spring. Primeiro contato recebe foco; Escape restaura foco ao botão; clique fora, segundo clique e seleção fecham. `aria-expanded`, `aria-controls`, nome acessível, foco visível e links seguros. Popover nativo participa da exclusividade dos demais menus. Reduced motion reduz a transição sem impedir uso. Conferir que botão não encobre CTAs e que a faixa flutuante só ocupa espaço quando aberta.
 
 ## 11. Sistema de animação e scroll
 
@@ -798,11 +805,12 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
 - [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `AGRO`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `PREVIDÊNCIA`.
 - [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Diferenciais também não possuem divisórias internas.
-- [ ] Indicações tem somente título antes dos cards; Afiliado com três frases sem marcadores/recuos/pontos finais; Parceiro sem lista extra. Cards com respiro 8–12% maior que etapa 6, CTAs oficiais e novo bloco provisório para contratação própria do §9.3. Sem promessa universal comprovada por presunção, códigos fictícios ou remoção dos gates.
+- [ ] Indicações com cards perceptivelmente mais altos e conteúdo redistribuído; frases sem marcadores/pontos, Parceiro sem lista extra e CTAs preservados. Título comercial único sem ponto; parágrafo branco/negrito/maior, duas linhas quando couber, provisório para contratação própria. Sem promessas presumidas, códigos fictícios ou remoção dos gates.
 - [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2, apresentação segmentada, marcadores e espaçamentos preservados, sem divisórias internas; contador mobile preservado.
 - [ ] Todos os textos visíveis, inclusive avisos, menus, popovers e rodapé, estão em caixa alta por apresentação; valores técnicos e desenhos oficiais preservados. Hero ocupa exatamente as três linhas do §6.2 no desktop, sem cortes.
 - [ ] Benefícios preserva FARMELHOR UNAÍ, ZAPP e GRUPO MV, logos e percentuais. Três cards estáticos quando couberem; excedente ativa loop de cards completos à direita a 42 px/s, pausável, sem duplicatas acessíveis. Mobile/reduced motion estáticos. Sem faixa de logos isoladas. Logo ZAPP centralizada, originais intactos e gates preservados.
 - [ ] Footer tem CONTATOS textual acima de SOLUÇÕES e REDES SOCIAIS, ambos com o mesmo componente/dados/comportamentos da navbar. Contato com ícones WhatsApp/e-mail, accordion nome/cargo sem telefones; social com dois links oficiais e Facebook desabilitado. Dados legais/copyright aparecem uma vez.
+- [ ] Benefícios sem chamada auxiliar ou espaço residual; carrossel condicional preservado. Botão WhatsApp fixo com ícone existente e Liquid Glass; verde somente no hover/foco da borda/glow, fade de 320 ms. Menu horizontal à esquerda com três contatos, sem e-mail, tecla Escape/clique fora/segundo clique/seleção fecham. Mobile sem clipping, alvos 44 px, safe areas, foco e reduced motion funcionais; sem cobertura dos CTAs.
 - [ ] CNPJ e SUSEP abrem os serviços oficiais do §10, sem parâmetros presumidos ou alegação de cadastro validado; usam exatamente as classes, estados de repouso/hover/foco e timings Flow Glass dos demais links do rodapé, com números/alinhamento preservados.
 - [ ] Balões de contato e redes sociais compartilham lógica, são mutuamente exclusivos e fecham por Escape, clique fora e botão fechar, com foco e posicionamento corretos.
 - [ ] A expressão DIFERENÇA ZURY foi removida; gradientes neutros distintos, vidro cristalino e microinterações refletem o redesign aprovado.
@@ -851,7 +859,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - Trocar carrossel mobile por empilhamento vertical sem justificativa aceita, remover o peek ou ocultar os controles.
 - Criar hamburger como atalho para resolver o espaço da navbar mobile.
 - Trocar o indicador ativo por sublinhado.
-- Aplicar dourado, champagne, cores saturadas, sombras fortes, parallax agressivo ou rotação de cartões.
+- Aplicar dourado, champagne, cores saturadas fora da exceção de borda/glow do §10.4, sombras fortes, parallax agressivo ou rotação de cartões.
 - Substituir 3D real por imagem estática como estratégia primária sem falha/capacidade justificável.
 - Fazer o escudo definitivamente integrado antes da aprovação visual isolada.
 - Declarar performance, conformidade SUSEP independente, funcionamento 24h auditado, testes executados ou assets existentes sem evidência.

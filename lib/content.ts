@@ -10,7 +10,6 @@ export const benefitPartners: readonly BenefitPartner[] = [
 ];
 export const benefitsContent = {
   title: "BENEFÍCIOS EXCLUSIVOS",
-  headline: "VANTAGENS QUE VÃO ALÉM DA PROTEÇÃO.",
 };
 
 export function isBenefitsPreviewEnabled(env: { NODE_ENV?: string; ZURY_BENEFITS_PREVIEW?: string }): boolean {
@@ -45,7 +44,8 @@ export const navigation = [
   { label: "SOBRE", href: "#institucional" },
 ] as const;
 
-export const contacts = [
+export type Contact = { name: string; role?: string; phone: string; href: string };
+export const contacts: readonly Contact[] = [
   { name: "Thiago", role: "Corretor", phone: "(38) 99864-5200", href: "https://wa.me/5538998645200" },
   { name: "Valdir", role: "Consultor", phone: "(38) 99961-5862", href: "https://wa.me/5538999615862" },
   { name: "Joana", role: "Saúde", phone: "(61) 98563-8090", href: "https://wa.me/5561985638090" },
@@ -90,8 +90,8 @@ type ReferralOption = {
 
 export const referralProgram = {
   title: "PROGRAMA DE INDICAÇÕES",
-  commercialTitle: "QUEM INDICA MERECE MAIS.",
-  commercialDescription: "COMO FORMA DE AGRADECIMENTO PELAS INDICAÇÕES, A ZURY BUSCA OFERECER CONDIÇÕES DIFERENCIADAS PARA AFILIADOS E PARCEIROS COMERCIAIS QUE CONTRATAM NOSSOS SERVIÇOS, INCLUSIVE POR MEIO DE BENEFÍCIOS SOBRE SUA REMUNERAÇÃO, QUANDO APLICÁVEIS.",
+  commercialTitle: "QUEM INDICA MERECE MAIS",
+  commercialDescription: "EM AGRADECIMENTO ÀS INDICAÇÕES, A ZURY BUSCA MELHORES CONDIÇÕES PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES PRÓPRIAS, INCLUSIVE COM POSSÍVEL RENÚNCIA À COMISSÃO, QUANDO APLICÁVEL.",
   options: [
     {
       id: "affiliate",

@@ -8,7 +8,6 @@ export function ExclusiveBenefits() {
     <div className="container">
       <div className="section-heading benefits-heading" data-reveal>
         <h2 id="benefits-title">{benefitsContent.title}</h2>
-        <p className="benefits-headline">{benefitsContent.headline}</p>
       </div>
       <BenefitTrack count={benefitPartners.length}>
         {benefitPartners.map((partner) => <div className="card-reveal" key={partner.id}>

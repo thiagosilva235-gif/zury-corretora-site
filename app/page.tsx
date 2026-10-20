@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site/header";
 import { ChannelsPopover } from "@/components/site/channels-popover";
 import { Carousel } from "@/components/site/carousel";
 import { SiteMotion } from "@/components/site/motion";
+import { FloatingWhatsApp } from "@/components/site/floating-whatsapp";
 
 const icons = { House, HeartPulse, Sprout, CarFront, Landmark, Plane, Truck, Hourglass };
 const differenceIcons = [ShieldCheck, Headset, Zap];
@@ -69,10 +70,11 @@ export default function Home() {
         <p className="copyright" data-reveal-part>© 2026 · Todos os direitos reservados.</p>
       </div></div></div>
     </footer>
-    <ChannelsPopover id="contact-channels" title="Contatos" placement="right" />
+    <ChannelsPopover id="contact-channels" title="Contatos" placement="above" />
     <ChannelsPopover id="nav-contact-channels" title="Contato" placement="below" />
     <ChannelsPopover id="social-channels" title="Redes sociais" kind="social" placement="below" />
-    <ChannelsPopover id="footer-social-channels" title="Redes sociais" kind="social" placement="right" />
+    <ChannelsPopover id="footer-social-channels" title="Redes sociais" kind="social" placement="above" />
+    <FloatingWhatsApp />
     <SiteMotion />
   </div>;
 }
