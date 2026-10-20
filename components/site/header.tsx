@@ -26,7 +26,7 @@ export function SiteHeader() {
         hidden = nextHidden;
         element.inert = hidden;
         element.dataset.hidden = String(hidden);
-        gsap.to(element, { yPercent: hidden && !media.matches ? -110 : 0, opacity: hidden ? 0 : 1, duration: media.matches ? 0 : 0.55, ease: "power3.out", overwrite: true });
+        gsap.to(element, { y: hidden && !media.matches ? -24 : 0, opacity: hidden ? 0 : 1, duration: media.matches ? 0 : 0.475, ease: "power2.out", overwrite: true });
       }
       element.dataset.scrolled = String(current > 60);
       const institutional = document.getElementById("institucional");
@@ -48,9 +48,9 @@ export function SiteHeader() {
   return <header ref={header} className="site-header">
     <a href="#inicio" className="brand-link"><Image src="/brand/ZURY_Logo_Otimizada_Branco.svg" alt="ZURY CORRETORA" width={1046} height={324} priority /></a>
     <nav aria-label="Navegação principal" className="nav-glass glass">
-      {navigation.map((item) => <a className="flow-glass" key={item.href} href={item.href} aria-current={active === item.href ? "location" : undefined}>{item.label}</a>)}
-      <button className="flow-glass" type="button" popoverTarget="nav-contact-channels" aria-haspopup="dialog">CONTATO</button>
-      <button className="flow-glass" type="button" popoverTarget="social-channels" aria-haspopup="dialog">REDES SOCIAIS</button>
+      {navigation.map((item) => <a className="flow-glass flow-capsule" key={item.href} href={item.href} aria-current={active === item.href ? "location" : undefined}>{item.label}</a>)}
+      <button className="flow-glass flow-capsule" type="button" popoverTarget="nav-contact-channels" aria-haspopup="dialog">CONTATO</button>
+      <button className="flow-glass flow-capsule" type="button" popoverTarget="social-channels" aria-haspopup="dialog">REDES SOCIAIS</button>
     </nav>
   </header>;
 }

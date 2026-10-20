@@ -5,7 +5,7 @@ import { Mail, Music2, Camera, X } from "lucide-react";
 import { WhatsAppIcon } from "./whatsapp-icon";
 import { contacts, digitalChannels } from "@/lib/content";
 
-export function ChannelsPopover({ id, title, whatsappOnly = false, placement = "auto" }: { id: string; title: string; whatsappOnly?: boolean; placement?: "auto" | "below" | "right" }) {
+export function ChannelsPopover({ id, title, kind = "contact", placement = "below" }: { id: string; title: string; kind?: "contact" | "social"; placement?: "below" | "right" }) {
   const panel = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -56,15 +56,15 @@ export function ChannelsPopover({ id, title, whatsappOnly = false, placement = "
     };
   }, [id, open, placement]);
 
-  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass" aria-label={`WhatsApp de ${person.name}, ${person.role}, ${person.phone}`}><span><strong>{person.name.toLocaleUpperCase("pt-BR")} — <small>{person.role.toLocaleUpperCase("pt-BR")}</small></strong><span>{person.phone}</span></span></a>)}</div>;
+  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass flow-capsule" aria-label={`WhatsApp de ${person.name}, ${person.role}, ${person.phone}`}><span><strong>{person.name.toLocaleUpperCase("pt-BR")} — <small>{person.role.toLocaleUpperCase("pt-BR")}</small></strong><span>{person.phone}</span></span></a>)}</div>;
   return <div ref={panel} id={id} popover="auto" role="dialog" aria-labelledby={`${id}-title`} className="channel-panel glass" data-placement={placement} data-open={open || undefined} onToggle={(event) => { if (event.newState === "open") { const source = (event.nativeEvent as Event & { source?: Element }).source; opener.current = source instanceof HTMLElement ? source : document.activeElement instanceof HTMLElement && document.activeElement.getAttribute("popovertarget") === id ? document.activeElement : null; } setOpen(event.newState === "open"); }}>
     <div className="channel-heading"><h2 id={`${id}-title`}>{title}</h2><button className="icon-button popover-close" type="button" popoverTarget={id} popoverTargetAction="hide" aria-label={`Fechar ${title.toLowerCase()}`}><X size={18} aria-hidden="true" /></button></div>
-    {whatsappOnly ? people : <><details className="whatsapp-options">
-      <summary className="channel-row flow-glass"><WhatsAppIcon /><span><strong>WhatsApp</strong><small>Escolha com quem conversar</small></span><span className="details-toggle" aria-hidden="true" /></summary>
+    {kind === "contact" ? <><details className="whatsapp-options">
+      <summary className="channel-row flow-glass flow-capsule"><WhatsAppIcon /><span><strong>WhatsApp</strong><small>Escolha com quem conversar</small></span><span className="details-toggle" aria-hidden="true" /></summary>
       {people}
     </details>
-    <div className="channel-row channel-pending"><Camera size={20} aria-hidden="true" /><span><strong>Instagram</strong><small>{digitalChannels.instagram.handle}</small></span><span className="verification-note">Em verificação</span></div>
-    <div className="channel-row channel-pending"><Music2 size={20} aria-hidden="true" /><span><strong>TikTok</strong><small>{digitalChannels.tiktok.handle}</small></span><span className="verification-note">Em verificação</span></div>
-    <a className="channel-row flow-glass" href={`mailto:${digitalChannels.email}`}><Mail size={20} aria-hidden="true" /><span><strong>E-mail</strong><small>{digitalChannels.email}</small></span></a></>}
+    <a className="channel-row flow-glass flow-capsule" href={`mailto:${digitalChannels.email}`}><Mail size={20} aria-hidden="true" /><span><strong>E-mail</strong><small>{digitalChannels.email}</small></span></a></> : <>
+    <a className="channel-row flow-glass flow-capsule" href={digitalChannels.instagram.href} target="_blank" rel="noopener noreferrer"><Camera size={20} aria-hidden="true" /><span><strong>Instagram</strong><small>{digitalChannels.instagram.handle}</small></span></a>
+    <a className="channel-row flow-glass flow-capsule" href={digitalChannels.tiktok.href} target="_blank" rel="noopener noreferrer"><Music2 size={20} aria-hidden="true" /><span><strong>TikTok</strong><small>{digitalChannels.tiktok.handle}</small></span></a></>}
   </div>;
 }

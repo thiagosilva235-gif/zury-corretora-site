@@ -1,19 +1,25 @@
 export type Service = { number: string; title: string; icon: "House" | "HeartPulse" | "Sprout" | "CarFront" | "Landmark" | "Plane" | "Truck" | "Hourglass"; items: string[] };
 export const services: Service[] = [
-  { number: "01", title: "BENS", icon: "House", items: ["Residencial", "Condomínio", "Imóveis", "Empresarial", "Equipamentos agrícolas", "Industrial", "Armazéns", "Engenharia", "Usinas"] },
-  { number: "02", title: "VIDA E SAÚDE", icon: "HeartPulse", items: ["Seguro de vida", "Plano de saúde", "Odontológico"] },
-  { number: "03", title: "AGRO", icon: "Sprout", items: ["Seguro agrícola", "Transporte", "Logística", "Safras", "Pecuário"] },
-  { number: "04", title: "AUTOMOTIVO", icon: "CarFront", items: ["Automóvel", "Frotas", "Moto", "Caminhões"] },
+  { number: "01", title: "BENS", icon: "House", items: ["Residenciais", "Condomínios", "Imóveis", "Empresariais", "Equipamentos agrícolas", "Industriais", "Armazéns", "Seguros de engenharia", "Usinas"] },
+  { number: "02", title: "VIDA E SAÚDE", icon: "HeartPulse", items: ["Seguros de vida", "Planos de saúde", "Odontológicos"] },
+  { number: "03", title: "AGRO", icon: "Sprout", items: ["Seguros agrícolas", "Transportes", "Soluções de logística", "Safras", "Pecuários"] },
+  { number: "04", title: "AUTOMOTIVO", icon: "CarFront", items: ["Automóveis", "Frotas", "Motos", "Caminhões"] },
   { number: "05", title: "CRÉDITO", icon: "Landmark", items: ["Consórcios", "Financiamentos", "Empréstimos"] },
-  { number: "06", title: "AÉREO E MARÍTIMO", icon: "Plane", items: ["Marítimo", "Aeronáuticos", "Hangar"] },
-  { number: "07", title: "TRANSPORTE", icon: "Truck", items: ["Nacional/internacional", "RC de cargas", "Transportador", "Operador"] },
-  { number: "08", title: "PREVIDÊNCIA", icon: "Hourglass", items: ["Previdência", "Prestamista"] },
+  { number: "06", title: "AÉREO E MARÍTIMO", icon: "Plane", items: ["Marítimos", "Aeronáuticos", "Hangares"] },
+  { number: "07", title: "TRANSPORTE", icon: "Truck", items: ["TRANSPORTE NACIONAL E INTERNACIONAL DE CARGAS", "RESPONSABILIDADE CIVIL DE CARGAS", "TRANSPORTADOR DE CARGAS", "OPERADOR DE CARGAS"] },
+  { number: "08", title: "PREVIDÊNCIA", icon: "Hourglass", items: ["Planos de previdência", "Seguros prestamistas"] },
 ];
 export const differentiators = [
   { number: "01", title: "SEGURANÇA", description: "Equipe qualificada, atuação autorizada pela SUSEP e parceria com diversas seguradoras para proteger seu patrimônio." },
   { number: "02", title: "SUPORTE", description: "Atendimento humanizado e especializado, disponível 24 horas por dia." },
   { number: "03", title: "AGILIDADE", description: "Agilidade nas cotações e no acompanhamento e resolução de sinistros." },
 ];
+
+// Presentation only: retain the official full sentences above as the source of truth.
+export function differentiatorDetails(description: string): string[] {
+  return description.replace(/\.$/u, "").split(/, | e (?=parceria)| e no (?=acompanhamento)/u)
+    .map((part) => part.charAt(0).toLocaleUpperCase("pt-BR") + part.slice(1));
+}
 
 export const navigation = [
   { label: "SERVIÇOS", href: "#servicos" },
@@ -27,9 +33,9 @@ export const contacts = [
   { name: "Joana", role: "Saúde", phone: "(61) 98563-8090", href: "https://wa.me/5561985638090" },
 ] as const;
 
-// Candidates stay inactive until the actual profiles can be verified.
+// Owner-provided destinations: preserve these exact links even if public access is blocked.
 export const digitalChannels = {
-  instagram: { handle: "@zury_corretora", candidate: "https://www.instagram.com/zury_corretora/", verified: false },
-  tiktok: { handle: "@zury_corretora", candidate: "https://www.tiktok.com/@zury_corretora", verified: false },
+  instagram: { handle: "@zury_corretora", href: "https://www.instagram.com/zury_corretora/" },
+  tiktok: { handle: "@zury_corretora", href: "https://www.tiktok.com/@zury_corretora" },
   email: "contato@zurycorretora.com",
 } as const;

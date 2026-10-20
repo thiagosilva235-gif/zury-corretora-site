@@ -7,7 +7,7 @@
 > **Documento complementar:** [`AGENTS.md`](./AGENTS.md) contém somente instruções de execução para o Codex; não substitui este documento.  
 > **Regra essencial:** não inventar textos, produtos, contatos, afirmações comerciais ou áreas extras para preencher o layout.
 > **Revisão visual de 19/10/2026:** Premium Dark Gradient, navegação com cinco opções e contatos em popovers aprovados expressamente no pedido de redesign. Esta revisão substitui as decisões anteriores correspondentes; o escudo continua sem aprovação e isolado.
-> **Refinamento complementar de 19/10/2026:** Flow Glass compartilhado com cápsulas na navbar, interface sem setas visuais, CONTATOS textual à esquerda no rodapé e WhatsApp destacado. A navbar só reaparece no topo. Preservar a aplicação existente e o gate do escudo.
+> **Refinamento complementar de 19/10/2026:** cápsulas Flow Glass compartilhadas na navbar e nos menus; contato e redes sociais separados; rodapé sem botão WhatsApp; produtos revisados no plural. Header completo com saída conjunta de 475 ms e reaparecimento somente no topo. Listas com marcadores discretos e 12 px entre produtos; diferenciais em caixa alta por CSS, organizados em trechos com marcadores e divisórias. Painel do rodapé compartilha as animações dos cards. Fundos atuais congelados: combinação definitiva ainda aguarda escolha expressa do responsável. Preservar a aplicação existente e o gate do escudo.
 
 ---
 
@@ -124,6 +124,19 @@ Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nomina
 - Não substituir o lettering vetorizado da logo por Inter Tight; a fonte Inter Tight se destina **ao conteúdo e à interface do site**.
 - Não sacrificar legibilidade para manter tudo em uma única linha; quebras pensadas são preferíveis a fontes microscópicas.
 
+**Tracking desta revisão — valores finais fixos, sem reaplicar os percentuais:**
+
+| Uso | Base anterior | Cálculo | Valor final |
+| --- | --- | --- | --- |
+| Hero desktop | `-0.02125em` confirmado | base + 20% do módulo, em direção a zero | `-0.017em` |
+| Hero mobile | `-0.017em` confirmado | base + 20% do módulo, em direção a zero | `-0.0136em` |
+| Títulos das duas seções | `-0.03825em` confirmado | base + 20% do módulo, em direção a zero | `-0.0306em` |
+| Três linhas legais do rodapé | `normal` confirmado | referência numérica explícita `0.01em × 1.20` | `0.012em` |
+| Descrições dos diferenciais | `normal` | referência explícita `0.01em × 1.30` | `0.013em` |
+| Produtos dos serviços | `0.013em` confirmado no CSS | incremento adicional fixo de 15% | `0.01495em` |
+
+`normal` não fornece um incremento numérico útil: nas informações legais, a referência explícita de `0.01em` permite aplicar 20%, em vez de multiplicar zero. Nos diferenciais, preservar o tracking de `0.013em` da revisão anterior. Valores negativos aproximam-se de zero para ampliar visualmente o espaçamento. Não alterar tamanho das fontes ou `word-spacing`, nem reaplicar percentuais sobre estes valores finais.
+
 ### 4.3. Composição e grid
 
 - Largura máxima confortável para conteúdo, com margens generosas e proporcionais; **não esticar excessivamente em monitores ultrawide**.
@@ -149,8 +162,9 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 
 - Derivar o efeito da faixa diagonal de luz do antigo botão CONTATO: fluxo amplo e suave de prata/grafite atravessando a superfície, sem spotlight circular, rastreamento do cursor, neon ou pontos artificiais.
 - Compartilhar tokens de gradiente, transparência, bordas, blur, raios, duração e easing. Animar apenas a camada decorativa limitada à superfície, por transform e opacity, sem mover texto ou animar blur.
-- Aplicar aos cinco itens de navegação, botão WhatsApp, cards de serviços/institucionais e opções realmente selecionáveis dos popovers. Os cards continuam informativos, sem falso clique ou cursor de botão.
-- Hover apresenta superfície cristalina leve e reflexo desacelerado; saída desvanece gradualmente. Estado ativo usa superfície estática ainda mais discreta, nunca underline. Foco visível independente do efeito.
+- Aplicar aos cinco itens de navegação, cards de serviços/institucionais e opções selecionáveis dos popovers. Os cards continuam informativos, sem falso clique ou cursor de botão.
+- Uma única primitiva `flow-glass flow-capsule` serve navbar, WhatsApp, e-mail, Instagram, TikTok e os três contatos: raio totalmente arredondado, overflow recortado, contorno cristalino fino, fundo translúcido e reflexo atrás do texto. Nenhum retângulo aparece durante hover/foco/pressão. Intensidade pode variar, sem bibliotecas ou efeitos concorrentes.
+- Hover apresenta superfície cristalina leve e reflexo desacelerado; saída desvanece gradualmente. Na navbar, preservar integralmente o Liquid Glass aprovado durante hover (reflexo, glow, transparência, blur, borda, raio, duração, easing e intensidade). Em repouso, inclusive link ativo sem hover, mostrar somente texto, sem fundo, contorno individual ou glow permanente; preservar `aria-current` e contraste textual, nunca underline. Foco visível e popovers abertos conservam seus estados acessíveis. Não modificar a estrutura externa, padding, posições ou parâmetros do hover para remover as cápsulas inativas; limitar a correção ao CSS de repouso da navbar.
 - Touch recebe feedback de pressão sem hover persistente; reduced motion conserva resposta estática sem deslocamento do reflexo. Sem loops contínuos ou listeners de pointermove.
 - Não existem setas visuais na landing page, inclusive em links, menus e carrosséis. Expansão WhatsApp pode usar sinal mais/menos, não chevron.
 
@@ -163,8 +177,8 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Logo oficial completa branca centralizada e navbar flutuante Liquid Glass, centralizada e bem distribuída sobre os novos fundos escuros.
 - Exatamente cinco opções, nesta ordem: `SERVIÇOS` → `#servicos`; `DIFERENCIAIS` → `#sobre`; `SOBRE` → `#institucional` (conteúdo institucional dentro do footer); `CONTATO` → popover de canais ancorado à navbar; `REDES SOCIAIS` → popover próprio ancorado à navbar. Ambos abrem preferencialmente abaixo, com reposicionamento para caber na viewport.
 - Não criar uma quinta seção para SOBRE. O ID `institucional` pertence à coluna legal já existente.
-- Hover e ativo em cápsulas integradas ao painel (`border-radius: 9999px`), padding confortável e borda cristalina delicada. Flow Glass atrás do texto; ativo mais discreto e estático que hover, sem sublinhado. Informar `aria-current` quando aplicável; preservar foco e feedback de toque.
-- Header visível inicialmente e no topo; oculta suavemente após pequeno limite de descida, com opacidade e deslocamento para cima em aproximadamente 450–650 ms. **Não reaparece ao subir: somente ao retornar ao topo.** Usar histerese contra flicker (referência: ocultar a partir de 88 px, revelar até 8 px). Remover a detecção de direção ascendente e o reaparecimento global por Tab. Não ocultar enquanto popover da navbar estiver aberto ou foco estiver em seus controles visíveis; ao terminar, retomar a política de posição. Nunca deixar foco preso em elemento invisível. Reduced motion mantém a regra sem deslocamento prolongado.
+- Os cinco itens ficam somente textuais em repouso, sem cápsulas visíveis, mantendo posição, padding, tamanho e espaçamento. Em hover, preservar exatamente o Liquid Glass existente e seu raio `9999px`, borda, fundo, reflexos e animação; na saída, retornar ao repouso limpo com os parâmetros existentes. A estrutura externa Liquid Glass permanece intacta. Informar `aria-current` quando aplicável; preservar contraste do ativo, foco acessível, popovers abertos e feedback de toque, sem sublinhado.
+- Header visível inicialmente e no topo; logo, contêiner superior e navbar animam como uma unidade em 475 ms (faixa de referência 400–550 ms), `power2.out` com desaceleração, fade e deslocamento de 24 px para cima. **Não reaparece ao subir: somente ao retornar ao topo.** Usar histerese contra flicker (ocultar a partir de 88 px, revelar até 8 px). Não recolher altura/gap da marca durante o scroll. Não ocultar enquanto popover da navbar estiver aberto ou foco estiver em seus controles visíveis; ao terminar, retomar a política de posição. Oculto fica inert, sem bloquear cliques ou prender foco. Reduced motion mantém a regra sem deslocamento prolongado.
 - Contraste e reflexos se ajustam aos fundos, sem troca abrupta de tema.
 
 ### 5.2. Mobile
@@ -177,7 +191,7 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 
 ### 5.3. Comportamento e acessibilidade
 
-- Navegação por âncoras com deslocamento suave de caráter cinematográfico, **sem interceptar ou sequestrar o scroll nativo**.
+- Navegação programática por âncoras usa somente GSAP ScrollToPlugin, com `power2.inOut`, duração por distância limitada a 0,55–1,10 s, alvo por posição de layout (sem transforms de reveal), margem fixa de 96 px (livra os títulos do final do fade da navbar) e limite do documento. CSS vertical usa `scroll-behavior: auto`, sem `scrollIntoView` ou segundo tween concorrente. Novo clique substitui o anterior; wheel, toque e teclas de rolagem interrompem a animação, sem sequestrar o scroll manual. Hash e foco são preservados; regiões de destino não desenham borda de foco ao redor da seção inteira, mas todos os controles mantêm foco visível. Reduced motion navega imediatamente. Carrosséis mantêm apenas seu scroll horizontal nativo local.
 - `prefers-reduced-motion: reduce`: navegação funcional e rápida, sem animações longas.
 - Estados de hover, foco visível e ativo diferenciáveis. Informar link ativo adequadamente (`aria-current` quando aplicável).
 - Não bloquear clique ou foco em elementos próximos; suportar teclado, mouse, toque e leitores de tela.
@@ -201,7 +215,9 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - O escudo é protagonista visual sem empurrar a tipografia ou invadir margens.
 - Mobile: headline **centralizada acima do escudo**, escudo com largura visual próxima de **75% da área útil**; altura responsiva, sem forçar corte de conteúdo ou viewport excessiva.
 - Headline em caixa alta, Inter Tight, peso predominantemente semibold, com quebras lineares cuidadosamente compostas por largura.
-- Tracking moderadamente ampliado em relação à versão anterior: referência `-0.025em` no desktop e `-0.02em` no mobile, com ajuste responsivo de tamanho para não invadir o espaço 40%/60% ou fragmentar palavras.
+- Tracking conforme §4.2: `-0.017em` desktop e `-0.0136em` mobile, sem mudar a frase, remover espaços entre palavras ou invadir o espaço 40%/60%.
+- Preservar as três linhas e limites de tamanho; escala fluida desktop ajustada de `5.5vw` para `5.45vw` (redução inferior a 1%, sem aumento de fonte) para acomodar o tracking ampliado dentro dos 40%, inclusive em 1440 px. Mobile mantém a escala existente.
+- Abaixo da composição superior de marca/navbar, incluir somente transição visual por pseudo-elementos: mesmo filete prateado difuso e gradiente tonal usado entre seções, sem conteúdo novo ou borda pesada.
 - Entrada visual: **texto primeiro** e escudo **depois**; uma vez estabilizado, flutuação muito discreta e rotação lenta parcial do escudo.
 - Nenhuma rotação manual do escudo por gesto/toque no mobile.
 
@@ -262,7 +278,8 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Centralizada em todos os dispositivos; distância até cartões moderada e visualmente equilibrada.
 - **Oito cartões, na ordem abaixo**, com informações **sempre visíveis** (sem acordeão, flip, tooltip obrigatório, expansão ou clique para revelar serviços). Numeração `01` a `08` oculta no desktop/tablet em grid; pode permanecer nos cards mobile. Não alterar o contador funcional do carrossel.
 - Cartões são **informativos, não links**: não criar cursores de botão, onClick decorativo ou falsa affordance.
-- Cada cartão contém ícone linear correspondente, título e lista de serviços **sem marcadores/bullets**, com todos os textos visualmente em caixa alta por CSS. Preservar grafia, acentos, ordem e capitalização originais nos dados de `lib/content.ts`; numeração visual somente no mobile. Reorganizar espaço no desktop mantendo alinhamento e altura uniforme.
+- Cada cartão contém ícone linear correspondente, título e lista semântica com um marcador nativo discreto por produto, prata neutra e alinhado à primeira linha, com recuo suspenso consistente nas quebras. Usar 12 px de `row-gap` entre produtos (referência 10–14 px), não apenas entrelinha. Todos os textos visualmente em caixa alta por CSS. Preservar grafia, acentos, ordem e capitalização originais nos dados de `lib/content.ts`; numeração visual somente no mobile. A altura uniforme cresce conforme o conteúdo real máximo, sem cortes ou altura fixa limitante.
+- Divisórias apenas entre produtos, nunca após o último: compartilhar com os diferenciais o token de borda `1px solid rgba(214,211,209,.14)`, sem gradiente adicional. Nos serviços, posicionar o filete no centro do intervalo existente de 12 px, preservando tracking, entrelinha, espaçamento e altura intrínseca. Sem caracteres desenhando linhas ou marcadores duplicados.
 - Ícone **sem fundo, sem círculo, sem quadrado e sem contêiner decorativo**; deve estar ao lado do título, com alinhamento refinado.
 - Conteúdo ancorado no topo; espaços inferiores vazios devem ser apenas consequência natural da altura uniforme.
 
@@ -271,38 +288,38 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 #### 01 — BENS
 
 - Ícone: `house`
-- Residencial
-- Condomínio
+- Residenciais
+- Condomínios
 - Imóveis
-- Empresarial
+- Empresariais
 - Equipamentos agrícolas
-- Industrial
+- Industriais
 - Armazéns
-- Engenharia
+- Seguros de engenharia
 - Usinas
 
 #### 02 — VIDA E SAÚDE
 
 - Ícone: `heart-pulse`
-- Seguro de vida
-- Plano de saúde
-- Odontológico
+- Seguros de vida
+- Planos de saúde
+- Odontológicos
 
 #### 03 — AGRO
 
 - Ícone: `sprout`
-- Seguro agrícola
-- Transporte
-- Logística
+- Seguros agrícolas
+- Transportes
+- Soluções de logística
 - Safras
-- Pecuário
+- Pecuários
 
 #### 04 — AUTOMOTIVO
 
 - Ícone: `car-front`
-- Automóvel
+- Automóveis
 - Frotas
-- Moto
+- Motos
 - Caminhões
 
 #### 05 — CRÉDITO
@@ -315,25 +332,27 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 #### 06 — AÉREO E MARÍTIMO
 
 - Ícone: `plane`
-- Marítimo
+- Marítimos
 - Aeronáuticos
-- Hangar
+- Hangares
 
 #### 07 — TRANSPORTE
 
 - Ícone: `truck`
-- Nacional/internacional
-- RC de cargas
-- Transportador
-- Operador
+- TRANSPORTE NACIONAL E INTERNACIONAL DE CARGAS
+- RESPONSABILIDADE CIVIL DE CARGAS
+- TRANSPORTADOR DE CARGAS
+- OPERADOR DE CARGAS
 
 #### 08 — PREVIDÊNCIA
 
 - Ícone: `hourglass`
-- Previdência
-- Prestamista
+- Planos de previdência
+- Seguros prestamistas
 
 **Contagem de integridade:** 8 cartões, **33 linhas de produtos/serviços** no total; `BENS` possui 9 linhas e é o cartão mais longo. As 33 linhas devem estar presentes e na ordem oficial; preservar letras acentuadas, caixa, barra e grafia exatamente como especificadas.
+
+As denominações foram pluralizadas sem mudar modalidades. Engenharia, logística e previdência usam os núcleos plurais Seguros, Soluções e Planos para evitar plurais artificiais dos nomes de área. Os quatro textos específicos de TRANSPORTE prevalecem literalmente sobre a regra geral de plural e ficam em caixa alta também na fonte de dados.
 
 ### 8.3. Responsividade e dimensionamento
 
@@ -355,7 +374,8 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 - Headline **exatamente** `NOSSOS DIFERENCIAIS`.
 - Não apresentar `DIFERENÇA ZURY`, `A DIFERENÇA ZURY` ou qualquer subtítulo substituto acima desse título.
 - Centralizada em todas as larguras, com espaçamento equilibrado até os cartões.
-- Três cartões institucionais numerados na ordem `01`, `02`, `03`, com o mesmo tratamento Liquid Glass da seção anterior, ajustado ao cinza de fundo.
+- Três cartões institucionais sem numeração visual dentro dos cards em qualquer largura, com o mesmo tratamento Liquid Glass da seção anterior, ajustado ao cinza de fundo. Todo o conteúdo dos cards em caixa alta por CSS, preservando dados originais, acentos, ordem e hierarquia. Apresentar cada alegação em item semântico com marcador discreto e divisória CSS prateada de 1 px/baixa opacidade apenas entre itens; não usar caracteres para desenhar linhas. Acomodar naturalmente as quebras e a altura real máxima. Preservar contadores e indicadores do carrossel.
+- Ícones Lucide à esquerda dos títulos: SEGURANÇA `shield-check`, SUPORTE `headset`, AGILIDADE `zap`. Reutilizar o alinhamento e a cor `#d0d2cd` dos serviços, tamanho 24 px, `strokeWidth: 1.4`, gap de 12 px; sem fundo, círculo ou contêiner decorativo. Ícones decorativos ocultos para tecnologias assistivas; títulos, ordem, marcadores e divisórias preservados.
 - Desktop: **três cartões lado a lado**, de mesma altura, tendo como referência o texto mais longo.
 - Mobile: carrossel de swipe com próximo cartão parcial, instrução gestual **em caixa alta imediatamente acima**, indicadores selecionáveis sem setas e contador **`01 / 03` a `03 / 03`**. Nenhum conteúdo pode ser truncado.
 - Sem expansão, flip, links falsos ou clickboxes não funcionais.
@@ -368,7 +388,9 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 | 02 | **SUPORTE** | `Atendimento humanizado e especializado, disponível 24 horas por dia.` |
 | 03 | **AGILIDADE** | `Agilidade nas cotações e no acompanhamento e resolução de sinistros.` |
 
-A ordem SEGURANÇA → SUPORTE → AGILIDADE e a numeração correspondente são únicas nos dados e se aplicam ao desktop, tablet, carrossel e navegação acessível.
+A ordem SEGURANÇA → SUPORTE → AGILIDADE e os índices correspondentes são únicos nos dados e se aplicam ao desktop, tablet, carrossel e navegação acessível. Os índices não são conteúdo visual dos cartões.
+
+Os textos completos da tabela permanecem imutáveis na fonte de dados. É autorizada sua divisão de apresentação: SEGURANÇA em equipe qualificada / atuação autorizada pela SUSEP / parceria com diversas seguradoras para proteger seu patrimônio; SUPORTE em atendimento humanizado e especializado / disponível 24 horas por dia; AGILIDADE em agilidade nas cotações / acompanhamento e resolução de sinistros. Omitir somente conectivos e pontuação de união, sem novas alegações ou alteração de significado.
 
 **Observação editorial:** o responsável pela marca **confirmou e autorizou expressamente** as afirmações sobre disponibilidade 24h, autorização SUSEP e parceria com seguradoras. Implementar o texto aprovado sem inventar novas alegações de prazo, cobertura, garantia, preço ou ranking. A confirmação foi fornecida pelo responsável; não constitui verificação independente do registro.
 
@@ -380,13 +402,15 @@ A ordem SEGURANÇA → SUPORTE → AGILIDADE e a numeração correspondente são
 
 - Fundo grafite profundo `#1C1C1C`, transição gradual a partir da seção institucional.
 - **Painel Crystalline Liquid Glass** refinado com cantos de raio moderado, contorno fino e luz sutil.
+- Reutilizar a mesma entrada dos cards (850 ms, `power3.out`, opacity e y de 24 px), com reveal no wrapper e hover no painel filho. Compartilhar `glass-card` e `flow-glass`: elevação de 4 px em 400 ms, borda em 350 ms, reflexo em 1200 ms e fade em 380 ms, sem tween concorrente. Foco nos controles internos ilumina o painel; movimento reduzido remove deslocamentos. Não transformar o painel/textos legais em botões nem dar animação de clique ao painel informativo. Arquitetura de contatos permanece intacta.
+- Logo, grupo de navegação, institucional e copyright entram coordenadamente: uma única timeline/ScrollTrigger para o painel, conservando os 24 px de deslocamento compartilhado e fades internos de 850 ms/`power3.out` com stagger de 60 ms. Não somar deslocamentos nos filhos, ocultar conteúdo sem JS ou animar controles concorrentes. Preservar reentrada/cleanup e conteúdo estático com movimento reduzido. CONTATOS continua texto simples, sem cápsula ou ícone; os itens dos popovers mantêm o Flow Glass compartilhado.
 - **Logo oficial completa branca** (SVG otimizado branco), proporcional, visível e nítida.
 - Não inserir um formulário, CTA extra, mapa, links sociais não fornecidos, badges inventados ou áreas promocionais.
 
 ### 10.2. Colunas e ordem
 
-- Desktop: três colunas **`Navegação` → `Contato` → `Institucional`**.
-- Mobile: empilhamento **`Contato` → `Navegação` → `Institucional`**, espaços compactos e divisórias discretas, sem repetir logo ou conteúdo desnecessariamente.
+- Desktop: duas colunas úteis **`Navegação/CONTATOS` → `Institucional`**, sem coluna vazia reservada ao botão removido.
+- Mobile: empilhamento **`Navegação/CONTATOS` → `Institucional`**, espaços compactos e divisórias discretas, sem repetir logo ou conteúdo desnecessariamente.
 
 **Navegação** — links na mesma página, sem duplicar o botão principal de contato:
 
@@ -395,7 +419,7 @@ A ordem SEGURANÇA → SUPORTE → AGILIDADE e a numeração correspondente são
 - `DIFERENCIAIS` → `#sobre`
 - `SOBRE` → `#institucional`
 
-**Contato** — o antigo CONTATO textual central é substituído por CONTATOS na coluna esquerda, conforme acima. Abre o mesmo conteúdo de canais da navbar, sem navegar/rolar. Separadamente, preservar botão `WHATSAPP` com ícone de marca, gradiente exclusivamente grafite/prata/cinza mineral/preto, cantos arquitetônicos moderados, borda fina e Flow Glass. Abre popover exclusivo contendo exatamente os três contatos abaixo, individualmente clicáveis e identificados como `THIAGO — CORRETOR`, `VALDIR — CONSULTOR`, `JOANA — SAÚDE`. Reutilizar dados e lógica; nenhum número ou canal em lista estática fora dos menus:
+**Contato** — CONTATOS na coluna esquerda abre o mesmo conteúdo de contato da navbar, sem navegar/rolar. **Remover integralmente o botão WhatsApp gradiente e seu popover exclusivo**, sem substituto, ícone flutuante ou espaço reservado. WhatsApps e e-mail são acessados exclusivamente por CONTATO da navbar e CONTATOS do footer, nunca por REDES SOCIAIS. Os três contatos oficiais permanecem individualmente clicáveis, identificados como `THIAGO — CORRETOR`, `VALDIR — CONSULTOR`, `JOANA — SAÚDE`. Reutilizar dados e lógica; nenhum número ou canal em lista estática fora dos menus:
 
 | Nome | Identificação | Telefone exibido | Link exato |
 | --- | --- | --- | --- |
@@ -409,9 +433,10 @@ A ordem SEGURANÇA → SUPORTE → AGILIDADE e a numeração correspondente são
 
 ### 10.3. Balões de contato e redes sociais
 
-- Um único componente-base compartilhado para contato, redes sociais e WhatsApp, mutuamente exclusivos. CONTATO e REDES SOCIAIS da navbar abrem abaixo de seus gatilhos, sem rolagem até o rodapé. CONTATOS do footer abre preferencialmente à direita do texto, com fade e deslocamento horizontal sutil; reposicionar automaticamente quando a abertura lateral não couber, inclusive no mobile. WhatsApp do rodapé mostra diretamente os três contatos, sem outros canais.
-- Canais: WhatsApp com os três contatos oficiais; Instagram `@zury_corretora`; TikTok `@zury_corretora`; e-mail `contato@zurycorretora.com` com `mailto:contato@zurycorretora.com`.
-- Candidatos sociais: `https://www.instagram.com/zury_corretora/` e `https://www.tiktok.com/@zury_corretora`. Ativar somente após validação dos perfis. Em 19/10/2026, a consulta pública não permitiu confirmação suficiente (Instagram indisponível na consulta; TikTok bloqueado). Exibir identificadores e pendência, sem links ativos enquanto não forem validados.
+- Um único componente-base com variantes de conteúdo **contato** e **social**, mutuamente exclusivas. CONTATO e REDES SOCIAIS da navbar abrem abaixo de seus gatilhos, sem rolagem até o rodapé. CONTATOS do footer abre preferencialmente à direita do texto, com fade e deslocamento horizontal sutil; reposicionar automaticamente quando a abertura lateral não couber, inclusive no mobile.
+- **Contato:** exclusivamente WhatsApp (seleção dos três contatos oficiais) e e-mail `contato@zurycorretora.com`, com `mailto:contato@zurycorretora.com`. Nunca Instagram/TikTok.
+- **Redes sociais:** exclusivamente Instagram `@zury_corretora`, `https://www.instagram.com/zury_corretora/`, e TikTok `@zury_corretora`, `https://www.tiktok.com/@zury_corretora`. Nunca WhatsApp/e-mail. Links fornecidos pelo proprietário devem permanecer ativos e literais mesmo se houver bloqueio de acesso na inspeção; não inventar alternativas.
+- Inspeção pública nesta revisão: ambos os destinos abriram no navegador integrado e exibiram o identificador `zury_corretora`, sem login. Isto confirma acessibilidade pública dos destinos, não a titularidade das contas.
 - Popovers ancorados com transparência contextual, blur, bordas finas, ícones discretos e abertura suave. Fechar por Escape, clique fora e botão fechar; teclado, foco/restauração e posição sempre dentro do viewport. Mobile pode usar painel flutuante responsivo.
 - Nenhum formulário. Dados legais e copyright permanecem visíveis, exatamente uma vez.
 
@@ -441,6 +466,8 @@ SUSEP: 262180499
 
 - A sensação deve ser de uma narrativa contínua, **cinematográfica, refinada, suave e não intrusiva**.
 - **Transição progressiva de luminosidade entre os quatro tons**; pode ser implementada com camadas de fundo e interpolação de scroll, respeitando performance.
+- Fundos definidos em tokens únicos: Hero em grafite mais profundo com luz controlada; Soluções em cinza mineral mais luminoso; Diferenciais em grafite com luz cinza-prata diagonal própria; footer em grafite profundo. Tons de encontro compartilhados mantêm continuidade. Separadores existentes, inclusive entre header e Hero: filete de 1 px com prata de opacidade moderadamente ampliada, extremidades dissipadas e halo extremamente suave, sem faixas ou brilho intenso.
+- Nesta etapa os backgrounds, tonalidades, luzes ambientes e separadores atuais estão congelados. Não selecionar outra combinação entre as dez em avaliação nem declarar uma paleta definitiva aprovada antes da escolha expressa do responsável.
 - Elementos surgem com opacidade e deslocamento mínimos, em tempos coordenados, sem `bounce`, elasticidade excessiva ou trajetórias decorativas.
 - **Revelações devem poder acontecer novamente quando o usuário voltar à seção**; implementar com controle de reentrada estável, sem flicker ou reanimações compulsivas a cada pixel.
 - Navbar inteligente ao rolar; estados ativos e transições de vidro bem sincronizados.
@@ -644,12 +671,12 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - [ ] Há **exatamente 4 seções**, na ordem Hero → Soluções → Diferenciais → Footer, sem formulário ou seção de contato adicional.
 - [ ] Hero apresenta **exatamente** `ENTREGAMOS VALOR ALÉM DE PREÇO` e escudo aprovado, sem CTA/subtítulo/scroll cue.
 - [ ] Navbar contém **exatamente** `SERVIÇOS`, `DIFERENCIAIS`, `SOBRE`, `CONTATO`, `REDES SOCIAIS`; destinos e balões funcionam conforme §5.
-- [ ] Ativo da navbar usa **reflexão sutil atrás do texto**, **não** underline.
+- [ ] Navbar mostra somente texto em repouso, inclusive no ativo, sem cápsula individual permanente; `aria-current`, contraste e foco preservados. Hover conserva exatamente o Liquid Glass aprovado, sem alteração de parâmetros, nunca underline.
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
 - [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `AGRO`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `PREVIDÊNCIA`.
-- [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes e sem bullets.
-- [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, numerados 01/02/03, com cópias literais do §9.2 em todas as larguras.
-- [ ] Footer tem CONTATOS textual à esquerda acima de SERVIÇOS, menu preferencialmente à direita e botão WhatsApp separado. Popover WhatsApp contém exatamente três contatos; CONTATOS oferece WhatsApp, canais digitais e e-mail. Sem números estáticos. Dados legais e copyright aparecem uma vez; perfis sociais pendentes não recebem links ativos.
+- [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets; 25 divisórias intermediárias compartilham o acabamento dos diferenciais, sem filete após o último produto.
+- [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2 e apresentação segmentada autorizada, em caixa alta, com marcadores e divisórias discretas em todas as larguras; contador mobile preservado.
+- [ ] Footer tem CONTATOS textual à esquerda acima de SERVIÇOS, menu preferencialmente à direita, sem botão WhatsApp, substituto ou espaço reservado. CONTATO/CONTATOS contêm somente WhatsApp/e-mail; REDES SOCIAIS contém somente os dois links exatos fornecidos. Dados legais e copyright aparecem uma vez.
 - [ ] Balões de contato e redes sociais compartilham lógica, são mutuamente exclusivos e fecham por Escape, clique fora e botão fechar, com foco e posicionamento corretos.
 - [ ] A expressão DIFERENÇA ZURY foi removida; gradientes neutros distintos, vidro cristalino e microinterações refletem o redesign aprovado.
 
@@ -659,6 +686,8 @@ O site **somente** será considerado pronto para publicação depois de todos os
 - [ ] Largura intermediária comporta 2 colunas nos serviços quando necessário.
 - [ ] Mobile: serviços e institucionais em carrossel de toque, com **peek**, instrução gestual, indicadores selecionáveis sem setas, contador correto e todos os conteúdos visíveis.
 - [ ] Flow Glass compartilhado substitui spotlight; cápsulas nos cinco itens da navbar com ativo/foco/touch e reduced motion. Navbar oculta após limite, continua oculta ao subir e só reaparece no topo, sem flicker; interações abertas/foco visível são protegidos.
+- [ ] Mesma primitiva de cápsula em todos os itens interativos dos popovers, sem reflexos retangulares. Saída conjunta de logo, contêiner e navbar em 475 ms, deslocamento discreto e sem bloqueio quando oculta. Painel do footer compartilha reveal, elevação e Flow Glass dos cards, sem falso clique ou conflito de transforms.
+- [ ] Tracking confere com a tabela fixa do §4.2; produtos no plural e quatro textos novos de TRANSPORTE correspondem ao §8.2. Navegação usa um único tween vertical, cancelável, com alinhamento estável.
 - [ ] Serviços sem números no desktop, textos em caixa alta por CSS e dados originais preservados. Hero com tracking ampliado, sem clipping. Três transições de seção compartilham filete prateado difuso e discreto.
 - [ ] BENS com suas 9 linhas está completamente legível em todos os dispositivos.
 - [ ] Navbar mobile mantém cinco opções acessíveis e logo legível, sem hamburger e sem overflow.
@@ -690,7 +719,7 @@ O site **somente** será considerado pronto para publicação depois de todos os
 **NÃO fazer:**
 
 - Criar logos novas ou alterar o monograma, a tipografia e os caminhos SVG oficiais.
-- Criar uma quinta seção, formulário, CTA no Hero, botão de orçamento genérico, depoimentos inventados ou perguntas frequentes. CONTATOS textual e botão WhatsApp do §10 são autorizados.
+- Criar uma quinta seção, formulário, CTA no Hero, botão de orçamento genérico, depoimentos inventados ou perguntas frequentes. CONTATOS textual do §10 é autorizado; botão WhatsApp no rodapé não é permitido.
 - Esconder serviços em accordions, criar cards clicáveis falsos ou cortar linhas longas para uniformizar alturas.
 - Trocar carrossel mobile por empilhamento vertical sem justificativa aceita, remover o peek ou ocultar os controles.
 - Criar hamburger como atalho para resolver o espaço da navbar mobile.
