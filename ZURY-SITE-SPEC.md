@@ -259,16 +259,24 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 
 ## 7. Escudo 3D: execução, visual e aprovação obrigatória
 
+### 7.0. Revisão cinematográfica — 20/10/2026
+
+O pedido mais recente substitui a frente prateada anterior por **metal grafite quase preto, escovado acetinado**, com reflexos prateados discretos. `IMG_3369.PNG` é a referência prioritária da silhueta, monograma Z, proporções, recortes, bordas e chanfros; `IMG_3367.PNG` orienta exclusivamente a iluminação cinematográfica. Cópias intactas em `public/shield/references/`.
+
+O responsável autorizou desenvolver isoladamente, inspecionar e depois integrar à direita da Hero; isso não equivale a aprovação visual do resultado. A integração depende de reprodução satisfatória: se o estudo procedural não atingir a fidelidade solicitada, explicar as diferenças e propor um modelo GLB dedicado antes de avançar. **Estado atual: estudo isolado, sem integração por fidelidade visual insuficiente**, especialmente no relevo, escovação e resposta dos chanfros.
+
+Entrada de 2,5–4 s, flutuação vertical mínima, mouse tilt amortecido e limitado, parallax/pequenas rotações por ScrollTrigger e variação discreta dos reflexos. Toque adaptado com amplitude reduzida e scroll vertical nativo, substituindo a proibição anterior de interação móvel. Configuração central em `components/shield/motion-config.mjs`; grupos separados possuem entrada, flutuação, tilt e scroll. Reduced motion e falhas WebGL exibem poster transparente do próprio estudo, sem carregar/manter o Canvas no modo reduzido. A prévia permite inspeção frontal, inclinada, perfil e sobreposição dos contornos à imagem 2. O poster é provisório, não um ativo aprovado.
+
 **Este é um fluxo de produção com gate de aprovação, não uma tarefa de implementação única.**
 
 ### 7.1. Aparência obrigatória
 
 - Escudo tridimensional **verdadeiro**, sofisticado, geométrico e arquitetônico.
-- **Face frontal:** prata acetinada/escovada, brilho controlado, microtextura apenas se contribuir para realismo.
-- **Laterais/chanfros:** grafite, profundidade contida e bordas precisas, sem aparência de plástico ou brinquedo.
+- **Face frontal:** grafite quase preto, metálico e escovado acetinado, conforme §7.0; brilho controlado, sem aparência plástica.
+- **Laterais/chanfros:** profundidade grafite, recortes e bordas precisos com reflexos prateados discretos, preservando a imagem 2.
 - Iluminação de estúdio premium, com highlights suaves e leitura volumétrica limpa.
 - Silhueta reconhecível, proporções elegantes, cantos bem resolvidos, superfície contínua e sem facetas visuais indesejadas.
-- **Não adicionar galhos, asas, partículas, brasões, textos, letras, reflexos coloridos, fundos cenográficos ou objetos secundários.**
+- **Não adicionar galhos, asas, partículas, brasões, textos, letras além do monograma Z original, reflexos coloridos, fundos cenográficos ou objetos secundários.**
 - Movimentação: flutuação contida e rotação **lenta, parcial e contínua** em torno da pose principal; não girar 360° freneticamente nem revelar o verso de forma indevida.
 
 ### 7.2. Implementação preferencial

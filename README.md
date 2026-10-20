@@ -25,9 +25,9 @@ pnpm test
 pnpm build
 ```
 
-Os testes comparam os conteúdos à especificação e verificam simetria, topologia e limites de movimento do escudo. O Node pode emitir um aviso não bloqueante sobre inferência ESM dos arquivos TypeScript nesses testes.
+Os testes comparam os conteúdos à especificação e verificam aberturas reais, chanfros expostos, continuidade das malhas, orçamento geométrico e limites de movimento do escudo. O Node pode emitir um aviso não bloqueante sobre inferência ESM dos arquivos TypeScript nesses testes.
 
-Se o executor de scripts do ambiente retornar `binding to a port: Operation not permitted` no Turbopack, o build foi validado diretamente com o mesmo Node, sem reinstalações:
+Se o executor retornar `binding to a port: Operation not permitted` no Turbopack, o build não está validado nessa execução. É possível tentar o mesmo comando diretamente com Node, sem reinstalações; a tentativa também pode depender das permissões do host:
 
 ```sh
 node node_modules/next/dist/bin/next build
@@ -57,3 +57,9 @@ Em `pnpm dev`, a seção e o link INDICAÇÕES ficam visíveis. Para avaliar um 
 O redesign utiliza gradientes neutros, divisões luminosas sutis e Flow Glass sem spotlight. Navbar sai em 475 ms e só reaparece no topo; foco e menus abertos são protegidos. CONTATOS do rodapé prioriza abertura acima; CONTATO da navbar abre abaixo. Ambos oferecem WhatsApp/e-mail sem números/endereço visíveis. REDES SOCIAIS tem dois links oficiais e Facebook desabilitado. O antigo botão WhatsApp do rodapé continua removido; o flutuante é independente. NOS AVALIE NO GOOGLE preserva o perfil oficial. Serviços e diferenciais mantêm seus carrosséis manuais mobile. SVGs oficiais intactos.
 
 O escudo permanece sem aprovação visual e não está integrado ao Hero. O espaço do modelo está reservado; não há poster ou fallback definitivo. Não publicar o site como concluído antes do gate e do checklist da especificação.
+
+### Estudo cinematográfico do escudo — 20/10/2026
+
+Em `/preview/escudo`, o componente independente usa as duas imagens fornecidas: imagem 2 para traçado da silhueta/recortes do Z e imagem 1 apenas para direção da luz. Extrusões reais, aro com perfil inclinado, chanfros, metal PBR e iluminação de ambiente de estúdio. Contornos e motions ficam centralizados em `components/shield/`; nenhuma dependência nova. Canvas transparente, DPR limitado, suspensão fora da área visível/aba oculta, cleanup e poster PNG derivado do estudo. Reduced motion dispensa o Canvas. Controles permitem comparar frente, três quartos, perfil, traçado e fallback.
+
+**Não é uma reprodução hiper-realista aprovada.** A inspeção mostrou diferenças no relevo, escovação e resposta das bordas. A Hero foi preservada por esse motivo, não por falta de autorização para integrar. Para atingir a prioridade de fidelidade: modelagem dedicada em Blender/CAD sobre a imagem 2, revisão frontal dos contornos e volumes, UV/PBR de metal escovado, iluminação inspirada na imagem 1 e exportação GLB otimizada com poster do mesmo modelo. A parte oculta e a espessura absoluta não são determinadas pelas imagens; exigem validação, sem inventar detalhes. O componente permite reaproveitar motion, lifecycle e fallback na futura integração.

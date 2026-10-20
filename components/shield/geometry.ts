@@ -1,121 +1,111 @@
 import * as THREE from "three";
+import { contours, referencePoint } from "./reference-contours.mjs";
 
-const HALF_SEGMENTS = 192;
-const FACE_RINGS = 32;
-export const SHIELD_BEVEL = 0.026;
-export const SHIELD_DEPTH = 0.27;
-
-/** Only the right half is authored. The left half is its exact reflection. */
-export function shieldOutline() {
-  const right = new THREE.CurvePath<THREE.Vector2>();
-  const curve = (...coordinates: number[]) => {
-    const points = Array.from({ length: 4 }, (_, i) =>
-      new THREE.Vector2(coordinates[i * 2], coordinates[i * 2 + 1]),
-    );
-    right.add(new THREE.CubicBezierCurve(...(points as [THREE.Vector2, THREE.Vector2, THREE.Vector2, THREE.Vector2])));
-  };
-  curve(0, 1.62, 0.44, 1.62, 0.88, 1.49, 1.158, 1.354);
-  curve(1.158, 1.354, 1.218, 1.325, 1.24, 1.29, 1.239, 1.223);
-  curve(1.239, 1.223, 1.233, 0.69, 1.205, 0.05, 1.043, -0.437);
-  curve(1.043, -0.437, 0.88, -0.927, 0.416, -1.421, 0.047, -1.66);
-  curve(0.047, -1.66, 0.025, -1.674, 0.012, -1.681, 0, -1.681);
-  const half = right.getSpacedPoints(HALF_SEGMENTS);
-  return [...half, ...half.slice(1, -1).reverse().map((point) => new THREE.Vector2(-point.x, point.y))];
+function path(commands: (string | number)[][]) {
+  const shape = new THREE.Shape();
+  for (const [op, ...values] of commands) {
+    const p = values as number[];
+    const point = (i: number) => referencePoint(p[i], p[i + 1]) as [number, number];
+    if (op === "M") shape.moveTo(...point(0));
+    if (op === "L") shape.lineTo(...point(0));
+    if (op === "C") shape.bezierCurveTo(...point(0), ...point(2), ...point(4));
+    if (op === "Z") shape.closePath();
+  }
+  return shape;
 }
 
-function insetOutline(outline: THREE.Vector2[], distance: number) {
-  return outline.map((point, i) => {
-    const previous = outline[(i + outline.length - 1) % outline.length];
-    const next = outline[(i + 1) % outline.length];
-    const tangent = next.clone().sub(previous).normalize();
-    // Clockwise contour: the right-hand normal points into the face.
-    return point.clone().add(new THREE.Vector2(tangent.y, -tangent.x).multiplyScalar(distance));
-  });
-}
-
-/** A continuous indexed surface: crowned silver face → tiny graphite bevel → body → back. */
-export function createShieldGeometry() {
-  const outline = shieldOutline();
-  const faceOutline = insetOutline(outline, SHIELD_BEVEL);
-  const count = outline.length;
-  // An analytic crown avoids the star-shaped normals of a radially scaled dome.
-  const crown = (point: THREE.Vector2) => 0.225 - 0.032 * point.x ** 2 - 0.025 * point.y ** 2;
-  const vertices: number[] = [0, 0, 0.225];
-  const uv: number[] = [0.5, 0.5];
-  const indices: number[] = [];
-  const addRing = (points: THREE.Vector2[], z: number | ((point: THREE.Vector2, index: number) => number)) => {
-    const start = vertices.length / 3;
-    for (const [i, point] of points.entries()) {
-      vertices.push(point.x, point.y, typeof z === "number" ? z : z(point, i));
-      uv.push(point.x / 2.5 + 0.5, point.y / 3.4 + 0.5);
-    }
-    return start;
-  };
-  const connect = (inner: number, outer: number) => {
-    for (let i = 0; i < count; i++) {
-      const next = (i + 1) % count;
-      indices.push(inner + i, outer + next, outer + i, inner + i, inner + next, outer + next);
-    }
-  };
-
-  let last = 0;
-  for (let ring = 1; ring <= FACE_RINGS; ring++) {
-    const radius = ring / FACE_RINGS;
-    const start = addRing(faceOutline.map((point) => point.clone().multiplyScalar(radius)), crown);
-    if (ring === 1) {
-      for (let i = 0; i < count; i++) indices.push(0, start + (i + 1) % count, start + i);
-    } else connect(last, start);
-    last = start;
-  }
-  const faceIndexCount = indices.length;
-
-  // Quarter-circle tool radius: 26 thousandths against a 2.48-unit width.
-  for (let step = 1; step <= 8; step++) {
-    const angle = step / 8 * Math.PI / 2;
-    const inset = SHIELD_BEVEL * (1 - Math.sin(angle));
-    const next = addRing(insetOutline(outline, inset), (_, i) => crown(faceOutline[i]) - SHIELD_BEVEL * (1 - Math.cos(angle)));
-    connect(last, next);
-    last = next;
-  }
-  const side = addRing(outline, 0.15 - SHIELD_DEPTH + SHIELD_BEVEL);
-  connect(last, side);
-  last = side;
-  for (let step = 1; step <= 8; step++) {
-    const angle = step / 8 * Math.PI / 2;
-    const next = addRing(insetOutline(outline, SHIELD_BEVEL * (1 - Math.cos(angle))), 0.15 - SHIELD_DEPTH + SHIELD_BEVEL * (1 - Math.sin(angle)));
-    connect(last, next);
-    last = next;
-  }
-  const backCenter = vertices.length / 3;
-  vertices.push(0, 0, 0.15 - SHIELD_DEPTH);
-  uv.push(0.5, 0.5);
-  for (let i = 0; i < count; i++) indices.push(backCenter, last + i, last + (i + 1) % count);
-
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
-  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
-  geometry.setIndex(indices);
-  geometry.addGroup(0, faceIndexCount, 0);
-  geometry.addGroup(faceIndexCount, indices.length - faceIndexCount, 1);
-  geometry.computeVertexNormals();
-  // Stable horizontal grain direction, including at the radial center vertex.
-  const normals = geometry.getAttribute("normal");
+/** A small physical crown with analytic normals, without visible radial facets. */
+function finish(geometry: THREE.BufferGeometry) {
+  const p = geometry.getAttribute("position"), n = geometry.getAttribute("normal"), uv = geometry.getAttribute("uv");
   const tangents: number[] = [];
-  for (let i = 0; i < normals.count; i++) {
-    const normal = new THREE.Vector3().fromBufferAttribute(normals, i);
-    const axis = Math.abs(normal.x) < 0.9 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
-    const tangent = axis.addScaledVector(normal, -axis.dot(normal)).normalize();
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i);
+    p.setZ(i, p.getZ(i) + .06 - .05 * x * x - .013 * y * y);
+    const normal = new THREE.Vector3(n.getX(i) + n.getZ(i) * .10 * x, n.getY(i) + n.getZ(i) * .026 * y, n.getZ(i)).normalize();
+    n.setXYZ(i, normal.x, normal.y, normal.z);
+    const tangent = new THREE.Vector3(1, 0, 0).addScaledVector(normal, -normal.x).normalize();
     tangents.push(tangent.x, tangent.y, tangent.z, 1);
+    uv.setXY(i, (x + 1.4) / 2.8, (y + 1.85) / 3.7);
   }
   geometry.setAttribute("tangent", new THREE.Float32BufferAttribute(tangents, 4));
-  geometry.computeBoundingSphere();
+  geometry.computeBoundingBox(); geometry.computeBoundingSphere();
+  return geometry;
+}
+function solid(shape: THREE.Shape, z: number, depth: number, bevel: number) {
+  const source = new THREE.ExtrudeGeometry(shape, { depth, steps: 1, curveSegments: 48, bevelEnabled: true, bevelThickness: bevel, bevelSize: bevel, bevelOffset: -bevel, bevelSegments: 5 }).translate(0, 0, z);
+  const geometry = subdivide(source);
+  source.dispose();
+  return finish(geometry);
+}
+
+/** Split every long edge on BOTH adjoining triangles, including across material groups.
+ * Longest-edge-only/cap-only tessellation leaves T-junctions that open when curved. */
+function subdivide(source: THREE.BufferGeometry) {
+  type Vertex = { p: THREE.Vector3; n: THREE.Vector3 };
+  type Triangle = [Vertex,Vertex,Vertex];
+  const position = source.getAttribute("position"), normal = source.getAttribute("normal");
+  const vertex = (i:number): Vertex => ({ p:new THREE.Vector3().fromBufferAttribute(position,i), n:new THREE.Vector3().fromBufferAttribute(normal,i) });
+  const midpoint = (a:Vertex,b:Vertex): Vertex => ({ p:a.p.clone().add(b.p).multiplyScalar(.5), n:a.n.clone().add(b.n).normalize() });
+  const positions:number[]=[], normals:number[]=[], geometry=new THREE.BufferGeometry();
+  for(const group of source.groups) {
+    let triangles:Triangle[]=[];
+    for(let i=group.start;i<group.start+group.count;i+=3) triangles.push([vertex(i),vertex(i+1),vertex(i+2)]);
+    for(let pass=0;pass<7;pass++) {
+      const next:Triangle[]=[]; let changed=false;
+      for(const [a,b,c] of triangles) {
+        const mask=(a.p.distanceToSquared(b.p)>.18**2?1:0)|(b.p.distanceToSquared(c.p)>.18**2?2:0)|(c.p.distanceToSquared(a.p)>.18**2?4:0);
+        if(!mask) { next.push([a,b,c]); continue; }
+        changed=true;
+        const ab=midpoint(a,b), bc=midpoint(b,c), ca=midpoint(c,a);
+        if(mask===1) next.push([a,ab,c],[ab,b,c]);
+        if(mask===2) next.push([a,b,bc],[a,bc,c]);
+        if(mask===4) next.push([a,b,ca],[ca,b,c]);
+        if(mask===3) next.push([ab,b,bc],[a,ab,c],[ab,bc,c]);
+        if(mask===5) next.push([a,ab,ca],[ab,b,c],[ca,ab,c]);
+        if(mask===6) next.push([bc,c,ca],[a,b,ca],[b,bc,ca]);
+        if(mask===7) next.push([a,ab,ca],[ab,b,bc],[ca,bc,c],[ab,bc,ca]);
+      }
+      triangles=next; if(!changed) break;
+    }
+    const start=positions.length/3;
+    for(const triangle of triangles) for(const v of triangle) { positions.push(v.p.x,v.p.y,v.p.z); normals.push(v.n.x,v.n.y,v.n.z); }
+    geometry.addGroup(start,positions.length/3-start,group.materialIndex);
+  }
+  geometry.setAttribute("position",new THREE.Float32BufferAttribute(positions,3));
+  geometry.setAttribute("normal",new THREE.Float32BufferAttribute(normals,3));
+  geometry.setAttribute("uv",new THREE.Float32BufferAttribute(new Float32Array(positions.length/3*2),2));
   return geometry;
 }
 
-export function shieldPose(seconds: number) {
+/** Closed, rolled rim. The visible band slopes inward instead of being a flat silver extrusion cap. */
+function rolledRim() {
+  const outer = path(contours.outline).getPoints(48), inner = path(contours.inner).getPoints(48);
+  const profile = [[0,-.21],[0,.07],[.08,.108],[.16,.12],[.87,.09],[1,.07],[1,-.21]];
+  const positions: number[] = [], indices: number[] = [], uvs: number[] = [];
+  for (const [blend,z] of profile) for(let i=0;i<outer.length;i++) {
+    const point = outer[i].clone().lerp(inner[i], blend);
+    positions.push(point.x, point.y, z); uvs.push(0,0);
+  }
+  for(let j=0;j<profile.length;j++) for(let i=0;i<outer.length-1;i++) {
+    const a=j*outer.length+i, b=a+1, c=((j+1)%profile.length)*outer.length+i, d=c+1;
+    indices.push(a,c,b,b,c,d);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position",new THREE.Float32BufferAttribute(positions,3));
+  geometry.setAttribute("uv",new THREE.Float32BufferAttribute(uvs,2));
+  geometry.setIndex(indices); geometry.computeVertexNormals();
+  geometry.addGroup(0, (profile.length-1)*(outer.length-1)*6, 0);
+  geometry.addGroup((profile.length-1)*(outer.length-1)*6, (outer.length-1)*6, 1);
+  const result=geometry.toNonIndexed(); geometry.dispose(); return finish(result);
+}
+export function createShieldModel() {
+  const face = path(contours.inner);
+  // ExtrudeGeometry expects holes opposite to the clockwise outer contour.
+  face.holes.push(...[contours.upperCut, contours.lowerCut].map(commands => new THREE.Path(path(commands).getPoints(48).reverse())));
   return {
-    yaw: -0.34 + Math.sin(seconds * 2 * Math.PI / 28) * 0.16,
-    pitch: 0.055 + Math.sin(seconds * 2 * Math.PI / 34) * 0.018,
-    float: Math.sin(seconds * 2 * Math.PI / 10) * 0.018,
+    back: solid(path(contours.outline), -.23, .13, .006),
+    rim: rolledRim(),
+    face: solid(face, -.07, .14, .014),
+    crown: solid(path(contours.crown), .074, .045, .009),
   };
 }
