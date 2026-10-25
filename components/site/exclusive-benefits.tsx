@@ -9,15 +9,15 @@ export function ExclusiveBenefits() {
       <div className="section-heading benefits-heading" data-reveal>
         <h2 id="benefits-title">{benefitsContent.title}</h2>
       </div>
+    </div>
       <BenefitTrack count={benefitPartners.length}>
         {benefitPartners.map((partner) => <div className="card-reveal" key={partner.id}>
           <article className="glass glass-card flow-glass benefit-card" aria-label={partner.name}>
-            {partner.logo && <div className="benefit-logo-well"><Image src={partner.logo} alt="" width={partner.width} height={partner.height} sizes="150px" className={`partner-logo partner-logo-${partner.id}`} /></div>}
+            {partner.logo && <div className={`benefit-logo-well benefit-logo-${partner.id}`}><Image src={partner.logo} alt="" width={partner.width} height={partner.height} sizes="180px" className={`partner-logo partner-logo-${partner.id}`} /></div>}
             <h3>{partner.name}</h3>
             <p className="benefit-offer">{partner.offer}</p>
           </article>
         </div>)}
       </BenefitTrack>
-    </div>
   </section>;
 }

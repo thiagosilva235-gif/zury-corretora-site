@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { createShieldModel } from "./geometry";
-import { createShieldMaterials, createStudioEnvironment } from "./materials";
+import { createShieldMaterials, createStudioEnvironment, createStudioLights } from "./materials";
 import { shieldMotion as config } from "./motion-config.mjs";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,11 +36,12 @@ function Studio({ stage, active, view, onReady, onFailure, exporterRef }: Props)
     const { scene, gl, camera } = get();
     const geometries = createShieldModel(), materials = createShieldMaterials();
     for (const part of ["back", "rim", "face", "crown"] as const) {
-      group.add(new THREE.Mesh(geometries[part], part === "back" ? materials.back : [materials[part], materials.edge]));
+      group.add(new THREE.Mesh(geometries[part], part === "back" ? materials.back : part === "rim" ? [materials.rim,materials.back] : [materials[part], materials.edge]));
     }
     const source = createStudioEnvironment(), pmrem = new THREE.PMREMGenerator(gl);
     const environment = pmrem.fromEquirectangular(source), previous = scene.environment;
     scene.environment = environment.texture;
+    const lights=createStudioLights();scene.add(lights);
     const lost = (event: Event) => { event.preventDefault(); onFailure(); };
     gl.domElement.addEventListener("webglcontextlost", lost);
     if (exporterRef) exporterRef.current = () => {
@@ -57,6 +58,7 @@ function Studio({ stage, active, view, onReady, onFailure, exporterRef }: Props)
       if (exporterRef) exporterRef.current = null;
       gl.domElement.removeEventListener("webglcontextlost", lost);
       group.clear(); scene.environment = previous;
+      scene.remove(lights);lights.clear();
       Object.values(geometries).forEach(g => g.dispose());
       for (const material of [materials.face, materials.crown, materials.rim, materials.edge, materials.back]) material.dispose();
       materials.grain.dispose(); source.dispose(); environment.dispose(); pmrem.dispose();
@@ -65,9 +67,9 @@ function Studio({ stage, active, view, onReady, onFailure, exporterRef }: Props)
 
   useEffect(() => {
     const { camera } = get();
-    if (camera instanceof THREE.PerspectiveCamera) {
-      const aspect = size.width / Math.max(1, size.height);
-      camera.position.z = Math.max(7, 3.15 / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * aspect));
+    if (camera instanceof THREE.OrthographicCamera) {
+      // The source is already a projected view. Avoid adding perspective distortion to the frontal comparison.
+      camera.zoom = Math.min(size.width,size.height)/(1254/320);
       camera.updateProjectionMatrix(); invalidate();
     }
   }, [get, size, invalidate]);
@@ -82,7 +84,7 @@ function Studio({ stage, active, view, onReady, onFailure, exporterRef }: Props)
     const media = gsap.matchMedia();
     const context = gsap.context(() => {
       if (view !== "motion") {
-        a.rotation.y = view === "front" ? 0 : view === "quarter" ? -.42 : -.94;
+        a.rotation.y = view === "front" ? 0 : view === "quarter" ? -.65 : -1.28;
         invalidate(); return;
       }
       a.rotation.set(config.pose.pitch, config.pose.yaw, 0);
@@ -134,7 +136,7 @@ function Studio({ stage, active, view, onReady, onFailure, exporterRef }: Props)
 }
 
 export default function ShieldScene(props: Props) {
-  return <Canvas frameloop="demand" dpr={[1, 1.5]} camera={{ position: [0, 0, 8], fov: 32, near: .1, far: 30 }} gl={{ antialias: true, alpha: true, powerPreference: "low-power" }} onCreated={({ gl }) => { gl.setClearColor(0x000000, 0); gl.toneMapping = THREE.ACESFilmicToneMapping; gl.toneMappingExposure = .88; }} fallback={null}>
+  return <Canvas orthographic frameloop="demand" dpr={[1, 1.5]} camera={{ position: [0, 0, 8], near: .1, far: 30 }} gl={{ antialias: true, alpha: true, powerPreference: "low-power" }} onCreated={({ gl }) => { gl.setClearColor(0x000000, 0); gl.toneMapping = THREE.ACESFilmicToneMapping; gl.toneMappingExposure = .95; }} fallback={null}>
     <Studio {...props} />
   </Canvas>;
 }

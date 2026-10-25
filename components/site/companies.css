@@ -1,0 +1,14 @@
+.companies { padding-block: 72px; background: radial-gradient(ellipse at 50% 100%,rgba(190,200,207,.045),transparent 65%),#1e2022; }
+.companies .section-heading { margin-bottom: 0; }
+.companies:has(.company-logos) .section-heading { margin-bottom: 48px; }
+.benefits-grid.company-logos { --benefit-min-width: 220px; --benefit-gap: 24px; width: 100%; max-width: none; margin: 0; padding-block: 24px; background: #eaeae5; }
+.company-logos .benefit-group { grid-template-columns: repeat(auto-fit,minmax(min(100%,180px),1fr)); align-items: center; }
+.company-logos .company-logo { display: grid; place-items: center; height: 144px; min-height: 144px; padding: 20px; border-radius: 20px; border:1px solid rgba(47,56,53,.18); }
+.company-logo img { display: block; max-width: 100%; height: 72px; object-fit: contain; }
+.company-logos:focus-visible { outline: 2px solid #25292c; outline-offset: -6px; }
+@media (max-width: 767px), (prefers-reduced-motion:reduce) { .benefits-grid.company-logos { width: calc(100% - var(--gutter) * 2); margin-inline: auto; } .company-logos .benefit-group { grid-template-columns: repeat(auto-fit,minmax(min(100%,180px),1fr)); } }
+@media (max-width:767px) {
+  .company-logos .benefit-group { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+  .company-logos .company-logo { height:112px; min-height:112px; padding:14px; }
+  .company-logo img { height: 64px; }
+}

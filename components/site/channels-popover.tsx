@@ -18,7 +18,8 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
   useLayoutEffect(() => {
     const element = panel.current;
     if (!open || !element) return;
-    const trigger = opener.current ?? document.querySelector<HTMLElement>(`[popovertarget="${id}"]`);
+    const source = opener.current ?? document.querySelector<HTMLElement>(`[popovertarget="${id}"]`);
+    const trigger = source?.closest("#site-navigation") && matchMedia("(max-width:767px)").matches ? document.querySelector<HTMLElement>(".mobile-menu-toggle") : source;
     if (!trigger) return;
     const position = () => {
       const viewport = window.visualViewport;
@@ -27,6 +28,8 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
       const offsetY = viewport?.offsetTop ?? 0;
       const offsetX = viewport?.offsetLeft ?? 0;
       const anchor = trigger.getBoundingClientRect();
+      element.style.maxWidth = `${Math.max(0, width - 24)}px`;
+      element.style.maxHeight = `${Math.max(0, height - 24)}px`;
       // Untransformed dimensions avoid position drift during the entrance animation.
       const panelWidth = element.offsetWidth;
       const panelHeight = element.offsetHeight;

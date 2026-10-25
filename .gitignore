@@ -33,6 +33,21 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# credentials and local secrets
+*.token
+*.tokens
+*.secret
+*.credentials
+credentials.json
+secrets.json
+
+# temporary files
+*.tmp
+*.temp
+*.swp
+.turbo/
+.cache/
+
 # vercel
 .vercel
 

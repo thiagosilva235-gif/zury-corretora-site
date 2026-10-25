@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored agent tooling is not application source and keeps upstream lint rules.
+    ".agents/skills/impeccable/**",
   ]),
 ]);
 

@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { anchorScrollPosition, navigationDuration } from "@/lib/navigation";
+import { createSiteEntrance, siteMotion as config } from "@/lib/site-motion.mjs";
+import "./site-motion.css";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -40,29 +42,23 @@ export function SiteMotion() {
     window.addEventListener("wheel", stopScroll, { passive: true });
     window.addEventListener("touchstart", stopScroll, { passive: true });
     window.addEventListener("keydown", keyboardScroll);
-    media.add("(prefers-reduced-motion: no-preference)", () => {
-      const context = gsap.context(() => {
-        gsap.from(".hero h1", { y: 22, opacity: 0, duration: 1.1, ease: "power3.out", delay: 0.15, clearProps: "all" });
+    media.add({ motion: "(prefers-reduced-motion: no-preference)", reduce: "(prefers-reduced-motion: reduce)", compact: "(max-width: 767px)" }, (mediaContext) => {
+      if (!mediaContext.conditions?.motion) return;
+      const compact = !!mediaContext.conditions.compact;
+        // Line entrance and scroll displacement have different owners, never competing transforms.
+        createSiteEntrance(gsap, root.querySelectorAll(".header-surface,.brand-link,.nav-entry,.hero-line,.hero-subtitle"), { to: { clearProps: "transform,opacity" } });
+        gsap.to(".hero-copy", { y: compact ? -8 : -config.hero.parallax, ease: "none", scrollTrigger: { trigger: root.querySelector(".hero"), start: "top top", end: "bottom top", scrub: config.ambient.scrub } });
         root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((item) => {
           // Outer wrapper owns the reveal; its card child owns CSS hover transforms.
           const scrollTrigger = { trigger: item, start: "top 94%", end: "bottom -8%", toggleActions: "play reverse play reverse" };
-          const entrance = { opacity: 1, y: 0, duration: 0.85, ease: "power3.out" };
-          const parts = item.querySelectorAll<HTMLElement>("[data-reveal-part]");
-          if (parts.length) {
-            // One trigger/timeline: shared panel displacement, coordinated child fades.
-            gsap.timeline({ scrollTrigger })
-              .fromTo(item, { opacity: 0, y: 24 }, entrance)
-              .fromTo(parts, { opacity: 0 }, { opacity: 1, duration: entrance.duration, ease: entrance.ease, stagger: 0.06 }, 0);
-          } else {
-            gsap.fromTo(item, { opacity: 0, y: 24 }, { ...entrance, scrollTrigger });
-          }
+          // Animate each physical group once; never compound nested reveal transforms.
+          createSiteEntrance(gsap, item, { to: { scrollTrigger } });
         });
         root.querySelectorAll<HTMLElement>(".section-light").forEach((light) => {
-          gsap.fromTo(light, { opacity: 0.5 }, { opacity: 1, ease: "none", scrollTrigger: { trigger: light.parentElement, start: "top bottom", end: "center center", scrub: 1 } });
+          const travel = compact ? config.ambient.compactTravel : config.ambient.travel;
+          gsap.fromTo(light, { opacity: .6, y: -travel }, { opacity: 1, y: travel, ease: "none", scrollTrigger: { trigger: light.parentElement, start: "top bottom", end: "bottom top", scrub: config.ambient.scrub } });
         });
-      }, root);
-      return () => context.revert();
-    });
+    }, root);
     let disposed = false;
     document.fonts.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); });
     return () => { disposed = true; stopScroll(); media.revert(); root.removeEventListener("click", navigate); window.removeEventListener("wheel", stopScroll); window.removeEventListener("touchstart", stopScroll); window.removeEventListener("keydown", keyboardScroll); };

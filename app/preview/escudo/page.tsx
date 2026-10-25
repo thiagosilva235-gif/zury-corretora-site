@@ -7,8 +7,8 @@ export const metadata = { title: "Escudo ZURY — estudo isolado", robots: { ind
 export default function ShieldPage() {
   return <main className="preview-page" data-shield-scroll-root>
     <Link className="preview-back" href="/">Voltar para ZURY</Link>
-    <div className="preview-heading"><p>Estudo de referência · 03</p><h1>Escudo ZURY</h1><span>Metal grafite escovado · iluminação cinematográfica</span></div>
+    <div className="preview-heading"><p>Prévia da imagem original</p><h1>Escudo ZURY</h1><span>Arte preservada · movimento sutil</span></div>
     <ShieldPreview />
-    <p className="preview-note">Estudo procedural em avaliação, sem integração à Hero. A reprodução hiper-realista do relevo e da escovação ainda exige um modelo dedicado.</p>
+    <p className="preview-note">Imagem original animada, sem reconstrução 3D. Prévia isolada aguardando aprovação visual, sem integração à Hero.</p>
   </main>;
 }

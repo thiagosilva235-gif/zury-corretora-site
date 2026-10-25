@@ -1,12 +1,55 @@
-export type Service = { number: string; title: string; icon: "House" | "HeartPulse" | "Sprout" | "CarFront" | "Landmark" | "Plane" | "Truck" | "Hourglass"; items: string[] };
-export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!";
-export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA:", "ZURY!"] as const;
+export type Service = { number: string; title: string; icon: "House" | "HeartPulse" | "Sprout" | "CarFront" | "Landmark" | "Plane" | "Truck" | "Scale"; items: string[] };
+export type CompanyLogo = { id: string; name: string; src: string; width: number; height: number; displayWidth: number };
+// Only supplied and authorized PNGs belong here; do not fabricate insurer endorsements.
+export const companyLogos: readonly CompanyLogo[] = [
+  {"id":"ademicon","name":"Ademicon","src":"/companies/ademicon.png","width":2172,"height":724,"displayWidth":180},
+  {"id":"akad","name":"Akad","src":"/companies/akad.png","width":1918,"height":563,"displayWidth":180},
+  {"id":"allianz","name":"Allianz","src":"/companies/allianz.png","width":1913,"height":516,"displayWidth":180},
+  {"id":"amil","name":"Amil","src":"/companies/amil.png","width":2032,"height":744,"displayWidth":180},
+  {"id":"axa","name":"AXA","src":"/companies/axa.png","width":1254,"height":1254,"displayWidth":100},
+  {"id":"azos","name":"Azos","src":"/companies/azos.png","width":2032,"height":432,"displayWidth":200},
+  {"id":"azul-seguros","name":"Azul Seguros","src":"/companies/azul-seguros.png","width":2032,"height":904,"displayWidth":180},
+  {"id":"berkley","name":"Berkley","src":"/companies/berkley.png","width":889,"height":281,"displayWidth":180},
+  {"id":"bradesco","name":"Bradesco","src":"/companies/bradesco.png","width":2032,"height":478,"displayWidth":200},
+  {"id":"brasilseg","name":"Brasilseg","src":"/companies/brasilseg.png","width":2172,"height":724,"displayWidth":180},
+  {"id":"bv","name":"BV","src":"/companies/bv.png","width":2032,"height":1508,"displayWidth":100},
+  {"id":"capemisa","name":"Capemisa","src":"/companies/capemisa.png","width":2172,"height":724,"displayWidth":180},
+  {"id":"chubb","name":"Chubb","src":"/companies/chubb.png","width":1946,"height":244,"displayWidth":200},
+  {"id":"essor","name":"Essor","src":"/companies/essor.png","width":2032,"height":664,"displayWidth":180},
+  {"id":"hdi-seguros","name":"HDI Seguros","src":"/companies/hdi-seguros.png","width":1863,"height":792,"displayWidth":180},
+  {"id":"honda","name":"Honda","src":"/companies/honda.png","width":829,"height":135,"displayWidth":200},
+  {"id":"icatu","name":"Icatu","src":"/companies/icatu.png","width":962,"height":376,"displayWidth":180},
+  {"id":"itau","name":"Itaú","src":"/companies/itau.png","width":1254,"height":1254,"displayWidth":100},
+  {"id":"justos","name":"Justos","src":"/companies/justos.png","width":2032,"height":629,"displayWidth":180},
+  {"id":"mag","name":"MAG","src":"/companies/mag.png","width":1927,"height":741,"displayWidth":180},
+  {"id":"magalu","name":"Magalu","src":"/companies/magalu.png","width":2032,"height":479,"displayWidth":200},
+  {"id":"mapfre","name":"Mapfre","src":"/companies/mapfre.png","width":2032,"height":335,"displayWidth":200},
+  {"id":"metlife","name":"MetLife","src":"/companies/metlife.png","width":2032,"height":462,"displayWidth":200},
+  {"id":"omint","name":"Omint","src":"/companies/omint.png","width":2031,"height":597,"displayWidth":180},
+  {"id":"pier","name":"Pier","src":"/companies/pier.png","width":1830,"height":554,"displayWidth":180},
+  {"id":"porto-seguro","name":"Porto Seguro","src":"/companies/porto-seguro.png","width":2032,"height":489,"displayWidth":200},
+  {"id":"rodobens","name":"Rodobens","src":"/companies/rodobens.png","width":2172,"height":724,"displayWidth":180},
+  {"id":"safra","name":"Safra","src":"/companies/safra.png","width":2032,"height":768,"displayWidth":180},
+  {"id":"sancor","name":"Sancor","src":"/companies/sancor.png","width":1902,"height":487,"displayWidth":180},
+  {"id":"santander","name":"Santander","src":"/companies/santander.png","width":2032,"height":382,"displayWidth":200},
+  {"id":"suhai","name":"Suhai","src":"/companies/suhai.png","width":2032,"height":609,"displayWidth":180},
+  {"id":"sulamerica","name":"SulAmérica","src":"/companies/sulamerica.png","width":1772,"height":472,"displayWidth":180},
+  {"id":"tokio-marine","name":"Tokio Marine","src":"/companies/tokio-marine.png","width":1915,"height":476,"displayWidth":200},
+  {"id":"unimed","name":"Unimed","src":"/companies/unimed.png","width":2003,"height":359,"displayWidth":200},
+  {"id":"yamaha","name":"Yamaha","src":"/companies/yamaha.png","width":2032,"height":468,"displayWidth":200},
+  {"id":"yelum","name":"Yelum","src":"/companies/yelum.png","width":1876,"height":508,"displayWidth":180},
+  {"id":"zurich","name":"Zurich","src":"/companies/zurich.png","width":1947,"height":494,"displayWidth":180},
+];
+export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA ZURY!";
+export const heroSubtitle = "EXPERIENCIA/AGILIDADE/SOLIDEZ";
+export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA", "ZURY!"] as const;
 
 export type BenefitPartner = { id: string; name: string; logo: string | null; width: number; height: number; offer: string };
 export const benefitPartners: readonly BenefitPartner[] = [
-  { id: "farma-melhor", name: "FARMELHOR UNAÍ", logo: "/partners/farma-melhor.png", width: 300, height: 72, offer: "10% DE DESCONTO ADICIONAL" },
-  { id: "grupo-zapp", name: "ZAPP", logo: "/partners/grupo-zapp-metalico.png", width: 2172, height: 724, offer: "10% DE DESCONTO ADICIONAL" },
+  { id: "grupo-zapp", name: "ZAPP", logo: "/partners/grupo-zapp-metalico.png", width: 2172, height: 724, offer: "5% DE DESCONTO EM ATÉ 3X" },
   { id: "grupo-mv", name: "GRUPO MV", logo: "/partners/grupo-mv.png", width: 1057, height: 1057, offer: "5% DE DESCONTO EM SERVIÇOS" },
+  { id: "otica-vemos", name: "ÓTICA VEMOS", logo: "/partners/otica-vemos.png", width: 1254, height: 1254, offer: "15% DE DESCONTO A VISTA E 10% Á PRAZO" },
+  { id: "centrolab", name: "LABORATÓRIO CENTROLAB", logo: "/partners/centrolab.png", width: 1254, height: 1254, offer: "10% DE DESCONTO" },
 ];
 export const benefitsContent = {
   title: "BENEFÍCIOS EXCLUSIVOS",
@@ -18,16 +61,16 @@ export function isBenefitsPreviewEnabled(env: { NODE_ENV?: string; ZURY_BENEFITS
 
 export const services: Service[] = [
   { number: "01", title: "BENS", icon: "House", items: ["Residenciais", "Condomínios", "Imóveis", "Empresariais", "Equipamentos agrícolas", "Industriais", "Armazéns", "Seguros de engenharia", "Usinas"] },
-  { number: "02", title: "VIDA E SAÚDE", icon: "HeartPulse", items: ["Seguros de vida", "Planos de saúde", "Odontológicos"] },
-  { number: "03", title: "AGRO", icon: "Sprout", items: ["Seguros agrícolas", "Transportes", "Soluções de logística", "Safras", "Pecuários"] },
+  { number: "02", title: "VIDA E SAÚDE", icon: "HeartPulse", items: ["Seguros de vida", "Planos de saúde", "Odontológicos", "Plano de previdência", "Seguro prestamista"] },
+  { number: "03", title: "RURAL", icon: "Sprout", items: ["Seguros agrícolas", "Transportes", "Soluções de logística", "Safras", "Pecuários", "Responsabilidade civil rural e agropecuário"] },
   { number: "04", title: "AUTOMOTIVO", icon: "CarFront", items: ["Automóveis", "Frotas", "Motos", "Caminhões"] },
   { number: "05", title: "CRÉDITO", icon: "Landmark", items: ["Consórcios", "Financiamentos", "Empréstimos"] },
   { number: "06", title: "AÉREO E MARÍTIMO", icon: "Plane", items: ["Marítimos", "Aeronáuticos", "Hangares"] },
   { number: "07", title: "TRANSPORTE", icon: "Truck", items: ["TRANSPORTE NACIONAL E INTERNACIONAL DE CARGAS", "RESPONSABILIDADE CIVIL DE CARGAS", "TRANSPORTADOR DE CARGAS", "OPERADOR DE CARGAS"] },
-  { number: "08", title: "PREVIDÊNCIA", icon: "Hourglass", items: ["Planos de previdência", "Seguros prestamistas"] },
+  { number: "08", title: "RESPONSABILIDADE CIVIL", icon: "Scale", items: ["RC Geral", "RC Profissional", "RC Médicos", "RC Dentistas", "RC Advogados", "RC Engenheiros e Arquitetos", "RC Obras e Engenharia", "RC Condomínios", "RC Rural / Agropecuário", "RC Hospitalar e Clínicas"] },
 ];
 export const differentiators = [
-  { number: "01", title: "SEGURANÇA", description: "Equipe qualificada, atuação autorizada pela SUSEP e parceria com diversas seguradoras para proteger seu patrimônio." },
+  { number: "01", title: "SEGURANÇA", description: "Equipe qualificada, atuação autorizada pela SUSEP." },
   { number: "02", title: "SUPORTE", description: "Atendimento humanizado e especializado, disponível 24 horas por dia." },
   { number: "03", title: "AGILIDADE", description: "Agilidade nas cotações e no acompanhamento e resolução de sinistros." },
 ];
@@ -81,40 +124,34 @@ export type ReferralMode = "affiliate" | "commercial";
 type ReferralOption = {
   id: ReferralMode;
   title: string;
-  reward: string;
   paragraphs: readonly string[];
-  benefits: readonly string[];
   cta: string;
   message: string;
 };
 
 export const referralProgram = {
   title: "PROGRAMA DE INDICAÇÕES",
-  commercialTitle: "QUEM INDICA MERECE MAIS",
-  commercialDescription: "EM AGRADECIMENTO ÀS INDICAÇÕES, A ZURY BUSCA MELHORES CONDIÇÕES PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES PRÓPRIAS, INCLUSIVE COM POSSÍVEL RENÚNCIA À COMISSÃO, QUANDO APLICÁVEL.",
+  commercialDescription: "A ZURY OFERECE O MELHOR PREÇO DO MERCADO PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES, RENUNCIANDO Á NOSSA COMISSÃO.",
   options: [
     {
       id: "affiliate",
       title: "SEJA UM AFILIADO",
-      reward: "R$ 100 POR CONTRATAÇÃO",
       paragraphs: [
-        "QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY.",
-        "SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, O AFILIADO RECEBERÁ R$ 100 VIA PIX.",
+        "INDICAÇÕES SIMPLES",
+        "CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA",
+        "REMUNERAÇÃO DE R$100 ENVIADO VIA PIX PELA CONTRATACÃO DO INDICADO.",
       ],
-      benefits: ["PARTICIPAÇÃO SIMPLES", "POSSIBILIDADE DE RENDA EXTRA", "INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE"],
       cta: "QUERO SER AFILIADO",
       message: "Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.",
     },
     {
       id: "commercial",
       title: "SEJA UM PARCEIRO COMERCIAL",
-      reward: "10% DA COMISSÃO RECEBIDA PELA ZURY",
       paragraphs: [
-        "O PARCEIRO COMERCIAL MANTÉM UMA RELAÇÃO MAIS PRÓXIMA COM A CORRETORA, REALIZANDO INDICAÇÕES RECORRENTES.",
-        "CADA PARCEIRO RECEBERÁ UM CÓDIGO INDIVIDUAL DE INDICAÇÃO.",
-        "SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, A REMUNERAÇÃO CORRESPONDERÁ A 10% DA COMISSÃO RECEBIDA PELA ZURY NESSA CONTRATAÇÃO.",
+        "INDICAÇÕES RECORRENTES.",
+        "CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA",
+        "REMUNERAÇÃO DE 10% DA COMISSÃO RECEBIDA PELA CONTRATACÃO DO INDICADO",
       ],
-      benefits: [],
       cta: "QUERO SER PARCEIRO COMERCIAL",
       message: "Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.",
     },

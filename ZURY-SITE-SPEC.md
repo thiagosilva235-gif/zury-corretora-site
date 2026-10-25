@@ -1,6 +1,19 @@
 # ZURY CORRETORA — Especificação oficial do website
 
+> **Cotação e Companhias — 24/10/2026:** autorizado CTA SOLICITAR COTAÇÃO na Hero, abrindo painel com seleção única dos oito títulos oficiais de Soluções e confirmação provisória; próximas etapas serão fornecidas pelo responsável, sem coleta ou envio de dados nesta fase. Companhias passa a apresentar as 37 logos intactas em cards Liquid Glass uniformes, sem textos adicionais, mantendo velocidade e direção atuais do carrossel. Navbar recebe cápsula de hover móvel e interruptível, preservando prioridade visual de Contato e reduced motion.
+
 > **Status:** briefing consolidado e aprovado para implementação.  
+> **Companhias clara, menu mobile e CTAs — 24/10/2026:** Companhias passa a off-white com título grafite, sem faixa escura; preservar as 37 logos intactas. Fundos claros recebem pontilhado mineral CSS discreto, sem listras nem névoa lateral. Em até 767 px, logo ZURY à esquerda e hamburger à direita; navegação em popover nativo com foco inicial, fechamento por Escape/clique fora/seleção e menus de contato/social preservados. Esta autorização substitui a proibição histórica de hamburger somente no mobile. Contato da navbar e ambos os CTAs de Indicações com acento grafite/off-white e três passagens discretas de brilho, sem loop permanente nem motion em reduced motion. Hero ganha o subtítulo literal **EXPERIENCIA/AGILIDADE/SOLIDEZ**, em caixa alta, peso 400, com linha fina e tracking; preservar headline e tamanhos atuais, compartilhar parallax do grupo. Esta nota supera as restrições anteriores correspondentes.
+> **Integração das 37 logomarcas — 24/10/2026:** recebida a pasta ZURY_37_Logomarcas. Integrar todos os 37 PNGs em public/companies, cópias intactas verificadas por SHA-256; seis arquivos com nomes genéricos identificados visualmente como Ademicon, Capemisa, Itaú, Rodobens, Brasilseg e AXA. Cadastro tipado com nome acessível, dimensões originais e largura óptica de 100–200 px. Logos sem filtros, cards ou legendas, contidas em faixa clara contínua para legibilidade das marcas pretas/azul-escuras; título/seção Companhias seguem grafite. Mesmos espaçamento/slots e loop à direita de 76 px/s preparado anteriormente, sem pausa por hover; mobile/reduced motion estáticos. O recebimento confirma os ativos enviados pelo responsável, não constitui verificação independente de parcerias ou condições comerciais.
+> **Rodapé integral, Feedback e logos — 24/10/2026:** remover padding externo do rodapé para que painel e seção tenham a mesma largura/altura; preservar padding interno e não elevar o painel por hover. Três grupos: Navegação, Institucional e FEEDBACK; mover REDES SOCIAIS e NOS AVALIE NO GOOGLE para Feedback, sem duplicar links, mantendo componentes e destinos oficiais. Desktop em três colunas, mobile empilhado. Benefícios com fundo off-white uniforme, sem gradiente/névoa lateral. Companhias preparada com logos livres, sem cards ou textos visíveis, slots de 180–220 px, imagem contida até 180 × 72 px, intervalo de 48 px e o mesmo loop à direita a 76 px/s de Benefícios; mobile/reduced motion estáticos. A integração dos PNGs e ajuste óptico individual permanecem pendentes do envio da pasta, ainda não recebida nesta revisão. Esta nota supera a composição anterior correspondente.
+> **Navbar cristalina, rodapé amplo e órbita — 24/10/2026:** painel do rodapé ocupa 100% da largura da seção, preservando padding interno e colunas responsivas. Navbar em vidro claro neutro translúcido com texto grafite, sem linha especular superior forte; contorno uniforme discreto e sombra inferior curta. Escudo com órbita contínua de ±16 px horizontal/±28 px vertical, pitch ±1,1°, yaw ±4° e roll ±1,3° em 10 s; intensidade móvel 40%, reduced motion estático. Preservar PNG e composição SVG do reflexo, limites do cursor, luz de fundo e cleanup existentes. Esta nota supera o vidro escuro da navbar, limite lateral do rodapé e amplitude anterior correspondentes.
+> **Refinamento Glass e faixa livre — 24/10/2026:** navbar com vidro grafite translúcido e texto off-white, contorno especular fino, contraste em todos os estados e fallback sólido de alta acessibilidade. Superfícies claras mais cristalinas, sem cobertura leitosa. Entradas existentes passam a 1,2 s/espera 0,08 s; saída/retorno da navbar 160/220 ms; Flow Glass 600 ms e fade 160 ms, demais realces em torno de 180 ms. Benefícios ocupa a largura total da seção no desktop, sem janela central de 960 px, trilho a 76 px/s para a direita e cópias visuais calculadas para cobrir a viewport durante todo o ciclo. Preservar bordas próprias dos cards, logos, leitura móvel/reduced motion estáticos, proteção por foco/interação/documento oculto e ausência de pausa por hover. Impeccable instalado localmente; CYLTabBarController não é skill web e não foi instalado. Esta nota supera limites e timings anteriores correspondentes.
+> **Revisão de 24/10/2026:** remover FARMELHOR UNAÍ dos dados renderizáveis de Benefícios, preservando o PNG histórico; restam ZAPP, GRUPO MV, ÓTICA VEMOS e LABORATÓRIO CENTROLAB. O loop não pausa mais ao passar o cursor; manter foco, interação ativa, documento oculto e reduced motion protegidos. Entradas existentes (seções, cards, títulos, marca/navbar e escudo) usam a mesma função de fade/deslocamento/escala, agora 2,4 s, espera de 0,25 s e power3.out; escudo sem rotação exclusiva na entrada, mantendo flutuação e reflexo. Esta revisão supera os tempos, parceiros e regras de hover anteriores correspondentes.
+> **Revisão de iluminação e entradas — 22/10/2026:** remover integralmente tramas, riscos e arcos repetidos dos fundos claros; usar gradientes perolados e iluminação ampla distinta por seção (lateral em Soluções, halo em Indicações, diagonal em Benefícios). Destaques em gradiente grafite sobre claro e off-white sobre escuro, incluindo preenchimento WebKit e fallback de alto contraste. Entradas de superfície do header, logo, wrapper da navbar, linhas da Hero e reveals compartilham a configuração do escudo: 3,2 s, espera de 0,5 s, power3.out, translação 28/38 px e escala inicial 0,94; preservar inclinação própria do escudo, reduced motion e saída independente/rápida da navbar. Esta revisão substitui as texturas e tempos de entrada anteriores.
+> **Refinamento complementar de 22/10/2026:** Benefícios com cards compactos (mínimo 240 px, expansíveis pelo conteúdo), marca 8 px acima da oferta e todas as cinco logos preservadas. Movimento linear para a direita a 52 px/s, conservando fase no resize e pausas implícitas de leitura/visibilidade; remover controle explícito de pausa. Mobile e reduced motion permanecem estáticos. Fundos off-white com texturas minerais distintas e gradientes; títulos/destaques em gradiente grafite sobre claro e off-white sobre escuro, com fallback de contraste. Glass mais transparente, seções arredondadas (24 px desktop/18 px mobile), junções sem linhas luminosas. Bloco da marca acompanha o fluxo da página sem animação; somente navbar recebe fade/saída no scroll. Esta nota supera as decisões anteriores correspondentes.
+> **Revisão de 22/10/2026:** bloco de marca/navbar off-white com marca grafite; Hero mantém fundo original; Soluções, Indicações e Benefícios off-white mineral com texturas CSS neutras e tinta grafite, alternados com Diferenciais/Companhias/Footer escuros. Preservar superfícies transparentes, contraste e gates comerciais. Hero usa Inter Tight em todas as linhas, sem alterar texto/tamanhos, e wrapper deslocado 10% à direita/10% acima em relação à própria caixa, sem disputar o parallax. CTAs de Indicações iguais, 260 × 56 px limitados à largura útil, centralizados na base dos cards. Afiliado: INDICAÇÕES SIMPLES / CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA / **REMUNERAÇÃO DE R$100 ENVIADO VIA PIX PELA CONTRATACÃO DO INDICADO.** Remover POSSIBILIDADE DE RENDA EXTRA. Parágrafo: **A ZURY OFERECE O MELHOR PREÇO DO MERCADO PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES, RENUNCIANDO Á NOSSA COMISSÃO.** Cópia fornecida, sem comprovação comercial presumida. Benefícios: ZAPP passa a 5% DE DESCONTO EM ATÉ 3X; adicionar ÓTICA VEMOS — 15% DE DESCONTO A VISTA E 10% Á PRAZO e LABORATÓRIO CENTROLAB — 10% DE DESCONTO, com PNGs fornecidos de 1254 × 1254 intactos. Cinco parceiros; carrossel condicional à direita, com pausa explícita acessível além de hover/foco. Mobile/reduced motion estáticos. Esta revisão supera os textos, famílias e fundos históricos correspondentes.
+> **Correção complementar de 21/10/2026:** Afiliado passa a exibir código no terceiro tópico e remuneração no quarto, preservando somente a remuneração em negrito. Vida e Saúde recebe Plano de previdência e Seguro prestamista (total atual: 44 serviços). Ícones de Soluções ancorados no topo da mesma faixa de título; RESPONSABILIDADE CIVIL quebra apenas entre palavras, com ajuste óptico local de 18 px/tracking 0.025em. Reflexo usa uma única composição SVG plana com máscara alpha da imagem original e deslocamento 2D, em lugar de máscara CSS envolvendo filho 3D. Esta nota supera os valores e a ordem anteriores correspondentes.
+> **Revisão mais recente — 21/10/2026:** autorizada seção COMPANHIAS acima de Benefícios (antes do Footer quando Benefícios estiver omitido), com logos PNG livres, sem cards e sem marcas fictícias. Cadastro tipado vazio até recebimento dos ativos autorizados; reutilizar movimento condicional de Benefícios, para a direita a 42 px/s, pausável em hover/foco/interação/documento oculto, estático em mobile/reduced motion. Esta autorização supera a proibição histórica de faixa de logos apenas nesta seção. Soluções segue a lista atualizada do §8.2 e usa títulos 20 px/listas 16 px. Reflexo do escudo restrito à área da imagem com queda suave nas bordas, opacidade máxima 0.28 e faixa estreita; reset ao rolar, perder foco ou sair da Hero. Preservar PNG, órbita e gates comerciais.
 > **Natureza:** fonte única de verdade para marca, conteúdo, experiência, comportamento visual e critérios de aceite.  
 > **Idioma de interface:** português brasileiro (`pt-BR`).  
 > **Escopo:** landing page premium, responsiva, de página única; quatro blocos públicos atuais, Indicações e Benefícios adicionais em prévia de desenvolvimento (§§9.3–9.4).
@@ -12,6 +25,7 @@
 > **Etapa 3 — Indicações:** autorizados Hero em caixa alta, remoção exclusiva das divisórias de produtos e nova seção de indicações em prévia, com acesso na navbar. Preservar a etapa 2 sem reconstrução. A oferta depende de validação comercial/jurídica; escudo continua isolado e sem aprovação.
 > **Etapa 5 — revisão visual e comercial:** caixa alta global permanente, cards mais compactos e novos textos de Indicações. Benefícios contém somente três cards estáticos: FARMELHOR UNAÍ, ZAPP e GRUPO MV. Faixa de logos cancelada; avisos de prévia removidos da interface, sem liberar publicação comercial. Headline de rendimento mensal e operação de códigos continuam pendentes. Escudo continua isolado e sem aprovação.
 > **Etapa 7 revisada:** Hero ampliada novamente, cards de Indicações perceptivelmente mais altos, título comercial único sem ponto e mensagem branca em negrito, duas linhas quando houver largura. Benefícios perde a chamada auxiliar e conserva o carrossel condicional. Menus aprovados da navbar são reutilizados no rodapé com abertura acima quando necessário. WhatsApp flutuante autorizado com menu horizontal à esquerda; verde-neon exclusivamente na borda/glow de hover/foco do botão. Esta revisão substitui restrições anteriores correspondentes. Gates comerciais e do escudo permanecem.
+> **Decisão mais recente — integração do escudo em imagem:** o responsável autorizou expressamente integrar a própria imagem original à Hero. Essa decisão supera as restrições históricas de isolamento e obrigatoriedade de 3D real para esta alternativa. A captura de 19/10 às 21:30 orienta somente tamanho, inclinação e iluminação de fundo; textos, navbar, identidade e demais seções atuais permanecem. Não constitui aprovação do estudo procedural nem liberação dos gates comerciais.
 
 ---
 
@@ -83,6 +97,8 @@ Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nomina
 
 ### 3.2. Regras mandatórias de aplicação
 
+**Revisão posterior — prata clara:** por solicitação expressa, logo completa e monograma na interface passam a usar `#D7DCE0`, como textos e ícones antes brancos. Aplicar a silhueta do próprio SVG oficial como máscara CSS, sem filtros, redesenho ou edição dos quatro arquivos originais. Preservar a imagem informativa acessível e a proporção natural. Essa aplicação supera somente a exigência histórica de branco na renderização; logos dos parceiros e imagem do escudo permanecem intactas.
+
 1. Usar a **logo oficial completa** (símbolo/monograma + lettering) nos locais especificados; não substituir por texto digitado.
 2. **Navbar e superfícies escuras:** usar `ZURY_Logo_Otimizada_Branco.svg`; em superfícies claras, preferir a variante grafite (`#1C1C1C`). Nunca recolorir o SVG com filtros.
 3. **Footer grafite profundo:** usar `ZURY_Logo_Otimizada_Branco.svg` (`#FFFFFF`) para contraste.
@@ -135,6 +151,8 @@ Gradientes por seção em `--hero-surface`, `--solutions-surface`, `--about-surf
 
 ### 4.2. Tipografia
 
+**Ajuste pontual de 21/10/2026:** navbar com fonte de 12 px e títulos de todos os cards (Soluções, Diferenciais, Indicações e Benefícios) com 18 px, inclusive no mobile. Permitir quebras e crescimento conforme o conteúdo, preservando tracking, famílias, corpo, títulos de seção, CTAs e animações. Até 393 px, reservar mais uma linha de navegação (44 px) acima da Hero e deslocar seu filete na mesma medida, evitando sobreposição. As demais sugestões da auditoria não foram incluídas neste pedido.
+
 #### REGRA GLOBAL DE CAPITALIZAÇÃO — CAIXA ALTA OBRIGATÓRIA
 
 **TODO O CONTEÚDO TEXTUAL VISÍVEL DO SITE ZURY CORRETORA DEVE SER EXIBIDO EM CAIXA ALTA, EM TODAS AS SEÇÕES, COMPONENTES, INTERAÇÕES E BREAKPOINTS. ESSA É UMA DIRETRIZ GLOBAL, PERMANENTE E PRIORITÁRIA DA IDENTIDADE VISUAL.**
@@ -174,6 +192,10 @@ Estes valores substituem integralmente os baselines negativos e percentuais ante
 
 ### 4.4. Crystalline Liquid Glass
 
+**Refinamento de 21/10/2026 — cristal e fundos:** reduzir preenchimento compartilhado do vidro para 0.035 / 0.004 / 0.018, tint de popovers/WhatsApp para 0.27, contorno neutro de 0.13 e blur estático de 16 px. Nav em repouso mais transparente, contorno refratado delicado, sem aumentar sombras. Preferências por menos transparência/mais contraste usam superfície quase sólida. Logo oficial mantém silhueta/lettering/arquivos intactos e recebe acabamento CSS prata fria (gradiente claro) pela máscara existente; sem filtros ou redesenho. Fundos com composições distintas: estúdio assimétrico na Hero, planos verticais em Soluções, luz diagonal em Diferenciais, duas luzes laterais em Indicações, horizonte luminoso em Benefícios e profundidade assimétrica no Footer. Manter paleta neutra, tipografia, header compacto e gates comerciais.
+
+**Refinamento atual:** texto principal, estados antes brancos e ícones usam prata clara `#D7DCE0`. Vidro compartilhado com gradiente de opacidades 0.055 / 0.008 / 0.028 e blur de 12 px; tint de popovers e WhatsApp reduzido a 0.46. Preservar contraste e fallback opaco quando não houver backdrop-filter, sem alterar cores incorporadas aos ativos dos parceiros ou do escudo.
+
 Aplicar este tratamento em **navbar, cartões de serviços, cartões institucionais, botões, popovers e painel do footer**:
 
 - Translucidez moderada com efeito de vidro crível, **não** material opaco genérico nem transparência que apague o texto.
@@ -200,6 +222,8 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 ## 5. Navegação e header
 
 ### 5.1. Desktop
+
+**Refinamento de 21/10/2026:** conjunto de marca/navbar mais compacto, com padding desktop de 20 px no topo/12 px na base e gap de 14 px. Cápsula com padding de 4 px e controles com mínimo de 44 px. Manter fonte de 12 px e uma única linha horizontal a partir de 768 px; entre 768 e 1000 px, reduzir somente o padding horizontal dos itens para 10 px. Mobile mantém quebra e todas as opções visíveis. Ocultar o conjunto já aos 32 px de scroll, em 250 ms; revelar somente até 8 px do topo, em 350 ms. Preservar foco/popover protegido, reduced motion e saída conjunta. Substitui os limites e durações anteriores.
 
 - Logo oficial completa branca centralizada e navbar flutuante Liquid Glass, centralizada e bem distribuída sobre os novos fundos escuros.
 - Ordem final da prévia completa: `SOLUÇÕES` → `#servicos`; `DIFERENCIAIS` → `#sobre`; `INDICAÇÕES` → `#indicacoes`; `BENEFÍCIOS` → `#beneficios`; `SOBRE` → `#institucional`; `REDES SOCIAIS` → popover social; `CONTATO` → popover de contato. Popovers verticais centralizados no gatilho quando couberem, preferencialmente abaixo, reposicionados dentro da viewport.
@@ -232,19 +256,28 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 
 **Somente:**
 
-1. Headline **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!`.
-2. **Um escudo 3D** premium, com as características do §7.
+1. Headline **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA ZURY!`.
+2. **A imagem original do escudo** com movimento sutil, conforme decisão atual do §7.0.
 
 **Não adicionar:** subtítulo, CTA/botão, texto de apoio, indicação de scroll, carrossel, números, selo, ícones extras, microcopy ou objetos 3D decorativos adicionais.
 
 ### 6.2. Composição
 
-- Desktop: ocupar a altura útil inicial (considerando o header), sem colisão; **40% para headline à esquerda / 60% para escudo à direita** como proporção de referência.
+**Refinamento atual:** entrelinha da Hero reduzida a 1.08, inclusive no mobile. Primeiras duas linhas em grafite claro `#ADB4BB`; ZURY! permanece em prata `#D7DCE0`. Fontes, tamanhos, centralização e arte do escudo preservados.
+
+**Últimas anotações tipográficas:** primeira e terceira linhas usam Arial, sans-serif; segunda usa system-ui, sans-serif. Primeira/segunda: escala-base menos 2 px (35.09 px a 903 px); terceira: escala-base mais 6 px (43.09 px a 903 px). Preservar centralização e responsividade, sem dois-pontos após ESCOLHA. Essa revisão substitui a fonte Inter Tight e os tamanhos iguais anteriores somente nas três linhas do Hero.
+
+Entre 768 e 902 px, reservar 60% / 40% para texto e escudo, acomodando a largura real das novas fontes sem cortes. A partir de 903 px, manter as proporções dos breakpoints existentes.
+
+**Alinhamento atual solicitado:** as três linhas compartilham eixo horizontal central, tamanho e entrelinha, com bloco centralizado verticalmente na coluna ao lado do escudo. Remover o recuo, largura e altura especiais de ZURY! descritos na revisão anterior. Centralização mobile preservada; não juntar palavras nem alterar a frase oficial.
+
+- Desktop: composição sem colisão, com colunas **55% para headline / 45% para escudo**; entre 768 e 1199 px, **57% / 43%** para acomodar a ampliação tipográfica solicitada nas anotações visuais.
 - O escudo é protagonista visual sem empurrar a tipografia ou invadir margens.
 - Mobile: headline **centralizada acima do escudo**, escudo com largura visual próxima de **75% da área útil**; altura responsiva, sem forçar corte de conteúdo ou viewport excessiva.
 - Headline em Inter Tight, peso predominantemente semibold, em caixa alta literal na fonte oficial, preservando acentos e pontuação. Quebras balanceadas por largura, sem remover espaços entre palavras.
-- Tracking do Hero `0.025em`, conforme §4.2, sem mudar a frase, remover espaços entre palavras ou invadir o espaço 40%/60%.
-- Hero em três linhas no desktop: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA:` / `ZURY!`, spans com espaços semânticos. Escala `clamp(23px, 3vw, 48px)`, entrelinha `1.22`, tracking/peso preservados; ZURY! com 1.08. Container até 1560 px, margens ampliando a largura útil sem retirar a reserva 40%/60%. Mobile: `clamp(22px, 6.6vw, 44px)`, entrelinha `1.22`, centralizada. Sem quarta linha desktop, colisões ou integração do escudo.
+- Tracking do Hero `0.025em`, conforme §4.2, sem mudar a frase, remover espaços entre palavras ou invadir o espaço do escudo.
+- Hero em três linhas no desktop: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA` / `ZURY!`, spans com espaços semânticos. Escala `clamp(31px, calc(3vw + 10px), 58px)`, limitada a 42 px entre 768 e 1199 px; entrelinha `1.22`, tracking/peso preservados. A 903 px: primeiras linhas com 37.09 px e ZURY! com 37.26 px. ZURY! recebe recuo visual de 1em via CSS (não espaços adicionais no texto), largura máxima de 400 px e altura mínima de 70.45 px.
+- Anotações finais de dimensões substituem os valores intermediários de 950 × 900 px: entre 768 e 1199 px, container centralizado de até **930 px**, sempre limitado à largura disponível e às margens responsivas. A partir de 1200 px, preservar o container amplo de até 1560 px. Altura mínima desktop de **800 px**, podendo crescer para acomodar o escudo; padding superior de **200 px** e fonte herdada de 20 px. Mobile até 767 px preserva escala `clamp(22px, 6.6vw, 44px)`, entrelinha `1.22`, centralização e fonte herdada de 16 px; ZURY! com fator 1.08, sem recuo ou reserva extra de altura. Sem quarta linha desktop ou colisões; preservar o escudo já autorizado na Hero.
 - Abaixo da composição superior de marca/navbar, incluir somente transição visual por pseudo-elementos: mesmo filete prateado difuso e gradiente tonal usado entre seções, sem conteúdo novo ou borda pesada.
 - Entrada visual: **texto primeiro** e escudo **depois**; uma vez estabilizado, flutuação muito discreta e rotação lenta parcial do escudo.
 - Nenhuma rotação manual do escudo por gesto/toque no mobile.
@@ -261,11 +294,19 @@ Aplicar este tratamento em **navbar, cartões de serviços, cartões institucion
 
 ### 7.0. Revisão cinematográfica — 20/10/2026
 
+**Refinamento de 21/10/2026 autorizado:** ampliar órbita do PNG para x ±8 px / y ±18 px, yaw ±3.4°, pitch ±0.85° e roll ±1.1°, em 12 s, com 45% no mobile. Interação por mouse inclui deslocamento até 8 × 6 px e reflexo prateado visual separado, recortado pela transparência da própria imagem, acompanhando o cursor sobre a Hero. Esse efeito substitui a proibição anterior de sobreposição luminosa somente para o reflexo solicitado; não editar a imagem nem afirmar reflexos físicos de modelo 3D. Sem reflexo/tilt manual no toque ou reduced motion; pausar/reverter/resetar junto às camadas existentes, incluindo retorno de opacidade ao sair da área.
+
+**Integração autorizada após a prévia:** o responsável confirmou “PODE IMPLEMENTAR NA HERO”, usando a captura `Captura de Tela 2026-10-19 às 21.30.17.png` para escala, inclinação e luz atrás. Reutilizar `ImageShield` à direita, com a headline atual à esquerda; mobile empilha texto e escudo. Perspectiva estática contida em camada separada dos movimentos, escudo ocupando aproximadamente 28–30% da largura desktop e luz prateada difusa/curva atrás, sem repintar o PNG ou alterar sua proporção. A prévia isolada continua disponível para inspeção. As notas seguintes registram o histórico anterior, não um bloqueio atual desta integração.
+
+**Decisão posterior — imagem original animada:** o responsável autorizou usar a própria `IMG_3369.PNG` em lugar da reconstrução procedural. Essa autorização substitui a exigência de WebGL/3D real para esta alternativa: preservar a imagem intacta, sua transparência, proporções, textura e reflexos, sem redesenho, filtros ou iluminação artificial sobreposta. Entrada suave, flutuação e inclinação mínima por mouse; toque sem rotação manual e reduced motion estático. A imagem é um plano animado, não um modelo com perfil ou reflexos físicos dinâmicos. Implementar primeiro em `/preview/escudo`; o aceite da abordagem não aprova automaticamente a implementação visual nem sua integração ao Hero. Preservar os arquivos do estudo 3D anterior, sem carregá-los nessa prévia.
+
 O pedido mais recente substitui a frente prateada anterior por **metal grafite quase preto, escovado acetinado**, com reflexos prateados discretos. `IMG_3369.PNG` é a referência prioritária da silhueta, monograma Z, proporções, recortes, bordas e chanfros; `IMG_3367.PNG` orienta exclusivamente a iluminação cinematográfica. Cópias intactas em `public/shield/references/`.
 
 O responsável autorizou desenvolver isoladamente, inspecionar e depois integrar à direita da Hero; isso não equivale a aprovação visual do resultado. A integração depende de reprodução satisfatória: se o estudo procedural não atingir a fidelidade solicitada, explicar as diferenças e propor um modelo GLB dedicado antes de avançar. **Estado atual: estudo isolado, sem integração por fidelidade visual insuficiente**, especialmente no relevo, escovação e resposta dos chanfros.
 
 Entrada de 2,5–4 s, flutuação vertical mínima, mouse tilt amortecido e limitado, parallax/pequenas rotações por ScrollTrigger e variação discreta dos reflexos. Toque adaptado com amplitude reduzida e scroll vertical nativo, substituindo a proibição anterior de interação móvel. Configuração central em `components/shield/motion-config.mjs`; grupos separados possuem entrada, flutuação, tilt e scroll. Reduced motion e falhas WebGL exibem poster transparente do próprio estudo, sem carregar/manter o Canvas no modo reduzido. A prévia permite inspeção frontal, inclinada, perfil e sobreposição dos contornos à imagem 2. O poster é provisório, não um ativo aprovado.
+
+O refinamento subsequente solicitado preserva o isolamento: contornos externos medidos no PNG, recortes e bordas revistos, câmera ortográfica de comparação, microtextura de aço escovado direcionada por UV/tangentes e luzes de área físicas. Corrigir artefatos de normais, paredes coplanares e orientação do ambiente antes de avaliar o material. Tolerância de 2 px nos landmarks testados da silhueta não significa reprodução exata de toda a geometria ou aprovação artística; a espessura oculta continua não determinada pelas referências.
 
 **Este é um fluxo de produção com gate de aprovação, não uma tarefa de implementação única.**
 
@@ -340,8 +381,10 @@ Entrada de 2,5–4 s, flutuação vertical mínima, mouse tilt amortecido e limi
 - Seguros de vida
 - Planos de saúde
 - Odontológicos
+- Plano de previdência
+- Seguro prestamista
 
-#### 03 — AGRO
+#### 03 — RURAL
 
 - Ícone: `sprout`
 - Seguros agrícolas
@@ -349,6 +392,7 @@ Entrada de 2,5–4 s, flutuação vertical mínima, mouse tilt amortecido e limi
 - Soluções de logística
 - Safras
 - Pecuários
+- Responsabilidade civil rural e agropecuário
 
 #### 04 — AUTOMOTIVO
 
@@ -380,19 +424,27 @@ Entrada de 2,5–4 s, flutuação vertical mínima, mouse tilt amortecido e limi
 - TRANSPORTADOR DE CARGAS
 - OPERADOR DE CARGAS
 
-#### 08 — PREVIDÊNCIA
+#### 08 — RESPONSABILIDADE CIVIL
 
-- Ícone: `hourglass`
-- Planos de previdência
-- Seguros prestamistas
+- Ícone: `scale`
+- RC Geral
+- RC Profissional
+- RC Médicos
+- RC Dentistas
+- RC Advogados
+- RC Engenheiros e Arquitetos
+- RC Obras e Engenharia
+- RC Condomínios
+- RC Rural / Agropecuário
+- RC Hospitalar e Clínicas
 
-**Contagem de integridade:** 8 cartões, **33 linhas de produtos/serviços** no total; `BENS` possui 9 linhas e é o cartão mais longo. As 33 linhas devem estar presentes e na ordem oficial; preservar letras acentuadas, caixa, barra e grafia exatamente como especificadas.
+**Contagem de integridade (revisão de 21/10/2026):** 8 cartões, **44 linhas de produtos/serviços**. RESPONSABILIDADE CIVIL substitui PREVIDÊNCIA e possui 10 itens; RURAL substitui AGRO e recebe responsabilidade civil rural e agropecuário. Vida e Saúde inclui Plano de previdência e Seguro prestamista. Ícones acima dos títulos, alinhados na mesma altura; faixa de título com mínimo de 96 px, crescimento livre, sem quebra no meio das palavras. Títulos de Soluções com 20 px (ajuste óptico de 18 px somente em RESPONSABILIDADE CIVIL) e listas com 16 px; alturas crescem pelo maior conteúdo real.
 
 As denominações foram pluralizadas sem mudar modalidades. Engenharia, logística e previdência usam os núcleos plurais Seguros, Soluções e Planos para evitar plurais artificiais dos nomes de área. Os quatro textos específicos de TRANSPORTE prevalecem literalmente sobre a regra geral de plural e ficam em caixa alta também na fonte de dados.
 
 ### 8.3. Responsividade e dimensionamento
 
-- Desktop: **grid de quatro colunas por duas linhas (4 × 2)**, visualmente balanceado; **todos os oito cartões com a mesma altura**, determinada pelo maior conteúdo (`BENS`), e não altura distinta por linha.
+- Desktop: **grid de quatro colunas por duas linhas (4 × 2)**, visualmente balanceado; **todos os oito cartões com a mesma altura**, determinada pelo maior conteúdo real (incluindo as 10 linhas de RESPONSABILIDADE CIVIL), e não altura distinta por linha.
 - Tablet/intermediário: **duas colunas** quando quatro não comportarem de modo legível; usar breakpoint fundamentado no espaço disponível.
 - Mobile: **carrossel horizontal de gesto/swipe**, com próximo cartão parcialmente visível (`peek`), `scroll-snap`, sem rotação automática, e todos os 8 cartões acessíveis.
 - Mobile: **todos os cartões com altura uniforme, tomando BENS (9 linhas) como referência mínima**; calcular/acomodar a altura real máxima caso quebras de linha em outro cartão exijam mais espaço. Nenhum conteúdo pode ser cortado.
@@ -407,6 +459,8 @@ As denominações foram pluralizadas sem mudar modalidades. Engenharia, logísti
 
 ### 9.1. Título e layout
 
+**Última revisão:** retirar integralmente o tópico de parceria com seguradoras de SEGURANÇA. Os três cards têm altura mínima de 280 px e crescem se o conteúdo exigir; nunca cortar texto. Títulos NOSSAS SOLUÇÕES e NOSSOS DIFERENCIAIS passam a `clamp(29px, calc(3.4vw + 2px), 51px)` (32.70 px a 903 px).
+
 - Headline **exatamente** `NOSSOS DIFERENCIAIS`.
 - Não apresentar `DIFERENÇA ZURY`, `A DIFERENÇA ZURY` ou qualquer subtítulo substituto acima desse título.
 - Centralizada em todas as larguras, com espaçamento equilibrado até os cartões.
@@ -420,7 +474,7 @@ As denominações foram pluralizadas sem mudar modalidades. Engenharia, logísti
 
 | Nº | Título | Descrição |
 | --- | --- | --- |
-| 01 | **SEGURANÇA** | `Equipe qualificada, atuação autorizada pela SUSEP e parceria com diversas seguradoras para proteger seu patrimônio.` |
+| 01 | **SEGURANÇA** | `Equipe qualificada, atuação autorizada pela SUSEP.` |
 | 02 | **SUPORTE** | `Atendimento humanizado e especializado, disponível 24 horas por dia.` |
 | 03 | **AGILIDADE** | `Agilidade nas cotações e no acompanhamento e resolução de sinistros.` |
 
@@ -433,6 +487,20 @@ Os textos completos da tabela permanecem imutáveis na fonte de dados. É autori
 ---
 
 ### 9.3. Programa de Indicações — etapa 7
+
+**Inclusão de 21/10/2026:** adicionar ao card SEJA UM AFILIADO o quarto tópico literal `CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA`, sem remover os três anteriores, preservando a remuneração em negrito no terceiro tópico. Manter CTAs e gates. Trata-se de cópia da prévia solicitada, não implementação ou comprovação de emissão de códigos.
+
+**Último ajuste de dimensões e ênfase:** ambos os cards têm mínimo de 430 px, com crescimento livre para evitar cortes. Terceiro tópico de ambos os cards em negrito. CTAs de 260 × 48 px quando houver espaço, recuo de 25 px reduzido conforme largura útil; Afiliado em 13.5 px, Parceiro em 12.5 px, entrelinha 1.2 e padding 8 × 12 px. Em telas estreitas, limitar largura à disponível e permitir altura maior se a quebra exigir. Substitui as medidas anteriores de 470 px, recuo de 45 px e CTAs menores. Preservar cópias, ordem, destinos e gates.
+
+**Revisão mais recente (substitui instruções anteriores correspondentes):** cards com mínimo de 470 px, sem valores destacados acima dos CTAs. Remover também QUEM INDICA MERECE MAIS. Título da seção e parágrafo comercial usam 22 px, com quebra livre responsiva. Afiliado: QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY. / POSSIBILIDADE DE RENDA EXTRA / **O AFILIADO RECEBERÁ R$ 100 VIA PIX POR CADA CONTRATAÇÃO INDICADA.**, nesta ordem, com três marcadores e somente o último tópico em negrito. Parceiro: INDICAÇÕES RECORRENTES. / CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA / REMUNERAÇÃO DE 10% DA COMISSÃO RECEBIDA PELA CONTRATACÃO DO INDICADO. No último item, a cópia renderizada não leva o ponto final usado nesta frase explicativa. Preservar a grafia fornecida, CTAs, recuo responsivo e gates comerciais. As alegações de renda/código não são validação da operação nem autorização para publicar.
+
+**Últimas anotações dos cards (prevalecem sobre as revisões abaixo):** remover dos dados e da interface PARTICIPAÇÃO SIMPLES e INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE, inclusive seus marcadores. Preservar POSSIBILIDADE DE RENDA EXTRA e as descrições. Valores financeiros ficam fora das listas, no bloco inferior imediatamente acima dos respectivos CTAs, sem marcador. Altura mínima de ambos os cards passa a 580 px, permitindo crescimento para conteúdo real em telas estreitas. CTAs recebem recuo de 45 px quando houver espaço, reduzido automaticamente para evitar overflow; preservar os links, mensagens e gates existentes.
+
+**Revisão atual de organização:** cards com altura mínima de 640 px (crescimento livre conforme conteúdo), mesmo alinhamento superior e CTA na base. Todos os tópicos informativos, inclusive valor, descrições e benefícios, usam uma lista semântica com marcador à esquerda; título e CTA não recebem marcador. Intervalos de 22 px, recuo suspenso e alinhamento comum; padding desktop de 44 × 32 px. Esta revisão substitui as instruções antigas de apresentação sem marcadores. Mobile conserva padding de 38 × 24 px e fontes legíveis.
+
+**Nova cópia expressamente solicitada, sem ponto final, somente na prévia comercial:** `EM AGRADECIMENTO ÀS INDICAÇÕES, A ZURY OFERECE O MELHOR PRECO DO MERCADO PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES DE PRODUTOS, RENUNCIANDO Á NOSSA COMISSÃO`
+
+Substitui o parágrafo provisório abaixo, preservando literalmente a grafia recebida. A solicitação editorial não comprova a alegação comparativa nem a política de comissão: manter o gate de produção e as pendências de validação comercial/jurídica; não publicar nem tratar como oferta comprovada.
 
 Nova seção `#indicacoes`, após Diferenciais e antes de Benefícios exclusivos. Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável. Apresentação integralmente em caixa alta, conforme regra global, sem alterar as mensagens de WhatsApp.
 
@@ -592,6 +660,8 @@ Reutilizar exatamente `footer-link flow-glass flow-capsule` e os estilos compart
 
 ### 10.4. WhatsApp flutuante — exceção autorizada da etapa 7 revisada
 
+**Refinamento atual:** ao abrir, focar o contêiner do menu, não Thiago, para manter os três contatos com o mesmo estado neutro; Tab leva ao primeiro link com foco visível. Nenhum contato possui prioridade visual. No hover com mouse preciso e sem preferência de movimento reduzido, elevar o conjunto do botão 4 px por transição de 220 ms, retornando suavemente; sem loop ou movimento no toque. Essa política substitui o foco automático no primeiro contato descrito abaixo.
+
 Botão fixo no canto inferior direito, 56 px (52 px no mobile estreito), distância confortável com safe areas. Usar o ícone WhatsApp existente, Liquid Glass escuro, reflexos neutros e borda delicada. Entrada única com fade/translate de 8 px em 400 ms, sem pulso contínuo. A única cor nova autorizada é `#25D366` na borda fina e glow externo contido de hover/foco deste botão, fade-in/out de opacity em 320 ms com `cubic-bezier(.23,1,.32,1)`. Corpo continua escuro; não aplicar verde a outros elementos.
 
 Até 420 px, CTAs de Indicações usam largura de até 210 px e quebra natural de texto, sem reduzir fonte; manter faixa lateral livre para o botão flutuante e alvo mínimo de 44 px.
@@ -601,6 +671,12 @@ Clique abre menu horizontal à esquerda, na mesma altura, com THIAGO / VALDIR / 
 ## 11. Sistema de animação e scroll
 
 ### 11.1. Direção da experiência
+
+**Refinamento posterior do escudo solicitado:** substituir o balanço diagonal por órbita suave de 14 s, com eixos defasados e continuidade na emenda: x até ±6 px, y até ±12 px, pitch ±0.65°, yaw ±2.8° e roll ±0.9°. Entrada preserva 3.2 s e atraso de 0.5 s, com profundidade inicial contida (escala 0.94, yaw −9°, pitch 4°, roll −4°), sem alterar a escala final aprovada. Luz prateada difusa exclusivamente atrás da imagem acompanha a órbita e responde suavemente ao mouse em camada própria; não repintar reflexos no PNG. Usar uma timeline pausável para órbita e luz, removendo o loop CSS anterior. Mobile mantém 45% da amplitude, sem tilt por toque; reduced motion estático. Preservar o restante do site e os gates existentes.
+
+**Motion ampliado autorizado:** preservar o layout/branding e tornar a coreografia mais perceptível. Entrada das três linhas da Hero com 1.05 s, stagger de 75 ms e deslocamento percentual; escudo entra após 0.5 s em 3.2 s. Flutuação do PNG até ±8 px, yaw ±1.8° e roll ±0.6°, ciclo completo de 10 s; no mobile, 45% da intensidade. Parallax exclusivo da Hero até 42 px e 3° pelo ScrollTrigger, em camada separada da entrada, flutuação e mouse tilt. Os reflexos continuam incorporados à imagem original: não simular modelo 3D real ou alterar a arte. Luz de fundo respira somente com o escudo ativo.
+
+Reveals em 0.9 s com cascata de 75 ms, deslocamentos de 30 px (16 px no mobile) e escala mínima 0.985 apenas nos wrappers de cards. Luz ambiente acompanha scroll com deslocamento de 14 px (5 px no mobile), sem animar blur ou layout. Ícones sobem 3 px somente no hover de mouse. Configurações em `lib/site-motion.mjs` e `components/shield/image-motion.mjs`. MatchMedia reverte animações/ScrollTriggers ao mudar breakpoint ou preferência; observers/listeners possuem cleanup. Loops do escudo pausam fora da tela ou com documento oculto; reduced motion conserva conteúdo/arte estáticos. Não alterar carrosséis manuais, comportamento da navbar, cópias, dimensões aprovadas ou gates comerciais. Esta autorização supera o congelamento histórico de durações correspondente.
 
 - A sensação deve ser de uma narrativa contínua, **cinematográfica, refinada, suave e não intrusiva**.
 - **Transição progressiva de luminosidade entre os quatro tons**; pode ser implementada com camadas de fundo e interpolação de scroll, respeitando performance.
@@ -807,12 +883,12 @@ O site **somente** será considerado pronto para publicação depois de todos os
 ### Marca, conteúdo e estrutura
 
 - [ ] Build público padrão mantém Hero → Soluções → Diferenciais → Footer. Prévia completa insere Indicações → Benefícios antes do Footer, respeitando gates independentes; sem formulário ou funções extras de rodapé.
-- [ ] Hero apresenta **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY!`, com acentos e pontuação literais, sem CTA/subtítulo/scroll cue. Escudo permanece isolado até aprovação expressa.
+- [ ] Hero apresenta **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA ZURY!`, com acentos e pontuação literais, sem CTA/subtítulo/scroll cue. Escudo permanece isolado até aprovação expressa.
 - [ ] Navbar segue §5: SOLUÇÕES, DIFERENCIAIS, INDICAÇÕES, BENEFÍCIOS, SOBRE, REDES SOCIAIS, CONTATO; links comerciais omitidos independentemente com seus gates. Destinos e menus oficiais funcionam.
 - [ ] Navbar mostra somente texto em repouso, inclusive no ativo, sem cápsula individual permanente; `aria-current`, contraste e foco preservados. Hover conserva exatamente o Liquid Glass aprovado, sem alteração de parâmetros, nunca underline.
 - [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
-- [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `AGRO`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `PREVIDÊNCIA`.
-- [ ] Todos os **33 itens** de serviço correspondem exatamente à lista oficial, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Diferenciais também não possuem divisórias internas.
+- [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `RURAL`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `RESPONSABILIDADE CIVIL`.
+- [ ] Todos os **44 itens** de serviço correspondem exatamente à lista oficial atualizada, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Diferenciais também não possuem divisórias internas.
 - [ ] Indicações com cards perceptivelmente mais altos e conteúdo redistribuído; frases sem marcadores/pontos, Parceiro sem lista extra e CTAs preservados. Título comercial único sem ponto; parágrafo branco/negrito/maior, duas linhas quando couber, provisório para contratação própria. Sem promessas presumidas, códigos fictícios ou remoção dos gates.
 - [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2, apresentação segmentada, marcadores e espaçamentos preservados, sem divisórias internas; contador mobile preservado.
 - [ ] Todos os textos visíveis, inclusive avisos, menus, popovers e rodapé, estão em caixa alta por apresentação; valores técnicos e desenhos oficiais preservados. Hero ocupa exatamente as três linhas do §6.2 no desktop, sem cortes.
@@ -839,10 +915,10 @@ O site **somente** será considerado pronto para publicação depois de todos os
 
 ### Escudo e animação
 
-- [ ] Escudo 3D **foi aprovado visualmente em preview isolado** antes de sua integração final.
-- [ ] Face de prata acetinada, chanfros/laterais grafite, materiais e enquadramento consistentes.
-- [ ] Poster e fallback derivam do mesmo modelo aprovado, sem troca visual perceptível.
-- [ ] Carregamento do 3D não causa layout shift; falha de WebGL mantém Hero íntegro.
+- [x] Após a prévia isolada, o responsável autorizou expressamente integrar a alternativa com a imagem original, sem aprovar o estudo procedural.
+- [ ] Imagem original preservada, com escala, inclinação e iluminação de fundo coerentes com a referência de composição.
+- [ ] Exibição animada e estática usam o mesmo PNG, sem troca visual ou filtros sobre a arte.
+- [ ] Espaço da imagem reservado desde o HTML; Hero não depende de WebGL e permanece legível sem animação.
 - [ ] Transições entre seções são contínuas, reveals podem se repetir sem flicker e movimentos são suaves.
 - [ ] `prefers-reduced-motion` foi validado; navegação e carrosséis continuam plenamente funcionais.
 

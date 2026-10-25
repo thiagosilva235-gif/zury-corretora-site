@@ -1,0 +1,119 @@
+/* Mineral editorial rhythm: warm off-white, graphite ink, restrained silver grain. */
+.hero-copy-position { min-width: 0; align-self: center; transform: translate(10%,-10%); }
+.hero h1 .hero-line { font-family: var(--font-inter-tight),Arial,sans-serif; }
+.site-header { position: absolute; isolation: isolate; --text: #24282b; --glass-border: rgba(28,28,28,.14); --glass-tint: rgba(234,234,229,.16); background: none; border-bottom: 0; border-radius: 0 0 22px 22px; }
+.site-header .header-surface { position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background: radial-gradient(ellipse at 75% 0%,#fffef8,transparent 75%),linear-gradient(110deg,#eaeae5,#deded8); }
+.nav-entry { max-width: 100%; }
+.zury-site :is(.hero,.about,.site-footer) { --text: #eeede5; color: var(--text); }
+.site-header .official-logo { background: none; }
+@supports (mask-image: url("/brand/ZURY_Logo_Otimizada_Branco.svg")) { .site-header .official-logo { background: linear-gradient(115deg,#181c1f,#4f4d4b 55%,#1c1c1c); } }
+.zury-site .site-header .nav-glass { --text: #202829; --glass-tint: rgba(255,255,255,.08); --glass-border: rgba(40,52,52,.16); background: linear-gradient(125deg,rgba(255,255,255,.2),rgba(255,255,255,.035) 55%,rgba(117,131,128,.055)); border-color: var(--glass-border); box-shadow: inset 0 0 0 .5px rgba(255,255,255,.24),0 5px 18px rgba(20,27,28,.065); -webkit-backdrop-filter: blur(14px) saturate(1.08); backdrop-filter: blur(14px) saturate(1.08); }
+.site-header .nav-glass :focus-visible { outline-color: #202829; }
+.site-header .nav-glass :is(a,button) { transition-duration: 160ms; }
+.nav-hover-glass { position:absolute; pointer-events:none; left:0; top:0; opacity:0; border-radius:999px; background:linear-gradient(125deg,rgba(42,58,53,.17),rgba(42,58,53,.08)); box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 0 0 1px rgba(50,65,62,.15); }
+@media (hover:hover) and (min-width:768px) { .site-header .nav-glass :is(a,button):not(.priority-cta):hover:not(:focus-visible) { background:transparent; box-shadow:none; } }
+.site-header .nav-glass :is(a,button):not(.priority-cta):is(:hover,:focus-visible) { background: linear-gradient(125deg,rgba(42,58,53,.17),rgba(42,58,53,.08)); color: #202829; box-shadow: inset 0 1px 0 rgba(255,255,255,.6),inset 0 0 0 1px rgba(50,65,62,.15); }
+.site-header :focus-visible { outline-color: #24282b; }
+.floating-whatsapp-button { background-color: rgba(18,22,26,.72); }
+.zury-site :is(.solutions,.referrals,.companies,.benefits) {
+  --text: #25292c; --muted: #535754; --glass-border: rgba(28,28,28,.16);
+  --flow-reflection: linear-gradient(110deg,transparent 18%,rgba(255,255,255,.12) 32%,rgba(255,255,255,.65) 48%,rgba(214,211,209,.1) 62%,transparent 80%);
+  color: var(--text); color-scheme: light;
+  background: var(--zury-offwhite);
+}
+/* Sculpted light, not printed patterns: distinct studio illumination for each panel. */
+.zury-site .solutions { background: radial-gradient(ellipse 65% 85% at 100% 10%,#fffef9 5%,transparent 80%),radial-gradient(ellipse 80% 70% at 0% 100%,#bfc4c0,transparent 85%),linear-gradient(125deg,#d8dcd7,#f4f3ec 55%,#dce0da); }
+.zury-site .solutions-light { background: radial-gradient(ellipse 15% 110% at 82% 25%,rgba(255,255,255,.85),transparent 90%),linear-gradient(118deg,transparent 35%,rgba(255,255,255,.38) 52%,transparent 70%); }
+.zury-site .referrals { background: radial-gradient(ellipse 80% 65% at 50% 5%,#fffef7 10%,transparent 85%),radial-gradient(ellipse 60% 90% at 100% 85%,#c3c9c3,transparent 85%),linear-gradient(150deg,#d9ddd6,#efeee5 50%,#e1e3db); }
+.zury-site .referrals-light { background: radial-gradient(ellipse 40% 55% at 10% 45%,rgba(255,255,255,.7),transparent 85%),radial-gradient(ellipse 90% 16% at 60% 0%,rgba(255,255,255,.8),transparent 90%); }
+.zury-site .benefits { background: var(--zury-offwhite); }
+.zury-site .benefits-light { background: none; }
+.zury-site .companies { background: var(--zury-offwhite); }
+.zury-site .companies .company-logos { background: transparent; }
+/* Fine mineral stipple, kept below content: no stripes or lateral fog masks. */
+.zury-site :is(.solutions-light,.referrals-light,.companies-light,.benefits-light) {
+  background-image: radial-gradient(circle at 2px 3px,rgba(35,45,40,.045) .55px,transparent .85px),radial-gradient(circle at 7px 8px,rgba(255,255,255,.55) .6px,transparent 1px);
+  background-size: 11px 13px,17px 19px;
+}
+.hero-subtitle { display: flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin: 12px auto 0; font-size: clamp(14px,1.4vw,19px); font-weight: 400; line-height: 1.5; letter-spacing: .1em; color: #eaeae5; text-align: center; }
+.hero-subtitle span { display: inline-flex; align-items: center; white-space: nowrap; }
+.hero-subtitle span + span::before { content: ""; width: 4px; height: 4px; margin-inline: clamp(8px,1vw,14px); flex-shrink: 0; transform: rotate(45deg); background: #bfc6bf; box-shadow: 0 0 6px rgba(234,234,229,.2); }
+.referral-commercial p { font-size: clamp(15px,2.05vw,22px); }
+.referral-commercial-line { display: block; }
+@media (min-width:768px) { .referral-commercial-line { white-space: nowrap; } }
+.mobile-menu-toggle { display: none; }
+.zury-site .glass:where(:not(.channel-panel):not(.floating-whatsapp-button)) { background: linear-gradient(130deg,rgba(255,255,255,.05),rgba(255,255,255,.008) 55%,rgba(255,255,255,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(255,255,255,.04),0 8px 24px rgba(4,8,12,.045); }
+.zury-site :is(.solutions,.referrals,.benefits) .glass { background: linear-gradient(130deg,rgba(255,255,255,.09),rgba(255,255,255,.012) 55%,rgba(214,211,209,.025)); border-color: rgba(47,56,53,.2); box-shadow: inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.08),0 8px 24px rgba(28,28,28,.025); }
+.zury-site :is(.referral-cta,.footer-link,.channel-row,.person-link,.icon-button) { transition-duration: 180ms; }
+.zury-site .floating-whatsapp-menu { transition-duration: 180ms; }
+.zury-site .whatsapp-collapse { transition-duration: 140ms; }
+.zury-site :is(.channel-panel,.floating-whatsapp-menu) { --text: #f6f5ee; --glass-border: rgba(255,255,255,.24); color: var(--text); background: linear-gradient(130deg,rgba(23,30,31,.84),rgba(34,42,43,.76)); border-color: var(--glass-border); box-shadow: inset 0 1px 0 rgba(255,255,255,.35),0 12px 30px rgba(8,16,18,.16); }
+.zury-site :is(.solutions,.referrals,.benefits) :focus-visible { outline-color: #24282b; }
+.solutions .service-card li::marker { color: #535754; }
+.solutions .card-number,.solutions .swipe-hint,.solutions .carousel-controls span { color: #535754; }
+.solutions .carousel-positions button span { background: #777b78; }
+.solutions .carousel-positions button[aria-current] span { background: #25292c; }
+.referral-action .referral-cta { margin: 0 auto; max-width: 100%; width: 260px; min-height: 56px; height: 56px; align-self: center; }
+.referral-action { display: flex; justify-content: center; width: 100%; min-width: 0; padding-top: 22px; }
+.referral-cta[data-mode] { font-size: 13px; }
+.benefits .benefit-logo-well { height: 88px; flex-shrink: 0; margin-bottom: 12px; overflow: hidden; }
+.benefits .benefit-logo-well .partner-logo { max-width: 180px; max-height: 72px; }
+.benefits .benefit-logo-well .partner-logo-grupo-mv { max-width: 64px; max-height: 64px; }
+.benefits .benefit-logo-otica-vemos .partner-logo { width: 180px; height: 104px; max-height: 104px; object-fit: cover; object-position: 50% 60%; }
+.benefits .benefit-logo-centrolab .partner-logo { width: 112px; max-height: 104px; }
+.benefits .benefit-card { min-height: 240px; justify-content: flex-start; padding: 20px; }
+.benefits .benefit-card h3 { margin-bottom: 8px; line-height: 1.3; }
+.benefits .benefit-offer { margin-top: 0; }
+.benefits-grid[data-moving="true"] .benefit-copy { display: flex; }
+.benefits > .benefits-grid { width: 100%; max-width: none; margin: 0; padding-block: 8px; border: 0; border-radius: 0; }
+.benefits > .benefits-grid[data-moving="true"] { overflow: clip; }
+@media (max-width:767px), (prefers-reduced-motion:reduce) {
+  .benefits > .benefits-grid { width: min(calc(100% - var(--gutter) * 2),1320px); margin-inline: auto; }
+}
+/* Rounded panels replace the former hard boundary rules and glow strips. */
+.zury-site main > section,.zury-site .site-footer { border-radius: 24px; }
+.zury-site main > section + section,.zury-site .site-footer { margin-top: 8px; }
+.zury-site .site-footer > .container { width: 100%; max-width: none; }
+.zury-site .site-footer { padding: 0; }
+.site-footer .footer-panel { transform: none; }
+.site-footer .footer-columns { grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(24px,4vw,64px); }
+.site-footer .footer-columns > * { min-width: 0; }
+.site-footer .footer-link { max-width: calc(100% + 14px); overflow-wrap: break-word; }
+.zury-site .section-boundary::before,.zury-site .section-boundary::after,.zury-site .hero::before,.zury-site .hero::after { content: none; }
+.zury-site :is(h1,h2,h3,strong,.benefit-offer,.referral-commercial p) { --ink-gradient: linear-gradient(110deg,#fffef3 5%,#c5c5bb 50%,#faf8e9 95%); }
+.zury-site :is(.solutions,.referrals,.companies,.benefits) :is(h2,h3,strong,.benefit-offer,.referral-commercial p) { --ink-gradient: linear-gradient(110deg,#121819 5%,#535c57 50%,#202727 95%); }
+@supports (background-clip:text) or (-webkit-background-clip:text) {
+  .zury-site :is(h1 .hero-line,h2,h3,strong,.benefit-offer,.referral-commercial p) { background-image: var(--ink-gradient); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+}
+@media (max-width:767px) {
+  .zury-site main > section,.zury-site .site-footer { border-radius: 18px; }
+  .site-footer .footer-panel { border-radius: 18px; }
+  .site-footer .footer-columns { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .zury-site .site-header { flex-direction: row; justify-content: space-between; align-items: center; padding: calc(16px + env(safe-area-inset-top)) 20px 16px; gap: 16px; }
+  .site-header .brand-link .official-logo { width: 164px; }
+  .site-header .nav-entry { display: contents; }
+  .mobile-menu-toggle { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; flex-shrink: 0; border-radius: 14px; color: #202829; }
+  .zury-site .site-header .nav-glass { display: none; position: fixed; inset: calc(88px + env(safe-area-inset-top)) 12px auto; width: calc(100% - 24px); max-width: none; max-height: calc(100dvh - 108px - env(safe-area-inset-top)); overflow-y: auto; margin: 0; padding: 10px; border-radius: 20px; background: rgba(239,240,233,.94); }
+  .zury-site .site-header .nav-glass:popover-open { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 2px; animation: mobile-nav-in 180ms var(--flow-ease); }
+  .site-header .nav-glass :is(a,button) { width: 100%; justify-content: flex-start; padding: 12px 16px; min-height: 46px; font-size: 13px; }
+  .container.hero-content { padding-top: 144px; }
+  .hero-subtitle { margin-top: 10px; font-size: clamp(12px,3.5vw,15px); letter-spacing: .055em; }
+  .hero-subtitle span + span::before { width: 3px; height: 3px; margin-inline: 7px; }
+  .referral-commercial-line { display: inline; }
+}
+@keyframes mobile-nav-in { from { opacity: 0; translate: 0 -8px; } to { opacity: 1; translate: 0 0; } }
+/* Shared conversion accent: graphite rather than a new color outside the palette. */
+.zury-site .referral-cta.priority-cta,.zury-site #site-navigation.nav-glass .priority-cta[popovertarget] {
+  position: relative; isolation: isolate; overflow: hidden; color: #f6f5ee; -webkit-text-fill-color: currentColor; background: linear-gradient(120deg,#202829,#3d4743); border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 5px 16px rgba(20,28,25,.12);
+}
+.priority-cta::before { content: ""; position: absolute; pointer-events: none; z-index: -1; inset: 0; background: linear-gradient(110deg,transparent 25%,rgba(255,255,255,.24) 50%,transparent 75%); transform: translateX(-120%); opacity: 0; animation: cta-glint 5.5s 3; }
+@keyframes cta-glint { 0%,65% { opacity: 0; transform: translateX(-120%); } 72% { opacity: .7; } 90%,100% { opacity: 0; transform: translateX(120%); } }
+@media (prefers-reduced-motion:reduce) { .priority-cta::before { animation: none; } .zury-site .site-header .nav-glass:popover-open { animation: none; } }
+@media (prefers-contrast:more), (forced-colors:active) {
+  .zury-site :is(h1 .hero-line,h2,h3,strong,.benefit-offer,.referral-commercial p) { background-image: none; color: var(--text); -webkit-text-fill-color: currentColor; }
+}
+@media (prefers-reduced-transparency:reduce), (prefers-contrast:more) {
+  .zury-site :is(.solutions,.referrals,.benefits) .glass { background: #f1f1ed; border-color: #535754; }
+  .zury-site .site-header .nav-glass { background: #eeefe9; border-color: #535754; }
+  .zury-site :is(.channel-panel,.floating-whatsapp-menu) { background: #252c2d; }
+}
