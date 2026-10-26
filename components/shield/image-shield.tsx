@@ -101,7 +101,7 @@ export function ImageShield({ animated = true, entranceDelay = entranceMotion.de
     <div className="image-shield-light" aria-hidden="true"><div ref={light} className="image-shield-light-drift"><div ref={lightPointer} className="image-shield-light-pointer" /></div></div>
     <div ref={scroll} className="image-shield-scroll"><div ref={entry} className="image-shield-entry"><div ref={floating} className="image-shield-float"><div ref={tilt} className="image-shield-tilt">
       <div className="image-shield-art">
-        <Image src="/shield/references/geometry.png" alt="Escudo original da ZURY, monograma Z em metal grafite escovado com bordas prateadas" width={1254} height={1254} sizes="(max-width: 767px) 90vw, 620px" priority unoptimized draggable={false} />
+        <Image src="/shield/references/geometry.png" alt="Escudo original da ZURY, monograma Z em metal grafite escovado com bordas prateadas" width={1254} height={1254} sizes="(max-width: 767px) 90vw, 620px" priority draggable={false} />
         <svg className="image-shield-reflection" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
           <defs>
             <mask id={`${reflectionId}-mask`} maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600" style={{ maskType: "alpha" }}><image href="/shield/references/geometry.png" width="600" height="600" /></mask>

@@ -8,6 +8,7 @@ export function Companies() {
     <div className="section-light companies-light" aria-hidden="true" />
     <div className="container">
       <div className="section-heading" data-reveal><h2 id="companies-title">COMPANHIAS</h2></div>
+      <p className="companies-comparison">COMPARE DIFERENTES SEGURADORAS E ENCONTRE A PROTEÇÃO PARA VOCÊ.</p>
     </div>
       {companyLogos.length > 0 && <BenefitTrack count={companyLogos.length} logos>
         {companyLogos.map(logo => <div className="card-reveal company-logo glass glass-card flow-glass" key={logo.id}>

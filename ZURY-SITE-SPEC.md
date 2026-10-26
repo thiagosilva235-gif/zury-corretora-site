@@ -1,5 +1,7 @@
 # ZURY CORRETORA — Especificação oficial do website
 
+> **Cotação e destaques — 25/10/2026:** CTA da Hero passa a COTAR AGORA, com fundo prateado contrastante, Liquid Glass, fade-in, glow, vidro no hover e pulsação discreta; reduced motion estático. Todos os oito cards de Soluções abrem o mesmo painel da Hero, pré-selecionando sua categoria. Destacar SEGURO AUTO, PLANOS DE SAÚDE, SEGURO EMPRESARIAL e AGRO com acesso à cotação. Companhias recebe chamada para comparar diferentes seguradoras. Preservar legibilidade, swipe e acesso aos CTAs no mobile. Mensagens WhatsApp personalizadas por produto/dados de formulário e encaminhamento ao atendente correto ficam para etapa posterior, dependente de campos e regras de roteamento.
+
 > **Cotação e Companhias — 24/10/2026:** autorizado CTA SOLICITAR COTAÇÃO na Hero, abrindo painel com seleção única dos oito títulos oficiais de Soluções e confirmação provisória; próximas etapas serão fornecidas pelo responsável, sem coleta ou envio de dados nesta fase. Companhias passa a apresentar as 37 logos intactas em cards Liquid Glass uniformes, sem textos adicionais, mantendo velocidade e direção atuais do carrossel. Navbar recebe cápsula de hover móvel e interruptível, preservando prioridade visual de Contato e reduced motion.
 
 > **Status:** briefing consolidado e aprovado para implementação.  

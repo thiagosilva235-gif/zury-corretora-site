@@ -12,7 +12,7 @@ import { Carousel } from "@/components/site/carousel";
 import { SiteMotion } from "@/components/site/motion";
 import { FloatingWhatsApp } from "@/components/site/floating-whatsapp";
 import { HeroShield } from "@/components/site/hero-shield";
-import { QuoteMenu } from "@/components/site/quote-menu";
+import { QuoteMenu, QuoteTrigger } from "@/components/site/quote-menu";
 
 const icons = { House, HeartPulse, Sprout, CarFront, Landmark, Plane, Truck, Scale };
 const differenceIcons = [ShieldCheck, Headset, Zap];
@@ -27,7 +27,7 @@ export default function Home() {
       <section id="inicio" className="hero" tabIndex={-1} aria-labelledby="hero-title">
         <div className="section-light hero-light" aria-hidden="true" />
         <div className="container hero-content">
-          <div className="hero-copy-position"><div className="hero-copy"><h1 id="hero-title">{heroLines.map((line, index) => <span className="hero-line" key={line}>{index > 0 ? " " : ""}{line}</span>)}</h1><p className="hero-subtitle">{heroSubtitle.split("/").map((word, index) => <span key={word}>{index > 0 ? " " : ""}{word}</span>)}</p><QuoteMenu /></div></div>
+          <div className="hero-copy-position"><div className="hero-copy"><h1 id="hero-title">{heroLines.map((line, index) => <span className={`hero-line${index === 2 ? " hero-line-accent" : ""}`} key={line}>{index > 0 ? " " : ""}{line}</span>)}</h1><p className="hero-subtitle">{heroSubtitle.split("/").map((word, index) => <span key={word}>{index > 0 ? " " : ""}{word}</span>)}</p><QuoteMenu /></div></div>
           <HeroShield />
         </div>
       </section>
@@ -42,6 +42,7 @@ export default function Home() {
                 <span className="card-number">{service.number}</span>
                 <div className="card-title"><Icon size={24} strokeWidth={1.4} aria-hidden="true" /><h3>{service.title}</h3></div>
                 <ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
+                <QuoteTrigger solution={service.title} />
               </article></div>;
             })}
           </Carousel>

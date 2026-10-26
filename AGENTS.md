@@ -1,12 +1,12 @@
 # AGENTS.md — Instruções operacionais do Codex | ZURY CORRETORA
 
 > **Escopo:** repositório inteiro.  
-> **Leia primeiro:** [`ZURY-SITE-SPEC.md`](./ZURY-SITE-SPEC.md).  
+> **Leia primeiro:** o resumo inicial e apenas as seções pertinentes de [`ZURY-SITE-SPEC.md`](./ZURY-SITE-SPEC.md).
 > Este arquivo governa **o processo de trabalho**; a especificação governa **marca, conteúdo, design, interações e critérios de aceite**. Não duplique aqui seus textos, cores, contatos ou listas de serviços.
 
 ## 1. Contrato operacional e precedência
 
-1. **Fonte de verdade para o produto:** `ZURY-SITE-SPEC.md`. Ler antes de planejar ou editar; consultar novamente a seção pertinente antes de cada implementação.
+1. **Fonte de verdade para o produto:** `ZURY-SITE-SPEC.md`. Ler o resumo inicial e as seções pertinentes antes de planejar ou editar. Ler o documento inteiro somente em auditoria estrutural, revisão global ou quando a tarefa atravessar várias seções.
 2. **Fonte de verdade para a execução:** este `AGENTS.md`. Instruções adicionais legítimas do usuário e regras superiores do ambiente prevalecem quando aplicável.
 3. **Escopo:** construir uma nova landing page premium da ZURY; não ampliar o produto com features não solicitadas.
 4. **Não presumir que links de GitHub correspondam a skills executáveis**, nem que plugins/MCPs indicados estejam acessíveis nesta sessão. Detectar disponibilidade efetiva e adaptar execução.
@@ -15,9 +15,9 @@
 
 ## 2. Protocolo de início (sempre)
 
-1. Ler este arquivo e `ZURY-SITE-SPEC.md` por completo.
-2. Inspecionar a árvore atual, `package.json`, lockfile, configurações, scripts, assets em `public/brand/` e `git status` antes de editar.
-3. **O objetivo é começar um projeto NOVO, do zero.** Se o diretório já contém versão anterior ou arquivos relevantes, **não apagar/reescrever**: preservar, relatar o conflito e usar/solicitar uma pasta nova vazia conforme o fluxo permitido pelo ambiente.
+1. Ler este arquivo por completo; na especificação, ler o resumo inicial e localizar com `rg` os títulos das seções necessárias. Carregar somente esses trechos. A leitura integral fica reservada às revisões globais.
+2. Inspecionar `git status` e somente os arquivos, scripts, configurações e ativos relacionados à tarefa. Fazer auditoria completa da árvore apenas no bootstrap ou em investigação ampla.
+3. O projeto novo já foi iniciado neste diretório. Continuar a implementação existente, preservar alterações e nunca recriar ou apagar a base sem pedido expresso. A regra de pasta vazia aplica-se somente a um futuro bootstrap separado.
 4. Verificar presença dos 4 SVGs oficiais. Se algum faltar, informar exatamente qual; **não desenhar uma logo substituta**.
 5. Identificar versões reais de Node/React/Next.js/Three.js e compatibilidade de bibliotecas antes de instalar qualquer uma. Usar uma única ferramenta de gerenciamento de pacotes e manter lockfile coerente.
 6. Definir plano de execução curto, com fases, dependências, riscos, critérios de verificação e o **gate de aprovação visual do escudo**. Não gerar documentos longos adicionais sem necessidade.
@@ -34,6 +34,17 @@
 - Nunca modificar desenhos, curvas e tipografia dos SVGs oficiais. Aplicar cada variante segundo as diretrizes do §3 da especificação.
 
 ## 4. Uso inteligente de skills, ferramentas e MCPs
+
+### 4.0. Seleção automática definitiva
+
+- O Codex deve escolher automaticamente as skills instaladas que correspondam ao pedido; o usuário não precisa nomeá-las.
+- Ordem obrigatória: **regras superiores e skills explicitamente pedidas → adequação ao trabalho → especialização no stack/repositório → qualidade e segurança → estrelas no GitHub**.
+- Usar a **menor combinação suficiente**. “Invoque todas” significa selecionar todas as necessárias, nunca carregar skills sem função concreta.
+- Entre skills que façam o mesmo trabalho, no mesmo nível de adequação e autoridade, escolher o upstream com mais estrelas. Não comparar repositórios de categorias diferentes.
+- Nenhuma skill é obrigatória apenas por regra deste projeto. Selecionar skills sob demanda conforme o pedido e o risco; gatilhos impostos pelo ambiente de execução continuam prevalecendo.
+- Skills locais do projeto e instruções oficiais do stack vencem alternativas genéricas quando contêm contexto específico indispensável.
+- Consultar [`.codex/skill-routing.json`](./.codex/skill-routing.json) apenas quando houver duas ou mais candidatas plausíveis. Atualizar a fotografia de estrelas no máximo a cada 90 dias, ou quando mudar o inventário; não consultar a rede em toda tarefa.
+- Anunciar sucintamente as skills escolhidas e o motivo. Se uma skill ficar indisponível, usar a alternativa compatível e registrar a diferença.
 
 **Inventário informado pelo usuário — disponibilidade precisa ser conferida no ambiente real:**
 
@@ -55,7 +66,7 @@
 
 1. Identificar a entrega e os critérios de aceite na spec.
 2. Verificar se existe skill/MCP **de fato acessível** que reduza erro ou trabalho.
-3. Escolher **a menor combinação necessária** (ex.: GSAP para scroll; CSS para hover; R3F para escudo; browser para QA).
+3. Escolher **a menor combinação necessária** e aplicar a ordem de prioridade da §4.0 (ex.: GSAP para scroll; CSS para hover; R3F para escudo; browser para QA).
 4. Se o recurso não estiver disponível, usar abordagem técnica equivalente compatível e registrar a diferença; não bloquear o projeto por um plugin opcional.
 5. Não instalar bibliotecas só porque uma skill existe; não adicionar agentes ou documentação operacional redundantes.
 
@@ -96,6 +107,16 @@ Antes de considerar uma fase concluída:
 - Evitar páginas de demonstração públicas, assets externos sem licença clara, CSS e dados duplicados, arquivos `.md` extras e bibliotecas desnecessárias.
 - Respeitar a estrutura e os textos exatamente como constam na spec, inclusive os **quatro blocos**, as restrições de mobile e a marca oficial.
 - O checklist de conclusão é **exclusivamente** o §16 do `ZURY-SITE-SPEC.md` — não duplicar nem inventar checklists conflitantes aqui.
+
+### 7.1. Economia de contexto e tokens
+
+- Agrupar ajustes relacionados em uma rodada e evitar reabrir decisões aprovadas.
+- Pesquisar primeiro com `rg`/`rg --files`; ler arquivos grandes por trechos pertinentes e limitar saídas de terminal ao necessário.
+- Não repetir screenshots, logs, diffs ou explicações já comprovados; conservar uma evidência representativa por estado, salvo regressão ou comparação visual.
+- Durante a implementação, rodar a verificação mais focada disponível. Rodar typecheck/lint/test/build completos no gate final ou quando a alteração afetar integração global.
+- Respostas intermediárias devem informar decisão, risco e resultado sem recontar o histórico. A resposta final resume alterações, provas e pendências uma única vez.
+- Ao concluir um marco grande, sugerir uma nova conversa para a próxima fase quando isso reduzir contexto; nunca fragmentar uma correção em andamento.
+- Não criar documentos auxiliares, planos longos ou relatórios permanentes quando uma nota curta neste arquivo, na spec ou no código resolver.
 
 ## 8. Critério de encerramento da tarefa
 

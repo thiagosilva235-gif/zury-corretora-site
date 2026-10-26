@@ -40,9 +40,9 @@ export const companyLogos: readonly CompanyLogo[] = [
   {"id":"yelum","name":"Yelum","src":"/companies/yelum.png","width":1876,"height":508,"displayWidth":180},
   {"id":"zurich","name":"Zurich","src":"/companies/zurich.png","width":1947,"height":494,"displayWidth":180},
 ];
-export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA ZURY!";
+export const heroHeadline = "SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY";
 export const heroSubtitle = "EXPERIENCIA/AGILIDADE/SOLIDEZ";
-export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA", "ZURY!"] as const;
+export const heroLines = ["SEU PATRIMÔNIO MERECE", "A MELHOR ESCOLHA:", "ZURY"] as const;
 
 export type BenefitPartner = { id: string; name: string; logo: string | null; width: number; height: number; offer: string };
 export const benefitPartners: readonly BenefitPartner[] = [

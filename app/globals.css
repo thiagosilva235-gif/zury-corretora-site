@@ -274,6 +274,10 @@ button:disabled { cursor: default; opacity: .35; }
 @media (min-width:768px) and (max-width:1199px) {
   .container.hero-content { width: min(calc(100% - var(--gutter)), 930px); grid-template-columns: 57% 43%; }
   .hero h1 { font-size: clamp(31px, calc(3vw + 10px), 42px); }
+  .hero-line:first-child { font-size: 40.89px; font-weight: 700; padding-top: 6px; padding-right: 51px; margin-top: 120px; height: 48.08px; opacity: .91; }
+  .hero-line:nth-child(2) { opacity: .54; }
+  .hero-line:last-child { font-size: 50px; }
+  .hero-subtitle { font-size: 19.88px; font-weight: 500; }
 }
 /* Keep the 12px labels on one row at desktop/tablet widths without shrinking type. */
 @media (min-width:768px) and (max-width:1000px) {

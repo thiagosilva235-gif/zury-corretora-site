@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": 1,
+  "updatedAt": "2026-10-24",
+  "refreshAfterDays": 90,
+  "purpose": "Desempatar automaticamente skills instaladas igualmente adequadas sem substituir gatilhos obrigatorios, instrucoes locais ou especializacao tecnica.",
+  "selectionOrder": [
+    "higher_priority_instructions_and_explicit_user_skill",
+    "task_relevance",
+    "repository_and_stack_specificity",
+    "safety_and_verification_requirements",
+    "github_stars_tiebreaker"
+  ],
+  "rules": {
+    "minimumSufficientSet": true,
+    "compareStarsOnlyWithinSameCapability": true,
+    "projectMandatorySkills": false,
+    "runtimeRequiredTriggersStillApply": true,
+    "projectLocalContextWinsWhenIndispensable": true,
+    "unavailableSkillFallsBackToCompatibleAlternative": true,
+    "unknownUpstreamIsNotZeroStars": true,
+    "doNotBrowseOnEveryTask": true
+  },
+  "upstreams": [
+    {
+      "repository": "obra/superpowers",
+      "stars": 304630,
+      "capability": "software_workflow",
+      "skills": ["brainstorming", "systematic-debugging", "test-driven-development", "verification-before-completion", "safe-refactor"]
+    },
+    {
+      "repository": "shadcn-ui/ui",
+      "stars": 126438,
+      "capability": "accessible_ui_components",
+      "skills": ["shadcn"]
+    },
+    {
+      "repository": "JuliusBrussee/caveman",
+      "stars": 114779,
+      "capability": "context_and_output_compression",
+      "skills": ["caveman", "caveman-compress", "caveman-explore", "caveman-review"]
+    },
+    {
+      "repository": "pbakaus/impeccable",
+      "stars": 86348,
+      "capability": "frontend_design_polish",
+      "skills": ["impeccable"]
+    },
+    {
+      "repository": "motiondivision/motion",
+      "stars": 34473,
+      "capability": "declarative_ui_motion",
+      "skills": ["motion"]
+    },
+    {
+      "repository": "greensock/GSAP",
+      "stars": 30000,
+      "capability": "timeline_and_scroll_animation_runtime",
+      "skills": ["gsap-core", "gsap-performance", "gsap-react", "gsap-scrolltrigger", "gsap-timeline", "gsap-utils"]
+    },
+    {
+      "repository": "greensock/gsap-skills",
+      "stars": 17000,
+      "capability": "gsap_agent_guidance",
+      "skills": ["gsap-core", "gsap-performance", "gsap-react", "gsap-scrolltrigger", "gsap-timeline", "gsap-utils"]
+    }
+  ],
+  "notes": [
+    "Contagens sao uma fotografia, nao garantia de qualidade.",
+    "Nao comparar, por exemplo, uma skill de debugging com uma de design ou animacao.",
+    "Skills oficiais, locais ou sem upstream identificavel continuam elegiveis por adequacao e autoridade."
+  ]
+}

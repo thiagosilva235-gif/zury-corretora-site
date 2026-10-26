@@ -40,7 +40,7 @@ export function SiteHeader({ items = navigation }: { items?: readonly SiteNaviga
         hidden = nextHidden;
         navigationElement.inert = hidden;
         navigationElement.dataset.hidden = String(hidden);
-        gsap.to(navigationElement, { y: hidden && !media.matches ? -24 : 0, opacity: hidden ? 0 : 1, duration: media.matches ? 0 : hidden ? .16 : .22, ease: "power2.out", overwrite: true });
+        gsap.to(navigationElement, { y: hidden && !media.matches ? -24 : 0, opacity: hidden ? 0 : 1, duration: media.matches ? 0 : hidden ? .32 : .24, ease: "power2.out", overwrite: true });
       }
       element.dataset.scrolled = String(current > 60);
       const institutional = document.getElementById("institucional");
@@ -70,12 +70,12 @@ export function SiteHeader({ items = navigation }: { items?: readonly SiteNaviga
       if (!surface || mobile || !item || item.classList.contains("priority-cta")) { if (surface) gsap.to(surface,{opacity:0,duration:.16,overwrite:true}); return; }
       const bounds = item.getBoundingClientRect(); const parent = event.currentTarget.getBoundingClientRect();
       const reduced = matchMedia("(prefers-reduced-motion:reduce)").matches;
-      gsap.to(surface,{x:bounds.left-parent.left,y:bounds.top-parent.top,width:bounds.width,height:bounds.height,opacity:1,duration:reduced ? 0 : .28,ease:"power3.out",overwrite:true});
+      gsap.to(surface,{x:bounds.left-parent.left,y:bounds.top-parent.top,width:bounds.width,height:bounds.height,opacity:1,duration:reduced ? 0 : .18,ease:"power3.out",overwrite:true});
     }} onPointerLeave={() => { if (hoverGlass.current) gsap.to(hoverGlass.current,{opacity:0,duration:.2,overwrite:true}); }} onToggle={event => { const opened = event.newState === "open"; setMenuOpen(opened); if (opened) event.currentTarget.querySelector<HTMLAnchorElement>("a")?.focus({ preventScroll: true }); }}>
       <span ref={hoverGlass} className="nav-hover-glass" aria-hidden="true" />
       {items.map((item) => <a className="flow-glass flow-capsule" key={item.href} href={item.href} aria-current={active === item.href ? "location" : undefined} onClick={() => { if (mobile && navbar.current?.matches(":popover-open")) navbar.current.hidePopover(); }}>{item.label}</a>)}
       <button className="flow-glass flow-capsule" type="button" popoverTarget="social-channels" aria-haspopup="dialog" onClick={() => { if (mobile && navbar.current?.matches(":popover-open")) navbar.current.hidePopover(); }}>REDES SOCIAIS</button>
-      <button className="flow-glass flow-capsule priority-cta" type="button" popoverTarget="nav-contact-channels" aria-haspopup="dialog" onClick={() => { if (mobile && navbar.current?.matches(":popover-open")) navbar.current.hidePopover(); }}>CONTATO</button>
+      <button className="flow-glass flow-capsule priority-cta cta-beam" type="button" popoverTarget="nav-contact-channels" aria-haspopup="dialog" onClick={() => { if (mobile && navbar.current?.matches(":popover-open")) navbar.current.hidePopover(); }}><span className="cta-border-beam" aria-hidden="true" /><span className="cta-breathing-glow" aria-hidden="true" /><span className="cta-label">CONTATO</span></button>
     </nav>
     </div>
   </header>;
