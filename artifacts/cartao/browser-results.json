@@ -1,0 +1,290 @@
+[
+  {
+    "engine": "chromium",
+    "viewport": "864x1536",
+    "card": {
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1536
+    },
+    "document": {
+      "height": 1536,
+      "width": 864
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "320x568",
+    "card": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 656.703125
+    },
+    "document": {
+      "height": 657,
+      "width": 320
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "375x667",
+    "card": {
+      "x": 0,
+      "y": 0,
+      "width": 375,
+      "height": 702.09375
+    },
+    "document": {
+      "height": 702,
+      "width": 375
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "390x844",
+    "card": {
+      "x": 0,
+      "y": 64,
+      "width": 390,
+      "height": 715.984375
+    },
+    "document": {
+      "height": 844,
+      "width": 390
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "430x932",
+    "card": {
+      "x": 0,
+      "y": 83.78125,
+      "width": 430,
+      "height": 764.4375
+    },
+    "document": {
+      "height": 932,
+      "width": 430
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "768x1024",
+    "card": {
+      "x": 96,
+      "y": 0,
+      "width": 576,
+      "height": 1024
+    },
+    "document": {
+      "height": 1024,
+      "width": 768
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "1440x900",
+    "card": {
+      "x": 466.875,
+      "y": 0,
+      "width": 506.25,
+      "height": 900
+    },
+    "document": {
+      "height": 900,
+      "width": 1440
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "viewport": "844x390",
+    "card": {
+      "x": 242,
+      "y": 0,
+      "width": 360,
+      "height": 689.234375
+    },
+    "document": {
+      "height": 689,
+      "width": 844
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "864x1536",
+    "card": {
+      "x": 0,
+      "y": 0,
+      "width": 864,
+      "height": 1536
+    },
+    "document": {
+      "height": 1536,
+      "width": 864
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "320x568",
+    "card": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 656.703125
+    },
+    "document": {
+      "height": 657,
+      "width": 320
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "375x667",
+    "card": {
+      "x": 0,
+      "y": 0,
+      "width": 375,
+      "height": 702.09375
+    },
+    "document": {
+      "height": 702,
+      "width": 375
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "390x844",
+    "card": {
+      "x": 0,
+      "y": 64,
+      "width": 390,
+      "height": 715.984375
+    },
+    "document": {
+      "height": 844,
+      "width": 390
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "430x932",
+    "card": {
+      "x": 0,
+      "y": 83.78125,
+      "width": 430,
+      "height": 764.4375
+    },
+    "document": {
+      "height": 932,
+      "width": 430
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "768x1024",
+    "card": {
+      "x": 96,
+      "y": 0,
+      "width": 576,
+      "height": 1024
+    },
+    "document": {
+      "height": 1024,
+      "width": 768
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "1440x900",
+    "card": {
+      "x": 466.875,
+      "y": 0,
+      "width": 506.25,
+      "height": 900
+    },
+    "document": {
+      "height": 900,
+      "width": 1440
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "viewport": "844x390",
+    "card": {
+      "x": 242,
+      "y": 0,
+      "width": 360,
+      "height": 689.234375
+    },
+    "document": {
+      "height": 689,
+      "width": 844
+    },
+    "actions": 9,
+    "menus": "passed",
+    "quote": "passed",
+    "errors": []
+  }
+]

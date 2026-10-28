@@ -20,6 +20,9 @@
 # production
 /build
 
+# Local source handoff archives
+/entregas/
+
 # misc
 .DS_Store
 *.pem

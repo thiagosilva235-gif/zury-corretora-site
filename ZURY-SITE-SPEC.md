@@ -1,368 +1,359 @@
-# ZURY CORRETORA — Especificação oficial do website
+# ZURY CORRETORA — Especificação consolidada do site
 
-> **Cotação e destaques — 25/10/2026:** CTA da Hero passa a COTAR AGORA, com fundo prateado contrastante, Liquid Glass, fade-in, glow, vidro no hover e pulsação discreta; reduced motion estático. Todos os oito cards de Soluções abrem o mesmo painel da Hero, pré-selecionando sua categoria. Destacar SEGURO AUTO, PLANOS DE SAÚDE, SEGURO EMPRESARIAL e AGRO com acesso à cotação. Companhias recebe chamada para comparar diferentes seguradoras. Preservar legibilidade, swipe e acesso aos CTAs no mobile. Mensagens WhatsApp personalizadas por produto/dados de formulário e encaminhamento ao atendente correto ficam para etapa posterior, dependente de campos e regras de roteamento.
+> **Atualização:** 26/10/2026, fuso America/Sao_Paulo.
+> **Base de implementação:** commit `2d93bc6c35e8138c0815455e85980dfe3b6b1f29`, branch `main`.
+> **Natureza:** contrato de produto e inventário técnico do estado atual. Este documento substitui as revisões contraditórias antes acumuladas; o histórico permanece no Git.
+> **Processo de execução:** [AGENTS.md](./AGENTS.md). Instalação e comandos: [README.md](./README.md).
+> **Precisão:** medidas abaixo são declarações do código, com exceções explicitadas. Valores finais dependem de viewport, cascata CSS, preferências do navegador e conteúdo. A seção 19 reproduz literalmente todos os estilos próprios da landing page, para preservar cores, gradientes, sombras, seletores e breakpoints sem arredondamentos.
+> **Estado:** implementado não significa aprovado para publicação, auditado em todos os navegadores ou medido em produção. As melhorias da auditoria permanecem pendentes e exigem autorização individual.
 
-> **Cotação e Companhias — 24/10/2026:** autorizado CTA SOLICITAR COTAÇÃO na Hero, abrindo painel com seleção única dos oito títulos oficiais de Soluções e confirmação provisória; próximas etapas serão fornecidas pelo responsável, sem coleta ou envio de dados nesta fase. Companhias passa a apresentar as 37 logos intactas em cards Liquid Glass uniformes, sem textos adicionais, mantendo velocidade e direção atuais do carrossel. Navbar recebe cápsula de hover móvel e interruptível, preservando prioridade visual de Contato e reduced motion.
+## Resumo executivo e mudanças vigentes
 
-> **Status:** briefing consolidado e aprovado para implementação.  
-> **Companhias clara, menu mobile e CTAs — 24/10/2026:** Companhias passa a off-white com título grafite, sem faixa escura; preservar as 37 logos intactas. Fundos claros recebem pontilhado mineral CSS discreto, sem listras nem névoa lateral. Em até 767 px, logo ZURY à esquerda e hamburger à direita; navegação em popover nativo com foco inicial, fechamento por Escape/clique fora/seleção e menus de contato/social preservados. Esta autorização substitui a proibição histórica de hamburger somente no mobile. Contato da navbar e ambos os CTAs de Indicações com acento grafite/off-white e três passagens discretas de brilho, sem loop permanente nem motion em reduced motion. Hero ganha o subtítulo literal **EXPERIENCIA/AGILIDADE/SOLIDEZ**, em caixa alta, peso 400, com linha fina e tracking; preservar headline e tamanhos atuais, compartilhar parallax do grupo. Esta nota supera as restrições anteriores correspondentes.
-> **Integração das 37 logomarcas — 24/10/2026:** recebida a pasta ZURY_37_Logomarcas. Integrar todos os 37 PNGs em public/companies, cópias intactas verificadas por SHA-256; seis arquivos com nomes genéricos identificados visualmente como Ademicon, Capemisa, Itaú, Rodobens, Brasilseg e AXA. Cadastro tipado com nome acessível, dimensões originais e largura óptica de 100–200 px. Logos sem filtros, cards ou legendas, contidas em faixa clara contínua para legibilidade das marcas pretas/azul-escuras; título/seção Companhias seguem grafite. Mesmos espaçamento/slots e loop à direita de 76 px/s preparado anteriormente, sem pausa por hover; mobile/reduced motion estáticos. O recebimento confirma os ativos enviados pelo responsável, não constitui verificação independente de parcerias ou condições comerciais.
-> **Rodapé integral, Feedback e logos — 24/10/2026:** remover padding externo do rodapé para que painel e seção tenham a mesma largura/altura; preservar padding interno e não elevar o painel por hover. Três grupos: Navegação, Institucional e FEEDBACK; mover REDES SOCIAIS e NOS AVALIE NO GOOGLE para Feedback, sem duplicar links, mantendo componentes e destinos oficiais. Desktop em três colunas, mobile empilhado. Benefícios com fundo off-white uniforme, sem gradiente/névoa lateral. Companhias preparada com logos livres, sem cards ou textos visíveis, slots de 180–220 px, imagem contida até 180 × 72 px, intervalo de 48 px e o mesmo loop à direita a 76 px/s de Benefícios; mobile/reduced motion estáticos. A integração dos PNGs e ajuste óptico individual permanecem pendentes do envio da pasta, ainda não recebida nesta revisão. Esta nota supera a composição anterior correspondente.
-> **Navbar cristalina, rodapé amplo e órbita — 24/10/2026:** painel do rodapé ocupa 100% da largura da seção, preservando padding interno e colunas responsivas. Navbar em vidro claro neutro translúcido com texto grafite, sem linha especular superior forte; contorno uniforme discreto e sombra inferior curta. Escudo com órbita contínua de ±16 px horizontal/±28 px vertical, pitch ±1,1°, yaw ±4° e roll ±1,3° em 10 s; intensidade móvel 40%, reduced motion estático. Preservar PNG e composição SVG do reflexo, limites do cursor, luz de fundo e cleanup existentes. Esta nota supera o vidro escuro da navbar, limite lateral do rodapé e amplitude anterior correspondentes.
-> **Refinamento Glass e faixa livre — 24/10/2026:** navbar com vidro grafite translúcido e texto off-white, contorno especular fino, contraste em todos os estados e fallback sólido de alta acessibilidade. Superfícies claras mais cristalinas, sem cobertura leitosa. Entradas existentes passam a 1,2 s/espera 0,08 s; saída/retorno da navbar 160/220 ms; Flow Glass 600 ms e fade 160 ms, demais realces em torno de 180 ms. Benefícios ocupa a largura total da seção no desktop, sem janela central de 960 px, trilho a 76 px/s para a direita e cópias visuais calculadas para cobrir a viewport durante todo o ciclo. Preservar bordas próprias dos cards, logos, leitura móvel/reduced motion estáticos, proteção por foco/interação/documento oculto e ausência de pausa por hover. Impeccable instalado localmente; CYLTabBarController não é skill web e não foi instalado. Esta nota supera limites e timings anteriores correspondentes.
-> **Revisão de 24/10/2026:** remover FARMELHOR UNAÍ dos dados renderizáveis de Benefícios, preservando o PNG histórico; restam ZAPP, GRUPO MV, ÓTICA VEMOS e LABORATÓRIO CENTROLAB. O loop não pausa mais ao passar o cursor; manter foco, interação ativa, documento oculto e reduced motion protegidos. Entradas existentes (seções, cards, títulos, marca/navbar e escudo) usam a mesma função de fade/deslocamento/escala, agora 2,4 s, espera de 0,25 s e power3.out; escudo sem rotação exclusiva na entrada, mantendo flutuação e reflexo. Esta revisão supera os tempos, parceiros e regras de hover anteriores correspondentes.
-> **Revisão de iluminação e entradas — 22/10/2026:** remover integralmente tramas, riscos e arcos repetidos dos fundos claros; usar gradientes perolados e iluminação ampla distinta por seção (lateral em Soluções, halo em Indicações, diagonal em Benefícios). Destaques em gradiente grafite sobre claro e off-white sobre escuro, incluindo preenchimento WebKit e fallback de alto contraste. Entradas de superfície do header, logo, wrapper da navbar, linhas da Hero e reveals compartilham a configuração do escudo: 3,2 s, espera de 0,5 s, power3.out, translação 28/38 px e escala inicial 0,94; preservar inclinação própria do escudo, reduced motion e saída independente/rápida da navbar. Esta revisão substitui as texturas e tempos de entrada anteriores.
-> **Refinamento complementar de 22/10/2026:** Benefícios com cards compactos (mínimo 240 px, expansíveis pelo conteúdo), marca 8 px acima da oferta e todas as cinco logos preservadas. Movimento linear para a direita a 52 px/s, conservando fase no resize e pausas implícitas de leitura/visibilidade; remover controle explícito de pausa. Mobile e reduced motion permanecem estáticos. Fundos off-white com texturas minerais distintas e gradientes; títulos/destaques em gradiente grafite sobre claro e off-white sobre escuro, com fallback de contraste. Glass mais transparente, seções arredondadas (24 px desktop/18 px mobile), junções sem linhas luminosas. Bloco da marca acompanha o fluxo da página sem animação; somente navbar recebe fade/saída no scroll. Esta nota supera as decisões anteriores correspondentes.
-> **Revisão de 22/10/2026:** bloco de marca/navbar off-white com marca grafite; Hero mantém fundo original; Soluções, Indicações e Benefícios off-white mineral com texturas CSS neutras e tinta grafite, alternados com Diferenciais/Companhias/Footer escuros. Preservar superfícies transparentes, contraste e gates comerciais. Hero usa Inter Tight em todas as linhas, sem alterar texto/tamanhos, e wrapper deslocado 10% à direita/10% acima em relação à própria caixa, sem disputar o parallax. CTAs de Indicações iguais, 260 × 56 px limitados à largura útil, centralizados na base dos cards. Afiliado: INDICAÇÕES SIMPLES / CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA / **REMUNERAÇÃO DE R$100 ENVIADO VIA PIX PELA CONTRATACÃO DO INDICADO.** Remover POSSIBILIDADE DE RENDA EXTRA. Parágrafo: **A ZURY OFERECE O MELHOR PREÇO DO MERCADO PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES, RENUNCIANDO Á NOSSA COMISSÃO.** Cópia fornecida, sem comprovação comercial presumida. Benefícios: ZAPP passa a 5% DE DESCONTO EM ATÉ 3X; adicionar ÓTICA VEMOS — 15% DE DESCONTO A VISTA E 10% Á PRAZO e LABORATÓRIO CENTROLAB — 10% DE DESCONTO, com PNGs fornecidos de 1254 × 1254 intactos. Cinco parceiros; carrossel condicional à direita, com pausa explícita acessível além de hover/foco. Mobile/reduced motion estáticos. Esta revisão supera os textos, famílias e fundos históricos correspondentes.
-> **Correção complementar de 21/10/2026:** Afiliado passa a exibir código no terceiro tópico e remuneração no quarto, preservando somente a remuneração em negrito. Vida e Saúde recebe Plano de previdência e Seguro prestamista (total atual: 44 serviços). Ícones de Soluções ancorados no topo da mesma faixa de título; RESPONSABILIDADE CIVIL quebra apenas entre palavras, com ajuste óptico local de 18 px/tracking 0.025em. Reflexo usa uma única composição SVG plana com máscara alpha da imagem original e deslocamento 2D, em lugar de máscara CSS envolvendo filho 3D. Esta nota supera os valores e a ordem anteriores correspondentes.
-> **Revisão mais recente — 21/10/2026:** autorizada seção COMPANHIAS acima de Benefícios (antes do Footer quando Benefícios estiver omitido), com logos PNG livres, sem cards e sem marcas fictícias. Cadastro tipado vazio até recebimento dos ativos autorizados; reutilizar movimento condicional de Benefícios, para a direita a 42 px/s, pausável em hover/foco/interação/documento oculto, estático em mobile/reduced motion. Esta autorização supera a proibição histórica de faixa de logos apenas nesta seção. Soluções segue a lista atualizada do §8.2 e usa títulos 20 px/listas 16 px. Reflexo do escudo restrito à área da imagem com queda suave nas bordas, opacidade máxima 0.28 e faixa estreita; reset ao rolar, perder foco ou sair da Hero. Preservar PNG, órbita e gates comerciais.
-> **Natureza:** fonte única de verdade para marca, conteúdo, experiência, comportamento visual e critérios de aceite.  
-> **Idioma de interface:** português brasileiro (`pt-BR`).  
-> **Escopo:** landing page premium, responsiva, de página única; quatro blocos públicos atuais, Indicações e Benefícios adicionais em prévia de desenvolvimento (§§9.3–9.4).
-> **Documento complementar:** [`AGENTS.md`](./AGENTS.md) contém somente instruções de execução para o Codex; não substitui este documento.  
-> **Regra essencial:** não inventar textos, produtos, contatos, afirmações comerciais ou áreas extras para preencher o layout.
-> **Revisão visual de 19/10/2026:** Premium Dark Gradient, navegação com cinco opções e contatos em popovers aprovados expressamente no pedido de redesign. Esta revisão substitui as decisões anteriores correspondentes; o escudo continua sem aprovação e isolado.
-> **Refinamento complementar de 19/10/2026:** cápsulas Flow Glass compartilhadas na navbar e nos menus; contato e redes sociais separados; rodapé sem botão WhatsApp; produtos revisados no plural. Header completo com saída conjunta de 475 ms e reaparecimento somente no topo. Listas com marcadores discretos e 12 px entre produtos; diferenciais em caixa alta por CSS, organizados em trechos com marcadores e divisórias. Painel do rodapé compartilha as animações dos cards. Preservar a aplicação existente e o gate do escudo.
-> **Etapa 2 — identidade visual e Hero:** direção cromática da imagem 4 e nova headline autorizadas pelo responsável. Substituem o congelamento anterior dos fundos e a headline antiga. Implementação visual ainda sujeita à avaliação; não implica aprovação do escudo nem autorização para etapas futuras.
-> **Etapa 3 — Indicações:** autorizados Hero em caixa alta, remoção exclusiva das divisórias de produtos e nova seção de indicações em prévia, com acesso na navbar. Preservar a etapa 2 sem reconstrução. A oferta depende de validação comercial/jurídica; escudo continua isolado e sem aprovação.
-> **Etapa 5 — revisão visual e comercial:** caixa alta global permanente, cards mais compactos e novos textos de Indicações. Benefícios contém somente três cards estáticos: FARMELHOR UNAÍ, ZAPP e GRUPO MV. Faixa de logos cancelada; avisos de prévia removidos da interface, sem liberar publicação comercial. Headline de rendimento mensal e operação de códigos continuam pendentes. Escudo continua isolado e sem aprovação.
-> **Etapa 7 revisada:** Hero ampliada novamente, cards de Indicações perceptivelmente mais altos, título comercial único sem ponto e mensagem branca em negrito, duas linhas quando houver largura. Benefícios perde a chamada auxiliar e conserva o carrossel condicional. Menus aprovados da navbar são reutilizados no rodapé com abertura acima quando necessário. WhatsApp flutuante autorizado com menu horizontal à esquerda; verde-neon exclusivamente na borda/glow de hover/foco do botão. Esta revisão substitui restrições anteriores correspondentes. Gates comerciais e do escudo permanecem.
-> **Decisão mais recente — integração do escudo em imagem:** o responsável autorizou expressamente integrar a própria imagem original à Hero. Essa decisão supera as restrições históricas de isolamento e obrigatoriedade de 3D real para esta alternativa. A captura de 19/10 às 21:30 orienta somente tamanho, inclinação e iluminação de fundo; textos, navbar, identidade e demais seções atuais permanecem. Não constitui aprovação do estudo procedural nem liberação dos gates comerciais.
+A aplicação existente é uma landing page de corretagem com identidade grafite, prata e off-white, fonte Inter Tight, caixa alta na interface, superfícies Liquid Glass, reflexos Flow Glass e animações GSAP/CSS/WAAPI.
 
----
+Estado atual:
 
-## 1. Objetivo e princípios do projeto
+- Hero com três linhas literais: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA:` / `ZURY`.
+- Subtítulo literal nos dados: `EXPERIENCIA/AGILIDADE/SOLIDEZ`; apresentação em três palavras separadas por losangos.
+- CTA da Hero: `COTAR AGORA`, prateado, desktop com largura/mínimo de 335 px e fonte 21 px.
+- Bloco de texto/CTA da Hero em `translate(4%,-5%)`. Isso é 4% à direita e 5% acima da posição natural; representa deslocamento à esquerda/baixo em relação ao antigo `translate(10%,-10%)`.
+- Palavra ZURY com acabamento metálico CSS e `line-height: .9`; a alteração de entrelinha não diminui a altura dos glifos.
+- CONTATO da navbar e COTAR AGORA da Hero têm camadas dedicadas de feixe de borda e glow pulsante.
+- Hover global de botões habilitados: elevação de 2 px, somente mouse com hover/ponteiro preciso.
+- Navbar: ocultação em 320 ms e retorno em 240 ms; cápsula móvel de hover em 180 ms.
+- Oito cards de Soluções, 44 itens, cada um com CTA que abre o mesmo painel e pré-seleciona sua categoria.
+- Não há botões de categorias entre NOSSAS SOLUÇÕES e os cards. Existem estilos residuais `.solution-highlights`, sem elementos correspondentes renderizados.
+- COMPANHIAS: 37 logos integradas, fundo claro, cards de vidro e chamada para comparar seguradoras.
+- Benefícios: quatro parceiros atuais, sem FarMelhor na lista renderizável.
+- Escudo da Hero é PNG original animado, não Canvas/WebGL; o estudo procedural permanece preservado.
+- Cotação continua provisória: escolhe categoria, avança para resumo e informa que nada foi enviado. Sem coleta pessoal ou WhatsApp por produto implementados.
+- As ofertas de Indicações e Benefícios têm gates independentes de prévia; nenhuma auditoria ou atualização documental libera publicação.
 
-Construir do zero um website de apresentação institucional e comercial da **ZURY CORRETORA**, empresa brasileira de corretagem de seguros e serviços correlatos, com qualidade visual de estúdio especializado em marcas de alto padrão. O resultado deverá transmitir **confiança, solidez, credibilidade, sofisticação, exclusividade, precisão e modernidade**.
+## 1. Objetivo, escopo e precedência
 
-### 1.1. Direção criativa aprovada
+Transmitir confiança, solidez, sofisticação e precisão, com luxo discreto, estrutura geométrica e efeitos neutros. A logo oficial não pode ser redesenhada, deformada nem substituída por texto digitado.
 
-- **Quiet luxury:** luxo discreto, sem ornamentação supérflua, ostentação, efeitos chamativos ou aparência genérica de template.
-- **Linguagem arquitetônica e geométrica:** alinhamentos rigorosos, ritmos consistentes, proporções cuidadosas, áreas de respiro equilibradas.
-- **Minimalismo expressivo:** poucos elementos com alta qualidade de execução; não compensar espaços vazios adicionando conteúdo não autorizado.
-- **Visual contemporâneo e atemporal:** refinado, premium, limpo e corporativo, sem excesso de gradientes ou cores de destaque.
-- **Crystalline Liquid Glass:** superfícies translúcidas sutis, contornos cristalinos, reflexos delicados, profundidade contida e contraste sempre legível.
-- **Motion cinematográfico:** movimento deliberado, macio, progressivo, com continuidade entre seções, sem cortes bruscos, flashes ou movimentos que causem desconforto.
-- **Fidelidade ao conteúdo e à marca:** a logo está pronta; **não a redesenhar nem recriar sua tipografia**.
+Prioridade: verdade do conteúdo/marca → legibilidade e funcionamento → fidelidade estética → desempenho medido → sofisticação técnica útil.
 
-### 1.2. Prioridades de decisão (ordem)
+O documento distingue:
 
-1. Exatidão dos conteúdos, marca e estrutura autorizada, incluindo o gate de publicação de Indicações.
-2. Legibilidade, acessibilidade e funcionamento em todos os dispositivos.
-3. Fidelidade estética à direção premium, inclusive no mobile.
-4. Performance real e estabilidade de carregamento.
-5. Sofisticação técnica **somente onde agregue benefício perceptível**.
+| Tipo | Significado |
+| --- | --- |
+| Implementado | Encontrado no código da base acima; não certifica renderização em toda viewport |
+| Diretriz | Resultado exigido na manutenção, dependente de validação |
+| Pendente | Ainda não implementado, testado ou aprovado |
+| Histórico | Disponível no Git; não deve restaurar regras antigas sobre as atuais |
 
-Se um efeito visual prejudicar a leitura, estabilidade, usabilidade ou desempenho, simplificar sua implementação **sem mudar a proposta de design**. Não remover indiscriminadamente todos os efeitos da versão mobile.
+A autorização para atualizar documentação não autoriza executar as melhorias visuais listadas no §16.2. Não acrescentar seções, claims, dados de parceiros, depoimentos, FAQ, backend ou integrações sem solicitação.
 
----
+## 2. Arquitetura de informação e ambientes
 
-## 2. Arquitetura de informação e prévia de Indicações
+### 2.1. Estrutura renderizada
 
-A página pública padrão mantém os quatro blocos abaixo. A prévia completa insere `indicacoes` depois de `sobre` e `beneficios` depois de `indicacoes`, antes de `contato`: Hero → Soluções → Diferenciais → Indicações → Benefícios exclusivos → Footer. Cada oferta tem gate de publicação independente.
-
-| Ordem | ID semântico | Seção | Tom de referência |
+| Ordem | Seção | ID | Exibição |
 | --- | --- | --- | --- |
-| 1 | `inicio` | Hero | grafite profundo com luz cinza-prata |
-| 2 | `servicos` | Nossas Soluções | cinza mineral e grafite, mais luminoso que o Hero |
-| 3 | `sobre` | Nossos Diferenciais | cinza mineral escuro com profundidade própria |
-| 4 | `contato` | Footer institucional e contatos | gradiente escuro até grafite profundo `#1C1C1C` |
+| — | Header/marca/navegação | `site-navigation` para nav | Sempre |
+| 1 | Hero | `inicio` | Sempre |
+| 2 | NOSSAS SOLUÇÕES | `servicos` | Sempre |
+| 3 | NOSSOS DIFERENCIAIS | `sobre` | Sempre |
+| 4 | PROGRAMA DE INDICAÇÕES | `indicacoes` | Gate de Indicações |
+| 5 | COMPANHIAS | `companhias` | Sempre; trilho quando houver logos |
+| 6 | BENEFÍCIOS EXCLUSIVOS | `beneficios` | Gate de Benefícios |
+| 7 | Rodapé | `contato` | Sempre |
 
-**Esclarecimentos importantes:**
+`main#conteudo` é o destino do skip link. `#institucional` é a coluna legal do rodapé, não outra seção. A Hero tem `h1`; títulos de seção são `h2`; títulos de cards são `h3`.
 
-- A navegação/header não é uma quinta seção.
-- As únicas seções adicionais autorizadas são PROGRAMA DE INDICAÇÕES e BENEFÍCIOS EXCLUSIVOS, sujeitas aos gates dos §§9.3–9.4. Esta autorização substitui a limitação histórica de quatro blocos somente na prévia habilitada.
-- **Não criar seção exclusiva de contato**: o destino `#contato` aponta para o footer.
-- Não criar seções além das autorizadas, depoimentos, FAQ, estatísticas, formulário, newsletter, planos, logos de seguradoras ou chamada final. As três marcas comerciais do §9.4 pertencem a Benefícios, não a uma seção comercial adicional.
-- O design entre os quatro tons deve parecer **uma transição luminosa contínua ao rolar a página**, com gradientes neutros distintos derivados do rodapé existente. Unir as bordas das seções sem mudanças abruptas; não uniformizar todas no mesmo tom.
-- Entre seções, compartilhar uma transição arquitetônica: filete prateado de aproximadamente 1 px, baixa opacidade e extremidades dissipadas, acompanhado de luminosidade difusa suave. Sem faixas rígidas, linhas pesadas, novas cores ou novas seções.
-- Rotas ou ferramentas locais **de pré-visualização do escudo** são permitidas durante o desenvolvimento, desde que **não integrem a navegação nem sejam publicadas como uma quinta seção/área comercial**.
+### 2.2. Gates de prévia
 
----
-
-## 3. Marca oficial e arquivos SVG
-
-### 3.1. Pasta de ativos
-
-Os seguintes arquivos foram fornecidos/preparados e devem ficar exatamente em `public/brand/`:
-
-```text
-public/
-└── brand/
-    ├── 04_ZURY_Preto_Transparente.svg       # original entregue; não editar
-    ├── ZURY_Logo_Otimizada_Preto.svg        # preto #090909
-    ├── ZURY_Logo_Otimizada_Grafite.svg      # grafite #1C1C1C
-    └── ZURY_Logo_Otimizada_Branco.svg       # branco #FFFFFF
-```
-
-Os três SVGs otimizados possuem `viewBox="280 96 1046 324"` e dimensões nominais `1046 × 324`; o original possui `viewBox="0 0 1600 535"`. A otimização remove apenas excesso de margem transparente pela janela de visualização. **As curvas e proporções do desenho devem permanecer rigorosamente idênticas**.
-
-### 3.2. Regras mandatórias de aplicação
-
-**Revisão posterior — prata clara:** por solicitação expressa, logo completa e monograma na interface passam a usar `#D7DCE0`, como textos e ícones antes brancos. Aplicar a silhueta do próprio SVG oficial como máscara CSS, sem filtros, redesenho ou edição dos quatro arquivos originais. Preservar a imagem informativa acessível e a proporção natural. Essa aplicação supera somente a exigência histórica de branco na renderização; logos dos parceiros e imagem do escudo permanecem intactas.
-
-1. Usar a **logo oficial completa** (símbolo/monograma + lettering) nos locais especificados; não substituir por texto digitado.
-2. **Navbar e superfícies escuras:** usar `ZURY_Logo_Otimizada_Branco.svg`; em superfícies claras, preferir a variante grafite (`#1C1C1C`). Nunca recolorir o SVG com filtros.
-3. **Footer grafite profundo:** usar `ZURY_Logo_Otimizada_Branco.svg` (`#FFFFFF`) para contraste.
-4. Variante preta (`#090909`): disponível para superfícies muito claras e cenários auxiliares, se necessário.
-5. Preservar o arquivo original como referência imutável. Não aplicar filtros que distorçam cor/contornos, não esticar, deformar, redesenhar, aplicar sombreamentos internos, recriar fonte, adicionar elementos ou recortar os caminhos visíveis.
-6. Manter `aspect-ratio` natural, largura responsiva e alinhamento óptico. Não confiar somente na caixa externa para centralização visual; conferir renderização.
-7. O efeito Liquid Glass deve estar **na superfície que hospeda a marca**, não dentro do desenho da logo.
-8. Para a imagem informativa, garantir nome acessível apropriado: `ZURY CORRETORA`. Quando estiver adjacente a texto redundante, evitar anúncio duplo em leitores de tela.
-9. Verificar visualmente o contraste e a legibilidade do lettering pequeno nos dispositivos reais/simulados.
-10. O aumento sutil de espessura aparente foi solicitado, mas é condicionado à fidelidade absoluta. Não aplicar stroke, filtros ou font-weight sobre a imagem. Sem variante vetorial fiel aprovada, manter os quatro originais intactos; não simular a alteração.
-
-### 3.3. Ativos que NÃO foram fornecidos
-
-- **Não existe escudo 3D oficial pronto**. O Codex deve modelá-lo/desenvolvê-lo conforme o processo de aprovação do §7.
-- Não assumir disponibilidade de fotos, ícones proprietários, vídeo, imagens decorativas ou novos arquivos de marca.
-- Para os serviços, usar ícones vetoriais de traço da biblioteca aprovada (`lucide-react` ou equivalente tecnicamente consistente), sem introduzir imagens externas.
-
----
-
-## 4. Design system: cor, tipografia, espaçamento e materiais
-
-### 4.1. Paleta base aprovada
-
-| Token sugerido | Cor | Emprego principal |
+| Ambiente/condição | Indicações | Benefícios |
 | --- | --- | --- |
-| `--zury-offwhite` | `#EAEAE5` | texto e luz neutra sobre grafite |
-| `--zury-stone` | `#D6D3D1` | prata e reflexos minerais |
-| `--zury-midgray` | `#78716C` | referência mineral, misturada a grafite nos fundos |
-| `--zury-graphite` | `#1C1C1C` | texto em superfícies claras, Footer |
-| `--zury-white` | `#FFFFFF` | texto de alto contraste sobre fundo escuro |
-| `--zury-logo-black` | `#090909` | cor técnica do SVG preto, **não** uma nova cor de UI |
+| `NODE_ENV=development` | Visível | Visível |
+| Produção sem flags | Omitido | Omitido |
+| `ZURY_REFERRAL_PREVIEW=true` | Visível | Só com seu próprio gate |
+| `ZURY_BENEFITS_PREVIEW=true` | Só com seu próprio gate | Visível |
 
-- **Não acrescentar cores saturadas ou metalizados dourados/champagne** à identidade do site, exceto o verde de WhatsApp do §10.4, restrito à borda/glow de hover/foco do botão flutuante.
-- Prata acetinada permanece o material do escudo; luminosidade cinza-prata neutra compõe gradientes/reflexos. Sem dourado, champagne ou gradientes coloridos. A única exceção de neon é o §10.4.
-- Variações de opacidade, luminância e mistura entre tons neutros são permitidas para simular vidro e transições, desde que respeitem a paleta.
-- Contrastes de texto, bordas, indicadores e controles devem ser aferidos sobre o **fundo composto real**, inclusive no movimento, não apenas sobre uma cor ideal. Sobre o cinza `#78716C`, o branco puro passa por margem relativamente pequena para texto comum; transparências e highlights podem diminuir esse contraste e devem ser testados.
+Comparação literal com `"true"`. Em build de produção, a seleção é feita durante a geração; alterar ambiente apenas no start não regenera a página. Gates não são autenticação nem autorização comercial.
 
-**Superfícies da etapa 2 — referência imagem 4:** amostras médias de regiões de 12 × 12 px, sem copiar textos, logos, categorias ou escudo da imagem. As cores técnicas dos SVGs permanecem inalteradas.
+### 2.3. Rotas
 
-| Token semântico | HEX | Função |
+- `/`: landing page.
+- `/cartao`: cartão digital independente, solicitado em 27/10/2026 a partir da referência fornecida. Composição vertical 9:16, nove controles HTML na ordem COTAR AGORA, SITE, WHATSAPP, INSTAGRAM, TIKTOK, FACEBOOK, NOS AVALIE, CONTATO e E-MAIL. Não recebe links na landing. Reutiliza os SVGs/PNG originais e os destinos de `lib/content.ts`; WhatsApp e Contato mostram os três atendentes/cargos, com conversa ou `tel:` respectivamente. Facebook permanece sem endereço e desabilitado, conforme instrução expressa. Cotação usa o mesmo modal provisório do §6.3. Estilos próprios isolados em `app/cartao/cartao.css`; não integram a transcrição dos estilos da landing do §19.
+- Refinamento autorizado do cartão: logo deslocada visualmente `−2.4cqw` no eixo Y, glow prateado de hover/foco com transição de 240 ms e entrada por opacidade de fundo, logo e nove botões (600 ms por elemento, atrasos de 0–520 ms). A preferência de movimento reduzido elimina a entrada e as transições; foco revela o botão imediatamente.
+- `/preview/escudo`: prévia da mesma imagem original, com controles Movimento e Imagem estática, link de retorno e metadados `robots: { index: false, follow: false }`.
+- A prévia não entra na navegação pública e não é protegida por autenticação no código.
+- **Texto desatualizado detectado:** a nota da prévia ainda diz “sem integração à Hero”, embora a integração da imagem esteja autorizada e implementada. Sua correção de interface não faz parte desta atualização documental.
+
+## 3. Marca oficial e ativos
+
+### 3.1. Quatro SVGs presentes e imutáveis
+
+| Arquivo em `public/brand/` | Uso/medidas |
+| --- | --- |
+| `04_ZURY_Preto_Transparente.svg` | Original; viewBox `0 0 1600 535` |
+| `ZURY_Logo_Otimizada_Preto.svg` | Preto `#090909` |
+| `ZURY_Logo_Otimizada_Grafite.svg` | Grafite `#1C1C1C` |
+| `ZURY_Logo_Otimizada_Branco.svg` | Branco `#FFFFFF` |
+
+Variantes otimizadas com viewBox `280 96 1046 324` e dimensões nominais 1046 × 324. Preservar curvas, monograma, lettering e proporções. Máscara CSS usa a silhueta do SVG branco; isso não edita os arquivos. `OfficialLogo` fornece imagem acessível com alt `ZURY CORRETORA`, origem grafite no header e branca no rodapé.
+
+Header: máscara com gradiente `linear-gradient(115deg,#181c1f,#4f4d4b 55%,#1c1c1c)`. Logo padrão: `--logo-silver` do §19. Não recolorir logos de parceiros.
+
+### 3.2. Escudo e acervo
+
+- Fonte da Hero: `public/shield/references/geometry.png`, 1254 × 1254, transparência original.
+- Referências e estudo procedural preservados em `public/shield/` e `components/shield/`.
+- Logos de companhias em `public/companies/`; parceiros em `public/partners/`.
+- FarMelhor permanece como ativo histórico, sem card atual.
+- Não há GLB oficial aprovado sendo carregado na Hero. A presença de Three/R3F nas dependências não torna a Hero um modelo 3D.
+
+## 4. Design system
+
+### 4.1. Paleta e superfícies
+
+| Papel/token | Valor |
+| --- | --- |
+| `--zury-offwhite` | `#eaeae5` |
+| `--zury-stone` / `--light-satin` | `#d6d3d1` |
+| `--zury-midgray` | `#78716c` |
+| `--zury-graphite` | `#1c1c1c` |
+| Texto base `--text` | `#d7dce0` |
+| Hero base `--hero-copy` | `#adb4bb`; preenchimentos podem ser sobrescritos por gradiente |
+| `--muted` | `#c2c3c0` |
+| `--surface-mineral` | `#0a0c0e` |
+| `--surface-graphite` | `#1e2022` |
+| `--surface-metal` | `#2d2e2e` |
+| `--surface-steel` | `#4f4d4b` |
+| `--light-silver` | `#989491` |
+| Texto em Hero/Diferenciais/Footer | `#eeede5` |
+| Texto em Soluções/Indicações/Companhias/Benefícios | `#25292c` |
+| Texto secundário nas seções claras | `#535754` |
+| Verde exclusivo de borda/glow hover/foco WhatsApp | `#25d366` |
+
+Hero/Diferenciais/Footer escuros. Soluções/Indicações claros com iluminação mineral; Companhias/Benefícios off-white. Pontilhado mineral decorativo nas camadas claras, com dois gradientes radiais, fundos de 11 × 13 e 17 × 19 px. Gradientes exatos, todas as opacidades e regras de override estão no §19.
+
+Sem dourado/champagne/neon adicional. Cores próprias das marcas recebidas são preservadas.
+
+### 4.2. Tipografia e capitalização
+
+Inter Tight via `next/font/google`, subconjunto `latin`, variável `--font-inter-tight`, `display: swap`. Fallback geral Arial/sans-serif. O build pode precisar buscar a fonte; os arquivos gerados são servidos pela própria aplicação.
+
+**Caixa alta global permanente:** `body { text-transform: uppercase }`, herdada por controles. Dados, URLs, mensagens do WhatsApp e lettering incorporado às imagens não devem ser convertidos destrutivamente.
+
+| Papel | Token de tracking | Valor |
 | --- | --- | --- |
-| `--surface-mineral` | `#0A0C0E` | preto mineral, topo do Hero e profundidade do rodapé |
-| `--surface-graphite` | `#1E2022` | grafite, transições e base dos diferenciais |
-| `--surface-metal` | `#2D2E2E` | base metálica escura de Soluções |
-| `--surface-steel` | `#4F4D4B` | luz mineral dos diferenciais, misturada com transparência |
-| `--light-silver` | `#989491` | reflexos prateados difusos, nunca fundo principal claro |
-| `--light-satin` | `#D6D3D1` | alias de `--zury-stone`, filetes acetinados |
+| Hero | `--tracking-hero` | `.025em` |
+| Título de seção | `--tracking-section` | `.06em` |
+| Título de card | `--tracking-card-title` | `.055em` |
+| Conteúdo | `--tracking-copy` | `.025em` |
+| Controle | `--tracking-control` | `.065em` |
+| Navbar | `--tracking-nav` | `.065em` |
+| Popover | `--tracking-popover` | `.04em` |
+| Rodapé | `--tracking-footer` | `.04em` |
+| Valor/oferta | `--tracking-financial` | `.035em` |
 
-Gradientes por seção em `--hero-surface`, `--solutions-surface`, `--about-surface` e `--footer-surface`. Luzes em `--hero-ambient`, `--solutions-ambient`, `--about-ambient`; encontros em `--boundary-line` e `--boundary-light`. Hero concentra luz à direita; Soluções recebe luz no alto à direita e sombra à esquerda; Diferenciais recebe luz lateral esquerda com reflexão diagonal discreta; rodapé retorna ao grafite profundo. Bordas dos gradientes compartilham tons, sem faixas claras. Somente o encontro Hero → Soluções recebe curva luminosa fina, estática, sem novos conteúdos ou loops. A composição aguarda aprovação visual desta etapa.
+Exceções implementadas: quote trigger `.04em`; subtítulo Hero `.1em` desktop/`.055em` mobile; ZURY `.035em`; título RC `.025em`. Fontes/tamanhos das demais funções estão nos §§5–10 e no CSS integral.
 
-### 4.2. Tipografia
+Títulos de seção padrão: `clamp(29px, calc(3.4vw + 2px), 51px)`, peso 600, entrelinha 1.16, `text-wrap: balance`. Indicações usa título 22 px/1.4.
 
-**Ajuste pontual de 21/10/2026:** navbar com fonte de 12 px e títulos de todos os cards (Soluções, Diferenciais, Indicações e Benefícios) com 18 px, inclusive no mobile. Permitir quebras e crescimento conforme o conteúdo, preservando tracking, famílias, corpo, títulos de seção, CTAs e animações. Até 393 px, reservar mais uma linha de navegação (44 px) acima da Hero e deslocar seu filete na mesma medida, evitando sobreposição. As demais sugestões da auditoria não foram incluídas neste pedido.
+### 4.3. Espaçamento e grid
 
-#### REGRA GLOBAL DE CAPITALIZAÇÃO — CAIXA ALTA OBRIGATÓRIA
+- Gutter: `clamp(20px,5vw,80px)`.
+- Container geral: `min(calc(100% - var(--gutter) * 2),1320px)`, centralizado.
+- Seções: padding vertical 115/140 px; mobile 85/105 px, salvo regras específicas de Companhias.
+- Títulos: margem inferior 56 px; mobile 34 px.
+- Raio externo das seções/rodapé: 24 px; mobile 18 px.
+- Separação vertical entre seções sucessivas e antes do rodapé: 8 px.
+- Filetes/halos antigos em `.section-boundary::before/::after` e `.hero::before/::after` são desativados com `content:none`. A curva atrás do escudo é outro elemento e permanece.
 
-**TODO O CONTEÚDO TEXTUAL VISÍVEL DO SITE ZURY CORRETORA DEVE SER EXIBIDO EM CAIXA ALTA, EM TODAS AS SEÇÕES, COMPONENTES, INTERAÇÕES E BREAKPOINTS. ESSA É UMA DIRETRIZ GLOBAL, PERMANENTE E PRIORITÁRIA DA IDENTIDADE VISUAL.**
+### 4.4. Materiais e feedback
 
-Aplicar a todos os títulos, textos, cards, descontos, avisos, instruções, CTAs, navegação, popovers, rodapé, dados legais e estados visíveis, inclusive em previews locais. Implementar por `text-transform: uppercase` herdado da raiz e pelos controles, preservando os dados originais para busca, cópia e leitura assistiva. Não alterar capitalização de URLs, `href`, e-mails na fonte, identificadores, metadados estruturados ou parâmetros de WhatsApp. Não modificar textos incorporados aos SVGs/PNGs oficiais: identidade visual das marcas é exceção expressa. Rever quebras e dimensões após a transformação. Esta regra substitui qualquer permissão anterior de texto visual em caixa baixa; textos literais mistos neste documento continuam sendo a fonte semântica, não uma exceção de apresentação.
+Blur compartilhado 16 px; navbar 14 px com saturação 1.08; CTA Hero 12 px e sem backdrop-filter no mobile. Bordas, brilhos internos e fundos variam por superfície, conforme §19.
 
-- Família principal: **Inter Tight**; carregar de forma otimizada (ex.: `next/font/google`, se a stack final suportar).
-- Peso predominante: **600 / semibold**. Outros pesos apenas se melhorarem hierarquia e leitura; evitar aspecto excessivamente fino.
-- Títulos de seções: **caixa alta**, tracking discreto/compacto, linhas de quebra conscientes e escala responsiva por `clamp()` ou sistema equivalente. A headline do Hero preserva a capitalização literal do §6.1.
-- Textos auxiliares: hierarquia clara, corpo com entrelinha confortável e peso suficiente para leitura sobre vidro.
-- Não substituir o lettering vetorizado da logo por Inter Tight; a fonte Inter Tight se destina **ao conteúdo e à interface do site**.
-- Não sacrificar legibilidade para manter tudo em uma única linha; quebras pensadas são preferíveis a fontes microscópicas.
+Flow Glass: reflexo diagonal limitado por overflow, fundo estável, transição de transform 600 ms e opacity 160 ms, easing `cubic-bezier(.23,1,.32,1)`. Hover com opacity .85; foco .65; pressão .6. Sem spotlight circular nos cards.
 
-**Tracking global da etapa 6 — tokens semânticos em `:root`:**
+Cards: hover eleva 4 px; ícones sobem 3 px em 220 ms quando mouse preciso e movimento permitido. Rodapé tem override para permanecer sem elevação.
 
-| Papel | Token | Valor |
-| --- | --- | --- |
-| Hero, desktop e mobile | `--tracking-hero` | `0.025em` |
-| Títulos de seção e chamada de Benefícios | `--tracking-section` | `0.06em` |
-| Títulos de cards | `--tracking-card-title` | `0.055em` |
-| Descrições, serviços e frases de apoio | `--tracking-copy` | `0.025em` |
-| Botões e CTAs | `--tracking-control` | `0.065em` |
-| Navbar | `--tracking-nav` | `0.065em` |
-| Popovers e seus controles | `--tracking-popover` | `0.04em` |
-| Rodapé, inclusive dados legais e links | `--tracking-footer` | `0.04em` |
-| Valores financeiros e descontos | `--tracking-financial` | `0.035em` |
+Botões habilitados: hover `translateY(-2px)`, active `translateY(0) scale(.985)`, transição 180 ms. A regra global alcança botões nativos dentro de `.zury-site`; não garante o mesmo lift para links estilizados como botões. Há conflitos conhecidos de reduced motion e soma de movimentos no WhatsApp (§16.2).
 
-Estes valores substituem integralmente os baselines negativos e percentuais anteriores. Não aplicar um tracking único indiscriminadamente nem reaplicar percentuais. Inter Tight e caixa alta global permanecem; não alterar tipografia interna das logos. Ajustes ópticos de dimensão são permitidos para preservar hierarquia e leitura, sem texto cortado ou quarta linha do Hero desktop. Preservar escalas de corpo legíveis; conferir larguras reais no navegador.
-
-### 4.3. Composição e grid
-
-- Largura máxima confortável para conteúdo, com margens generosas e proporcionais; **não esticar excessivamente em monitores ultrawide**.
-- Ritmo vertical elegante: títulos centralizados nas seções de conteúdo e espaçamento **moderado e equilibrado** entre títulos e cartões.
-- Cortes/raios arquitetônicos: cantos moderadamente arredondados; controles tipo **pill** onde pertinente, sem tornar todos os cartões excessivamente arredondados.
-- Alinhamentos rigorosos; evitar elementos decorativos gratuitos, separadores exagerados, linhas pesadas e sombras dramáticas.
-- Componentes responsivos devem responder à **largura útil e ao conteúdo**, não somente a nomes de dispositivos.
-
-### 4.4. Crystalline Liquid Glass
-
-**Refinamento de 21/10/2026 — cristal e fundos:** reduzir preenchimento compartilhado do vidro para 0.035 / 0.004 / 0.018, tint de popovers/WhatsApp para 0.27, contorno neutro de 0.13 e blur estático de 16 px. Nav em repouso mais transparente, contorno refratado delicado, sem aumentar sombras. Preferências por menos transparência/mais contraste usam superfície quase sólida. Logo oficial mantém silhueta/lettering/arquivos intactos e recebe acabamento CSS prata fria (gradiente claro) pela máscara existente; sem filtros ou redesenho. Fundos com composições distintas: estúdio assimétrico na Hero, planos verticais em Soluções, luz diagonal em Diferenciais, duas luzes laterais em Indicações, horizonte luminoso em Benefícios e profundidade assimétrica no Footer. Manter paleta neutra, tipografia, header compacto e gates comerciais.
-
-**Refinamento atual:** texto principal, estados antes brancos e ícones usam prata clara `#D7DCE0`. Vidro compartilhado com gradiente de opacidades 0.055 / 0.008 / 0.028 e blur de 12 px; tint de popovers e WhatsApp reduzido a 0.46. Preservar contraste e fallback opaco quando não houver backdrop-filter, sem alterar cores incorporadas aos ativos dos parceiros ou do escudo.
-
-Aplicar este tratamento em **navbar, cartões de serviços, cartões institucionais, botões, popovers e painel do footer**:
-
-- Translucidez moderada com efeito de vidro crível, **não** material opaco genérico nem transparência que apague o texto.
-- Highlights estreitos/suaves, reflexos de borda e gradações sutis de luminosidade.
-- Borda fina cristalina: **não** usar contorno branco espesso ou contraste teatral.
-- Sombras difusas, leves, quase imperceptíveis.
-- Hover/foco: sutil elevação/profundidade e resposta de luz, **sem inclinação dos cartões** (`tilt`) ou parallax intenso.
-- Mobile: preservar sensação de vidro com luz ambiente sutil e resposta ao toque quando viável; adaptar intensidade/custo sem descaracterizar o projeto.
-- Não usar `backdrop-filter` indiscriminadamente em camadas enormes e empilhadas; medir o custo de composição e manter fallback visual digno quando não houver suporte.
-- O vidro deve ser perceptível e relativamente transparente, com blur controlado, realces especulares neutros, reflexo que responde discretamente à interação, foco acessível e feedback de pressão. Evitar aspecto leitoso, bordas brancas grossas e sombras pesadas.
-
-### 4.5. Flow Glass
-
-- Derivar o efeito da faixa diagonal de luz do antigo botão CONTATO: fluxo amplo e suave de prata/grafite atravessando a superfície, sem spotlight circular, rastreamento do cursor, neon ou pontos artificiais.
-- Compartilhar tokens de gradiente, transparência, bordas, blur, raios, duração e easing. Animar apenas a camada decorativa limitada à superfície, por transform e opacity, sem mover texto ou animar blur.
-- Aplicar aos itens de navegação, cards de serviços/institucionais/indicações e opções selecionáveis dos popovers. Os cards continuam informativos, sem falso clique ou cursor de botão; somente os CTAs de interesse são links.
-- Uma única primitiva `flow-glass flow-capsule` serve navbar, WhatsApp, e-mail, Instagram, TikTok e os três contatos: raio totalmente arredondado, overflow recortado, contorno cristalino fino, fundo translúcido e reflexo atrás do texto. Nenhum retângulo aparece durante hover/foco/pressão. Intensidade pode variar, sem bibliotecas ou efeitos concorrentes.
-- Hover apresenta superfície cristalina leve e reflexo desacelerado; saída desvanece gradualmente. Na navbar, preservar integralmente o Liquid Glass aprovado durante hover (reflexo, glow, transparência, blur, borda, raio, duração, easing e intensidade). Em repouso, inclusive link ativo sem hover, mostrar somente texto, sem fundo, contorno individual ou glow permanente; preservar `aria-current` e contraste textual, nunca underline. Foco visível e popovers abertos conservam seus estados acessíveis. Não modificar a estrutura externa, padding, posições ou parâmetros do hover para remover as cápsulas inativas; limitar a correção ao CSS de repouso da navbar.
-- Touch recebe feedback de pressão sem hover persistente; reduced motion conserva resposta estática sem deslocamento do reflexo. Sem loops contínuos ou listeners de pointermove.
-- Não existem setas visuais na landing page, inclusive em links, menus e carrosséis. Expansão WhatsApp pode usar sinal mais/menos, não chevron.
-
----
-
-## 5. Navegação e header
+## 5. Header e navegação
 
 ### 5.1. Desktop
 
-**Refinamento de 21/10/2026:** conjunto de marca/navbar mais compacto, com padding desktop de 20 px no topo/12 px na base e gap de 14 px. Cápsula com padding de 4 px e controles com mínimo de 44 px. Manter fonte de 12 px e uma única linha horizontal a partir de 768 px; entre 768 e 1000 px, reduzir somente o padding horizontal dos itens para 10 px. Mobile mantém quebra e todas as opções visíveis. Ocultar o conjunto já aos 32 px de scroll, em 250 ms; revelar somente até 8 px do topo, em 350 ms. Preservar foco/popover protegido, reduced motion e saída conjunta. Substitui os limites e durações anteriores.
+- Header é `position:absolute` pela regra editorial vigente, z-index 20; não permanece fixo durante toda a rolagem.
+- Marca centralizada de 236 px, padding 20 px no topo/12 px na base, gap 14 px.
+- Superfície superior clara com cantos inferiores de 22 px.
+- Navbar em cápsula clara de vidro, padding 4 px, gap 3 px.
+- Itens: 12 px, peso 600, min-height 44 px, padding 10 × 20 px; 768–1000 px: padding horizontal 10 px.
+- Links comuns somente textuais em repouso; CONTATO tem cápsula grafite permanente e texto off-white.
+- Hover móvel GSAP: geometria do item, duração 180 ms, `power3.out`, `overwrite:true`; saída 200 ms. Não é aplicado à cápsula CONTATO.
+- O tween anima x/y/width/height/opacity; width/height exigem avaliação de custo, sem afirmar que é exclusivamente composite.
 
-- Logo oficial completa branca centralizada e navbar flutuante Liquid Glass, centralizada e bem distribuída sobre os novos fundos escuros.
-- Ordem final da prévia completa: `SOLUÇÕES` → `#servicos`; `DIFERENCIAIS` → `#sobre`; `INDICAÇÕES` → `#indicacoes`; `BENEFÍCIOS` → `#beneficios`; `SOBRE` → `#institucional`; `REDES SOCIAIS` → popover social; `CONTATO` → popover de contato. Popovers verticais centralizados no gatilho quando couberem, preferencialmente abaixo, reposicionados dentro da viewport.
-- INDICAÇÕES e BENEFÍCIOS seguem gates independentes. Preservar cápsula externa, parâmetros de hover, Flow Glass e ocultação do header.
-- Não criar uma quinta seção para SOBRE. O ID `institucional` pertence à coluna legal já existente.
-- Os itens ficam somente textuais em repouso, sem cápsulas visíveis, mantendo posição, padding, tamanho e espaçamento. Em hover, preservar exatamente o Liquid Glass existente e seu raio `9999px`, borda, fundo, reflexos e animação; na saída, retornar ao repouso limpo com os parâmetros existentes. A estrutura externa Liquid Glass permanece intacta. Informar `aria-current` quando aplicável; preservar contraste do ativo, foco acessível, popovers abertos e feedback de toque, sem sublinhado.
-- Header visível inicialmente e no topo; logo, contêiner superior e navbar animam como uma unidade em 475 ms (faixa de referência 400–550 ms), `power2.out` com desaceleração, fade e deslocamento de 24 px para cima. **Não reaparece ao subir: somente ao retornar ao topo.** Usar histerese contra flicker (ocultar a partir de 88 px, revelar até 8 px). Não recolher altura/gap da marca durante o scroll. Não ocultar enquanto popover da navbar estiver aberto ou foco estiver em seus controles visíveis; ao terminar, retomar a política de posição. Oculto fica inert, sem bloquear cliques ou prender foco. Reduced motion mantém a regra sem deslocamento prolongado.
-- Contraste e reflexos se ajustam aos fundos, sem troca abrupta de tema.
+### 5.2. Ordem e destinos
 
-### 5.2. Mobile
+| Item | Destino |
+| --- | --- |
+| SOLUÇÕES | `#servicos` |
+| DIFERENCIAIS | `#sobre` |
+| INDICAÇÕES | `#indicacoes`, se habilitado |
+| BENEFÍCIOS | `#beneficios`, se habilitado |
+| SOBRE | `#institucional` |
+| REDES SOCIAIS | Popover `social-channels` |
+| CONTATO | Popover `nav-contact-channels` |
 
-- Logo oficial completa e **todas as opções acessíveis e visíveis** (sete na prévia completa; cinco no padrão), com distribuição compacta em múltiplas linhas quando necessário, inclusive em tablets cuja largura não comporte a linha única.
-- **Não usar menu hamburger, dropdown para esconder links nem scroll horizontal da própria navbar**.
-- Verificar obrigatoriamente **320, 360, 375, 390 e 430 px** de largura.
-- Priorizar legibilidade e alvos de toque utilizáveis; não cortar textos ou provocar overflow horizontal para forçar uma linha.
-- O conteúdo não pode ficar escondido sob o header; considerar `scroll-margin-top`, safe areas e posições reais do elemento fixo/flutuante.
+A marca é link para `#inicio`. Sem sublinhado como indicador ativo; `aria-current="location"` na âncora reconhecida.
 
-### 5.3. Comportamento e acessibilidade
+### 5.3. Ocultação e scroll
 
-- Navegação programática por âncoras usa somente GSAP ScrollToPlugin, com `power2.inOut`, duração por distância limitada a 0,55–1,10 s, alvo por posição de layout (sem transforms de reveal), margem fixa de 96 px (livra os títulos do final do fade da navbar) e limite do documento. CSS vertical usa `scroll-behavior: auto`, sem `scrollIntoView` ou segundo tween concorrente. Novo clique substitui o anterior; wheel, toque e teclas de rolagem interrompem a animação, sem sequestrar o scroll manual. Hash e foco são preservados; regiões de destino não desenham borda de foco ao redor da seção inteira, mas todos os controles mantêm foco visível. Reduced motion navega imediatamente. Carrosséis mantêm apenas seu scroll horizontal nativo local.
-- `prefers-reduced-motion: reduce`: navegação funcional e rápida, sem animações longas.
-- Estados de hover, foco visível e ativo diferenciáveis. Informar link ativo adequadamente (`aria-current` quando aplicável).
-- Não bloquear clique ou foco em elementos próximos; suportar teclado, mouse, toque e leitores de tela.
+Ocultar navbar a partir de scrollY 32; reaparecer somente até 8 px do topo ou durante interação protegida. Subir parcialmente a página não revela sozinho. Logo e superfície superior não recebem esse tween.
 
----
+Tween da nav: y −24 e opacity 0 em 320 ms; retorno y 0/opacity 1 em 240 ms, `power2.out`. Reduced motion: duração zero e sem y. Navegação oculta fica `inert`. Proteção por foco no header, menu mobile aberto ou popover inferior aberto. Estado `data-scrolled` muda acima de 60 px.
 
-## 6. Hero: texto exato, layout e entrada
+Âncoras usam GSAP ScrollToPlugin, offset de 96 px, `power2.inOut`, duração `min(1.1,.55+abs(distância)/4000)` segundos, limitada ao documento. Atualiza hash e foca o destino sem segundo scroll. Novo clique substitui tween; wheel, touchstart e teclas de rolagem cancelam. Movimento reduzido navega imediatamente.
 
-### 6.1. Elementos permitidos
+### 5.4. Mobile até 767 px
 
-**Somente:**
+Hamburger **autorizado e implementado**, substituindo a antiga proibição:
 
-1. Headline **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA ZURY!`.
-2. **A imagem original do escudo** com movimento sutil, conforme decisão atual do §7.0.
+- Logo 164 px à esquerda; toggle 48 × 48 px, raio 14 px, à direita.
+- Header com padding `calc(16px + env(safe-area-inset-top)) 20px 16px`.
+- Menu nativo `popover="auto"`, fechado por padrão.
+- Painel fixo: top `calc(88px + env(safe-area-inset-top))`, laterais 12 px, largura `calc(100% - 24px)`, padding 10 px, raio 20 px.
+- Altura máxima `calc(100dvh - 108px - env(safe-area-inset-top))`, rolagem vertical quando necessário.
+- Itens coluna única, alinhados à esquerda, min-height 46 px, fonte 13 px, padding 12 × 16 px.
+- Entrada 180 ms com fade/translate individual de −8 px; reduzida/retirada em reduced motion.
+- Toggle expõe `aria-expanded`, `aria-controls` e rótulo Abrir/Fechar navegação. Abertura foca o primeiro link. Seleção fecha menu; popovers de contato/social se ancoram ao hamburger.
 
-**Não adicionar:** subtítulo, CTA/botão, texto de apoio, indicação de scroll, carrossel, números, selo, ícones extras, microcopy ou objetos 3D decorativos adicionais.
+## 6. Hero
 
-### 6.2. Composição
+### 6.1. Conteúdo exato
 
-**Refinamento atual:** entrelinha da Hero reduzida a 1.08, inclusive no mobile. Primeiras duas linhas em grafite claro `#ADB4BB`; ZURY! permanece em prata `#D7DCE0`. Fontes, tamanhos, centralização e arte do escudo preservados.
+```text
+SEU PATRIMÔNIO MERECE
+A MELHOR ESCOLHA:
+ZURY
+```
 
-**Últimas anotações tipográficas:** primeira e terceira linhas usam Arial, sans-serif; segunda usa system-ui, sans-serif. Primeira/segunda: escala-base menos 2 px (35.09 px a 903 px); terceira: escala-base mais 6 px (43.09 px a 903 px). Preservar centralização e responsividade, sem dois-pontos após ESCOLHA. Essa revisão substitui a fonte Inter Tight e os tamanhos iguais anteriores somente nas três linhas do Hero.
+Headline completa: `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA: ZURY`.
 
-Entre 768 e 902 px, reservar 60% / 40% para texto e escudo, acomodando a largura real das novas fontes sem cortes. A partir de 903 px, manter as proporções dos breakpoints existentes.
+Subtítulo nos dados: `EXPERIENCIA/AGILIDADE/SOLIDEZ`. Os separadores “/” tornam-se losangos CSS de 4 × 4 px, 3 × 3 px mobile, rotacionados 45°. Não corrigir acentuação da cópia sem autorização.
 
-**Alinhamento atual solicitado:** as três linhas compartilham eixo horizontal central, tamanho e entrelinha, com bloco centralizado verticalmente na coluna ao lado do escudo. Remover o recuo, largura e altura especiais de ZURY! descritos na revisão anterior. Centralização mobile preservada; não juntar palavras nem alterar a frase oficial.
+CTA: `COTAR AGORA`, ícone Menu de 18 px, abre `dialog#quote-dialog`.
 
-- Desktop: composição sem colisão, com colunas **55% para headline / 45% para escudo**; entre 768 e 1199 px, **57% / 43%** para acomodar a ampliação tipográfica solicitada nas anotações visuais.
-- O escudo é protagonista visual sem empurrar a tipografia ou invadir margens.
-- Mobile: headline **centralizada acima do escudo**, escudo com largura visual próxima de **75% da área útil**; altura responsiva, sem forçar corte de conteúdo ou viewport excessiva.
-- Headline em Inter Tight, peso predominantemente semibold, em caixa alta literal na fonte oficial, preservando acentos e pontuação. Quebras balanceadas por largura, sem remover espaços entre palavras.
-- Tracking do Hero `0.025em`, conforme §4.2, sem mudar a frase, remover espaços entre palavras ou invadir o espaço do escudo.
-- Hero em três linhas no desktop: `SEU PATRIMÔNIO MERECE` / `A MELHOR ESCOLHA` / `ZURY!`, spans com espaços semânticos. Escala `clamp(31px, calc(3vw + 10px), 58px)`, limitada a 42 px entre 768 e 1199 px; entrelinha `1.22`, tracking/peso preservados. A 903 px: primeiras linhas com 37.09 px e ZURY! com 37.26 px. ZURY! recebe recuo visual de 1em via CSS (não espaços adicionais no texto), largura máxima de 400 px e altura mínima de 70.45 px.
-- Anotações finais de dimensões substituem os valores intermediários de 950 × 900 px: entre 768 e 1199 px, container centralizado de até **930 px**, sempre limitado à largura disponível e às margens responsivas. A partir de 1200 px, preservar o container amplo de até 1560 px. Altura mínima desktop de **800 px**, podendo crescer para acomodar o escudo; padding superior de **200 px** e fonte herdada de 20 px. Mobile até 767 px preserva escala `clamp(22px, 6.6vw, 44px)`, entrelinha `1.22`, centralização e fonte herdada de 16 px; ZURY! com fator 1.08, sem recuo ou reserva extra de altura. Sem quarta linha desktop ou colisões; preservar o escudo já autorizado na Hero.
-- Abaixo da composição superior de marca/navbar, incluir somente transição visual por pseudo-elementos: mesmo filete prateado difuso e gradiente tonal usado entre seções, sem conteúdo novo ou borda pesada.
-- Entrada visual: **texto primeiro** e escudo **depois**; uma vez estabilizado, flutuação muito discreta e rotação lenta parcial do escudo.
-- Nenhuma rotação manual do escudo por gesto/toque no mobile.
+### 6.2. Layout e tipografia exatos
 
-### 6.3. Invariantes
+| Faixa | Container/colunas | Tipografia e particularidades |
+| --- | --- | --- |
+| ≥1200 px | largura `min(calc(100% - var(--gutter)),1560px)`; 55%/45%; mínimo 800 px; padding 200/105 px | h1 `clamp(31px,calc(3vw + 10px),58px)`, peso 600, entrelinha 1.08 |
+| 903–1199 px | máximo 930 px, limitado à largura; 57%/43% | h1 limitado a 42 px; anotações locais abaixo |
+| 768–902 px | mesmo limite; 60%/40% | mesmas anotações locais |
+| ≤767 px | coluna única; min-height 740 px; row-gap 16 px; padding-bottom 80 px | h1 `clamp(22px,6.6vw,44px)`, entrelinha 1.22 |
 
-- Não mover o layout quando o 3D for carregado; reservar o espaço desde o primeiro render.
-- Hero não deve depender do WebGL para mostrar headline e marca.
-- Não permitir que câmera, luz ou rotação exponham geometrias pobres, interseções ou materiais plásticos.
+Entre 768–1199 px: primeira linha 40.89 px, peso 700, padding-top 6 px/right 51 px, margin-top 120 px, height 48.08 px, opacity .91; segunda opacity .54; ZURY 50 px; subtítulo declara 19.88 px/peso 500, sujeito à cascata editorial.
 
----
+Nas demais faixas, as duas primeiras linhas declaram `calc(1em - 2px)`, a última `calc(1em + 6px)`. Família editorial Inter Tight sobrescreve as famílias Arial/system-ui ainda existentes nas regras-base.
 
-## 7. Escudo 3D: execução, visual e aprovação obrigatória
+ZURY: inline-block, entrelinha .9, tracking .035em, sombra `0 0 22px rgba(223,229,228,.22)`. Gradiente específico de 105° declarado; uma regra posterior `.zury-site :is(h1 .hero-line,...)` também define background-image e pode substituir esse gradiente. É necessário validar o preenchimento computado; não afirmar que todo acabamento declarado vence a cascata.
 
-### 7.0. Revisão cinematográfica — 20/10/2026
+Subtítulo editorial: `clamp(14px,1.4vw,19px)`, peso 400, line-height 1.5, tracking .1em, margin-top 12 px; mobile `clamp(12px,3.5vw,15px)`, tracking .055em, margin-top 10 px. Há declarações concorrentes em globals; fontes calculadas precisam ser conferidas na viewport alvo.
 
-**Refinamento de 21/10/2026 autorizado:** ampliar órbita do PNG para x ±8 px / y ±18 px, yaw ±3.4°, pitch ±0.85° e roll ±1.1°, em 12 s, com 45% no mobile. Interação por mouse inclui deslocamento até 8 × 6 px e reflexo prateado visual separado, recortado pela transparência da própria imagem, acompanhando o cursor sobre a Hero. Esse efeito substitui a proibição anterior de sobreposição luminosa somente para o reflexo solicitado; não editar a imagem nem afirmar reflexos físicos de modelo 3D. Sem reflexo/tilt manual no toque ou reduced motion; pausar/reverter/resetar junto às camadas existentes, incluindo retorno de opacidade ao sair da área.
+Padding-top mobile editorial 144 px; globals conserva exceção ≤393 px de 279 px. As declarações integrais são mantidas no §19: não extrapolar um valor universal nem corrigir automaticamente a cascata nesta tarefa.
 
-**Integração autorizada após a prévia:** o responsável confirmou “PODE IMPLEMENTAR NA HERO”, usando a captura `Captura de Tela 2026-10-19 às 21.30.17.png` para escala, inclinação e luz atrás. Reutilizar `ImageShield` à direita, com a headline atual à esquerda; mobile empilha texto e escudo. Perspectiva estática contida em camada separada dos movimentos, escudo ocupando aproximadamente 28–30% da largura desktop e luz prateada difusa/curva atrás, sem repintar o PNG ou alterar sua proporção. A prévia isolada continua disponível para inspeção. As notas seguintes registram o histórico anterior, não um bloqueio atual desta integração.
+`.hero-copy-position` organiza o grupo em `translate(4%,-5%)`; `.hero-copy` tem parallax separado até −18 px desktop/−8 px mobile.
 
-**Decisão posterior — imagem original animada:** o responsável autorizou usar a própria `IMG_3369.PNG` em lugar da reconstrução procedural. Essa autorização substitui a exigência de WebGL/3D real para esta alternativa: preservar a imagem intacta, sua transparência, proporções, textura e reflexos, sem redesenho, filtros ou iluminação artificial sobreposta. Entrada suave, flutuação e inclinação mínima por mouse; toque sem rotação manual e reduced motion estático. A imagem é um plano animado, não um modelo com perfil ou reflexos físicos dinâmicos. Implementar primeiro em `/preview/escudo`; o aceite da abordagem não aprova automaticamente a implementação visual nem sua integração ao Hero. Preservar os arquivos do estudo 3D anterior, sem carregá-los nessa prévia.
+### 6.3. CTA e cotação provisória
 
-O pedido mais recente substitui a frente prateada anterior por **metal grafite quase preto, escovado acetinado**, com reflexos prateados discretos. `IMG_3369.PNG` é a referência prioritária da silhueta, monograma Z, proporções, recortes, bordas e chanfros; `IMG_3367.PNG` orienta exclusivamente a iluminação cinematográfica. Cópias intactas em `public/shield/references/`.
+| Propriedade | Implementação |
+| --- | --- |
+| Base | min-width 260 px, min-height 64 px, padding 18 × 34 px, raio 999 px |
+| Desktop ≥768 px | width/min-width 335 px; fonte 21 px |
+| Mobile ≤767 px | width `min(100%,290px)`; min-height 54 px; min-width base 260 px permanece; fonte base 14 px |
+| Fonte | peso 600, tracking .04em |
+| Texto | `#1c2429` |
+| Fundo | `linear-gradient(135deg,#f4f6f5eb,#bac6cedb)` |
+| Borda | `#ffffffa6` |
+| Sombra | `inset 0 1px 0 #fff,0 8px 28px #b7c9d333` |
+| Blur | 12 px, desativado mobile |
+| Entrada | 1.2 s ease-out, opacity 0→1/y 12→0 |
+| Hover | shimmer diagonal, transform da camada 600 ms, opacity 180 ms; lift 2 px |
 
-O responsável autorizou desenvolver isoladamente, inspecionar e depois integrar à direita da Hero; isso não equivale a aprovação visual do resultado. A integração depende de reprodução satisfatória: se o estudo procedural não atingir a fidelidade solicitada, explicar as diferenças e propor um modelo GLB dedicado antes de avançar. **Estado atual: estudo isolado, sem integração por fidelidade visual insuficiente**, especialmente no relevo, escovação e resposta dos chanfros.
+Dialog: largura `min(620px,calc(100% - 32px))`, max-height `calc(100dvh - 40px)`, padding 28 px (20 até 480 px), raio 24 px, texto `#222b29`, fundo perolado e backdrop escuro com blur 8 px.
 
-Entrada de 2,5–4 s, flutuação vertical mínima, mouse tilt amortecido e limitado, parallax/pequenas rotações por ScrollTrigger e variação discreta dos reflexos. Toque adaptado com amplitude reduzida e scroll vertical nativo, substituindo a proibição anterior de interação móvel. Configuração central em `components/shield/motion-config.mjs`; grupos separados possuem entrada, flutuação, tilt e scroll. Reduced motion e falhas WebGL exibem poster transparente do próprio estudo, sem carregar/manter o Canvas no modo reduzido. A prévia permite inspeção frontal, inclinada, perfil e sobreposição dos contornos à imagem 2. O poster é provisório, não um ativo aprovado.
+Passos literais:
+1. `ETAPA 01 · ESCOLHA A SOLUÇÃO`.
+2. Legenda: `QUAL SOLUÇÃO VOCÊ PROCURA?`.
+3. Oito radios com os títulos oficiais; grid de duas colunas, uma até 480 px.
+4. `CONTINUAR` desabilitado sem seleção.
+5. Resumo: `SOLUÇÃO SELECIONADA`, categoria escolhida e `AS PRÓXIMAS ETAPAS DESTA COTAÇÃO SERÃO DISPONIBILIZADAS EM BREVE. NENHUMA SOLICITAÇÃO FOI ENVIADA.`.
+6. `ALTERAR SOLUÇÃO` retorna à seleção; fechar restaura foco ao gatilho original.
 
-O refinamento subsequente solicitado preserva o isolamento: contornos externos medidos no PNG, recortes e bordas revistos, câmera ortográfica de comparação, microtextura de aço escovado direcionada por UV/tangentes e luzes de área físicas. Corrigir artefatos de normais, paredes coplanares e orientação do ambiente antes de avaliar o material. Tolerância de 2 px nos landmarks testados da silhueta não significa reprodução exata de toda a geometria ou aprovação artística; a espessura oculta continua não determinada pelas referências.
+Hero e cards compartilham o dialog. Cards disparam evento `zury:quote` com categoria e botão de origem. A escolha anterior pode persistir ao reabrir pela Hero. Fechamento por botão, Escape nativo ou clique nas coordenadas externas do dialog.
 
-**Este é um fluxo de produção com gate de aprovação, não uma tarefa de implementação única.**
+**Não implementado:** nome, telefone, e-mail, campos por produto, submissão, armazenamento, validação de dados pessoais, envio de cotação, roteamento para atendentes ou mensagens WhatsApp por solução.
 
-### 7.1. Aparência obrigatória
+### 6.4. Beam e glow dos dois CTAs principais
 
-- Escudo tridimensional **verdadeiro**, sofisticado, geométrico e arquitetônico.
-- **Face frontal:** grafite quase preto, metálico e escovado acetinado, conforme §7.0; brilho controlado, sem aparência plástica.
-- **Laterais/chanfros:** profundidade grafite, recortes e bordas precisos com reflexos prateados discretos, preservando a imagem 2.
-- Iluminação de estúdio premium, com highlights suaves e leitura volumétrica limpa.
-- Silhueta reconhecível, proporções elegantes, cantos bem resolvidos, superfície contínua e sem facetas visuais indesejadas.
-- **Não adicionar galhos, asas, partículas, brasões, textos, letras além do monograma Z original, reflexos coloridos, fundos cenográficos ou objetos secundários.**
-- Movimentação: flutuação contida e rotação **lenta, parcial e contínua** em torno da pose principal; não girar 360° freneticamente nem revelar o verso de forma indevida.
+Aplica somente ao CONTATO da navbar e COTAR AGORA da Hero:
 
-### 7.2. Implementação preferencial
+| Efeito | Parâmetros atuais |
+| --- | --- |
+| Beam | span absoluto inset 0; raio herdado; padding 1 px; máscara XOR/exclude para contorno |
+| Traço de luz | conic-gradient: transparente 0–72%, cor 18% em 77%, cor plena 82%, cor 18% em 87%, transparente 92% |
+| Movimento | rotação da camada 360° em 4.6 s linear infinito |
+| Cor na Hero escura | `#f4f6f4` |
+| Cor em CONTATO/contexto claro | `#4a514e` |
+| Halo do beam | drop-shadow 4 px com 42% da cor |
+| Glow dedicado | inset 1 px, sombra interna 18 px/40% da cor e externa 18 px/20% |
+| Respiração | opacity .16→.72→.16, ciclo 3.2 s ease-in-out infinito |
+| Texto/ícone | z-index 1; decoração z-index 0 e pointer-events none |
+| Reduced motion | animações das camadas dedicadas desativadas |
 
-- Base técnica sugerida: **Three.js + React Three Fiber**, respeitando compatibilidade real com React e Next.js.
-- **Real-time WebGL primário**, incluindo em dispositivos móveis capazes, mediante otimização e testes.
-- Fallback: animação prerenderizada de alta qualidade **derivada do mesmo modelo**, e, para carregamento/redução de movimento/indisponibilidade, **poster estático premium** derivado do mesmo escudo.
-- Nunca usar um escudo visualmente diferente no fallback: **mesma geometria, enquadramento, materiais e iluminação**.
-- Evitar carregar todo o motor 3D no caminho crítico de leitura do Hero, usando carregamento oportuno/segmentação e preservando o layout.
-- Detectar WebGL indisponível, falhas de inicialização, perda de contexto, baixa capacidade/desempenho real ou preferência por movimento reduzido; não trocar automaticamente para render prerenderizado **apenas por ser mobile**.
-- Reduzir DPR/resolução/sombras/reflexos conforme capacidade antes de sacrificar a fidelidade visual. Evitar renderização ininterrupta fora da área visível quando possível.
-- A experiência deve funcionar **sem áudio** e sem demandar interação para iniciar a exibição estática.
+Hero ainda tem `::after` com pulso de 3.6 s (.12→.8), além do glow dedicado. CONTATO herda glint de 5.5 s, três repetições, e Flow Glass. A pulsação atual anima luz/opacidade, **não escala continuamente o botão inteiro**.
 
-### 7.3. Sequência mandatória de aprovação
+A rotação de uma máscara retangular não comprova acompanhamento perfeito do perímetro da cápsula; item de auditoria pendente. As cores são atribuídas às classes dos dois botões, não por detecção automática da luminância de qualquer seção.
 
-**Fase E1 — Componente isolado:** criar o escudo em componente e ambiente de pré-visualização independente, sem inseri-lo no Hero final.
+## 7. Escudo original animado
 
-**Fase E2 — Inspeção visual:** apresentar ao responsável capturas/preview em ângulos e tamanhos representativos; conferir modelagem, profundidade, materiais, recortes, iluminação, reflexos, escala e rotação.
+Integração do PNG autorizada; estudo procedural não aprovado nem usado na Hero. Preservar a distinção ao relatar estado.
 
-**Fase E3 — Gate:** **PARAR E SOLICITAR APROVAÇÃO VISUAL EXPLÍCITA**. Não presumir aprovação nem integrar o escudo definitivo ao Hero antes do aceite. O restante das tarefas não dependentes pode ser preparado separadamente, desde que não esconda este gate.
+- `HeroShield → ImageShield`; dimensões reservadas, aspect-ratio 1.
+- Desktop: largura `min(100%,620px,44vw)`, perspectiva 1400 px; pose rotateY −16°/rotateZ 5°.
+- Mobile: largura 110%, max-width 460 px; pose −9°/3°.
+- Área da arte: 88.75838% da caixa. A imagem mantém proporção, `object-fit:contain`, sem arrastar.
+- Next Image com `priority`, dimensões 1254 × 1254 e sizes `(max-width:767px) 90vw,620px`; otimização padrão habilitada.
+- Alt: `Escudo original da ZURY, monograma Z em metal grafite escovado com bordas prateadas`.
+- Reflexo é SVG plano sobreposto, recortado por máscara alpha do PNG, não iluminação física de modelo 3D.
+- Camadas independentes para scroll, entrada, órbita, tilt, luz e reflexo; detalhes CSS no §19.
 
-**Fase E4 — Assets derivados:** somente após a aprovação, gerar **poster estático e fallback prerenderizado** coerentes com o modelo aprovado. Se a modelagem procedural não conseguir a qualidade esperada, propor workflow para um `.glb` dedicado, mantendo a mesma aprovação visual.
+| Movimento | Desktop | Mobile compacto |
+| --- | --- | --- |
+| Órbita | x ±16 px; y ±28 px | 40% |
+| Pitch/yaw/roll orbital | ±1.1° / ±4° / ±1.3° | 40% |
+| Ciclo | 10 s | 10 s |
+| Luz orbital | x ±18 px, y ±10 px, roll ±3°, opacity .55→1 | 40% dos eixos |
+| Parallax escudo | y até −42 px; yaw até 3°; scrub .8 | 40% |
+| Mouse | posição até 8 × 6 px; yaw até 3°/pitch até 2° | Sem gesto manual de toque |
+| Suavização do mouse | .7 s, power3.out | Não aplicável ao toque |
+| Reflexo | x até 100 px/y 45 px, opacity até .28, fade .18 s | Oculto em toque/ponteiro grosso |
+| Luz por mouse | até 12 × 8 px | Sem toque |
+| Entrada efetiva | função compartilhada: 1.2 s, delay .08, x28/y38, scale .94 | mesma função, se movimento permitido |
 
-**Fase E5 — Integração:** inserir o componente e fallbacks no Hero com reserva de espaço e transição suave do poster para o modelo pronto; validar desktop/mobile, FPS e ausência de CLS.
+Os eixos orbitais têm fases distintas para continuidade; reflexo diminui suavemente nos 15% de borda. Fora da caixa retorna a neutro. IntersectionObserver ativa acima de 4% visíveis; animações pausam fora da tela e com aba oculta. Scroll, pointerleave e blur limpam resposta do cursor. Observers, listeners e matchMedia têm cleanup.
 
-**Importante:** o escudo não é a logo. Não reinterpretar ou substituir o monograma oficial por ele.
+Reduced motion conserva PNG estático e remove reflexo. Valores históricos 3.2 s de `motion-config.mjs` ainda existem para o estudo, mas a entrada da imagem vigente é controlada por `createSiteEntrance`.
 
----
+## 8. NOSSAS SOLUÇÕES
 
-## 8. Seção 2 — NOSSAS SOLUÇÕES
+### 8.1. Estrutura e apresentação
 
-### 8.1. Título e layout
+Oito cards informativos; apenas CTAs são botões. Numeração 01–08 oculta no grid e visível mobile. Ícones Lucide 24 px, strokeWidth 1.4, decorativos, sem fundo.
 
-- Headline **exatamente** `NOSSAS SOLUÇÕES`.
-- Centralizada em todos os dispositivos; distância até cartões moderada e visualmente equilibrada.
-- **Oito cartões, na ordem abaixo**, com informações **sempre visíveis** (sem acordeão, flip, tooltip obrigatório, expansão ou clique para revelar serviços). Numeração `01` a `08` oculta no desktop/tablet em grid; pode permanecer nos cards mobile. Não alterar o contador funcional do carrossel.
-- Cartões são **informativos, não links**: não criar cursores de botão, onClick decorativo ou falsa affordance.
-- Cada cartão contém ícone linear correspondente, título e lista semântica com um marcador nativo discreto por produto, prata neutra e alinhado à primeira linha, com recuo suspenso consistente nas quebras. Usar 12 px de `row-gap` entre produtos (referência 10–14 px), não apenas entrelinha. Todos os textos visualmente em caixa alta por CSS. Preservar grafia, acentos, ordem e capitalização originais nos dados de `lib/content.ts`; numeração visual somente no mobile. A altura uniforme cresce conforme o conteúdo real máximo, sem cortes ou altura fixa limitante.
-- Etapa 3: remover todas as divisórias entre produtos nos oito cards, incluindo bordas, gradientes e pseudoelementos. Preservar marcadores nativos, 12 px de intervalo, tracking, entrelinha e alturas uniformes. Etapa 4 remove também as divisórias internas dos Diferenciais. Bordas externas e separadores entre seções permanecem.
-- Ícone **sem fundo, sem círculo, sem quadrado e sem contêiner decorativo**; deve estar ao lado do título, com alinhamento refinado.
-- Conteúdo ancorado no topo; espaços inferiores vazios devem ser apenas consequência natural da altura uniforme.
+Desktop: quatro colunas/duas linhas; até 1199 px duas colunas; até 767 px carrossel nativo. Gap grid 18 px; mobile 16 px. Grid com `grid-auto-rows:1fr`; uniformidade pode gerar vazio nos cards curtos.
 
-### 8.2. Conteúdo oficial — reproduzir literalmente
+Cards: raio 18 px, mínimo 405 px desktop/410 mobile, padding 32 × 25 px desktop/28 px mobile; podem crescer. Título vertical com ícone acima, gap 12 px, faixa mínima 96 px; fonte 20 px/600, RC 18 px/tracking .025em. Lista semântica com marcadores, gap 12 px, recuo 14 px, texto 16 px/peso 500/entrelinha 1.7. Regras mobile de 15 px coexistem com seletor mais específico de 16 px: não certificar 15 px como resultado universal.
+
+`QuoteTrigger`: largura 100%, margin-top auto, min-height 50 px, fundo `#263139`, texto `#f4f5f1`, borda `#647078`, texto COTAR AGORA e ArrowRight 17 px. Categoria pré-selecionada no mesmo dialog da Hero. Gap vertical do card 24 px. Nenhuma faixa de botões de categorias abaixo do título.
+
+### 8.2. Conteúdo oficial literal
 
 #### 01 — BENS
 
@@ -440,39 +431,21 @@ O refinamento subsequente solicitado preserva o isolamento: contornos externos m
 - RC Rural / Agropecuário
 - RC Hospitalar e Clínicas
 
-**Contagem de integridade (revisão de 21/10/2026):** 8 cartões, **44 linhas de produtos/serviços**. RESPONSABILIDADE CIVIL substitui PREVIDÊNCIA e possui 10 itens; RURAL substitui AGRO e recebe responsabilidade civil rural e agropecuário. Vida e Saúde inclui Plano de previdência e Seguro prestamista. Ícones acima dos títulos, alinhados na mesma altura; faixa de título com mínimo de 96 px, crescimento livre, sem quebra no meio das palavras. Títulos de Soluções com 20 px (ajuste óptico de 18 px somente em RESPONSABILIDADE CIVIL) e listas com 16 px; alturas crescem pelo maior conteúdo real.
+**Contagem de integridade:** 8 cartões e **44 linhas de produtos/serviços**, na ordem acima. Grafias são as dos dados atuais; renderização em caixa alta por CSS não altera os arrays.
 
-As denominações foram pluralizadas sem mudar modalidades. Engenharia, logística e previdência usam os núcleos plurais Seguros, Soluções e Planos para evitar plurais artificiais dos nomes de área. Os quatro textos específicos de TRANSPORTE prevalecem literalmente sobre a regra geral de plural e ficam em caixa alta também na fonte de dados.
+### 8.3. Carrosséis manuais de Soluções e Diferenciais
 
-### 8.3. Responsividade e dimensionamento
+Mobile: viewport horizontal com cards de 86% e peek, scroll-snap x mandatory, barra oculta, scroll restrito ao trilho. Último card tem margin-right 14%.
 
-- Desktop: **grid de quatro colunas por duas linhas (4 × 2)**, visualmente balanceado; **todos os oito cartões com a mesma altura**, determinada pelo maior conteúdo real (incluindo as 10 linhas de RESPONSABILIDADE CIVIL), e não altura distinta por linha.
-- Tablet/intermediário: **duas colunas** quando quatro não comportarem de modo legível; usar breakpoint fundamentado no espaço disponível.
-- Mobile: **carrossel horizontal de gesto/swipe**, com próximo cartão parcialmente visível (`peek`), `scroll-snap`, sem rotação automática, e todos os 8 cartões acessíveis.
-- Mobile: **todos os cartões com altura uniforme, tomando BENS (9 linhas) como referência mínima**; calcular/acomodar a altura real máxima caso quebras de linha em outro cartão exijam mais espaço. Nenhum conteúdo pode ser cortado.
-- Mobile: mostrar **imediatamente acima do carrossel** uma instrução em caixa alta, acompanhada de ícone gestual discreto, por exemplo: `ARRASTE PARA A ESQUERDA PARA VER MAIS`.
-- Sem setas visuais. Preservar gesto bidirecional, scroll-snap, contador **`01 / 08` a `08 / 08`** e indicadores discretos selecionáveis por clique/toque/teclado, com nome acessível de cada cartão.
-- O contador deve refletir o cartão efetivamente ativo, inclusive após swipe manual, resize e navegação por indicador.
-- Evitar overflow horizontal da **página**; scroll horizontal limitado ao trilho dos cartões.
+Instrução `ARRASTE PARA A ESQUERDA PARA VER MAIS`, ícone Hand 15 px, texto 9 px/peso 500. Contador com fonte 11 px, tabular-nums, aria-live polite/atomic. Indicadores selecionáveis de 44 px de altura, largura `min(44px,12.5%)`, pontos 5 px e ativo scale 1.4. Soluções: ponto #777b78/ativo #25292c.
 
----
+Trilho focável; setas esquerda/direita funcionam somente quando o próprio trilho tem foco. Indicadores usam botões com nomes acessíveis e aria-controls. Contador é atualizado pela posição real dos filhos em scroll/resize, não só pelo clique. Sem autoplay. Movimento horizontal programático smooth; instant com reduced motion.
 
-## 9. Seção 3 — NOSSOS DIFERENCIAIS
+## 9. Diferenciais, Indicações, Companhias e Benefícios
 
-### 9.1. Título e layout
+### 9.1. NOSSOS DIFERENCIAIS
 
-**Última revisão:** retirar integralmente o tópico de parceria com seguradoras de SEGURANÇA. Os três cards têm altura mínima de 280 px e crescem se o conteúdo exigir; nunca cortar texto. Títulos NOSSAS SOLUÇÕES e NOSSOS DIFERENCIAIS passam a `clamp(29px, calc(3.4vw + 2px), 51px)` (32.70 px a 903 px).
-
-- Headline **exatamente** `NOSSOS DIFERENCIAIS`.
-- Não apresentar `DIFERENÇA ZURY`, `A DIFERENÇA ZURY` ou qualquer subtítulo substituto acima desse título.
-- Centralizada em todas as larguras, com espaçamento equilibrado até os cartões.
-- Três cartões institucionais sem numeração visual dentro dos cards em qualquer largura, com o mesmo tratamento Liquid Glass da seção anterior. Conteúdo em caixa alta por CSS, preservando dados originais, acentos, ordem e hierarquia. Cada alegação permanece em item semântico com marcador discreto, mas sem qualquer divisória interna, borda, gradiente linear ou pseudoelemento separador. Preservar o ritmo vertical: o espaço antes ocupado pela borda pode ser substituído por 1 px de padding, sem desenhar linha. Manter bordas externas, ícones, alturas uniformes, animações e controles do carrossel.
-- Ícones Lucide à esquerda dos títulos: SEGURANÇA `shield-check`, SUPORTE `headset`, AGILIDADE `zap`. Reutilizar o alinhamento e a cor `#d0d2cd` dos serviços, tamanho 24 px, `strokeWidth: 1.4`, gap de 12 px; sem fundo, círculo ou contêiner decorativo. Ícones decorativos ocultos para tecnologias assistivas; títulos, ordem e marcadores preservados, sem divisórias internas.
-- Desktop: **três cartões lado a lado**, de mesma altura, tendo como referência o texto mais longo.
-- Mobile: carrossel de swipe com próximo cartão parcial, instrução gestual **em caixa alta imediatamente acima**, indicadores selecionáveis sem setas e contador **`01 / 03` a `03 / 03`**. Nenhum conteúdo pode ser truncado.
-- Sem expansão, flip, links falsos ou clickboxes não funcionais.
-
-### 9.2. Conteúdo textual oficial — reproduzir literalmente
+Três cards lado a lado no desktop; carrossel manual no mobile. Sem numeração visual. Mínimo 280 px, padding 32 px desktop/28 px mobile; ícone à esquerda, 24 px/1.4, gap 12 px, fonte 18 px/600.
 
 | Nº | Título | Descrição |
 | --- | --- | --- |
@@ -480,490 +453,1042 @@ As denominações foram pluralizadas sem mudar modalidades. Engenharia, logísti
 | 02 | **SUPORTE** | `Atendimento humanizado e especializado, disponível 24 horas por dia.` |
 | 03 | **AGILIDADE** | `Agilidade nas cotações e no acompanhamento e resolução de sinistros.` |
 
-A ordem SEGURANÇA → SUPORTE → AGILIDADE e os índices correspondentes são únicos nos dados e se aplicam ao desktop, tablet, carrossel e navegação acessível. Os índices não são conteúdo visual dos cartões.
+Ícones ShieldCheck, Headset e Zap. A apresentação divide as descrições em itens sem os conectivos de união, mantendo a fonte literal acima. Removido o tópico de parceria com seguradoras de SEGURANÇA.
 
-Os textos completos da tabela permanecem imutáveis na fonte de dados. É autorizada sua divisão de apresentação: SEGURANÇA em equipe qualificada / atuação autorizada pela SUSEP / parceria com diversas seguradoras para proteger seu patrimônio; SUPORTE em atendimento humanizado e especializado / disponível 24 horas por dia; AGILIDADE em agilidade nas cotações / acompanhamento e resolução de sinistros. Omitir somente conectivos e pontuação de união, sem novas alegações ou alteração de significado.
+Listas 16 px/1.65, max-width 34ch, marcadores discretos, sem divisórias internas; espaçamento em padding 14/15 px. Declarações fornecidas pelo responsável; não equivalem a verificação independente de SUSEP ou disponibilidade 24h.
 
-**Observação editorial:** o responsável pela marca **confirmou e autorizou expressamente** as afirmações sobre disponibilidade 24h, autorização SUSEP e parceria com seguradoras. Implementar o texto aprovado sem inventar novas alegações de prazo, cobertura, garantia, preço ou ranking. A confirmação foi fornecida pelo responsável; não constitui verificação independente do registro.
+### 9.2. PROGRAMA DE INDICAÇÕES
 
----
+Somente com gate. Grid até 1000 px, duas colunas, gap 16 px; mobile uma coluna/gap 20 px. Cards mínimos de 430 px, padding 44 × 32 px; mobile 38 × 24 px. Ícones UserRoundPlus/Handshake 18 px/1.4; títulos 18 px. Tópicos em lista, gap 18 px, margin 24 px 0 20 px; último em strong. Corpo 14 px/1.75, mobile 15 px.
 
-### 9.3. Programa de Indicações — etapa 7
+**SEJA UM AFILIADO**:
+1. `INDICAÇÕES SIMPLES`
+2. `CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA`
+3. `REMUNERAÇÃO DE R$100 ENVIADO VIA PIX PELA CONTRATACÃO DO INDICADO.`
 
-**Inclusão de 21/10/2026:** adicionar ao card SEJA UM AFILIADO o quarto tópico literal `CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA`, sem remover os três anteriores, preservando a remuneração em negrito no terceiro tópico. Manter CTAs e gates. Trata-se de cópia da prévia solicitada, não implementação ou comprovação de emissão de códigos.
+**SEJA UM PARCEIRO COMERCIAL**:
+1. `INDICAÇÕES RECORRENTES.`
+2. `CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA`
+3. `REMUNERAÇÃO DE 10% DA COMISSÃO RECEBIDA PELA CONTRATACÃO DO INDICADO`
 
-**Último ajuste de dimensões e ênfase:** ambos os cards têm mínimo de 430 px, com crescimento livre para evitar cortes. Terceiro tópico de ambos os cards em negrito. CTAs de 260 × 48 px quando houver espaço, recuo de 25 px reduzido conforme largura útil; Afiliado em 13.5 px, Parceiro em 12.5 px, entrelinha 1.2 e padding 8 × 12 px. Em telas estreitas, limitar largura à disponível e permitir altura maior se a quebra exigir. Substitui as medidas anteriores de 470 px, recuo de 45 px e CTAs menores. Preservar cópias, ordem, destinos e gates.
+CTAs QUERO SER AFILIADO / QUERO SER PARCEIRO COMERCIAL: 260 × 56 px quando houver espaço, centralizados, fonte editorial 13 px, peso 600, raio cápsula, grafite/off-white; regras específicas de modo podem concorrer e devem ser conferidas na cascata.
 
-**Revisão mais recente (substitui instruções anteriores correspondentes):** cards com mínimo de 470 px, sem valores destacados acima dos CTAs. Remover também QUEM INDICA MERECE MAIS. Título da seção e parágrafo comercial usam 22 px, com quebra livre responsiva. Afiliado: QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY. / POSSIBILIDADE DE RENDA EXTRA / **O AFILIADO RECEBERÁ R$ 100 VIA PIX POR CADA CONTRATAÇÃO INDICADA.**, nesta ordem, com três marcadores e somente o último tópico em negrito. Parceiro: INDICAÇÕES RECORRENTES. / CÓDIGO INDIVIDUAL DE INDICAÇÃO PODENDO GERAR UMA EXCELENTE RENDA EXTRA / REMUNERAÇÃO DE 10% DA COMISSÃO RECEBIDA PELA CONTRATACÃO DO INDICADO. No último item, a cópia renderizada não leva o ponto final usado nesta frase explicativa. Preservar a grafia fornecida, CTAs, recuo responsivo e gates comerciais. As alegações de renda/código não são validação da operação nem autorização para publicar.
-
-**Últimas anotações dos cards (prevalecem sobre as revisões abaixo):** remover dos dados e da interface PARTICIPAÇÃO SIMPLES e INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE, inclusive seus marcadores. Preservar POSSIBILIDADE DE RENDA EXTRA e as descrições. Valores financeiros ficam fora das listas, no bloco inferior imediatamente acima dos respectivos CTAs, sem marcador. Altura mínima de ambos os cards passa a 580 px, permitindo crescimento para conteúdo real em telas estreitas. CTAs recebem recuo de 45 px quando houver espaço, reduzido automaticamente para evitar overflow; preservar os links, mensagens e gates existentes.
-
-**Revisão atual de organização:** cards com altura mínima de 640 px (crescimento livre conforme conteúdo), mesmo alinhamento superior e CTA na base. Todos os tópicos informativos, inclusive valor, descrições e benefícios, usam uma lista semântica com marcador à esquerda; título e CTA não recebem marcador. Intervalos de 22 px, recuo suspenso e alinhamento comum; padding desktop de 44 × 32 px. Esta revisão substitui as instruções antigas de apresentação sem marcadores. Mobile conserva padding de 38 × 24 px e fontes legíveis.
-
-**Nova cópia expressamente solicitada, sem ponto final, somente na prévia comercial:** `EM AGRADECIMENTO ÀS INDICAÇÕES, A ZURY OFERECE O MELHOR PRECO DO MERCADO PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES DE PRODUTOS, RENUNCIANDO Á NOSSA COMISSÃO`
-
-Substitui o parágrafo provisório abaixo, preservando literalmente a grafia recebida. A solicitação editorial não comprova a alegação comparativa nem a política de comissão: manter o gate de produção e as pendências de validação comercial/jurídica; não publicar nem tratar como oferta comprovada.
-
-Nova seção `#indicacoes`, após Diferenciais e antes de Benefícios exclusivos. Reutilizar Inter Tight, paleta da etapa 2, Liquid Glass, Flow Glass, bordas e reveal existentes. Dois cards de mesma altura lado a lado no desktop/tablet; empilhados e completos no mobile. Ícones Lucide `user-round-plus` e `handshake`, sem numeração promocional. CTAs em cápsulas; nenhum card inteiro clicável. Apresentação integralmente em caixa alta, conforme regra global, sem alterar as mensagens de WhatsApp.
-
-Grid centralizado até 1000 px, gap 16 px, padding vertical 38 px/horizontal 22 px e ícones 18 px. Cards perceptivelmente mais altos, com distribuição real, não somente vazio inferior. Títulos 13 px; valores 19–22 px com margens verticais 24 px; descrições 13,5 px/1,6 em grid com gap 16 px e margem inferior 24 px. Frases 13 px/1,55, sem marcadores, gap uniforme 12 px e margem inferior 26 px. CTAs alinhados na base, alvo 44 px, texto 10,5 px, largura pelo conteúdo e mínimo limitado de 210 px. Mobile: padding 38 px/24 px, descrições 15 px, frases 14 px. Sem altura fixa limitante, escala, redução de fonte ou largura maior. Tracking conforme §4.2.
-
-**Conteúdo oficial:**
-
-- Título: `PROGRAMA DE INDICAÇÕES`.
-- Somente o título da seção antes dos cards: remover a headline provisória anterior e sua margem/wrapper exclusivo, sem inserir subtítulo substituto.
-- Proposta pendente, não renderizada nem publicada: `SUAS INDICAÇÕES PODEM RENDER MAIS DE R$ 10.000 POR MÊS!`. Preservar exatamente esta grafia se vier a ser aprovada; exigir dados reais suficientes e validação comercial/jurídica antes de substituir a alternativa provisória. Não foi fornecida comprovação nesta revisão.
-- Removidos da interface e dos dados renderizáveis: complemento comercial anterior, ressalva de ganhos e aviso de prévia. Não adicionar nova faixa/parágrafo de advertência nem armazenar cópias antigas ocultas nos componentes.
-
-**SEJA UM AFILIADO** — `R$ 100 POR CONTRATAÇÃO`
-
-QUALQUER PESSOA PODE INDICAR POTENCIAIS CLIENTES À ZURY.
-
-SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, O AFILIADO RECEBERÁ R$ 100 VIA PIX.
-
-Três frases exclusivas, sem pontos finais, bullets ou marcadores, alinhadas à esquerda no mesmo eixo e com intervalo uniforme:
-
+Parágrafo comercial literal:
 ```text
-PARTICIPAÇÃO SIMPLES
-POSSIBILIDADE DE RENDA EXTRA
-INDICAÇÕES SEM NECESSIDADE DE ATUAÇÃO COMERCIAL RECORRENTE
+A ZURY OFERECE O MELHOR PREÇO DO MERCADO PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES, RENUNCIANDO Á NOSSA COMISSÃO.
 ```
 
-CTA: `QUERO SER AFILIADO`. Mensagem exata: `Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.`
+Largura até 1320 px, margin-top 48 px, texto `clamp(15px,2.05vw,22px)`, peso 700, entrelinha 1.6, tinta grafite em fundo claro. Duas spans, com quebra antes de NAS CONTRATAÇÕES quando houver espaço. Não há título comercial separado.
 
-**SEJA UM PARCEIRO COMERCIAL** — `10% DA COMISSÃO RECEBIDA PELA ZURY`
+Mensagens exatas nos links do Thiago:
+- Afiliado: `Olá! Tenho interesse em participar do programa de afiliados da ZURY CORRETORA. Gostaria de saber como funciona.`
+- Comercial: `Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.`
 
-O PARCEIRO COMERCIAL MANTÉM UMA RELAÇÃO MAIS PRÓXIMA COM A CORRETORA, REALIZANDO INDICAÇÕES RECORRENTES.
+URLs usam `URLSearchParams({text: mensagem})` após `https://wa.me/5538998645200`. Apenas preenchem a conversa; não enviam automaticamente.
 
-CADA PARCEIRO RECEBERÁ UM CÓDIGO INDIVIDUAL DE INDICAÇÃO.
+**Pendências:** validação das ofertas/claims, regulamento, comissões, estornos, prazos, dados pessoais e operação de códigos. Não há backend, cadastro, atribuição, geração real de códigos, pagamentos ou comprovação de melhor preço. A proposta de renda mensal não é renderizada.
 
-SE A INDICAÇÃO RESULTAR EM CONTRATAÇÃO, A REMUNERAÇÃO CORRESPONDERÁ A 10% DA COMISSÃO RECEBIDA PELA ZURY NESSA CONTRATAÇÃO.
+### 9.3. COMPANHIAS
 
-Sem lista adicional: remover os quatro itens repetitivos anteriores, preservando somente os três parágrafos principais, título, destaque financeiro e CTA.
+Sempre renderizada. Título COMPANHIAS e chamada literal:
+```text
+COMPARE DIFERENTES SEGURADORAS E ENCONTRE A PROTEÇÃO PARA VOCÊ.
+```
 
-CTA: `QUERO SER PARCEIRO COMERCIAL`. Mensagem exata: `Olá! Tenho interesse em me tornar parceiro comercial da ZURY CORRETORA. Gostaria de conhecer as condições da parceria.`
+Chamada até 780 px, margin `-24px auto 40px`, fonte `clamp(20px,2.4vw,26px)`, peso 700, entrelinha 1.55, cor #343d40, centralizada/balanceada. Seção padding 72 px; título com margin-bottom 48 px quando houver logos.
 
-Ambos os CTAs usam Thiago — Corretor, `https://wa.me/5538998645200`, com a mensagem codificada em `text`. Esta é a exceção expressamente autorizada à regra de WhatsApp sem mensagem; menus existentes não mudam. Apenas preparar a conversa, sem envio automático. Não há códigos reais, cadastro, atribuição automatizada ou pagamentos implementados.
+37 PNGs, originais e larguras ópticas cadastrados abaixo. Next Image, sizes 200px, alt com nome da companhia. Cards 144 px de altura/min-height, padding 20 px, raio 20 px; imagens com altura 72 px e object-fit contain. Mobile: duas colunas, gap 24 px, cards 112 px/padding 14 px, imagens 64 px.
 
-**Bloco comercial abaixo dos dois cards:** centralizado, integrado ao fundo, sem card/banner/cápsula. Largura até 1320 px, margem superior 48 px. Título único de 18–22 px sem ponto; corpo branco `#fff`, peso 700, 16–19 px/1,6, tracking de descrição. Distribuição balanceada em exatamente duas linhas no desktop quando houver espaço; mais linhas em telas menores, sem miniaturizar fonte. Até comprovação, usar a formulação objetiva provisória:
+| Nome | Caminho público | Dimensões originais | Largura óptica cadastrada |
+| --- | --- | --- | --- |
+| Ademicon | `/companies/ademicon.png` | 2172 × 724 | 180 px |
+| Akad | `/companies/akad.png` | 1918 × 563 | 180 px |
+| Allianz | `/companies/allianz.png` | 1913 × 516 | 180 px |
+| Amil | `/companies/amil.png` | 2032 × 744 | 180 px |
+| AXA | `/companies/axa.png` | 1254 × 1254 | 100 px |
+| Azos | `/companies/azos.png` | 2032 × 432 | 200 px |
+| Azul Seguros | `/companies/azul-seguros.png` | 2032 × 904 | 180 px |
+| Berkley | `/companies/berkley.png` | 889 × 281 | 180 px |
+| Bradesco | `/companies/bradesco.png` | 2032 × 478 | 200 px |
+| Brasilseg | `/companies/brasilseg.png` | 2172 × 724 | 180 px |
+| BV | `/companies/bv.png` | 2032 × 1508 | 100 px |
+| Capemisa | `/companies/capemisa.png` | 2172 × 724 | 180 px |
+| Chubb | `/companies/chubb.png` | 1946 × 244 | 200 px |
+| Essor | `/companies/essor.png` | 2032 × 664 | 180 px |
+| HDI Seguros | `/companies/hdi-seguros.png` | 1863 × 792 | 180 px |
+| Honda | `/companies/honda.png` | 829 × 135 | 200 px |
+| Icatu | `/companies/icatu.png` | 962 × 376 | 180 px |
+| Itaú | `/companies/itau.png` | 1254 × 1254 | 100 px |
+| Justos | `/companies/justos.png` | 2032 × 629 | 180 px |
+| MAG | `/companies/mag.png` | 1927 × 741 | 180 px |
+| Magalu | `/companies/magalu.png` | 2032 × 479 | 200 px |
+| Mapfre | `/companies/mapfre.png` | 2032 × 335 | 200 px |
+| MetLife | `/companies/metlife.png` | 2032 × 462 | 200 px |
+| Omint | `/companies/omint.png` | 2031 × 597 | 180 px |
+| Pier | `/companies/pier.png` | 1830 × 554 | 180 px |
+| Porto Seguro | `/companies/porto-seguro.png` | 2032 × 489 | 200 px |
+| Rodobens | `/companies/rodobens.png` | 2172 × 724 | 180 px |
+| Safra | `/companies/safra.png` | 2032 × 768 | 180 px |
+| Sancor | `/companies/sancor.png` | 1902 × 487 | 180 px |
+| Santander | `/companies/santander.png` | 2032 × 382 | 200 px |
+| Suhai | `/companies/suhai.png` | 2032 × 609 | 180 px |
+| SulAmérica | `/companies/sulamerica.png` | 1772 × 472 | 180 px |
+| Tokio Marine | `/companies/tokio-marine.png` | 1915 × 476 | 200 px |
+| Unimed | `/companies/unimed.png` | 2003 × 359 | 200 px |
+| Yamaha | `/companies/yamaha.png` | 2032 × 468 | 200 px |
+| Yelum | `/companies/yelum.png` | 1876 × 508 | 180 px |
+| Zurich | `/companies/zurich.png` | 1947 × 494 | 180 px |
 
-`QUEM INDICA MERECE MAIS`
+O cadastro registra os ativos recebidos; não comprova relações comerciais independentemente. Não substituir logos por texto, filtros ou desenhos.
 
-`EM AGRADECIMENTO ÀS INDICAÇÕES, A ZURY BUSCA MELHORES CONDIÇÕES PARA AFILIADOS E PARCEIROS NAS CONTRATAÇÕES PRÓPRIAS, INCLUSIVE COM POSSÍVEL RENÚNCIA À COMISSÃO, QUANDO APLICÁVEL.`
+### 9.4. BENEFÍCIOS EXCLUSIVOS
 
-Este benefício é para contratação própria dos afiliados/parceiros, não dos clientes indicados; é distinto dos R$ 100 e 10%. Texto pretendido, PENDENTE e não renderizado: `COMO FORMA DE AGRADECIMENTO PELAS SUAS INDICAÇÕES, A ZURY ABRE MÃO DE SUA PRÓPRIA COMISSÃO NOS SERVIÇOS CONTRATADOS POR AFILIADOS E PARCEIROS COMERCIAIS, GARANTINDO A ELES OS MELHORES PREÇOS DO MERCADO EM TODOS OS NOSSOS SERVIÇOS.` Confirmar existência, renúncia integral/parcial, abrangência, permissões contratuais/normativas e comprovação objetiva antes de substituir o provisório. Não publicar promessa universal sem comprovação.
+Somente com seu gate, após Companhias. Sem texto auxiliar, CTAs ou instruções de resgate.
 
-Não alegar melhor preço garantido, renúncia universal de comissão ou renda típica. Não foi fornecida comprovação da política: confirmar renúncia total/parcial, produtos e serviços abrangidos, aplicação a contratos com parceiros remunerados, restrições das seguradoras/instituições e documentação comparativa de preços. Não confundir comissão da corretora com preço final. Somente após validação usar uma formulação mais específica compatível com a operação real; gates de publicação permanecem.
+| Nome | Oferta literal | Ativo / dimensões originais |
+| --- | --- | --- |
+| ZAPP | 5% DE DESCONTO EM ATÉ 3X | `/partners/grupo-zapp-metalico.png`, 2172 × 724 |
+| GRUPO MV | 5% DE DESCONTO EM SERVIÇOS | `/partners/grupo-mv.png`, 1057 × 1057 |
+| ÓTICA VEMOS | 15% DE DESCONTO A VISTA E 10% Á PRAZO | `/partners/otica-vemos.png`, 1254 × 1254 |
+| LABORATÓRIO CENTROLAB | 10% DE DESCONTO | `/partners/centrolab.png`, 1254 × 1254 |
 
-**Gate de publicação:** seção e link habilitados em desenvolvimento ou por `ZURY_REFERRAL_PREVIEW=true` durante o build local. Build de produção padrão, sem essa variável, deve omitir ambos. A variável não constitui aprovação nem controle de acesso: o artefato de prévia não deve ser publicado. Exigir validação expressa antes de alterar este gate.
+Cards min-height 240 px, padding editorial 20 px; títulos 18 px/600, line-height 1.3, margin-bottom 8 px; oferta `clamp(18px,1.5vw,20px)`/600/1.25, mobile 20 px.
 
-**Pendências comerciais/jurídicas — não inventar condições:** regulamento e regras de participação; prazos de pagamento; cancelamentos e estornos; atribuição de indicações; regras de comissão e eventuais reduções/repasse por produto; tratamento de dados pessoais; requisitos legais/regulatórios aplicáveis à corretagem e aos produtos financeiros; sustentação da chamada mensal. Confirmar operação real de emissão dos códigos antes de anunciar o programa como ativo. A frase solicitada sobre códigos existe somente na prévia bloqueada para publicação; não há emissão implementada nem códigos fictícios. Não criar regulamento com critérios presumidos.
+Área de logo 88 px, margin-bottom 12 px; logos até 180 × 72 px; MV até 64 × 64 px. Ótica Vemos tem ajuste CSS específico 180 × 104 px, object-fit cover/object-position 50% 60%, recortado na área de logo; Centrolab largura 112 px/max-height 104 px. Arquivos não editados, mas apresentação com cover não equivale a “nenhum recorte visual”.
 
-**Integração futura (não implementada):** modalidades com IDs estáveis `affiliate` e `commercial` em dados tipados. Eventual serviço autenticado deverá cuidar de cadastro/consentimento, atribuição, elegibilidade, conciliação de comissões e auditoria, após requisitos e aprovação específicos. Não criar backend, painel, códigos ou regras financeiras nesta etapa.
+Condições, parcerias e autorização de publicação continuam dependentes de validação; não presumir validade, cumulatividade ou regras de resgate.
 
-### 9.4. BENEFÍCIOS EXCLUSIVOS — cards e movimento condicional da etapa 7
+### 9.5. Movimento de Companhias e Benefícios
 
-Seção `#beneficios` após Indicações e antes do Footer. Reutilizar paleta grafite/prata, gradientes direcionais, iluminação contida, materiais Liquid Glass/Flow Glass e reveal existentes. Três cards de altura uniforme no grid desktop, empilhados e legíveis no mobile. Sem CTAs, links comerciais, regras de resgate ou condições não fornecidas.
+Componente comum `BenefitTrack`, WAAPI. **Condição efetiva atual:** count > 1, largura acima de 767 px e sem reduced motion; não testa se todos os itens cabem antes de ativar o loop.
 
-Grid centralizado de no máximo 960 px, intervalo de 14 px e padding de 20 px. Área de logo com 56 px de altura; imagens proporcionais até 150 × 48 px, símbolo MV até 48 × 48 px, sem editar os ativos. Títulos de 13 px; descontos de 18–20 px. No mobile, padding de 22 px, títulos de 14 px e descontos de 20 px. Sem legendas descritivas nos três cards, sem CTAs ou avisos de prévia. Não aplicar escala geral nem cortar texto. Altura uniforme no desktop, com cada logo centralizada verticalmente na área reservada. Títulos de seção mantêm a hierarquia global.
+- Movimento linear contínuo para a direita a 76 px/s.
+- Benefícios: mínimo 260 px/máximo 320 px; gap 14 px; viewport desktop de largura total.
+- Companhias: mínimo/máximo de 220 px; gap 24 px; viewport de largura total com padding vertical 24 px.
+- Largura do card: `min(maximum,max(minimum,(width - 3*gap)/4))`.
+- Distância do ciclo: `count*(cardWidth+gap)`; duração: `distance/76*1000` ms.
+- Cópias extras: `max(1,ceil(width/distance))`, além do grupo principal.
+- Duplicatas visuais aria-hidden/inert; fase preservada no resize.
+- Pausa por foco, pointerdown/interação e documento oculto; retoma em pointerup/pointercancel. **Não pausa apenas por hover.**
+- ResizeObserver e listeners com cleanup; mobile/reduced motion exibem grid estático com todos os itens, sem loop.
 
-- Título: `BENEFÍCIOS EXCLUSIVOS`.
-- Sem chamada ou descrição auxiliar: remover texto, wrapper e espaçamento exclusivo, sem substituto. Preservar somente título e cards; comportamento condicional abaixo.
+## 10. Footer, contatos e canais
 
-| Nome de apresentação | Oferta sujeita à validação |
+### 10.1. Rodapé
+
+Largura externa integral, sem padding externo; painel interno com padding desktop `50px clamp(28px,4.8vw,70px) 25px`, mobile 35 × 26 × 25 px. Logo 224 px/margem inferior 50 px; mobile 190 px/margem 35 px. Raio 24/18 px.
+
+Três grupos no desktop: Navegação → Institucional → Feedback; gap `clamp(24px,4vw,64px)`. Mobile empilhado, gap editorial 32 px; alguns valores base coexistem no CSS.
+
+| Grupo | Conteúdo |
 | --- | --- |
-| FARMELHOR UNAÍ | 10% DE DESCONTO ADICIONAL |
-| ZAPP | 10% DE DESCONTO ADICIONAL |
-| GRUPO MV | 5% DE DESCONTO EM SERVIÇOS |
+| Navegação | CONTATOS, SOLUÇÕES→#servicos, DIFERENCIAIS→#sobre, SOBRE→#institucional |
+| Institucional | ZURY CORRETORA LTDA; CNPJ: 49.393.734/0001-77; SUSEP: 262180499 |
+| Feedback | REDES SOCIAIS; NOS AVALIE NO GOOGLE |
 
-Esta revisão substitui os nomes anteriores por **FARMELHOR UNAÍ** e **ZAPP**. O símbolo verde corresponde ao **GRUPO MV**. O card ZAPP usa a logo metálica recebida, sem FOR MEN, preservada sem cortes, filtros ou alterações destrutivas. A logo FarMelhor não contém a localização UNAÍ; o nome textual solicitado permanece distinto do desenho original.
+Títulos 18 px/600; links 16 px/500, min-height 44 px, padding 9 × 14 px; dados legais 16 px/500/entrelinha 2. Copyright 14 px, borda superior fina, padding-top 22 px, margin-top 45 px (30 mobile):
+`© 2026 · Todos os direitos reservados.`
 
-**Ativos oficiais recebidos e preservados byte a byte:** `public/partners/farma-melhor.png` (300 × 72), `grupo-zapp.png` (997 × 379), `grupo-zapp-metalico.png` (2172 × 724) e `grupo-mv.png` (1057 × 1057). PNGs com canal alpha. Preservar cores de marca, transparência, proporções e respiro com `object-fit: contain`; as cores originais nas logos são exceção à neutralidade cromática da UI. Sem filtros, recoloração, reconstrução, cortes ou fundo branco. O lettering preto pequeno de FarmaMelhor merece variante oficial adequada a fundo escuro. Não tratar nome confirmado como autorização comercial comprovada.
+Sem duplicar razão social/CNPJ/SUSEP na faixa final. Painel não é botão nem recebe elevação de hover.
 
-**Carrossel condicional de cards completos:** a faixa de logos isoladas permanece cancelada. Medir largura real do container, quantidade de cards e mínimo legível de 260 px por card + gap 14 px. Enquanto couberem, manter grid estático; não usar limite arbitrário de quantidade. Se exceder no desktop/tablet, animar os mesmos cards completos (logo/nome/oferta) da esquerda para a direita em loop linear contínuo, 42 px/s (referência 35–50), sem saltos, setas, indicadores ou scrollbar. Pausar em hover, foco, interação e documento oculto, retomar da mesma posição. Duplicatas visuais ficam `aria-hidden` e `inert`, sem IDs duplicados. Recalcular em resize/alteração de dados; limpar animação, observers e listeners. Mobile até 767 px e reduced motion usam grid estático completo, sem movimento imposto pela largura. Três parceiros atuais cabem e permanecem estáticos no desktop. Não adicionar parceiros fictícios aos dados de produção; simulações somente temporárias em desenvolvimento. Carrosséis manuais de serviços e diferenciais permanecem sem autoplay.
+Links exatos:
+- CNPJ: `https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/`
+- SUSEP: `https://www2.susep.gov.br/safe/Corretores/pesquisa`
+- Avaliação: `https://share.google/AnNgzLmPy4lMNqHO9`
 
-**Gate:** em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` no build local, renderizar seção e três cards; produção padrão os omite. Independente do gate de Indicações. Não publicar artefato de prévia nem afirmar parceria/oferta ativa antes da confirmação expressa das parcerias, autorização de uso das marcas e condições comerciais. Não inventar cumulatividade, validade, itens participantes ou procedimento de resgate. O aviso visível foi removido por solicitação expressa, sem retirar essas pendências ou liberar publicação.
+Consultas não preenchem dados automaticamente nem comprovam registro. Link de avaliação aponta ao perfil fornecido; não há envio de avaliação pelo site.
 
-## 10. Footer, contatos e dados institucionais
+### 10.2. Contatos oficiais
 
-### 10.1. Aspecto
+Telefones estão nos dados e na documentação; os menus exibem somente nome/cargo.
 
-- Fundo grafite profundo derivado dos tokens `--surface-mineral` e `--surface-graphite`, transição gradual a partir da seção institucional. A cor oficial grafite da marca permanece `#1C1C1C`.
-- **Painel Crystalline Liquid Glass** refinado com cantos de raio moderado, contorno fino e luz sutil.
-- Reutilizar a mesma entrada dos cards (850 ms, `power3.out`, opacity e y de 24 px), com reveal no wrapper e hover no painel filho. Compartilhar `glass-card` e `flow-glass`: elevação de 4 px em 400 ms, borda em 350 ms, reflexo em 1200 ms e fade em 380 ms, sem tween concorrente. Foco nos controles internos ilumina o painel; movimento reduzido remove deslocamentos. Não transformar o painel/textos legais em botões nem dar animação de clique ao painel informativo. Arquitetura de contatos permanece intacta.
-- Logo, grupo de navegação, institucional e copyright entram coordenadamente: uma única timeline/ScrollTrigger para o painel, conservando os 24 px de deslocamento compartilhado e fades internos de 850 ms/`power3.out` com stagger de 60 ms. Não somar deslocamentos nos filhos, ocultar conteúdo sem JS ou animar controles concorrentes. Preservar reentrada/cleanup e conteúdo estático com movimento reduzido. Links e CONTATOS mostram somente texto no repouso e a mesma cápsula Flow Glass da navbar no hover/foco, sem cápsulas permanentes ou ícones adicionais. Compartilhar reflexo, glow, bordas delicadas, durações e easing; não substituir por simples mudança de cor. Tipografia alinhada aos Diferenciais: títulos 18 px, links e dados legais 16 px, copyright auxiliar 14 px; manter caixa alta global.
-- **Logo oficial completa branca** (SVG otimizado branco), proporcional, visível e nítida.
-- Não inserir um formulário, CTA extra, mapa, links sociais não fornecidos, badges inventados ou áreas promocionais.
-
-### 10.2. Colunas e ordem
-
-- Desktop: duas colunas úteis **`Navegação/CONTATOS` → `Institucional`**, sem coluna vazia reservada ao botão removido.
-- Mobile: empilhamento **`Navegação/CONTATOS` → `Institucional`**, espaços compactos e divisórias discretas, sem repetir logo ou conteúdo desnecessariamente.
-
-**Navegação** — links na mesma página, sem duplicar o botão principal de contato:
-
-- `CONTATOS` — gatilho textual do popover, na lateral esquerda imediatamente acima de SOLUÇÕES; mesma tipografia e hierarquia dos links, sem ícone nem cápsula visível em repouso. Operável por clique, toque e teclado, com Flow Glass compartilhado no hover/foco.
-- `SOLUÇÕES` → `#servicos`
-- `DIFERENCIAIS` → `#sobre`
-- `SOBRE` → `#institucional`
-- `REDES SOCIAIS` → mesmo menu social da navbar, com posicionamento adaptado ao rodapé.
-
-`NOS AVALIE NO GOOGLE` é um link textual com o mesmo tratamento, após SOBRE, para `https://share.google/AnNgzLmPy4lMNqHO9`, fornecido pelo usuário e verificado no navegador em 20/10/2026: abre o perfil ZURY CORRETORA em Unaí, com site e telefone oficiais e a opção de avaliar. Abrir em nova aba com `noopener noreferrer`. O endereço leva ao perfil, não diretamente ao formulário; não inventar um link direto ou identificador alternativo. Não enviar avaliações em nome do usuário.
-
-**Contato** — CONTATOS na coluna esquerda usa o mesmo componente da navbar, sem navegar/rolar. O antigo botão WhatsApp gradiente do rodapé permanece removido. O novo botão fixo do §10.4 é uma autorização distinta e não ocupa coluna do rodapé. WhatsApps são acessados pelos três pontos compartilhados; e-mail somente por CONTATO/CONTATOS, nunca por REDES SOCIAIS. Contatos oficiais: `THIAGO — CORRETOR`, `VALDIR — CONSULTOR`, `JOANA — SAÚDE`. Cargos opcionais na tipagem; somente mostrar os confirmados. Uma única fonte tipada em `lib/content.ts` alimenta navbar, rodapé e flutuante:
-
-| Nome | Cargo confirmado | Telefone oficial (não exibir nos menus) | Link exato |
+| Nome | Cargo confirmado | Telefone oficial | Link exato |
 | --- | --- | --- | --- |
 | Thiago | Corretor | `(38) 99864-5200` | `https://wa.me/5538998645200` |
 | Valdir | Consultor | `(38) 99961-5862` | `https://wa.me/5538999615862` |
 | Joana | Saúde | `(61) 98563-8090` | `https://wa.me/5561985638090` |
 
-- Cada contato tem link individual; exibir somente nome e cargo confirmado, sem telefone.
-- Preferir âncoras externas corretas (`target="_blank"` e `rel="noopener noreferrer"` se abrir em nova aba), foco visível e nome acessível contextualizado.
-- **Não incluir mensagem pré-preenchida inventada** no WhatsApp.
+Uma única fonte em `lib/content.ts`. Menus gerais sem mensagem pré-preenchida; exceção atual são os dois CTAs de Indicações.
 
-### 10.3. Balões de contato e redes sociais
+### 10.3. Popovers compartilhados
 
-- Um único componente-base de contato/social, mesmos dados, estados, animações, estilos e acessibilidade na navbar e rodapé. Preservar os menus aprovados da navbar; no rodapé priorizar abertura acima, centralizada no gatilho e limitada à viewport. Popovers `auto` mutuamente exclusivos; clicar novamente fecha, assim como clique fora, Escape e botão fechar. Reposicionar após expansão/resize e restaurar foco por Escape. Comparar conteúdo/ícones/fontes/padding/blur/bordas/glow/expansão e destinos entre contextos; só posicionamento e título CONTATO/CONTATOS diferem.
-- **Contato:** primeiro nível somente ícone + WHATSAPP e ícone + E-MAIL. WhatsApp é botão com `aria-expanded`/`aria-controls`, expansão vertical suave de 200 ms, reversível, com links THIAGO — CORRETOR, VALDIR — CONSULTOR e JOANA — SAÚDE. Sem telefones, endereço de e-mail ou explicações visíveis. E-mail preserva `mailto:contato@zurycorretora.com`. Lista recolhida fica fora da navegação/árvore acessível. Reduced motion elimina transição prolongada.
-- **Redes sociais:** linhas verticais com ícone à esquerda e nome à direita: INSTAGRAM, TIKTOK e FACEBOOK, sem handles/URLs/legendas. Destinos Instagram `https://www.instagram.com/zury_corretora/` e TikTok `https://www.tiktok.com/@zury_corretora`. Facebook é botão desabilitado até URL oficial ser fornecida, configuração nula, nunca `href="#"`. Mesma cápsula Flow Glass e alvos mínimos de 44 px.
-- Inspeção pública nesta revisão: ambos os destinos abriram no navegador integrado e exibiram o identificador `zury_corretora`, sem login. Isto confirma acessibilidade pública dos destinos, não a titularidade das contas.
-- Popovers ancorados com transparência contextual, blur, bordas finas, ícones discretos e abertura suave. Fechar por Escape, clique fora e botão fechar; teclado, foco/restauração e posição sempre dentro do viewport. Mobile pode usar painel flutuante responsivo.
-- Nenhum formulário. Dados legais e copyright permanecem visíveis, exatamente uma vez.
+`ChannelsPopover` com popover auto, role dialog e aria-labelledby. Instâncias:
+- `nav-contact-channels`: CONTATO, preferência abaixo.
+- `contact-channels`: CONTATOS do rodapé, preferência acima.
+- `social-channels`: navbar, abaixo.
+- `footer-social-channels`: rodapé, acima.
 
-**Institucional** — dados oficiais, **exatamente uma vez na coluna institucional**:
+Largura `min(382px,calc(100vw - 24px))`, padding 23 px/20 mobile, raio 23/21 px; limites recalculados pelo visualViewport com 12 px de margem e 12 px de distância do gatilho. ResizeObserver, resize e scroll reposicionam. Abertura foca fechar; Escape fecha/restaura foco; clique fora e repetição do gatilho usam comportamento nativo.
 
-```text
-ZURY CORRETORA LTDA
-CNPJ: 49.393.734/0001-77
-SUSEP: 262180499
+Contato: WHATSAPP e E-MAIL. WhatsApp expande lista dos três contatos, animação de grid rows/opacidade 140 ms; conteúdo recolhido aria-hidden/inert. Fechar recolhe novamente. E-mail: `mailto:contato@zurycorretora.com`; endereço não é texto visível.
+
+Social: INSTAGRAM → `https://www.instagram.com/zury_corretora/`; TIKTOK → `https://www.tiktok.com/@zury_corretora`; FACEBOOK botão disabled, href nulo. Sem handles/telefones/endereço expostos nos rótulos.
+
+Título 22 px/600; linhas min-height 52 px, padding 14 × 18 px, margin-block 8 px, nomes de canais 14 px/600. Contatos 13 px/600, cargos 11 px/500. Botão fechar 44 × 44 px. Entrada do painel 180 ms, power via token CSS; origem/posição e estados exatos no §19.
+
+### 10.4. WhatsApp flutuante
+
+Botão fixo no canto inferior direito, z-index 25, 56 × 56 px; até 420 px 52 × 52 px. Ícone 25 px. Margens padrão `max(24px,env(safe-area-inset-right/bottom))`; estreito: 12 px direita/18 px base, respeitando safe area.
+
+Entrada 220 ms com fade/y8; halo de hover/foco `#25d366`, borda 1 px e glow 15 px/.25, fade 160 ms. Contêiner sobe 4 px em 220 ms com mouse e sem reduced motion; botão ainda recebe lift global de 2 px, podendo somar 6 px.
+
+Menu horizontal à esquerda até 424 px, padding 8 px/gap 6 px, cápsula. Offset direito 68 px + margem; estreito 64 px + margem/padding 6 px. Mesmo trio de contatos, sem e-mail ou telefones. Nome 12 px/cargo 10 px; até 420 px 11/9 px. Itens min-height 44 px. Transição declarada 240 ms, com override editorial de 180 ms.
+
+Ao abrir foca o contêiner, não prioriza Thiago; Tab percorre links. Escape restaura foco; seleção fecha; popover auto permite clique fora e exclusividade. aria-expanded/controls/rótulo implementados.
+
+## 11. Motion e ciclo de vida
+
+| Elemento | Mecanismo/parâmetros |
+| --- | --- |
+| Entrada compartilhada | GSAP fromTo, 1.2 s, delay .08, power3.out, opacity0/x28/y38/scale.94 → estado final |
+| Alvos iniciais | header-surface, brand-link, nav-entry, hero-line, hero-subtitle |
+| Reveals | cada data-reveal; start top 94%, end bottom −8%, toggleActions play reverse play reverse |
+| Parallax texto Hero | y −18 desktop/−8 compacto, scrub .9 |
+| Luz de seção | opacity .6→1, y ±14 desktop/±5 compacto, scrub .9 |
+| Ícones hover | y −3 px, 220 ms, flow-ease |
+| Navbar e CTAs | parâmetros dos §§5–6 |
+| Trilhos | WAAPI, 76 px/s, §§9.5 |
+| Escudo | GSAP, §7 |
+
+Não há Motion/Framer Motion ou shadcn em uso no projeto atual. Não instalar bibliotecas para documentar o que CSS/GSAP já resolvem.
+
+`SiteMotion` usa matchMedia; reverte efeitos/listeners/tweens ao desmontar. Refresh de ScrollTrigger após document.fonts.ready. Não há stagger explícito na chamada compartilhada de entrada atual, nem timeline específica que sincronize todos os filhos internos do rodapé; não descrever o histórico como implementação presente.
+
+## 12. Responsividade e acessibilidade
+
+### 12.1. Breakpoints encontrados
+
+| Regra | Uso |
+| --- | --- |
+| ≤1199 px | Soluções em duas colunas |
+| 768–1199 px | Hero máximo 930 px e anotações locais |
+| 768–1000 px | Navbar compacta em linha |
+| 768–902 px | Hero 60%/40% |
+| ≤767 px | Hamburger, Hero empilhada, carrosséis manuais, trilhos automáticos estáticos, footer empilhado |
+| ≤480 px | Cotação com uma coluna/padding20 |
+| ≤420 px | WhatsApp/CTAs estreitos |
+| ≤393 px | Regra residual de padding-top279/boundary-top249 na Hero |
+
+Matriz requerida para homologação: 320/360/375/390/414/430; 768/820/1024; 1280/1440/1920 e ultrawide. Uma captura em 375/1440 não comprova a matriz inteira. Testar também zoom, orientação e WebKit/Safari.
+
+### 12.2. Recursos implementados e limites
+
+Idioma pt-BR, skip link, headings semânticos, labels de controles, foco visível 2 px/offset5, aria-current, carrossel com teclado e aria-live, popovers nativos, dialog modal e retorno de foco. Decoração de ícones oculta; logos têm texto alternativo; imagens de parceiro usam alt vazio com nome textual adjacente.
+
+Reduced motion:
+- SiteMotion/escudo não iniciam seus movimentos decorativos.
+- Trilhos de logos/benefícios estáticos.
+- Glow/beam dedicados sem animação.
+- Regra CSS global reduz duração de animações/transições para .01 ms.
+- **Limitação:** hover global de botões ainda muda transform; duração quase zero não remove o deslocamento. Está na fila de correção.
+
+Mais contraste/menos transparência tem superfícies quase sólidas; forced-colors remove preenchimentos de texto em gradiente. Fallback sem backdrop-filter existe, mas a cascata editorial pode disputar fundos: validar o resultado real.
+
+Contraste desejado: 4.5:1 texto comum, 3:1 texto grande. **Não medido como certificação nesta documentação.** Não alegar WCAG AA completa por presença de ARIA. Relações acessíveis implícitas dos popovers nativos devem ser inspecionadas antes de adicionar ARIA redundante.
+
+## 13. Arquitetura técnica e versões
+
+### 13.1. Stack resolvida
+
+| Pacote | Versão no lockfile |
+| --- | --- |
+| Next.js | 16.4.2 |
+| React / React DOM | 19.3.0 |
+| GSAP | 3.15.0 |
+| Lucide React | 1.59.0 |
+| Three.js | 0.186.1 |
+| React Three Fiber | 9.8.2 |
+| Drei | 10.7.9 |
+| Tailwind CSS / @tailwindcss/turbopack | 4.3.3 |
+| TypeScript | 5.9.3 |
+| ESLint | 9.39.5 |
+| eslint-config-next | 16.4.2 |
+
+Gerenciador declarado: pnpm@11.25.0. Node observado no ambiente da revisão: v24.22.1, não uma restrição engines declarada no package.json.
+
+Next config: agentRules false, cacheComponents true, partialPrefetching true, regra Turbopack *.css com loader @tailwindcss/turbopack e as *.css. Não há PostCSS config avulso encontrado.
+
+### 13.2. Responsabilidades dos arquivos
+
+| Fonte | Responsabilidade |
+| --- | --- |
+| app/layout.tsx | idioma, fonte, metadata, CSS global |
+| app/page.tsx | composição Server Component, gates, textos institucionais |
+| lib/content.ts | serviços, diferenças, contatos, parceiros, logos, mensagens, gates |
+| components/site/header.tsx | navegação, popover mobile, ocultação, cápsula móvel |
+| components/site/quote-menu.tsx | trigger Hero/cards, seleção e resumo provisório |
+| components/site/carousel.tsx | scroll-snap, contador, indicadores/teclado |
+| components/site/benefit-track.tsx | loop WAAPI e modo estático |
+| components/site/channels-popover.tsx | contatos/redes e posicionamento |
+| components/site/floating-whatsapp.tsx | menu horizontal fixo |
+| components/site/motion.tsx | entrada, reveals, luz e âncoras |
+| components/site/hero-shield.tsx | composição/pose da imagem |
+| components/shield/image-shield.tsx | imagem, mouse, reflexo, lifecycle |
+| components/shield/image-motion.mjs | órbita, perfis, cálculos de tilt/reflexo |
+| lib/site-motion.mjs | entrada compartilhada e parallax |
+| lib/navigation.ts | offset e duração por distância |
+| lib/header-visibility.ts | histerese do header |
+| lib/benefit-loop.mjs | largura, distância, cópias e duração do trilho |
+| app/preview/escudo | rota auxiliar de inspeção |
+| components/shield/geometry/materials/shield-scene | estudo procedural preservado, não importado pela Hero |
+| §19 | inventário literal dos oito arquivos de estilo da landing |
+
+### 13.3. SEO e limites funcionais
+
+Title atual: `ZURY CORRETORA`; description: headline completa; lang pt-BR; favicon em app/favicon.ico. Não há metadata Open Graph/Twitter específica nem sitemap/robots de aplicação nos arquivos de app inspecionados; preview tem noindex/nofollow próprio.
+
+Não há analytics solicitado, formulário pessoal funcional, CRM, pagamentos ou serviço de cotação. Links externos implementados com target blank/rel noopener noreferrer quando apropriado. Não versionar credenciais, .env, node_modules ou .next.
+
+## 14. Performance e evidências
+
+Imagem principal tem dimensões reservadas/priority; fonte via next/font; conteúdo de estrutura servido por Server Component; motores de UI isolados em Client Components. Hero não depende de WebGL. Não afirmar tree shaking ou tamanho de bundle medido sem análise.
+
+Loops usam GSAP/WAAPI; custos a medir: múltiplos backdrops, sombras/filtros de beam, máscara SVG que referencia PNG e tween de width/height do hover da navbar. A máscara SVG usa a origem PNG pública enquanto a imagem Next pode ser otimizada; não presumir uma única transferência.
+
+Metas de campo, ainda sem medição certificada: LCP ≤2.5 s, INP ≤200 ms, CLS ≤.1 no p75. Lighthouse não foi executado nesta revisão documental.
+
+Evidência disponível da sessão:
+- TypeScript, ESLint e 44 testes passaram em 26/10/2026 antes do commit do site.
+- Build sem rede falhou ao buscar Inter Tight no Google Fonts.
+- Nova tentativa com rede terminou em erro Turbopack por criação de processo/bind de porta não permitido. **Build de produção não confirmado.**
+- Inspeção anterior real no navegador interno: Hero em 1440 × 900 e 375 × 812, dialog de cotação, menu mobile, Diferenciais, rodapé e contato.
+- Captura full-page feita sem revelar todas as seções por scroll continha áreas ocultas pelas entradas: **não serve como prova de seções vazias nem inspeção visual integral**.
+- Companhias em captura específica, hover/foco completos, Safari e toque físico continuam pendentes.
+- Evidências temporárias da sessão em /private/tmp não integram o repositório nem têm permanência garantida.
+
+## 15. Processo de manutenção
+
+O projeto existe e deve ser continuado. Preservar alterações e ativos; nunca reinicializar a base para ajustar documentação ou design.
+
+Integração do PNG foi autorizada e não deve ser bloqueada por regras antigas do estudo 3D. Novo modelo 3D final exige prévia isolada e aprovação específica antes de substituir a imagem. Gates comerciais permanecem independentes.
+
+Plano de execução curto: verificar fonte responsável, fazer mudança autorizada, testar proporcionalmente, inspecionar resultado quando visual, relatar provas e pendências. Mudanças da auditoria seguem §16.2, uma por autorização. Pedido de commit não autoriza corrigir pendências visuais por conta própria.
+
+## 16. Critérios de aceite e fila autorizável
+
+### 16.1. Definition of Done para publicação
+
+Caixas abertas são critérios a homologar, não afirmação de que a funcionalidade inexiste.
+
+- [ ] Conteúdo literal validado: Hero/subtítulo/pontuação, 8 grupos/44 itens, 3 diferenciais, 37 companhias, 4 parceiros da prévia, dados legais/contatos.
+- [ ] Produção padrão mantém Hero → Soluções → Diferenciais → Companhias → Footer; prévias somente com seus gates.
+- [ ] Marca e PNG original preservados; alternativa procedural não apresentada como aprovada.
+- [ ] Hero responsiva sem clipping/colisão nas faixas e com CTA acessível; tamanhos e posição aprovados visualmente.
+- [ ] Tipografia computada, gradientes e reduced motion conferidos em viewport alvo.
+- [ ] Cards completos, alturas coerentes e carrosséis manuais com swipe, indicadores, contador e teclado corretos.
+- [ ] Companhias/Benefícios: loop 76 px/s desktop, pausa/foco/visibilidade/cópias e grids estáticos verificados.
+- [ ] Navbar/menus/dialog: abertura/fechamento, âncoras, focus return, estados nativos e toque validados.
+- [ ] Beam/glow/lift dos botões confirmados visualmente e compatíveis com preferências de movimento.
+- [ ] Cotação provisória reconhecida como tal; fluxo final definido e aprovado antes de prometer envio.
+- [ ] Gates comerciais e condições de ofertas mantidos até validação expressa.
+- [ ] Rodapé sem dados duplicados; destinos exatos e Facebook disabled.
+- [ ] Typecheck, lint, testes e build passam, ou impedimentos explicitamente documentados sem declarar produção pronta.
+- [ ] Matriz de viewport, Safari/WebKit, zoom e contraste renderizado testados.
+- [ ] Core Web Vitals medidos e condições registradas; sem scores inventados.
+- [ ] Publicação/domain/SEO/preview e segredos revisados antes do deploy.
+
+### 16.2. Checklist de melhorias — executar uma de cada vez com permissão
+
+Este checklist deriva da auditoria solicitada e é distinto da homologação de publicação acima. **O “SIM” recebido autorizou o item 01, não a execução automática dos demais.** Atualização documental não altera essa autorização.
+
+| Estado | Item | Escopo e critério |
+| --- | --- | --- |
+| Em andamento, autorizado | 01 — Inspeção visual | Capturas específicas de Companhias, estados hover/foco e complementação mobile; descartar full-page não revelada |
+| Pendente de permissão | 02 — Tipografia da Hero | Consolidar Inter Tight/pesos/entrelinhas e verificar cascata antes de propor outra família |
+| Pendente de permissão | 03 — Palavra ZURY | Diminuir glifo por font-size, sem scaleY; resolver gradiente específico sobrescrito; apresentar comparação |
+| Pendente de permissão | 04 — Layout da Hero | Rever translate percentual, margem120/altura48.08/padding51 e breakpoints |
+| Pendente de permissão | 05 — Escala tipográfica | Alinhar papéis de títulos, listas e botões, preservando caixa alta e logo |
+| Pendente de permissão | 06 — Textos pequenos | Melhorar instrução9 e cargos9–10 px sem overflow |
+| Pendente de permissão | 07 — Beam no perímetro | Luz realmente percorre borda arredondada, sem girar uma moldura fora do contorno |
+| Pendente de permissão | 08 — Pulsação coordenada | Unificar glow/pulso/glint sem remover pedidos aprovados |
+| Pendente de permissão | 09 — Hover/lift | Corrigir reduced motion, soma de 4+2 px no WhatsApp e links com aparência de botão |
+| Pendente de permissão | 10 — Navbar/fade | Calibrar duração/curva e superfície abrangida pelo efeito |
+| Pendente de permissão | 11 — Soluções | Avaliar vazios/alturas e destaque Auto/Saúde/Empresarial/Agro sem restaurar faixa removida; mudanças em cards explicitadas |
+| Pendente de permissão | 12 — Companhias | Conferir tamanho óptico, contraste, trilho e chamada |
+| Pendente de permissão | 13 — Cotação/WhatsApp | Definir campos, mensagens por produto e roteamento; nenhuma automação inventada |
+| Pendente de permissão | 14 — Acessibilidade/mobile | Teclado, ARIA nativo, contraste, zoom, reduced motion, toque e Safari |
+| Pendente de permissão | 15 — Tokens/QA | Consolidar estilos repetidos, atualizar referência e fechar build/performance |
+
+A recomendação tipográfica inicial é refinar Inter Tight. Outra família exige proposta comparativa aprovada, preservando SVGs. O relatório anterior de 14/20 foi retirado por falta de evidência; não usar como score atual.
+
+## 17. Restrições e diferenças conhecidas
+
+Não redesenhar marcas; não inventar parceiros, métricas, acessos, contatos ou aprovação. Não adicionar serviço de backend, depoimentos ou coleta pessoal sem escopo. Não publicar prévia comercial por confundir flag técnica com autorização.
+
+Não restaurar regras históricas: Hero sem CTA/subtítulo; proibição de hamburger; três parceiros/FarMelhor; logos não integradas; loop42 px/s; navbar475 ms conjunta; escudo apenas isolado. Essas regras foram superadas.
+
+Diferenças entre intenção e implementação permanecem registradas, sem correção disfarçada:
+- “altura menor de ZURY” foi feita só por line-height, não por glifo.
+- “flutuar todos os botões” é regra de button, não todos os links-CTA; reduced motion tem falha residual.
+- Beam atual rotaciona camada, não prova seguimento geométrico da cápsula.
+- Gradiente ZURY/padding Hero/subtítulo/lista mobile têm regras concorrentes.
+- Prévia contém nota editorial desatualizada.
+- Loop automático depende de count>1, não de overflow real.
+- Quote não envia dados nem mensagens.
+- Claims/condições comerciais não são validados pela presença da interface.
+- Build e auditoria completa continuam pendentes.
+
+## 18. Rastreabilidade e atualização
+
+Dados literais e ativos são propriedade da marca. Manter este documento consistente com as fontes indicadas; quando atualizar CSS, revisar o §19 correspondente. Não editar a transcrição para tentar mudar a interface.
+
+Esta consolidação é documental e usa apenas o repositório e evidências da sessão; não faz novas alegações de APIs, compatibilidade externa, certificação legal ou performance.
+
+Histórico detalhado das decisões anteriores: Git, versão de ZURY-SITE-SPEC.md até commit 2d93bc6. Nunca reaplicar uma regra antiga sem conferir as revisões vigentes.
+
+## 19. Referência literal dos estilos próprios da landing page
+
+As transcrições abaixo registram **todas as declarações** dos oito arquivos CSS próprios carregados pela landing page na base auditada. Incluem regras-base, overrides, fallback e estilos residuais; não são uma lista apenas do CSS efetivamente vencedor.
+
+A cascata depende de especificidade, ordem real de carregamento e preferências de mídia. Valores computados exatos de um dispositivo exigem inspeção do navegador. Tailwind gerado, estilos internos do Next/font e CSS exclusivo da rota de prévia não são estes oito arquivos.
+
+
+### 19.1. app/globals.css
+
+```css
+@import "tailwindcss";
+
+:root {
+  --zury-offwhite: #eaeae5;
+  --zury-stone: #d6d3d1;
+  --zury-midgray: #78716c;
+  --zury-graphite: #1c1c1c;
+  --text: #d7dce0;
+  --hero-copy: #adb4bb;
+  --muted: #c2c3c0;
+  --gutter: clamp(20px, 5vw, 80px);
+  --glass-border: rgba(225,231,235,.13);
+  --glass-blur: 16px;
+  --glass-tint: rgba(18,22,26,.27);
+  --logo-silver: linear-gradient(118deg,#f1f3f4 4%,#c7ced4 38%,#e6ebef 58%,#aeb8c0 100%);
+  --list-divider: 1px solid rgba(214,211,209,.14);
+  --flow-duration: 600ms;
+  --flow-fade: 160ms;
+  --flow-ease: cubic-bezier(.23,1,.32,1);
+  --flow-reflection: linear-gradient(110deg,transparent 18%,rgba(214,211,209,.025) 32%,rgba(234,234,229,.12) 48%,rgba(214,211,209,.035) 62%,transparent 80%);
+  /* Stage 6: semantic roles, not cumulative percentage adjustments. */
+  --tracking-hero: .025em;
+  --tracking-section: .06em;
+  --tracking-card-title: .055em;
+  --tracking-copy: .025em;
+  --tracking-control: .065em;
+  --tracking-nav: .065em;
+  --tracking-popover: .04em;
+  --tracking-footer: .04em;
+  --tracking-financial: .035em;
+  /* Image 4: averaged 12 × 12 px samples; brand SVG colors remain untouched. */
+  --surface-mineral: #0a0c0e;
+  --surface-graphite: #1e2022;
+  --surface-metal: #2d2e2e;
+  --surface-steel: #4f4d4b;
+  --light-silver: #989491;
+  --light-satin: var(--zury-stone);
+  --hero-surface: linear-gradient(180deg,var(--surface-mineral),var(--surface-graphite) 78%,var(--surface-metal));
+  --solutions-surface: linear-gradient(180deg,var(--surface-metal),var(--surface-graphite));
+  --about-surface: linear-gradient(180deg,var(--surface-graphite),var(--surface-mineral));
+  --footer-surface: radial-gradient(ellipse 60% 80% at 12% 35%,rgba(152,148,145,.11),transparent 78%),linear-gradient(180deg,var(--surface-mineral),#171b1e 55%,var(--surface-mineral));
+  --referrals-surface: linear-gradient(180deg,var(--surface-mineral),var(--surface-metal) 48%,var(--surface-mineral));
+  --referrals-ambient: radial-gradient(ellipse 34% 70% at 18% 48%,rgba(174,184,192,.15),transparent 80%),radial-gradient(ellipse 34% 60% at 84% 56%,rgba(214,211,209,.1),transparent 80%);
+  --benefits-surface: linear-gradient(180deg,var(--surface-mineral),var(--surface-graphite) 48%,var(--surface-mineral));
+  --benefits-ambient: radial-gradient(ellipse 86% 24% at 50% 36%,rgba(215,220,224,.14),transparent 82%),linear-gradient(180deg,transparent 32%,rgba(174,184,192,.025) 52%,transparent 74%);
+  --hero-ambient: radial-gradient(ellipse 44% 70% at 86% 45%,rgba(174,184,192,.23),transparent 80%),linear-gradient(121deg,transparent 50%,rgba(214,211,209,.045) 76%,transparent 93%);
+  --solutions-ambient: radial-gradient(ellipse 70% 45% at 100% 12%,rgba(214,211,209,.2),transparent 80%),linear-gradient(90deg,transparent 6%,rgba(215,220,224,.028) 6.1%,transparent 6.25%,transparent 94%,rgba(215,220,224,.04) 94.1%,transparent 94.3%),radial-gradient(ellipse 80% 65% at 0% 70%,rgba(10,12,14,.7),transparent 85%);
+  --about-ambient: linear-gradient(124deg,transparent 12%,rgba(152,148,145,.13) 27%,transparent 42%,rgba(10,12,14,.2) 60%,transparent 83%),radial-gradient(ellipse 75% 60% at 0% 32%,rgba(79,77,75,.4),transparent 82%);
+  --boundary-line: linear-gradient(90deg,transparent,color-mix(in srgb,var(--light-silver) 14%,transparent) 18%,color-mix(in srgb,var(--light-satin) 30%,transparent) 50%,color-mix(in srgb,var(--light-silver) 14%,transparent) 82%,transparent);
+  --boundary-light: radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--light-silver) 7%,transparent),transparent 72%);
+}
+@theme inline { --font-sans: var(--font-inter-tight); }
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--zury-graphite); color: var(--text); font-family: var(--font-inter-tight), Arial, sans-serif; -webkit-font-smoothing: antialiased; text-transform: uppercase; letter-spacing: var(--tracking-copy); }
+button, input, textarea, select { text-transform: inherit; }
+button, a, summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button, input { font: inherit; }
+button { letter-spacing: var(--tracking-control); }
+button { color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+button, a, summary { outline-offset: 5px; }
+:focus-visible { outline: 2px solid #eaeae5; }
+/* Anchor regions announce focus but are not controls. Do not draw a page-wide border;
+   links, buttons, summaries and carousel controls keep their visible focus ring. */
+:is(main,section,.institution)[tabindex="-1"]:focus { outline: none; }
+button:disabled { cursor: default; opacity: .35; }
+::selection { background: #d6d3d1; color: #1c1c1c; }
+.container { width: min(calc(100% - var(--gutter) * 2), 1320px); margin-inline: auto; position: relative; }
+.zury-site { overflow: clip; }
+.skip-link { position: fixed; z-index: 30; top: 12px; left: 12px; padding: 14px 20px; background: #eaeae5; color: #1c1c1c; transform: translateY(-150%); }
+.skip-link:focus { transform: none; }
+
+/* Shared crystalline surface: a thin lit edge, transparent layers, and restrained refraction. */
+.glass {
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(138deg, rgba(225,231,235,.035), rgba(215,220,224,.004) 43%, rgba(215,220,224,.018));
+  box-shadow: inset 0 1px 0 rgba(245,249,252,.2), inset 0 -1px 0 rgba(215,220,224,.025), 0 10px 28px rgba(4,8,12,.06);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+/* Shared Flow Glass, derived from the footer's diagonal light sweep.
+   Only this bounded decorative layer moves; content and blur remain stable. */
+.flow-glass { position: relative; isolation: isolate; overflow: hidden; }
+.flow-glass::after { content: ""; position: absolute; z-index: -1; pointer-events: none; inset: -35% -70%; background: var(--flow-reflection); opacity: 0; transform: translateX(-38%) skewX(-12deg); transition: transform var(--flow-duration) var(--flow-ease), opacity var(--flow-fade) ease; }
+.flow-glass:focus-visible::after, .flow-glass:focus-within::after { opacity: .65; transform: translateX(26%) skewX(-12deg); }
+.flow-glass:not(.footer-panel):active::after { opacity: .6; transform: translateX(18%) skewX(-12deg); }
+.flow-capsule { border-radius: 9999px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(234,234,229,.055); }
+.flow-capsule::after { border-radius: inherit; }
+.flow-capsule:focus-visible { box-shadow: inset 0 0 0 1px rgba(234,234,229,.2); }
+.site-header { position: fixed; z-index: 20; top: 0; inset-inline: 0; padding: 20px var(--gutter) 12px; display: flex; align-items: center; flex-direction: column; gap: 14px; pointer-events: none; }
+.site-header > * { pointer-events: auto; }
+.brand-link { display: block; }
+.brand-link .official-logo { width: 236px; }
+.official-logo { display: block; color: var(--text); }
+.official-logo img { display: block; width: 100%; height: auto; }
+@supports (mask-image: url("/brand/ZURY_Logo_Otimizada_Branco.svg")) {
+  .official-logo { background: var(--logo-silver); mask: url("/brand/ZURY_Logo_Otimizada_Branco.svg") center / contain no-repeat; }
+  .official-logo img { opacity: 0; }
+}
+.nav-glass { display: flex; align-items: center; justify-content: center; gap: 3px; padding: 4px; border-radius: 999px; background-color: rgba(20,24,28,.065); transition: background-color .3s; }
+.site-header[data-scrolled="true"] .nav-glass { background-color: var(--glass-tint); }
+.nav-glass a, .nav-glass button { position: relative; padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 0; border-radius: 9999px; font-size: 12px; letter-spacing: var(--tracking-nav); font-weight: 600; color: var(--text); background: transparent; transition: background-color .25s, color .25s, transform .2s; white-space: nowrap; min-height: 44px; }
+.nav-glass a[aria-current], .nav-glass :is(a, button):focus-visible,
+.zury-site:has(#social-channels:popover-open) .nav-glass [popovertarget="social-channels"],
+.zury-site:has(#nav-contact-channels:popover-open) .nav-glass [popovertarget="nav-contact-channels"] { color: var(--text); background: linear-gradient(120deg,rgba(234,234,229,.065),rgba(214,211,209,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(234,234,229,.04); }
+/* Rest state only. Approved hover, keyboard focus and open-popover rules stay intact. */
+:is(.nav-glass,.site-footer) .flow-capsule:not(:hover):not(:focus-visible):not(:active) { background: transparent; box-shadow: none; }
+:is(.nav-glass,.site-footer) .flow-capsule:not(:hover):not(:focus-visible):not(:active)::after { opacity: 0; transform: translateX(-38%) skewX(-12deg); }
+.hero { --boundary-top: 205px; position: relative; overflow: hidden; background: var(--hero-surface); }
+.container.hero-content { max-width: none; width: min(calc(100% - var(--gutter)), 1560px); min-height: 800px; display: grid; grid-template-columns: 55% 45%; align-items: center; padding-block: 200px 105px; font-size: 20px; }
+.hero h1 { margin: 0; position: relative; min-width: 0; align-self: center; text-align: center; font-size: clamp(31px, calc(3vw + 10px), 58px); line-height: 1.08; letter-spacing: var(--tracking-hero); font-weight: 600; z-index: 1; }
+.hero-line { display: block; white-space: nowrap; }
+.hero-line:first-child { color: var(--hero-copy); font-family: Arial, sans-serif; font-size: calc(1em - 2px); }
+.hero-line:nth-child(2) { color: var(--hero-copy); font-family: system-ui, sans-serif; font-size: calc(1em - 2px); }
+.hero-line:last-child { font-family: Arial, sans-serif; font-size: calc(1em + 6px); }
+.section-light { position: absolute; inset: 0; pointer-events: none; mask-image: linear-gradient(180deg,transparent,black 14%,black 82%,transparent); }
+.section-boundary::before, .hero::before { content: ""; position: absolute; pointer-events: none; top: var(--boundary-top,0px); inset-inline: var(--gutter); height: 1px; background: var(--boundary-line); }
+.section-boundary::after { content: ""; position: absolute; pointer-events: none; top: 0; inset-inline: 0; height: 52px; background: var(--boundary-light); }
+/* Bounded static light edge: no bitmap, animated blur or additional render loop. */
+.hero::after { content: ""; position: absolute; pointer-events: none; bottom: 24px; left: -15%; width: 130%; height: clamp(100px,15vw,210px); border-bottom: 1px solid color-mix(in srgb,var(--light-satin) 45%,transparent); border-radius: 0 0 50% 50%; background: radial-gradient(ellipse 48% 65% at 75% 100%,color-mix(in srgb,var(--light-silver) 13%,transparent),transparent 80%); box-shadow: 0 16px 38px -25px color-mix(in srgb,var(--light-satin) 45%,transparent); mask-image: linear-gradient(90deg,transparent,black 18%,black 82%,transparent); }
+.hero-light { background: var(--hero-ambient); }
+.content-section { position: relative; padding-block: 115px 140px; }
+.solutions { background: var(--solutions-surface); }
+.solutions::before { display: none; }
+.solutions-light { background: var(--solutions-ambient); }
+.about { background: var(--about-surface); }
+.about-light { background: var(--about-ambient); }
+.section-heading { text-align: center; margin-bottom: 56px; }
+.section-heading h2 { margin: 0; font-size: clamp(29px, calc(3.4vw + 2px), 51px); line-height: 1.16; letter-spacing: var(--tracking-section); font-weight: 600; text-wrap: balance; }
+.carousel { display: grid; gap: 18px; outline-offset: 8px; }
+.service-grid { grid-template-columns: repeat(4, minmax(0,1fr)); grid-auto-rows: 1fr; }
+.card-reveal { min-width: 0; }
+.glass-card { position: relative; height: 100%; border-radius: 18px; overflow: hidden; transition: transform .2s var(--flow-ease), border-color .18s, box-shadow .18s, background-color .18s; }
+.glass-card > * { position: relative; }
+.service-card { min-height: 405px; padding: 32px 25px; text-transform: uppercase; }
+.service-card .card-number { display: none; }
+.card-number { display: block; color: #d6d7d3; font-size: 11px; letter-spacing: var(--tracking-copy); font-variant-numeric: tabular-nums; }
+.card-title { display: flex; align-items: center; gap: 12px; margin: 0 0 26px; min-height: 39px; }
+.card-title svg { flex-shrink: 0; color: var(--text); }
+.card-title h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: var(--tracking-card-title); line-height: 1.5; }
+.service-card ul { display: grid; row-gap: 12px; list-style: disc outside; margin: 0; padding: 0 0 0 14px; }
+.service-card li { position: relative; padding-inline-start: 3px; font-size: 14px; font-weight: 500; line-height: 1.7; color: var(--text); overflow-wrap: anywhere; letter-spacing: var(--tracking-copy); }
+.service-card li::marker, .difference-card li::marker { color: #bfc1bc; font-size: .65em; }
+.service-card ul li { font-size: 16px; }
+.difference-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.difference-card { min-height: 280px; padding: 32px; text-transform: uppercase; }
+.difference-card .card-title { margin: 0 0 24px; min-height: 24px; }
+.difference-card .card-title h3 { font-size: 18px; letter-spacing: var(--tracking-card-title); font-weight: 600; margin: 0; }
+.difference-card ul { list-style: disc outside; margin: 0; padding: 0 0 0 14px; }
+.difference-card li { max-width: 34ch; padding: 14px 0 14px 3px; font-size: 16px; line-height: 1.65; color: var(--text); text-wrap: pretty; overflow-wrap: anywhere; letter-spacing: var(--tracking-copy); }
+.difference-card li:first-child { padding-top: 0; }
+.difference-card li:last-child { padding-bottom: 0; }
+.difference-card li + li { padding-top: 15px; } /* Retain the former 1px border's space, without drawing a divider. */
+.referrals { background: var(--referrals-surface); }
+.referrals-light { background: var(--referrals-ambient); }
+.referral-heading { max-width: 780px; margin: 0 auto 40px; text-align: center; }
+.referral-heading h2 { margin: 0; font-size: 22px; line-height: 1.4; letter-spacing: var(--tracking-section); font-weight: 600; }
+.referral-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; max-width: 1000px; margin-inline: auto; }
+/* Keep the light sweep clipped without a scroll container that focus can move. */
+.referral-card { display: flex; flex-direction: column; min-height: 430px; padding: 44px 32px; overflow: clip; }
+.referral-card-title { display: flex; align-items: flex-start; gap: 9px; }
+.referral-card-title svg { flex-shrink: 0; color: var(--text); }
+.referral-card-title h3 { margin: 0; font-size: 18px; line-height: 1.5; letter-spacing: var(--tracking-card-title); font-weight: 600; }
+.referral-topics { display: grid; gap: 18px; list-style: disc outside; margin: 24px 0 20px; padding-inline-start: 18px; }
+.referral-topics > li { padding-inline-start: 5px; overflow-wrap: anywhere; }
+.referral-topics > li::marker { color: var(--text); font-size: 10px; }
+.referral-action { display: grid; margin-top: auto; }
+.referral-action .referral-cta { margin-top: 0; margin-inline-start: min(25px, max(0px, calc(100% - 260px))); max-width: calc(100% - min(25px, max(0px, calc(100% - 260px)))); }
+.referral-description { font-size: 14px; line-height: 1.75; letter-spacing: var(--tracking-copy); text-wrap: pretty; }
+.referral-cta { display: flex; align-items: center; justify-content: center; min-height: 48px; width: 260px; min-width: 0; max-width: 100%; align-self: flex-start; margin-top: auto; padding: 8px 12px; font-size: 13.5px; line-height: 1.2; letter-spacing: var(--tracking-control); font-weight: 600; text-align: center; transition: background-color .25s,transform .2s; }
+.referral-cta[data-mode="commercial"] { font-size: 12.5px; }
+.referral-commercial { max-width: 1320px; margin: 48px auto 0; text-align: center; }
+.referral-commercial p { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.6; color: var(--text); letter-spacing: var(--tracking-copy); text-wrap: balance; }
+.benefits { background: var(--benefits-surface); }
+.benefits-light { background: var(--benefits-ambient); }
+.benefits-grid { --benefit-min-width: 260px; --benefit-gap: 14px; max-width: 960px; margin-inline: auto; }
+.benefit-group { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)); gap: var(--benefit-gap); }
+.benefit-group .card-reveal { min-width: 0; }
+.benefit-copy { display: none; }
+.benefits-grid[data-moving="true"] { overflow: clip; }
+.benefits-grid[data-moving="true"] .benefit-track { display: flex; gap: var(--benefit-gap); width: max-content; }
+.benefits-grid[data-moving="true"] .benefit-group { display: flex; gap: var(--benefit-gap); }
+.benefits-grid[data-moving="true"] .card-reveal { width: var(--benefit-width); flex: 0 0 var(--benefit-width); }
+.benefit-group .benefit-card { height: 100%; }
+.benefit-card { display: flex; flex-direction: column; justify-content: center; padding: 20px; overflow: clip; }
+.benefit-logo-well { height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.partner-logo { display: block; width: 100%; height: 100%; object-fit: contain; }
+.benefit-logo-well .partner-logo:not(.partner-logo-grupo-mv) { max-width: 150px; max-height: 48px; }
+.benefit-logo-well .partner-logo-grupo-mv { max-width: 48px; max-height: 48px; }
+.benefit-card h3 { margin: 0 0 12px; font-size: 18px; font-weight: 600; letter-spacing: var(--tracking-card-title); line-height: 1.5; }
+.benefit-offer { margin: 0; font-size: clamp(18px,1.5vw,20px); line-height: 1.25; letter-spacing: var(--tracking-financial); font-weight: 600; text-wrap: balance; }
+.swipe-hint, .carousel-controls { display: none; }
+.site-footer { position: relative; background: var(--footer-surface); padding: 25px 0 46px; letter-spacing: var(--tracking-footer); }
+.footer-panel { overflow: clip; border-radius: 24px; padding: 50px clamp(28px,4.8vw,70px) 25px; background-image: radial-gradient(ellipse at 100% 0%,rgba(215,220,224,.045),transparent 60%),linear-gradient(135deg,rgba(215,220,224,.024),rgba(215,220,224,.006) 65%); }
+.footer-logo { display: block; width: 224px; max-width: 100%; height: auto; margin-bottom: 50px; }
+.footer-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.footer-columns h2 { color: #b8bab5; font-size: 18px; font-weight: 600; letter-spacing: var(--tracking-footer); text-transform: uppercase; margin: 0 0 21px; }
+.footer-nav { display: flex; align-items: flex-start; flex-direction: column; }
+.site-footer .footer-link { font-size: 16px; letter-spacing: var(--tracking-footer); min-height: 44px; display: inline-flex; align-items: center; padding: 9px 14px; margin-inline-start: -14px; font-weight: 500; border: 0; background: transparent; color: var(--text); transition: background-color .25s,color .25s,transform .2s; }
+.footer-link:focus-visible { color: var(--text); background: linear-gradient(120deg,rgba(234,234,229,.065),rgba(214,211,209,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(234,234,229,.04); }
+.institution-details { display: flex; align-items: flex-start; flex-direction: column; }
+.institution p { margin: 0; font-size: 16px; font-weight: 500; line-height: 2; color: var(--text); letter-spacing: var(--tracking-footer); }
+.copyright { border-top: 1px solid rgba(234,234,229,.13); padding-top: 22px; margin: 45px 0 0; font-size: 14px; letter-spacing: var(--tracking-footer); color: #b7b9b3; }
+.floating-whatsapp { transition: transform 220ms var(--flow-ease); --wa-edge: max(24px,env(safe-area-inset-right)); --wa-bottom: max(24px,env(safe-area-inset-bottom)); position: fixed; right: var(--wa-edge); bottom: var(--wa-bottom); z-index: 25; }
+.floating-whatsapp-button { position: relative; display: grid; place-items: center; width: 56px; height: 56px; padding: 0; color: var(--text); background-color: var(--glass-tint); animation: whatsapp-enter 220ms cubic-bezier(.23,1,.32,1) backwards; }
+.floating-whatsapp-button::after { border-radius: inherit; }
+.floating-whatsapp::before { content: ""; position: absolute; z-index: 2; inset: -1px; border: 1px solid #25d366; border-radius: 50%; box-shadow: 0 0 15px rgba(37,211,102,.25); opacity: 0; pointer-events: none; transition: opacity 160ms cubic-bezier(.23,1,.32,1); }
+.floating-whatsapp:has(.floating-whatsapp-button:focus-visible)::before { opacity: 1; }
+@media (hover:hover) and (pointer:fine) {
+  .floating-whatsapp:has(.floating-whatsapp-button:hover)::before { opacity: 1; }
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .floating-whatsapp:has(.floating-whatsapp-button:hover) { transform: translateY(-4px); }
+}
+@keyframes whatsapp-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.floating-whatsapp-menu { position: fixed; inset: auto; left: auto; right: calc(max(24px,env(safe-area-inset-right)) + 68px); bottom: max(24px,env(safe-area-inset-bottom)); width: min(424px,calc(100vw - max(24px,env(safe-area-inset-left)) - max(24px,env(safe-area-inset-right)) - 68px)); margin: 0; padding: 8px; border-radius: 9999px; color: var(--text); background-color: var(--glass-tint); opacity: 0; transform: translateX(10px); clip-path: inset(0 0 0 100% round 9999px); transform-origin: right center; transition: opacity 240ms cubic-bezier(.23,1,.32,1),transform 240ms cubic-bezier(.23,1,.32,1),clip-path 240ms cubic-bezier(.23,1,.32,1),display 240ms allow-discrete,overlay 240ms allow-discrete; }
+.floating-whatsapp-menu:popover-open { display: flex; gap: 6px; opacity: 1; transform: translateX(0); clip-path: inset(0 round 9999px); }
+@starting-style { .floating-whatsapp-menu:popover-open { opacity: 0; transform: translateX(10px); clip-path: inset(0 0 0 100% round 9999px); } }
+.floating-person { display: flex; flex: 1 1 0; min-width: 0; min-height: 44px; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 6px; text-align: center; letter-spacing: var(--tracking-popover); }
+.floating-person strong { font-size: 12px; font-weight: 600; letter-spacing: var(--tracking-popover); }
+.floating-person span { font-size: 10px; color: var(--text); letter-spacing: var(--tracking-popover); }
+.floating-whatsapp-menu:focus { outline: none; }
+@media (hover:hover) and (pointer:fine) { .floating-person:hover { background-color: rgba(215,220,224,.035); } }
+@media (max-width:420px) {
+  .referral-cta { width: min(100%,260px); min-width: 0; }
+  .floating-whatsapp { --wa-edge: max(12px,env(safe-area-inset-right)); --wa-bottom: max(18px,env(safe-area-inset-bottom)); }
+  .floating-whatsapp-button { width: 52px; height: 52px; }
+  .floating-whatsapp-menu { right: calc(max(12px,env(safe-area-inset-right)) + 64px); bottom: max(18px,env(safe-area-inset-bottom)); width: calc(100vw - max(12px,env(safe-area-inset-left)) - max(12px,env(safe-area-inset-right)) - 64px); padding: 6px; }
+  .floating-person { padding: 6px 2px; }
+  .floating-person strong { font-size: 11px; }
+  .floating-person span { font-size: 9px; }
+}
+.icon-button { width: 44px; height: 44px; padding: 0; border-radius: 50%; display: inline-grid; place-items: center; background-color: transparent; border: 1px solid rgba(234,234,229,.22); transition: transform .2s, background-color .25s; }
+.channel-panel { position: fixed; inset: auto; margin: 0; top: 100px; left: 16px; width: min(382px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); padding: 23px; border-radius: 23px; color: var(--text); overflow-y: auto; overscroll-behavior: contain; background-color: var(--glass-tint); background-image: radial-gradient(ellipse at 10% 0%,rgba(215,220,224,.07),transparent 80%); -webkit-backdrop-filter: blur(var(--glass-blur)); backdrop-filter: blur(var(--glass-blur)); box-shadow: inset 0 1px 1px rgba(255,255,255,.23),0 16px 50px rgba(0,0,0,.22); }
+.channel-panel:popover-open { animation: panel-open .18s var(--flow-ease) both; }
+.channel-panel[data-side="right"]:popover-open { animation-name: panel-open-right; transform-origin: left center; }
+@keyframes panel-open { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes panel-open-right { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+.channel-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 15px; }
+.channel-panel, .channel-panel * { letter-spacing: var(--tracking-popover); }
+.channel-heading h2 { margin: 0; font-size: 22px; letter-spacing: var(--tracking-popover); font-weight: 600; }
+.popover-close { border-color: rgba(234,234,229,.15); width: 44px; height: 44px; flex-shrink: 0; }
+.channel-row { display: flex; width: 100%; text-align: left; gap: 14px; align-items: center; padding: 14px 18px; border: 0; min-height: 52px; margin-block: 8px; background: linear-gradient(120deg,rgba(234,234,229,.025),rgba(214,211,209,.01)); transition: background-color .3s,box-shadow .3s; }
+.channel-row:disabled { opacity: .55; }
+.whatsapp-collapse { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 140ms cubic-bezier(.23,1,.32,1),opacity 140ms cubic-bezier(.23,1,.32,1); }
+.whatsapp-collapse[data-expanded="true"] { grid-template-rows: 1fr; opacity: 1; }
+.whatsapp-collapse > div { min-height: 0; overflow: hidden; }
+.channel-row > span:first-of-type { flex: 1; min-width: 0; }
+.channel-row strong { display: block; font-size: 14px; font-weight: 600; }
+.channel-row small { display: block; font-size: 12px; color: #c6c8c1; margin-top: 5px; overflow-wrap: anywhere; }
+.channel-row > svg { flex-shrink: 0; }
+.whatsapp-people { padding: 0 0 12px; }
+.person-link { display: flex; min-height: 44px; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 18px; margin-block: 7px; background: linear-gradient(120deg,rgba(234,234,229,.025),rgba(214,211,209,.01)); transition: background-color .3s,box-shadow .3s; }
+.person-link strong { display: block; font-size: 13px; font-weight: 600; }
+.person-link strong span { font-size: 11px; font-weight: 500; color: #d2d3ce; }
+.flow-capsule:active, .icon-button:active { transform: scale(.975); }
+@media (hover:hover) and (pointer:fine) {
+  .referral-cta:hover { background-color: color-mix(in srgb,var(--light-satin) 8%,transparent); }
+  .glass-card:hover { transform: translateY(-4px); border-color: rgba(234,234,229,.38); box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.12); }
+  .flow-glass:hover::after { opacity: .85; transform: translateX(26%) skewX(-12deg); }
+  .person-link:hover, a.channel-row:hover, summary.channel-row:hover { background-color: rgba(255,255,255,.035); }
+  .nav-glass :is(a,button):hover, .footer-link:hover { background-color: rgba(255,255,255,.08); color: var(--text); }
+  .icon-button:hover { background-color: rgba(255,255,255,.12); }
+}
+.glass-card:focus-within { border-color: rgba(234,234,229,.38); box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 18px 34px rgba(0,0,0,.12); }
+@media (hover:none) { .glass-card:not(.footer-panel):active { border-color: rgba(234,234,229,.5); background-color: rgba(255,255,255,.07); } }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  .glass { background-color: #353637; }
+  .channel-panel, .nav-glass { background-color: #272829; }
+}
+@media (max-width:1199px) { .service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+/* Annotation target: 930 × 800, bounded by the usable viewport rather than a fixed overflowing width. */
+@media (min-width:768px) and (max-width:1199px) {
+  .container.hero-content { width: min(calc(100% - var(--gutter)), 930px); grid-template-columns: 57% 43%; }
+  .hero h1 { font-size: clamp(31px, calc(3vw + 10px), 42px); }
+  .hero-line:first-child { font-size: 40.89px; font-weight: 700; padding-top: 6px; padding-right: 51px; margin-top: 120px; height: 48.08px; opacity: .91; }
+  .hero-line:nth-child(2) { opacity: .54; }
+  .hero-line:last-child { font-size: 50px; }
+  .hero-subtitle { font-size: 19.88px; font-weight: 500; }
+}
+/* Keep the 12px labels on one row at desktop/tablet widths without shrinking type. */
+@media (min-width:768px) and (max-width:1000px) {
+  .nav-glass { max-width: 100%; flex-wrap: nowrap; }
+  .nav-glass :is(a,button) { padding-inline: 10px; }
+}
+@media (min-width:768px) and (max-width:902px) {
+  .container.hero-content { grid-template-columns: 60% 40%; }
+}
+@media (max-width:767px) {
+  html { scroll-padding-top: 96px; }
+  .site-header { padding: 18px 12px 12px; gap: 17px; }
+  .brand-link .official-logo { width: 165px; }
+  .nav-glass { width: min(100%,500px); border-radius: 21px; flex-wrap: wrap; padding: 6px; column-gap: 0; row-gap: 0; }
+  .nav-glass :is(a,button) { padding: 11px 10px; min-height: 44px; font-size: 12px; letter-spacing: var(--tracking-nav); }
+  .container.hero-content { grid-template-columns: 1fr; text-align: center; min-height: 740px; padding-top: 235px; padding-bottom: 80px; font-size: 16px; }
+  .hero h1 { font-size: clamp(22px,6.6vw,44px); line-height: 1.22; letter-spacing: var(--tracking-hero); }
+
+  .container.hero-content { row-gap: 16px; }
+  .hero-light { background: radial-gradient(ellipse 70% 55% at 65% 72%,color-mix(in srgb,var(--light-silver) 24%,transparent),transparent 85%); }
+  .referral-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .referral-heading { margin-bottom: 34px; }
+  .referral-card-title { min-height: 0; }
+  .referral-card { padding: 38px 24px; }
+  .referral-description { font-size: 15px; }
+  .benefit-group { grid-template-columns: minmax(0,1fr); }
+  .benefit-card { padding: 22px; }
+  .benefit-card h3 { font-size: 18px; }
+  .benefit-offer { font-size: 20px; }
+  .content-section { padding-block: 85px 105px; }
+  .section-heading { margin-bottom: 34px; }
+  .carousel { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 0; scrollbar-width: none; margin-right: calc(-1 * var(--gutter)); padding: 8px var(--gutter) 14px 0; }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel > .card-reveal { flex: 0 0 86%; scroll-snap-align: start; }
+  .carousel > .card-reveal:last-child { margin-right: 14%; }
+  .service-card { min-height: 410px; padding: 28px; }
+  .service-card .card-number { display: block; }
+  .card-title { margin: 30px 0 22px; min-height: 39px; }
+  .service-card li { font-size: 15px; line-height: 1.7; }
+  .card-title h3 { font-size: 18px; }
+  .swipe-hint { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 9px; letter-spacing: var(--tracking-copy); font-weight: 500; color: #c2c4bd; margin: 0 0 14px; }
+  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 16px; }
+  .carousel-controls span { color: #d0d2ca; font-size: 11px; letter-spacing: var(--tracking-control); font-variant-numeric: tabular-nums; }
+  .carousel-controls { flex-direction: column; gap: 0; }
+  .carousel-positions { display: flex; justify-content: center; width: 100%; }
+  .carousel-positions button { width: min(44px,12.5%); height: 44px; padding: 0; border: 0; background: transparent; display: grid; place-items: center; }
+  .carousel-positions button span { width: 5px; height: 5px; border-radius: 50%; background: #92948f; transition: background-color .2s, transform .2s; }
+  .carousel-positions button[aria-current] span { background: #eaeae5; transform: scale(1.4); }
+  .difference-card { min-height: 280px; padding: 28px; }
+  .footer-panel { padding: 35px 26px 25px; }
+  .footer-logo { width: 190px; margin-bottom: 35px; }
+  .footer-columns { display: flex; flex-direction: column; gap: 29px; }
+  .footer-nav { border-top: 1px solid rgba(234,234,229,.12); padding-top: 25px; }
+  .footer-columns h2 { margin-bottom: 12px; }
+  .copyright { margin-top: 30px; }
+  .channel-panel { border-radius: 21px; padding: 20px; }
+}
+/* At 12px the seven-link navigation needs a third 44px row below 394px. */
+@media (max-width:393px) {
+  .hero { --boundary-top: 249px; }
+  .container.hero-content { padding-top: 279px; }
+}
+@media (prefers-reduced-transparency:reduce), (prefers-contrast:more) {
+  .glass, .channel-panel, .floating-whatsapp-menu { background-color: #202427; background-image: none; border-color: rgba(225,231,235,.48); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  @supports (mask-image: url("/brand/ZURY_Logo_Otimizada_Branco.svg")) {
+    .official-logo { background: #eaeef1; }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .glass-card:hover, .flow-capsule:active { transform: none; }
+  .flow-glass::after { transform: none !important; }
+}
 ```
 
-**Consultas oficiais da etapa 6:** transformar CNPJ e SUSEP em âncoras acessíveis, preservando os números e o alinhamento. Destinos verificados em 20/10/2026:
+### 19.2. components/site/editorial-surfaces.css
 
-- CNPJ → `https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/`, serviço oficial da Receita Federal para emissão do comprovante de inscrição e situação cadastral.
-- SUSEP → `https://www2.susep.gov.br/safe/Corretores/pesquisa`, pesquisa oficial de corretores.
-
-Abrir em nova aba com `noopener noreferrer`. Não foi estabelecido suporte documentado a preenchimento por URL; usar as páginas de consulta sem inventar parâmetros ou páginas intermediárias. O link não constitui validação do CNPJ ou registro SUSEP. Não consultar/submeter dados ou resolver CAPTCHA automaticamente.
-
-Reutilizar exatamente `footer-link flow-glass flow-capsule` e os estilos compartilhados do rodapé: somente texto em repouso, sem borda/fundo/glow permanente; mesma cápsula, glow, blur da superfície hospedeira, bordas, reflexo de 1200 ms, fade de 380 ms e easing `cubic-bezier(.23,1,.32,1)` no hover/foco. Não criar animação própria para os números. Alvo mínimo de 44 px e foco visível; `overflow: clip` no painel evita rolagem interna ao focar as âncoras.
-
-**Faixa final de copyright** — exatamente:
-
-```text
-© 2026 · Todos os direitos reservados.
+```css
+/* Mineral editorial rhythm: warm off-white, graphite ink, restrained silver grain. */
+.hero-copy-position { min-width: 0; align-self: center; transform: translate(4%,-5%); }
+.hero h1 .hero-line { font-family: var(--font-inter-tight),Arial,sans-serif; }
+.hero h1 .hero-line-accent { display: inline-block; line-height: .9; background: linear-gradient(105deg,#f7f7f0 8%,#aeb7bd 38%,#ffffff 54%,#77848a 78%,#e9ece9 96%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: 0 0 22px rgba(223,229,228,.22); letter-spacing: .035em; }
+.site-header { position: absolute; isolation: isolate; --text: #24282b; --glass-border: rgba(28,28,28,.14); --glass-tint: rgba(234,234,229,.16); background: none; border-bottom: 0; border-radius: 0 0 22px 22px; }
+.site-header .header-surface { position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background: radial-gradient(ellipse at 75% 0%,#fffef8,transparent 75%),linear-gradient(110deg,#eaeae5,#deded8); }
+.nav-entry { max-width: 100%; }
+.zury-site :is(.hero,.about,.site-footer) { --text: #eeede5; color: var(--text); }
+.site-header .official-logo { background: none; }
+@supports (mask-image: url("/brand/ZURY_Logo_Otimizada_Branco.svg")) { .site-header .official-logo { background: linear-gradient(115deg,#181c1f,#4f4d4b 55%,#1c1c1c); } }
+.zury-site .site-header .nav-glass { --text: #202829; --glass-tint: rgba(255,255,255,.08); --glass-border: rgba(40,52,52,.16); background: linear-gradient(125deg,rgba(255,255,255,.2),rgba(255,255,255,.035) 55%,rgba(117,131,128,.055)); border-color: var(--glass-border); box-shadow: inset 0 0 0 .5px rgba(255,255,255,.24),0 5px 18px rgba(20,27,28,.065); -webkit-backdrop-filter: blur(14px) saturate(1.08); backdrop-filter: blur(14px) saturate(1.08); }
+.site-header .nav-glass :focus-visible { outline-color: #202829; }
+.site-header .nav-glass :is(a,button) { transition-duration: 160ms; }
+.nav-hover-glass { position:absolute; pointer-events:none; left:0; top:0; opacity:0; border-radius:999px; background:linear-gradient(125deg,rgba(42,58,53,.17),rgba(42,58,53,.08)); box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 0 0 1px rgba(50,65,62,.15); }
+@media (hover:hover) and (pointer:fine) {
+  .zury-site button:not(:disabled) { transition: transform 180ms var(--flow-ease), background-color 180ms ease, box-shadow 180ms ease; }
+  .zury-site button:not(:disabled):hover { transform: translateY(-2px); }
+  .zury-site button:not(:disabled):active { transform: translateY(0) scale(.985); }
+}
+@media (hover:hover) and (min-width:768px) { .site-header .nav-glass :is(a,button):not(.priority-cta):hover:not(:focus-visible) { background:transparent; box-shadow:none; } }
+.site-header .nav-glass :is(a,button):not(.priority-cta):is(:hover,:focus-visible) { background: linear-gradient(125deg,rgba(42,58,53,.17),rgba(42,58,53,.08)); color: #202829; box-shadow: inset 0 1px 0 rgba(255,255,255,.6),inset 0 0 0 1px rgba(50,65,62,.15); }
+.site-header :focus-visible { outline-color: #24282b; }
+.floating-whatsapp-button { background-color: rgba(18,22,26,.72); }
+.zury-site :is(.solutions,.referrals,.companies,.benefits) {
+  --text: #25292c; --muted: #535754; --glass-border: rgba(28,28,28,.16);
+  --flow-reflection: linear-gradient(110deg,transparent 18%,rgba(255,255,255,.12) 32%,rgba(255,255,255,.65) 48%,rgba(214,211,209,.1) 62%,transparent 80%);
+  color: var(--text); color-scheme: light;
+  background: var(--zury-offwhite);
+}
+/* Sculpted light, not printed patterns: distinct studio illumination for each panel. */
+.zury-site .solutions { background: radial-gradient(ellipse 65% 85% at 100% 10%,#fffef9 5%,transparent 80%),radial-gradient(ellipse 80% 70% at 0% 100%,#bfc4c0,transparent 85%),linear-gradient(125deg,#d8dcd7,#f4f3ec 55%,#dce0da); }
+.zury-site .solutions-light { background: radial-gradient(ellipse 15% 110% at 82% 25%,rgba(255,255,255,.85),transparent 90%),linear-gradient(118deg,transparent 35%,rgba(255,255,255,.38) 52%,transparent 70%); }
+.zury-site .referrals { background: radial-gradient(ellipse 80% 65% at 50% 5%,#fffef7 10%,transparent 85%),radial-gradient(ellipse 60% 90% at 100% 85%,#c3c9c3,transparent 85%),linear-gradient(150deg,#d9ddd6,#efeee5 50%,#e1e3db); }
+.zury-site .referrals-light { background: radial-gradient(ellipse 40% 55% at 10% 45%,rgba(255,255,255,.7),transparent 85%),radial-gradient(ellipse 90% 16% at 60% 0%,rgba(255,255,255,.8),transparent 90%); }
+.zury-site .benefits { background: var(--zury-offwhite); }
+.zury-site .benefits-light { background: none; }
+.zury-site .companies { background: var(--zury-offwhite); }
+.zury-site .companies .company-logos { background: transparent; }
+/* Fine mineral stipple, kept below content: no stripes or lateral fog masks. */
+.zury-site :is(.solutions-light,.referrals-light,.companies-light,.benefits-light) {
+  background-image: radial-gradient(circle at 2px 3px,rgba(35,45,40,.045) .55px,transparent .85px),radial-gradient(circle at 7px 8px,rgba(255,255,255,.55) .6px,transparent 1px);
+  background-size: 11px 13px,17px 19px;
+}
+.hero-subtitle { display: flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin: 12px auto 0; font-size: clamp(14px,1.4vw,19px); font-weight: 400; line-height: 1.5; letter-spacing: .1em; color: #eaeae5; text-align: center; }
+.hero-subtitle span { display: inline-flex; align-items: center; white-space: nowrap; }
+.hero-subtitle span + span::before { content: ""; width: 4px; height: 4px; margin-inline: clamp(8px,1vw,14px); flex-shrink: 0; transform: rotate(45deg); background: #bfc6bf; box-shadow: 0 0 6px rgba(234,234,229,.2); }
+.referral-commercial p { font-size: clamp(15px,2.05vw,22px); }
+.referral-commercial-line { display: block; }
+@media (min-width:768px) { .referral-commercial-line { white-space: nowrap; } }
+.mobile-menu-toggle { display: none; }
+.zury-site .glass:where(:not(.channel-panel):not(.floating-whatsapp-button)) { background: linear-gradient(130deg,rgba(255,255,255,.05),rgba(255,255,255,.008) 55%,rgba(255,255,255,.025)); box-shadow: inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(255,255,255,.04),0 8px 24px rgba(4,8,12,.045); }
+.zury-site :is(.solutions,.referrals,.benefits) .glass { background: linear-gradient(130deg,rgba(255,255,255,.09),rgba(255,255,255,.012) 55%,rgba(214,211,209,.025)); border-color: rgba(47,56,53,.2); box-shadow: inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(255,255,255,.08),0 8px 24px rgba(28,28,28,.025); }
+.zury-site :is(.referral-cta,.footer-link,.channel-row,.person-link,.icon-button) { transition-duration: 180ms; }
+.zury-site .floating-whatsapp-menu { transition-duration: 180ms; }
+.zury-site .whatsapp-collapse { transition-duration: 140ms; }
+.zury-site :is(.channel-panel,.floating-whatsapp-menu) { --text: #f6f5ee; --glass-border: rgba(255,255,255,.24); color: var(--text); background: linear-gradient(130deg,rgba(23,30,31,.84),rgba(34,42,43,.76)); border-color: var(--glass-border); box-shadow: inset 0 1px 0 rgba(255,255,255,.35),0 12px 30px rgba(8,16,18,.16); }
+.zury-site :is(.solutions,.referrals,.benefits) :focus-visible { outline-color: #24282b; }
+.solutions .service-card li::marker { color: #535754; }
+.solutions .card-number,.solutions .swipe-hint,.solutions .carousel-controls span { color: #535754; }
+.solutions .carousel-positions button span { background: #777b78; }
+.solutions .carousel-positions button[aria-current] span { background: #25292c; }
+.referral-action .referral-cta { margin: 0 auto; max-width: 100%; width: 260px; min-height: 56px; height: 56px; align-self: center; }
+.referral-action { display: flex; justify-content: center; width: 100%; min-width: 0; padding-top: 22px; }
+.referral-cta[data-mode] { font-size: 13px; }
+.benefits .benefit-logo-well { height: 88px; flex-shrink: 0; margin-bottom: 12px; overflow: hidden; }
+.benefits .benefit-logo-well .partner-logo { max-width: 180px; max-height: 72px; }
+.benefits .benefit-logo-well .partner-logo-grupo-mv { max-width: 64px; max-height: 64px; }
+.benefits .benefit-logo-otica-vemos .partner-logo { width: 180px; height: 104px; max-height: 104px; object-fit: cover; object-position: 50% 60%; }
+.benefits .benefit-logo-centrolab .partner-logo { width: 112px; max-height: 104px; }
+.benefits .benefit-card { min-height: 240px; justify-content: flex-start; padding: 20px; }
+.benefits .benefit-card h3 { margin-bottom: 8px; line-height: 1.3; }
+.benefits .benefit-offer { margin-top: 0; }
+.benefits-grid[data-moving="true"] .benefit-copy { display: flex; }
+.benefits > .benefits-grid { width: 100%; max-width: none; margin: 0; padding-block: 8px; border: 0; border-radius: 0; }
+.benefits > .benefits-grid[data-moving="true"] { overflow: clip; }
+@media (max-width:767px), (prefers-reduced-motion:reduce) {
+  .benefits > .benefits-grid { width: min(calc(100% - var(--gutter) * 2),1320px); margin-inline: auto; }
+}
+/* Rounded panels replace the former hard boundary rules and glow strips. */
+.zury-site main > section,.zury-site .site-footer { border-radius: 24px; }
+.zury-site main > section + section,.zury-site .site-footer { margin-top: 8px; }
+.zury-site .site-footer > .container { width: 100%; max-width: none; }
+.zury-site .site-footer { padding: 0; }
+.site-footer .footer-panel { transform: none; }
+.site-footer .footer-columns { grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(24px,4vw,64px); }
+.site-footer .footer-columns > * { min-width: 0; }
+.site-footer .footer-link { max-width: calc(100% + 14px); overflow-wrap: break-word; }
+.zury-site .section-boundary::before,.zury-site .section-boundary::after,.zury-site .hero::before,.zury-site .hero::after { content: none; }
+.zury-site :is(h1,h2,h3,strong,.benefit-offer,.referral-commercial p) { --ink-gradient: linear-gradient(110deg,#fffef3 5%,#c5c5bb 50%,#faf8e9 95%); }
+.zury-site :is(.solutions,.referrals,.companies,.benefits) :is(h2,h3,strong,.benefit-offer,.referral-commercial p) { --ink-gradient: linear-gradient(110deg,#121819 5%,#535c57 50%,#202727 95%); }
+@supports (background-clip:text) or (-webkit-background-clip:text) {
+  .zury-site :is(h1 .hero-line,h2,h3,strong,.benefit-offer,.referral-commercial p) { background-image: var(--ink-gradient); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+}
+@media (max-width:767px) {
+  .zury-site main > section,.zury-site .site-footer { border-radius: 18px; }
+  .site-footer .footer-panel { border-radius: 18px; }
+  .site-footer .footer-columns { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .zury-site .site-header { flex-direction: row; justify-content: space-between; align-items: center; padding: calc(16px + env(safe-area-inset-top)) 20px 16px; gap: 16px; }
+  .site-header .brand-link .official-logo { width: 164px; }
+  .site-header .nav-entry { display: contents; }
+  .mobile-menu-toggle { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; flex-shrink: 0; border-radius: 14px; color: #202829; }
+  .zury-site .site-header .nav-glass { display: none; position: fixed; inset: calc(88px + env(safe-area-inset-top)) 12px auto; width: calc(100% - 24px); max-width: none; max-height: calc(100dvh - 108px - env(safe-area-inset-top)); overflow-y: auto; margin: 0; padding: 10px; border-radius: 20px; background: rgba(239,240,233,.94); }
+  .zury-site .site-header .nav-glass:popover-open { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 2px; animation: mobile-nav-in 180ms var(--flow-ease); }
+  .site-header .nav-glass :is(a,button) { width: 100%; justify-content: flex-start; padding: 12px 16px; min-height: 46px; font-size: 13px; }
+  .container.hero-content { padding-top: 144px; }
+  .hero-subtitle { margin-top: 10px; font-size: clamp(12px,3.5vw,15px); letter-spacing: .055em; }
+  .hero-subtitle span + span::before { width: 3px; height: 3px; margin-inline: 7px; }
+  .referral-commercial-line { display: inline; }
+}
+@keyframes mobile-nav-in { from { opacity: 0; translate: 0 -8px; } to { opacity: 1; translate: 0 0; } }
+/* Shared conversion accent: graphite rather than a new color outside the palette. */
+.zury-site .referral-cta.priority-cta,.zury-site #site-navigation.nav-glass .priority-cta[popovertarget] {
+  position: relative; isolation: isolate; overflow: hidden; color: #f6f5ee; -webkit-text-fill-color: currentColor; background: linear-gradient(120deg,#202829,#3d4743); border: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 5px 16px rgba(20,28,25,.12);
+}
+.priority-cta::before { content: ""; position: absolute; pointer-events: none; z-index: -1; inset: 0; background: linear-gradient(110deg,transparent 25%,rgba(255,255,255,.24) 50%,transparent 75%); transform: translateX(-120%); opacity: 0; animation: cta-glint 5.5s 3; }
+.cta-beam { position: relative; overflow: hidden; }
+.cta-beam .cta-border-beam { position: absolute; z-index: 0; pointer-events: none; inset: 0; border-radius: inherit; padding: 1px; background: conic-gradient(from 0deg,transparent 0 72%,color-mix(in srgb,var(--cta-beam-color) 18%,transparent) 77%,var(--cta-beam-color) 82%,color-mix(in srgb,var(--cta-beam-color) 18%,transparent) 87%,transparent 92%); -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: cta-border-beam 4.6s linear infinite; filter: drop-shadow(0 0 4px color-mix(in srgb,var(--cta-beam-color) 42%,transparent)); }
+.quote-hero-trigger.cta-beam { --cta-beam-color: #f4f6f4; }
+.priority-cta.cta-beam { --cta-beam-color: #4a514e; }
+.cta-beam .cta-label,.cta-beam > svg { position: relative; z-index: 1; }
+.cta-beam .cta-breathing-glow { position: absolute; z-index: 0; pointer-events: none; inset: 1px; border-radius: inherit; box-shadow: inset 0 0 18px color-mix(in srgb,var(--cta-beam-color) 40%,transparent),0 0 18px color-mix(in srgb,var(--cta-beam-color) 20%,transparent); animation: cta-breathing-glow 3.2s ease-in-out infinite; }
+@keyframes cta-border-beam { to { transform: rotate(360deg); } }
+@keyframes cta-breathing-glow { 0%,100% { opacity: .16; } 50% { opacity: .72; } }
+@keyframes cta-glint { 0%,65% { opacity: 0; transform: translateX(-120%); } 72% { opacity: .7; } 90%,100% { opacity: 0; transform: translateX(120%); } }
+@media (prefers-reduced-motion:reduce) { .priority-cta::before,.cta-beam .cta-border-beam,.cta-beam .cta-breathing-glow { animation: none; } .zury-site .site-header .nav-glass:popover-open { animation: none; } }
+@media (prefers-contrast:more), (forced-colors:active) {
+  .zury-site :is(h1 .hero-line,h2,h3,strong,.benefit-offer,.referral-commercial p) { background-image: none; color: var(--text); -webkit-text-fill-color: currentColor; }
+}
+@media (prefers-reduced-transparency:reduce), (prefers-contrast:more) {
+  .zury-site :is(.solutions,.referrals,.benefits) .glass { background: #f1f1ed; border-color: #535754; }
+  .zury-site .site-header .nav-glass { background: #eeefe9; border-color: #535754; }
+  .zury-site :is(.channel-panel,.floating-whatsapp-menu) { background: #252c2d; }
+}
 ```
 
-- Não repetir razão social, CNPJ ou SUSEP na faixa de copyright.
-- Não adicionar a expressão `ZURY CORRETORA LTDA` antes ou depois do copyright.
-- Repetições técnicas necessárias em metadados estruturados de SEO não contam como repetição **visual**, mas não devem causar conteúdo visível duplicado.
+### 19.3. components/site/quote-menu.css
 
----
-
-### 10.4. WhatsApp flutuante — exceção autorizada da etapa 7 revisada
-
-**Refinamento atual:** ao abrir, focar o contêiner do menu, não Thiago, para manter os três contatos com o mesmo estado neutro; Tab leva ao primeiro link com foco visível. Nenhum contato possui prioridade visual. No hover com mouse preciso e sem preferência de movimento reduzido, elevar o conjunto do botão 4 px por transição de 220 ms, retornando suavemente; sem loop ou movimento no toque. Essa política substitui o foco automático no primeiro contato descrito abaixo.
-
-Botão fixo no canto inferior direito, 56 px (52 px no mobile estreito), distância confortável com safe areas. Usar o ícone WhatsApp existente, Liquid Glass escuro, reflexos neutros e borda delicada. Entrada única com fade/translate de 8 px em 400 ms, sem pulso contínuo. A única cor nova autorizada é `#25D366` na borda fina e glow externo contido de hover/foco deste botão, fade-in/out de opacity em 320 ms com `cubic-bezier(.23,1,.32,1)`. Corpo continua escuro; não aplicar verde a outros elementos.
-
-Até 420 px, CTAs de Indicações usam largura de até 210 px e quebra natural de texto, sem reduzir fonte; manter faixa lateral livre para o botão flutuante e alvo mínimo de 44 px.
-
-Clique abre menu horizontal à esquerda, na mesma altura, com THIAGO / VALDIR / JOANA e cargos confirmados, sem telefone/e-mail. Mesma fonte `contacts`; nunca duplicar destinos. Uma linha desktop, três itens compactos e alvos de pelo menos 44 px no mobile, dentro da viewport. Reveal horizontal originado à direita, fade/translate em 240 ms, saída correspondente e sem spring. Primeiro contato recebe foco; Escape restaura foco ao botão; clique fora, segundo clique e seleção fecham. `aria-expanded`, `aria-controls`, nome acessível, foco visível e links seguros. Popover nativo participa da exclusividade dos demais menus. Reduced motion reduz a transição sem impedir uso. Conferir que botão não encobre CTAs e que a faixa flutuante só ocupa espaço quando aberta.
-
-## 11. Sistema de animação e scroll
-
-### 11.1. Direção da experiência
-
-**Refinamento posterior do escudo solicitado:** substituir o balanço diagonal por órbita suave de 14 s, com eixos defasados e continuidade na emenda: x até ±6 px, y até ±12 px, pitch ±0.65°, yaw ±2.8° e roll ±0.9°. Entrada preserva 3.2 s e atraso de 0.5 s, com profundidade inicial contida (escala 0.94, yaw −9°, pitch 4°, roll −4°), sem alterar a escala final aprovada. Luz prateada difusa exclusivamente atrás da imagem acompanha a órbita e responde suavemente ao mouse em camada própria; não repintar reflexos no PNG. Usar uma timeline pausável para órbita e luz, removendo o loop CSS anterior. Mobile mantém 45% da amplitude, sem tilt por toque; reduced motion estático. Preservar o restante do site e os gates existentes.
-
-**Motion ampliado autorizado:** preservar o layout/branding e tornar a coreografia mais perceptível. Entrada das três linhas da Hero com 1.05 s, stagger de 75 ms e deslocamento percentual; escudo entra após 0.5 s em 3.2 s. Flutuação do PNG até ±8 px, yaw ±1.8° e roll ±0.6°, ciclo completo de 10 s; no mobile, 45% da intensidade. Parallax exclusivo da Hero até 42 px e 3° pelo ScrollTrigger, em camada separada da entrada, flutuação e mouse tilt. Os reflexos continuam incorporados à imagem original: não simular modelo 3D real ou alterar a arte. Luz de fundo respira somente com o escudo ativo.
-
-Reveals em 0.9 s com cascata de 75 ms, deslocamentos de 30 px (16 px no mobile) e escala mínima 0.985 apenas nos wrappers de cards. Luz ambiente acompanha scroll com deslocamento de 14 px (5 px no mobile), sem animar blur ou layout. Ícones sobem 3 px somente no hover de mouse. Configurações em `lib/site-motion.mjs` e `components/shield/image-motion.mjs`. MatchMedia reverte animações/ScrollTriggers ao mudar breakpoint ou preferência; observers/listeners possuem cleanup. Loops do escudo pausam fora da tela ou com documento oculto; reduced motion conserva conteúdo/arte estáticos. Não alterar carrosséis manuais, comportamento da navbar, cópias, dimensões aprovadas ou gates comerciais. Esta autorização supera o congelamento histórico de durações correspondente.
-
-- A sensação deve ser de uma narrativa contínua, **cinematográfica, refinada, suave e não intrusiva**.
-- **Transição progressiva de luminosidade entre os quatro tons**; pode ser implementada com camadas de fundo e interpolação de scroll, respeitando performance.
-- Fundos definidos em tokens únicos: Hero em grafite mais profundo com luz controlada; Soluções em cinza mineral mais luminoso; Diferenciais em grafite com luz cinza-prata diagonal própria; footer em grafite profundo. Tons de encontro compartilhados mantêm continuidade. Separadores existentes, inclusive entre header e Hero: filete de 1 px com prata de opacidade moderadamente ampliada, extremidades dissipadas e halo extremamente suave, sem faixas ou brilho intenso.
-- A etapa 2 substitui o congelamento anterior pela direção cromática da imagem 4, conforme §4.1. Preservar durações, easing e comportamento de todas as animações existentes; somente superfícies, luzes e encontros visuais são refinados. Não declarar a execução visual aprovada antes da avaliação do responsável.
-- Elementos surgem com opacidade e deslocamento mínimos, em tempos coordenados, sem `bounce`, elasticidade excessiva ou trajetórias decorativas.
-- **Revelações devem poder acontecer novamente quando o usuário voltar à seção**; implementar com controle de reentrada estável, sem flicker ou reanimações compulsivas a cada pixel.
-- Navbar inteligente ao rolar; estados ativos e transições de vidro bem sincronizados.
-- Hover em cartões: leve aumento da percepção de profundidade e luz; sem inclinação 3D.
-- Mobile: combinar luz ambiente discreta com feedback ao toque, sem disparar animações caras continuamente.
-
-### 11.2. Responsabilidade de bibliotecas
-
-- **GSAP + ScrollTrigger:** mecanismo principal para timeline cinematográfica, reveals, mudanças de fundo coordenadas ao scroll, header inteligente quando apropriado.
-- **CSS:** preferir para estados simples, transições básicas de hover/foco, layout, scroll-snap e propriedades visuais de baixo custo.
-- **Motion** (biblioteca conhecida anteriormente como Framer Motion): opcional para microinterações isoladas que tenham justificativa; não instalar/usá-la se GSAP e CSS cobrirem as necessidades.
-- **Nunca deixar GSAP e Motion disputando o mesmo `transform`, `opacity` ou outra propriedade do mesmo elemento ao mesmo tempo.**
-- **shadcn/ui:** aproveitar primitivas acessíveis quando realmente úteis; não forçar o visual padronizado do kit sobre a direção autoral da ZURY.
-
-### 11.3. Regras operacionais
-
-- Implementar `prefers-reduced-motion`: reduzir/cessar flutuação e rotação contínuas, suavizar/retirar reveals e scrolling prolongado, preservar o conteúdo completo e o poster do escudo.
-- Usar `gsap.context()` e/ou abstração própria equivalente com limpeza de instâncias em desmontagem; usar `ScrollTrigger.matchMedia`/`gsap.matchMedia` ou equivalentes compatíveis para breakpoints e motion preferences.
-- Debounce/throttle/observers quando adequados, evitando listeners e `requestAnimationFrame` duplicados.
-- Nada de `scroll-jacking`, scroll artificial que impede interação normal, wheel overrides, interceptação agressiva do touch ou `overflow: hidden` no `body` sem motivo.
-- Serviços e diferenciais são gestuais/manuais sem autoplay; Benefícios segue exclusivamente a exceção condicional de cards completos do §9.4.
-
----
-
-## 12. Requisitos responsivos e de acessibilidade
-
-### 12.1. Matriz mínima de visualização
-
-Testar, no mínimo:
-
-- **Mobile:** 320, 360, 375, 390, 414/430 px.
-- **Tablet e transição de grid:** 768, 820, 1024 px (e larguras limítrofes descobertas durante o teste).
-- **Desktop:** 1280, 1440, 1920 px.
-- **Ultrawide:** largura superior a 1920 px com conteúdo contido e proporções estáveis.
-- Orientações de viewport significativas, diferentes densidades de pixel e pelo menos um navegador baseado em WebKit/Safari, além de Chromium.
-
-Critérios gerais:
-
-- Nenhum overflow horizontal da página, texto sobreposto, componente escondido por navbar ou conteúdo cortado.
-- Ajustar grid aos comprimentos reais dos textos; quebra de linha não pode esconder produtos ou números.
-- Hero deve permanecer equilibrado, com texto e escudo visíveis.
-- Site mantém aparência premium e reflexos discretos também no mobile.
-- Áreas de clique/toque utilizáveis; controles e links têm rótulos acessíveis, sem setas visuais.
-
-### 12.2. Acessibilidade prática
-
-- HTML semântico, idioma `pt-BR`, hierarquia correta de heading (headline no Hero como `h1`; seções como `h2`).
-- Contraste de referência WCAG AA para conteúdo textual: **4.5:1 em texto comum; 3:1 em texto grande**, aferido sobre composição final com vidro/fundo em movimento.
-- Foco por teclado visível e não suprimido; ordem de tabulação previsível; não depender de hover.
-- SVGs decorativos (`lucide`) devem ser ocultados para tecnologias assistivas quando o título comunica a mesma informação; logo e poster devem ter semântica adequada ao contexto.
-- Informar seção ativa na navegação sem depender só de cor.
-- Não usar animação que cause flashing ou impeça leitura.
-- **Carrosséis mobile:** indicadores selecionáveis nativos sem setas, operáveis por `Enter`/`Space`, grupos/descrição de cartões e anúncio de mudança quando apropriado. Swipes e controles devem atualizar o mesmo estado.
-- Se permitir tecla de seta esquerda/direita dentro do trilho focado, não capturar setas globalmente nem romper rolagem natural de toda a página.
-- **Sem autoplay em serviços e diferenciais**. Benefícios usa a exceção condicional do §9.4, pausável e estática em reduced motion/mobile; os três parceiros atuais permanecem estáticos no desktop.
-- Preferir `scroll-snap` com detecção robusta da posição efetiva, considerando scroll programático e arrasto nativo, não uma implementação frágil de contador baseada apenas no clique.
-
----
-
-## 13. Arquitetura técnica recomendada
-
-### 13.1. Base
-
-**Preferência aprovada para projeto novo e vazio:**
-
-- **Next.js App Router**, versões estáveis atuais e compatíveis;
-- **TypeScript** com tipagem explícita dos dados de cartões;
-- **React** compatível com a versão de Next.js selecionada;
-- **Tailwind CSS** para layout/tokens/utilitários; CSS dedicado quando necessário para materiais e motion;
-- **ESLint e checagem TypeScript**, com scripts verificáveis;
-- **Inter Tight**, com carregamento otimizado;
-- **Lucide React** para os oito ícones;
-- **GSAP + ScrollTrigger** como motor principal de animações;
-- **Three.js + React Three Fiber** para escudo 3D, depois de verificar versões compatíveis;
-- `@react-three/drei` apenas se simplificar de fato câmera, controles de ambiente, material ou carregamento;
-- **shadcn/ui** de maneira seletiva e somente quando agregar acessibilidade e reduzir código;
-- **Motion opcional**; não é dependência obrigatória.
-
-**Não fixar números de versão de memória.** Consultar documentação e `peerDependencies` oficiais no momento da instalação. Em particular, React Three Fiber deve corresponder à versão principal de React. Preferir dependências estáveis e evitar bibliotecas experimentais apenas por estética.
-
-### 13.2. Server/Client e carregamento
-
-- Preservar o shell informacional da landing page renderizável sem exigir JavaScript para os textos essenciais, usando componentes de servidor onde apropriado.
-- Isolar efeitos de scroll, carrosséis e Canvas em **Client Components pequenos**, evitando marcar toda a página como client desnecessariamente.
-- Carregar WebGL de forma dinâmica, do lado do cliente, com fallback/poster estável, sem hidratação quebrada.
-- Usar o diretório `public/brand/` para SVGs existentes. Não embutir as quatro variantes inteiras em JS sem benefício comprovado.
-- Manter o conteúdo literal em estrutura de dados tipada e única; gerar cartões desktop/mobile a partir dessa mesma fonte. **Não duplicar arrays de conteúdo para as duas versões.**
-- O layout desktop 4×2 e o carrossel mobile devem preferencialmente compartilhar os mesmos componentes/dados, mudando somente a apresentação/interação.
-
-### 13.3. Estrutura sugerida — não rígida
-
-```text
-AGENTS.md
-ZURY-SITE-SPEC.md
-public/
-  brand/                               # 4 arquivos oficiais do §3
-  shield/                              # poster/fallback APÓS aprovação
-src/
-  app/
-    layout.tsx
-    page.tsx
-    globals.css
-  components/
-    layout/                            # Header, Footer, SectionShell
-    hero/                              # Hero, escudo 3D, fallback
-    cards/                             # ServiceCard, InstitutionalCard
-    carousel/                          # carrossel acessível reutilizável
-    ui/                                # primitivas, se necessárias
-  content/                             # conteúdos oficiais tipados
-  lib/                                 # animações, observadores, utilitários
-  styles/                              # tokens/materiais específicos
+```css
+.quote-trigger { display:flex; align-items:center; justify-content:center; gap:12px; min-height:50px; padding:14px 24px; margin:24px auto 0; color:#f5f4ec; border:1px solid #ffffff40; font:600 13px var(--font-inter-tight),sans-serif; letter-spacing:.04em; cursor:pointer; }
+.quote-trigger { position:relative; isolation:isolate; overflow:hidden; border-radius:999px; transition:background 180ms,transform 180ms; }
+.quote-hero-trigger { min-width:260px; min-height:64px; padding:18px 34px; font-size:14px; color:#1c2429; background:linear-gradient(135deg,#f4f6f5eb,#bac6cedb); border-color:#ffffffa6; box-shadow:inset 0 1px 0 #fff,0 8px 28px #b7c9d333; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); animation:quote-enter 1.2s ease-out both; }
+.quote-trigger::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:linear-gradient(110deg,transparent 20%,#ffffff70 50%,transparent 80%); opacity:0; transform:translateX(-100%); transition:transform 600ms ease-out,opacity 180ms; }
+.quote-hero-trigger::after { content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; box-shadow:inset 0 0 18px #fff8; animation:quote-pulse 3.6s ease-in-out infinite; }
+.quote-trigger:focus-visible { outline:2px solid currentColor; outline-offset:5px; }
+.quote-card-trigger { background:#263139; color:#f4f5f1; border-color:#647078; width:100%; margin-top:auto; }
+@media(hover:hover) and (pointer:fine) { .quote-trigger:hover::before { opacity:1; transform:translateX(100%); } .quote-trigger:hover { transform:translateY(-2px); } }
+@keyframes quote-enter { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes quote-pulse { 0%,100% { opacity:.12; } 50% { opacity:.8; } }
+@media(prefers-reduced-motion:reduce) { .quote-trigger,.quote-trigger::before,.quote-trigger::after { animation:none; transition:none; } .quote-trigger:hover { transform:none; } }
+@media(max-width:767px) { .quote-hero-trigger { width:min(100%,290px); min-height:54px; -webkit-backdrop-filter:none; backdrop-filter:none; } }
+@media(min-width:768px) { .quote-hero-trigger { width:335px; min-width:335px; font-size:21px; } }
+.quote-dialog { width:min(620px,calc(100% - 32px)); max-height:calc(100dvh - 40px); margin:auto; padding:28px; border:1px solid #ffffff70; border-radius:24px; color:#222b29; background:linear-gradient(135deg,#f6f6f0f5,#e4e9e2f5); box-shadow:0 24px 80px #0005; overflow-y:auto; }
+.quote-dialog::backdrop { background:#10181980; backdrop-filter:blur(8px); }
+.quote-header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.quote-header h2 { margin:0; font-size:23px; }
+.zury-site .quote-dialog :is(h2,h3) { background:none; color:#222b29; -webkit-text-fill-color:currentColor; }
+.quote-dialog { --text:#222b29; color-scheme:light; text-align:left; letter-spacing:.015em; }
+.quote-close { border:0; background:transparent; display:grid; place-items:center; width:44px; height:44px; cursor:pointer; color:inherit; }
+.quote-progress { margin:16px 0 24px; font-size:12px; letter-spacing:.06em; color:#4b5852; }
+.quote-options { border:0; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.quote-options legend { margin-bottom:16px; font-size:16px; font-weight:600; }
+.quote-option { position:relative; display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:70px; padding:16px; border:1px solid #35463f30; border-radius:14px; background:#ffffff35; cursor:pointer; font-size:14px; font-weight:600; transition:background 180ms,border-color 180ms; }
+.quote-option input { position:absolute; width:1px; height:1px; opacity:0; }
+.quote-option svg { flex-shrink:0; opacity:0; }
+.quote-option:has(:checked) { background:#2d413b15; border-color:#304b40; }
+.quote-option:has(:checked) svg { opacity:1; }
+.quote-option:has(:focus-visible) { outline:2px solid #304b40; outline-offset:3px; }
+.quote-actions { display:flex; justify-content:flex-end; margin-top:24px; }
+.quote-actions button { display:flex; align-items:center; justify-content:center; gap:12px; min-height:48px; padding:12px 22px; border:0; border-radius:999px; background:#273831; color:#fafaf4; font:600 13px var(--font-inter-tight),sans-serif; cursor:pointer; }
+.quote-actions button:disabled { opacity:.4; cursor:not-allowed; }
+.quote-summary { min-height:170px; }
+.quote-summary h3 { font-size:22px; }
+.quote-summary p { font-size:15px; line-height:1.6; }
+@media(max-width:480px) { .quote-dialog { padding:20px; } .quote-options { grid-template-columns:1fr; } .quote-option { min-height:54px; } .quote-header h2 { font-size:20px; } }
 ```
 
-A implementação pode ajustar a árvore à convenção do framework, mas **não criar pastas vazias, frameworks paralelos, múltiplas fontes de tokens nem abstrações sem uso**.
+### 19.4. components/site/service-cards.css
 
-### 13.4. SEO técnico e segurança básica
+```css
+.service-card .card-title { flex-direction: column; align-items: flex-start; gap: 12px; min-height: 96px; }
+.service-card .card-title svg { margin-top: 0; }
+.service-card .card-title h3 { font-size: 20px; min-width: 0; overflow-wrap: normal; word-break: normal; }
+.service-card[data-service="08"] .card-title h3 { font-size: 18px; letter-spacing: .025em; }
+.service-card { display:flex; flex-direction:column; gap:24px; }
+.service-card .card-title { margin-bottom:0; }
+.solution-highlights { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; margin-bottom:40px; }
+.solution-highlights>div { display:flex; flex-direction:column; gap:16px; text-align:center; min-width:0; }
+.solution-highlights strong { font-size:16px; line-height:1.5; color:#263139; }
+.solution-highlights .quote-trigger { font-size:12px; padding-inline:12px; }
+@media(max-width:767px) { .solution-highlights { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 12px; } .solution-highlights strong { font-size:14px; } .service-card .quote-trigger { min-height:50px; } }
+```
 
-- `title` e descrição institucional precisos, sem alegar superioridade, prêmios ou garantias não aprovadas. Sugestão de título: `ZURY CORRETORA | Proteção e soluções em seguros`.
-- Metadados em português, Open Graph básico se houver imagem apropriada aprovada. Não improvisar fotografia/mockup como imagem oficial.
-- URLs, anchors e telefones corretos; links externos com atributos de segurança aplicáveis.
-- Evitar exposição de informações sensíveis, chaves em código de cliente, scripts de analytics sem solicitação ou bibliotecas externas desnecessárias.
-- Se publicar, validar domínio, favicon e informações legais pertinentes separadamente, sem inventar dados ausentes.
+### 19.5. components/site/companies.css
 
----
+```css
+.companies { padding-block: 72px; background: radial-gradient(ellipse at 50% 100%,rgba(190,200,207,.045),transparent 65%),#1e2022; }
+.companies .section-heading { margin-bottom: 0; }
+.companies:has(.company-logos) .section-heading { margin-bottom: 48px; }
+.companies-comparison { max-width:780px; margin:-24px auto 40px; color:#343d40; text-align:center; font-size:clamp(20px,2.4vw,26px); font-weight:700; line-height:1.55; letter-spacing:var(--tracking-copy); text-wrap:balance; }
+.benefits-grid.company-logos { --benefit-min-width: 220px; --benefit-gap: 24px; width: 100%; max-width: none; margin: 0; padding-block: 24px; background: #eaeae5; }
+.company-logos .benefit-group { grid-template-columns: repeat(auto-fit,minmax(min(100%,180px),1fr)); align-items: center; }
+.company-logos .company-logo { display: grid; place-items: center; height: 144px; min-height: 144px; padding: 20px; border-radius: 20px; border:1px solid rgba(47,56,53,.18); }
+.company-logo img { display: block; max-width: 100%; height: 72px; object-fit: contain; }
+.company-logos:focus-visible { outline: 2px solid #25292c; outline-offset: -6px; }
+@media (max-width: 767px), (prefers-reduced-motion:reduce) { .benefits-grid.company-logos { width: calc(100% - var(--gutter) * 2); margin-inline: auto; } .company-logos .benefit-group { grid-template-columns: repeat(auto-fit,minmax(min(100%,180px),1fr)); } }
+@media (max-width:767px) {
+  .company-logos .benefit-group { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+  .company-logos .company-logo { height:112px; min-height:112px; padding:14px; }
+  .company-logo img { height: 64px; }
+}
+```
 
-## 14. Performance, estabilidade e métricas
+### 19.6. components/site/hero-shield.css
 
-**Diretriz:** a qualidade deve ser medida em dispositivos reais ou perfis representativos; metas não equivalem a garantia prévia.
+```css
+.hero-shield {
+  --hero-shield-art-size: 88.75838%; /* Previous size × 0.92: an additional 8% reduction. */
+  width: min(100%, 620px, 44vw);
+  aspect-ratio: 1;
+  position: relative;
+  justify-self: center;
+  min-width: 0;
+  isolation: isolate;
+  perspective: 1400px;
+}
+.hero-shield::before, .hero-shield::after { content: ""; position: absolute; pointer-events: none; z-index: -1; }
+.hero-shield::before {
+  inset: -8% -16% -5%;
+  background: radial-gradient(ellipse 34% 54% at 55% 47%,rgba(214,211,209,.13),transparent 76%),radial-gradient(ellipse 38% 40% at 82% 65%,rgba(234,234,229,.07),transparent 78%);
+}
+.hero-shield::after {
+  left: -20%; top: 49%; width: 143%; height: 44%;
+  border-bottom: 1px solid rgba(214,211,209,.38);
+  border-radius: 0 0 65% 48%;
+  background: radial-gradient(ellipse 46% 36% at 67% 100%,rgba(214,211,209,.18),transparent 85%);
+  box-shadow: 0 14px 30px -21px rgba(234,234,229,.5);
+  transform: rotate(-24deg);
+  mask-image: linear-gradient(90deg,transparent,black 28%,black 78%,transparent);
+}
+.hero-shield-pose { position: relative; width: 100%; height: 100%; transform: rotateY(-16deg) rotateZ(5deg); transform-style: preserve-3d; }
+.hero-shield .image-shield-tilt { display: grid; place-items: center; }
+.hero-shield .image-shield-art { width: var(--hero-shield-art-size); height: var(--hero-shield-art-size); }
+@media (max-width: 767px) {
+  .hero-shield { width: 110%; max-width: 460px; }
+  .hero-shield-pose { transform: rotateY(-9deg) rotateZ(3deg); }
+  .hero-shield::before { opacity: .7; }
+  .hero-shield::after { left: -5%; width: 115%; opacity: .7; }
+}
+```
 
-### 14.1. Metas objetivas
+### 19.7. components/site/site-motion.css
 
-Em condições reais, almejar os limiares de boa experiência de Core Web Vitals no percentil 75:
+```css
+/* Hover feedback belongs to the icon, never to a second transform on the card reveal. */
+.zury-site :is(.card-title, .referral-card-title) > svg {
+  transition: transform 220ms var(--flow-ease);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .zury-site .glass-card:hover :is(.card-title, .referral-card-title) > svg { transform: translateY(-3px); }
+}
+```
 
-- **LCP ≤ 2,5 segundos**;
-- **INP ≤ 200 ms**;
-- **CLS ≤ 0,1**.
+### 19.8. components/shield/image-shield.css
 
-Essas são **metas de performance**, não promessas de que todo dispositivo terá resultados idênticos. Registrar resultados de Lighthouse/lab e, após publicação, observações de campo se disponível. Testar separadamente desktop e mobile.
-
-### 14.2. Medidas esperadas
-
-- Reservar dimensões para logo, cards, viewport do escudo, poster e controles (sem layout shift quando imagem/Canvas/fonts surgirem).
-- Usar fontes otimizadas, poucos pesos e `font-display` adequado.
-- Priorizar conteúdo e texto acima da dobra; carga pesada de 3D não deve impedir interação na landing page.
-- Limitar custo de `backdrop-filter`, sombras grandes, blur e camadas animadas em todo o viewport.
-- Fazer lazy load de recursos não críticos onde fizer sentido; preservar visibilidade inicial do poster e headline.
-- Evitar render contínuo de WebGL fora de foco/viewport; pausar/reduzir quando o documento estiver oculto ou o recurso não estiver visível, se aplicável.
-- Otimizar geometria, materiais, draw calls, DPR, luz, shadow maps e texturas sem comprometer a aparência premium.
-- Fazer testes com degradação: sem WebGL, rede lenta, 3D que falha, JS limitado, dispositivo móvel de menor capacidade e preferência por movimento reduzido.
-- Validar que efeitos de fundo e reveal não mantêm vários loops concorrentes desnecessariamente.
-
----
-
-## 15. Processo de implementação e pontos de aprovação
-
-O Codex deve executar fases rastreáveis, preferindo pequenos conjuntos coerentes de mudanças e relato dos resultados. **A ordem abaixo é o fluxo desejado, não autorização para pular o gate do escudo.**
-
-### Fase 0 — Auditoria inicial (antes de escrever código)
-
-- Inspecionar o diretório atual e diferenciar pasta vazia de pasta com arquivos existentes; **o projeto foi solicitado como novo, do zero**.
-- Se já existirem arquivos na pasta, **não apagar nem sobrescrever silenciosamente**: reportar conflito e propor criar um diretório novo/vazio, preservando projetos anteriores.
-- Confirmar presença dos dois documentos e dos quatro SVGs; listar ausências de forma objetiva.
-- Verificar versão instalada de Node, gerenciador de pacotes e quais skills/MCPs estão **realmente disponíveis**, sem pressupor acesso por nome.
-
-### Fase 1 — Fundação
-
-- Inicializar stack estável compatível; configurar lint, scripts, tipagem, layout global, tokens, tipografia e importação de SVGs.
-- Produzir shell acessível da página, hierarquia das quatro seções e conteúdo oficial antes dos efeitos custosos.
-
-### Fase 2 — Layout responsivo e conteúdo
-
-- Implementar navbar, Hero com **espaço reservado/poster provisório apenas de desenvolvimento** para o futuro escudo, grade/carrossel dos 8 serviços, 3 diferenciais e footer.
-- Não publicar um escudo alternativo improvisado como resultado final.
-- Conferir contagem de produtos, links, ordem de seções e alinhamentos.
-
-### Fase 3 — Escudo independente e gate
-
-- Seguir integralmente §7.3, fases E1 a E3.
-- **Pedir aprovação visual explícita. Não integrar o modelo final ao Hero antes da aprovação.**
-
-### Fase 4 — Integração 3D e motion
-
-- Após aprovação, criar poster/fallback do mesmo modelo, integrar 3D com carregamento progressivo e implementar as transições cinematográficas, glass e navbar inteligente.
-- Refinar responsividade e comportamento dos carrosséis.
-
-### Fase 5 — QA, revisão e entrega
-
-- Rodar verificação de tipos, lint, build, testes pertinentes e navegação real no navegador (Playwright/browser/Chrome/Computer Use se realmente disponíveis).
-- Inspecionar capturas nos tamanhos obrigatórios e corrigir clipping/contraste/overflow.
-- Reportar evidências: testes executados, resultados, problemas remanescentes, assets criados e itens pendentes do responsável.
-- **Não apresentar como testado** nada que não tenha sido executado.
-
----
-
-## 16. Critérios de aceite verificáveis (Definition of Done)
-
-O site **somente** será considerado pronto para publicação depois de todos os itens obrigatórios abaixo serem aprovados.
-
-### Marca, conteúdo e estrutura
-
-- [ ] Build público padrão mantém Hero → Soluções → Diferenciais → Footer. Prévia completa insere Indicações → Benefícios antes do Footer, respeitando gates independentes; sem formulário ou funções extras de rodapé.
-- [ ] Hero apresenta **exatamente** `SEU PATRIMÔNIO MERECE A MELHOR ESCOLHA ZURY!`, com acentos e pontuação literais, sem CTA/subtítulo/scroll cue. Escudo permanece isolado até aprovação expressa.
-- [ ] Navbar segue §5: SOLUÇÕES, DIFERENCIAIS, INDICAÇÕES, BENEFÍCIOS, SOBRE, REDES SOCIAIS, CONTATO; links comerciais omitidos independentemente com seus gates. Destinos e menus oficiais funcionam.
-- [ ] Navbar mostra somente texto em repouso, inclusive no ativo, sem cápsula individual permanente; `aria-current`, contraste e foco preservados. Hover conserva exatamente o Liquid Glass aprovado, sem alteração de parâmetros, nunca underline.
-- [ ] SVG oficial **não foi redesenhado**; variante branca na navegação escura e no footer; original preservado.
-- [ ] Seção serviços apresenta oito títulos na ordem `BENS`, `VIDA E SAÚDE`, `RURAL`, `AUTOMOTIVO`, `CRÉDITO`, `AÉREO E MARÍTIMO`, `TRANSPORTE`, `RESPONSABILIDADE CIVIL`.
-- [ ] Todos os **44 itens** de serviço correspondem exatamente à lista oficial atualizada, com ícones correspondentes, um marcador discreto por produto e 12 px entre itens, sem duplicação de bullets ou divisórias entre produtos. Diferenciais também não possuem divisórias internas.
-- [ ] Indicações com cards perceptivelmente mais altos e conteúdo redistribuído; frases sem marcadores/pontos, Parceiro sem lista extra e CTAs preservados. Título comercial único sem ponto; parágrafo branco/negrito/maior, duas linhas quando couber, provisório para contratação própria. Sem promessas presumidas, códigos fictícios ou remoção dos gates.
-- [ ] Diferenciais apresentam **SEGURANÇA**, **SUPORTE**, **AGILIDADE**, com ícones Lucide aprovados à esquerda e sem numeração visual nos cards, com fonte literal do §9.2, apresentação segmentada, marcadores e espaçamentos preservados, sem divisórias internas; contador mobile preservado.
-- [ ] Todos os textos visíveis, inclusive avisos, menus, popovers e rodapé, estão em caixa alta por apresentação; valores técnicos e desenhos oficiais preservados. Hero ocupa exatamente as três linhas do §6.2 no desktop, sem cortes.
-- [ ] Benefícios preserva FARMELHOR UNAÍ, ZAPP e GRUPO MV, logos e percentuais. Três cards estáticos quando couberem; excedente ativa loop de cards completos à direita a 42 px/s, pausável, sem duplicatas acessíveis. Mobile/reduced motion estáticos. Sem faixa de logos isoladas. Logo ZAPP centralizada, originais intactos e gates preservados.
-- [ ] Footer tem CONTATOS textual acima de SOLUÇÕES e REDES SOCIAIS, ambos com o mesmo componente/dados/comportamentos da navbar. Contato com ícones WhatsApp/e-mail, accordion nome/cargo sem telefones; social com dois links oficiais e Facebook desabilitado. Dados legais/copyright aparecem uma vez.
-- [ ] Benefícios sem chamada auxiliar ou espaço residual; carrossel condicional preservado. Botão WhatsApp fixo com ícone existente e Liquid Glass; verde somente no hover/foco da borda/glow, fade de 320 ms. Menu horizontal à esquerda com três contatos, sem e-mail, tecla Escape/clique fora/segundo clique/seleção fecham. Mobile sem clipping, alvos 44 px, safe areas, foco e reduced motion funcionais; sem cobertura dos CTAs.
-- [ ] CNPJ e SUSEP abrem os serviços oficiais do §10, sem parâmetros presumidos ou alegação de cadastro validado; usam exatamente as classes, estados de repouso/hover/foco e timings Flow Glass dos demais links do rodapé, com números/alinhamento preservados.
-- [ ] Balões de contato e redes sociais compartilham lógica, são mutuamente exclusivos e fecham por Escape, clique fora e botão fechar, com foco e posicionamento corretos.
-- [ ] A expressão DIFERENÇA ZURY foi removida; gradientes neutros distintos, vidro cristalino e microinterações refletem o redesign aprovado.
-
-### Responsividade e UX
-
-- [ ] Desktop: serviços **4 × 2**, oito cartões de altura igual; institucional 3 colunas de altura igual.
-- [ ] Largura intermediária comporta 2 colunas nos serviços quando necessário.
-- [ ] Mobile: serviços e institucionais em carrossel de toque, com **peek**, instrução gestual, indicadores selecionáveis sem setas, contador correto e todos os conteúdos visíveis.
-- [ ] Flow Glass compartilhado substitui spotlight; itens da navbar e links do footer mostram texto em repouso e cápsula no hover/foco, com estados acessíveis e reduced motion. Navbar oculta após limite, continua oculta ao subir e só reaparece no topo, sem flicker; interações abertas/foco visível são protegidos.
-- [ ] Mesma primitiva de cápsula em todos os itens interativos dos popovers, sem reflexos retangulares. Saída conjunta de logo, contêiner e navbar em 475 ms, deslocamento discreto e sem bloqueio quando oculta. Painel do footer compartilha reveal, elevação e Flow Glass dos cards, sem falso clique ou conflito de transforms.
-- [ ] Tracking confere com a tabela fixa do §4.2; produtos no plural e quatro textos novos de TRANSPORTE correspondem ao §8.2. Navegação usa um único tween vertical, cancelável, com alinhamento estável.
-- [ ] Serviços sem números no desktop, textos em caixa alta por CSS e dados originais preservados. Hero com tracking ampliado, sem clipping. Três transições de seção compartilham filete prateado difuso e discreto.
-- [ ] BENS com suas 9 linhas está completamente legível em todos os dispositivos.
-- [ ] Navbar mobile mantém todas as opções acessíveis (sete na prévia completa) e logo legível, sem hamburger e sem overflow.
-- [ ] Não há clipping, sobreposição, overflow horizontal de página ou header ocultando anchors, nas larguras de §12.1.
-- [ ] Espaçamentos, cores e glass refletem o briefing premium com contraste suficiente.
-
-### Escudo e animação
-
-- [x] Após a prévia isolada, o responsável autorizou expressamente integrar a alternativa com a imagem original, sem aprovar o estudo procedural.
-- [ ] Imagem original preservada, com escala, inclinação e iluminação de fundo coerentes com a referência de composição.
-- [ ] Exibição animada e estática usam o mesmo PNG, sem troca visual ou filtros sobre a arte.
-- [ ] Espaço da imagem reservado desde o HTML; Hero não depende de WebGL e permanece legível sem animação.
-- [ ] Transições entre seções são contínuas, reveals podem se repetir sem flicker e movimentos são suaves.
-- [ ] `prefers-reduced-motion` foi validado; navegação e carrosséis continuam plenamente funcionais.
-
-### Técnica e qualidade
-
-- [ ] TypeScript, lint e build de produção passam (ou qualquer impedimento está explicitamente documentado).
-- [ ] Carrosséis e navegação operam com teclado/leitor de tela, foco visível e links corretos.
-- [ ] Há evidências de testes no navegador, inclusive larguras 320, 360, 375, 390/430, 768, 1024, 1440 e 1920 px.
-- [ ] Core Web Vitals foram medidos ou estimados por ferramenta adequada, com métricas e condições declaradas; não inventar pontuações.
-- [ ] Não há dependências, imagens, claims ou seções supérfluas.
-- [ ] O usuário recebeu resumo claro do que foi executado, do que foi verificado e do que ainda depende de aprovação.
-
----
-
-## 17. Restrições explícitas e prevenção de escopo
-
-**NÃO fazer:**
-
-- Criar logos novas ou alterar o monograma, a tipografia e os caminhos SVG oficiais.
-- Criar seções além das autorizadas nos §§2, 9.3 e 9.4, formulário, CTA no Hero, botão de orçamento genérico, depoimentos inventados ou perguntas frequentes. CONTATOS textual do §10 é autorizado; botão WhatsApp no rodapé não é permitido. Não publicar Indicações ou Benefícios sem os respectivos gates comerciais/jurídicos.
-- Esconder serviços em accordions, criar cards clicáveis falsos ou cortar linhas longas para uniformizar alturas.
-- Trocar carrossel mobile por empilhamento vertical sem justificativa aceita, remover o peek ou ocultar os controles.
-- Criar hamburger como atalho para resolver o espaço da navbar mobile.
-- Trocar o indicador ativo por sublinhado.
-- Aplicar dourado, champagne, cores saturadas fora da exceção de borda/glow do §10.4, sombras fortes, parallax agressivo ou rotação de cartões.
-- Substituir 3D real por imagem estática como estratégia primária sem falha/capacidade justificável.
-- Fazer o escudo definitivamente integrado antes da aprovação visual isolada.
-- Declarar performance, conformidade SUSEP independente, funcionamento 24h auditado, testes executados ou assets existentes sem evidência.
-- Adicionar várias bibliotecas que realizam as mesmas tarefas apenas por estarem instaladas no ambiente Codex.
-
-**Pode fazer sem nova decisão estética:** ajustes de espaçamento fino, escolha de tamanhos responsivos, técnicas de renderização, simplificação de código, melhoria de contraste/acessibilidade e resolução de conflitos técnicos, **desde que não alterem os requisitos fixados**.
-
----
-
-## 18. Referências técnicas para execução (não são briefing de marca)
-
-Documentação oficial/autoridade a consultar conforme necessário; não substitui este documento nem exige novas dependências:
-
-- Next.js — App Router e instalação: https://nextjs.org/docs/app/getting-started/installation
-- React Three Fiber — instalação e compatibilidade: https://r3f.docs.pmnd.rs/getting-started/installation
-- GSAP — ScrollTrigger: https://gsap.com/docs/v3/Plugins/ScrollTrigger/
-- GSAP — `gsap.matchMedia()`: https://gsap.com/docs/v3/GSAP/gsap.matchMedia%28%29/
-- W3C WAI — padrões de carrossel: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ e https://www.w3.org/WAI/tutorials/carousels/
-- web.dev — Core Web Vitals: https://web.dev/articles/vitals
-
-**Regra final:** este documento determina **o que** construir, como a ZURY deve se apresentar e quais resultados aceitar. O `AGENTS.md` determina **como** o Codex deve operar, utilizar ferramentas e reportar evidências. Manter as responsabilidades separadas para preservar contexto, reduzir repetição e evitar interpretações conflitantes.
+```css
+.image-shield { width: 100%; aspect-ratio: 1; position: relative; perspective: 1200px; touch-action: pan-y; isolation: isolate; }
+.image-shield-scroll, .image-shield-entry, .image-shield-float, .image-shield-tilt { width: 100%; height: 100%; transform-style: preserve-3d; }
+.image-shield-tilt { display: grid; place-items: center; }
+.image-shield-art { position: relative; width: 100%; height: 100%; transform-style: flat; isolation: isolate; backface-visibility: hidden; }
+.image-shield-reflection { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+.image-shield-reflection-sweep { opacity: 0; }
+.image-shield-light { position: absolute; inset: -9% -6%; pointer-events: none; z-index: -1; }
+.image-shield-light-drift, .image-shield-light-pointer { width: 100%; height: 100%; }
+.image-shield-light-drift { opacity: .7; }
+.image-shield-light-pointer {
+  background:
+    radial-gradient(ellipse 23% 57% at 70% 42%, rgba(214,211,209,.18), transparent 80%),
+    radial-gradient(ellipse 45% 18% at 52% 79%, rgba(234,234,229,.09), transparent 85%);
+}
+.image-shield img { width: 100%; height: 100%; display: block; object-fit: contain; user-select: none; }
+@media (prefers-reduced-motion: reduce) {
+  .image-shield-scroll, .image-shield-entry, .image-shield-float, .image-shield-tilt { transform: none !important; opacity: 1 !important; visibility: visible !important; }
+  .image-shield-light-drift, .image-shield-light-pointer { transform: none !important; }
+  .image-shield-reflection { display: none; }
+}
+@media (hover: none), (pointer: coarse) { .image-shield-reflection { display: none; } }
+```

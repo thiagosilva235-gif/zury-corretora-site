@@ -1,0 +1,245 @@
+.zury-card-shell {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: #090b0d;
+}
+
+/* All measurements follow the supplied 665 × 1182 reference (9:16).
+   cqw scales against this card, never the surrounding desktop viewport. */
+.zury-card-card {
+  position: relative;
+  isolation: isolate;
+  container-type: inline-size;
+  width: min(100%, 864px);
+  min-height: auto;
+  aspect-ratio: 9 / 16;
+  color: #f8f8f8;
+  background: #090b0d;
+}
+
+.zury-card-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 15% 48% at 13% 8%, #45505b8a, transparent 77%),
+    radial-gradient(ellipse 70% 30% at 58% 0%, #22272cbb, transparent 95%),
+    linear-gradient(116deg, #0b0e11, #050607 39%, #111416 78%, #050607);
+}
+
+.zury-card-background::before {
+  content: "";
+  position: absolute;
+  inset: -10% 0 0;
+  background:
+    linear-gradient(94deg, transparent 16%, #000a 22%, transparent 30%),
+    linear-gradient(35deg, transparent 52%, #010203b3 52.7%, #27303938 54%, transparent 55.5%),
+    radial-gradient(ellipse 60% 50% at 4% 83%, #000b, transparent);
+}
+
+.zury-card-shield {
+  position: absolute;
+  width: 76%;
+  height: auto;
+  max-width: none;
+  left: 38.5%;
+  top: -1.7%;
+  transform: rotate(-6deg);
+  filter: brightness(.29) blur(.55cqw);
+  opacity: .85;
+  mask-image: linear-gradient(#000 25%, #0008 56%, transparent 93%);
+}
+
+.zury-card-lowerCurve {
+  position: absolute;
+  width: 175%;
+  height: 30%;
+  left: -24%;
+  bottom: -21%;
+  border-radius: 50%;
+  transform: rotate(19deg);
+  border-top: 1px solid #a6afb139;
+  box-shadow: 0 -1.7cqw 0 #030506, 0 -1.8cqw 0 #a6afb113;
+  background: linear-gradient(120deg, #24292d80, #0a0c0e 50%, #131618);
+}
+
+.zury-card-brand {
+  position: relative;
+  width: 49.6%;
+  margin: 0 auto;
+  padding-top: 24.7cqw;
+  left: .7cqw;
+  transform: translateY(-2.4cqw);
+}
+
+.zury-card-brand h1 { margin: 0; }
+.zury-card-brand .official-logo {
+  width: 100%;
+  --logo-silver: linear-gradient(115deg, #aeb5bb 0%, #e6e7e8 44%, #b7bec5 100%);
+}
+
+.zury-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2.56cqw;
+  width: 76.7%;
+  margin: 5.45cqw auto 15.2cqw;
+}
+
+.zury-card-button {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 27.2% minmax(0, 1fr) 12.4%;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  height: 10.53cqw;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #cbd1d27a;
+  border-top-color: #e2e4e58c;
+  border-radius: 3.15cqw;
+  color: #fafafa;
+  background: linear-gradient(112deg, #a5adb11c, #a6aaad18 47%, #c4c8ca1c);
+  box-shadow: inset 0 1px 0 #ffffff0b, inset 0 -1px 0 #ffffff05, 0 2px 4px #0003;
+  -webkit-backdrop-filter: blur(1.3cqw);
+  backdrop-filter: blur(1.3cqw);
+  text-align: left;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(14px, 3.85cqw, 34px);
+  font-weight: 700;
+  letter-spacing: .11em;
+  line-height: 1;
+  transition: border-color 240ms, background-color 240ms, box-shadow 240ms;
+}
+
+.zury-card-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 15%, #ffffff10 51%, transparent 85%);
+  box-shadow: inset 0 0 1.2cqw #ffffff20, 0 0 .8cqw #ecf3f55c, 0 0 2.8cqw #d6e0e63d;
+  opacity: 0;
+  transition: opacity 240ms;
+}
+
+.zury-card-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 64%;
+  border-right: 1px solid #c5c8ca63;
+}
+
+.zury-card-icon > :is(img, svg, span) {
+  display: block;
+  width: 7.2cqw;
+  height: 7.2cqw;
+  object-fit: contain;
+  max-width: none;
+  translate: .7cqw 0;
+}
+
+.zury-card-label { padding-left: 3.5cqw; white-space: nowrap; }
+.zury-card-arrow { width: 5.5cqw; height: 7.1cqw; justify-self: start; margin-left: -6%; stroke-width: .65; }
+.zury-card-icon > .zury-card-document { width: 8cqw; height: 8.8cqw; }
+.zury-card-icon > .zury-card-mail { width: 7.1cqw; height: 7.1cqw; }
+.zury-card-icon > .zury-card-phone { width: 6.4cqw; height: 6.4cqw; transform: rotate(14deg); }
+
+/* A viewport onto the unchanged official logo exposes its original monogram. */
+.zury-card-icon > .zury-card-monogram {
+  width: 7.2cqw;
+  height: 7.2cqw;
+  background: linear-gradient(120deg, #f5f6f6, #cbd0d4);
+  mask: url("/brand/ZURY_Logo_Otimizada_Branco.svg") left center / auto 100% no-repeat;
+}
+
+/* Original vector silhouette from SVG Logos; multicolor treatment from the reference. */
+.zury-card-instagram {
+  background: radial-gradient(circle at 28% 105%, #ffd600 0 17%, #ff7a00 32%, #ff0069 51%, #d300c5 65%, #7638fa 80%, #005dff 95%);
+  mask: url("/card-icons/instagram.svg") center / contain no-repeat;
+}
+
+.zury-card-primary {
+  height: 11.88cqw;
+  margin-bottom: .3cqw;
+  border: 1.5px solid #f4f1eb;
+  font-size: clamp(15px, 4.3cqw, 38px);
+  letter-spacing: .08em;
+  background: linear-gradient(110deg, #d5d4d02e, #91979914 43%, #d9d7d32b);
+  box-shadow: inset 0 0 1.2cqw #eee9e653, inset 0 0 .3cqw #fff8, 0 0 .5cqw #fff7, 0 0 2cqw #dcd7ce36;
+}
+.zury-card-primary .zury-card-label { padding-left: 4cqw; }
+
+/* Fixed highlights share the button's exact rounded outline; no rotating rectangle. */
+.zury-card-primary::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse .4cqw 2.1cqw at 1px 31%, #fff 5%, #f5f2ebbb 20%, transparent),
+    radial-gradient(ellipse 2.2cqw .35cqw at 16% 1px, #fff 5%, #f5f2ebbb 20%, transparent),
+    radial-gradient(ellipse 1.2cqw .3cqw at 52% 1px, #fff 5%, #f5f2ebbb 20%, transparent),
+    radial-gradient(ellipse 1.7cqw .35cqw at 81% 1px, #fff 5%, #f5f2ebbb 20%, transparent),
+    radial-gradient(ellipse .4cqw 1.8cqw at calc(100% - 1px) 69%, #fff 5%, #f5f2ebbb 20%, transparent),
+    radial-gradient(ellipse 1.8cqw .35cqw at 27% calc(100% - 1px), #fff 5%, #f5f2ebbb 20%, transparent),
+    radial-gradient(ellipse 1.8cqw .35cqw at 68% calc(100% - 1px), #fff 5%, #f5f2ebbb 20%, transparent);
+  filter: drop-shadow(0 0 .7cqw #eee8dec9);
+}
+
+.zury-card-button:disabled { opacity: 1; cursor: not-allowed; }
+.zury-card-button:focus-visible { outline: 2px solid #fff; outline-offset: 5px; border-color: #fff; }
+.zury-card-button:active:not(:disabled) { background-color: #ffffff17; box-shadow: inset 0 0 1.5cqw #fff2; }
+.zury-card-button:active:not(:disabled)::before { opacity: .6; }
+.zury-card-button:focus-visible::before { opacity: 1; }
+
+.zury-card-shell .channel-panel { background: #15191bf5; color: #f4f4f0; }
+.zury-card-shell .channel-heading h2 { color: #f4f4f0; }
+.zury-card-shell .person-link { color: #f4f4f0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .zury-card-button:hover:not(:disabled) { border-color: #f2f3f3; background-color: #ffffff08; }
+  .zury-card-button:hover:not(:disabled)::before { opacity: 1; }
+}
+
+/* Opacity-only entrance: dimensions and button positions stay stable. */
+.zury-card-background,
+.zury-card-brand,
+.zury-card-actions > .zury-card-button {
+  animation: zury-card-fade-in var(--flow-duration) var(--flow-ease) both;
+}
+.zury-card-brand { animation-delay: 80ms; }
+.zury-card-actions > .zury-card-button { animation-delay: 160ms; }
+.zury-card-actions > :nth-child(2 of .zury-card-button) { animation-delay: 205ms; }
+.zury-card-actions > :nth-child(3 of .zury-card-button) { animation-delay: 250ms; }
+.zury-card-actions > :nth-child(4 of .zury-card-button) { animation-delay: 295ms; }
+.zury-card-actions > :nth-child(5 of .zury-card-button) { animation-delay: 340ms; }
+.zury-card-actions > :nth-child(6 of .zury-card-button) { animation-delay: 385ms; }
+.zury-card-actions > :nth-child(7 of .zury-card-button) { animation-delay: 430ms; }
+.zury-card-actions > :nth-child(8 of .zury-card-button) { animation-delay: 475ms; }
+.zury-card-actions > :nth-child(9 of .zury-card-button) { animation-delay: 520ms; }
+.zury-card-button:focus-visible { animation: none; }
+
+@keyframes zury-card-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (min-aspect-ratio: 9/16) {
+  .zury-card-card { width: min(100%, 864px, 56.25svh); min-width: min(100%, 360px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zury-card-shell *, .zury-card-shell *::before, .zury-card-shell *::after { animation: none !important; transition: none !important; }
+}

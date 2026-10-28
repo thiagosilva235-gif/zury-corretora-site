@@ -9,7 +9,16 @@ function Facebook({ size = 20 }: { size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 21v-8h3l.5-4H14V7c0-1 .3-2 2-2h2V1.5C17.5 1.3 16 1 14.5 1 11 1 9 3.1 9 7v2H6v4h3v8z" /></svg>;
 }
 
-export function ChannelsPopover({ id, title, kind = "contact", placement = "below" }: { id: string; title: string; kind?: "contact" | "social"; placement?: "below" | "above" | "right" }) {
+type ChannelsPopoverProps = {
+  id: string;
+  title: string;
+  kind?: "contact" | "social";
+  placement?: "below" | "above" | "right";
+  /** A supplied mode shows the attendants directly; omission preserves the channel chooser. */
+  contactMode?: "whatsapp" | "phone";
+};
+
+export function ChannelsPopover({ id, title, kind = "contact", placement = "below", contactMode }: ChannelsPopoverProps) {
   const panel = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -21,6 +30,7 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
     const source = opener.current ?? document.querySelector<HTMLElement>(`[popovertarget="${id}"]`);
     const trigger = source?.closest("#site-navigation") && matchMedia("(max-width:767px)").matches ? document.querySelector<HTMLElement>(".mobile-menu-toggle") : source;
     if (!trigger) return;
+    if (contactMode) opener.current = trigger;
     const position = () => {
       const viewport = window.visualViewport;
       const width = viewport?.width ?? window.innerWidth;
@@ -62,18 +72,21 @@ export function ChannelsPopover({ id, title, kind = "contact", placement = "belo
       window.visualViewport?.removeEventListener("resize", position);
       element.removeEventListener("keydown", escape);
     };
-  }, [id, open, placement]);
+  }, [id, open, placement, contactMode]);
 
-  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={person.href} target="_blank" rel="noopener noreferrer" key={person.name} className="person-link flow-glass flow-capsule" aria-label={`WhatsApp de ${person.name}${person.role ? `, ${person.role}` : ""}`}><strong>{person.name}{person.role && <> — <span>{person.role}</span></>}</strong></a>)}</div>;
+  const people = <div className="whatsapp-people">{contacts.map((person) => <a href={contactMode === "phone" ? `tel:+${new URL(person.href).pathname.replace(/\D/g, "")}` : person.href} target={contactMode === "phone" ? undefined : "_blank"} rel={contactMode === "phone" ? undefined : "noopener noreferrer"} key={person.name} className="person-link flow-glass flow-capsule" aria-label={`${contactMode === "phone" ? "Ligar para" : "WhatsApp de"} ${person.name}${person.role ? `, ${person.role}` : ""}`}><strong>{person.name}{person.role && <> — <span>{person.role}</span></>}</strong></a>)}</div>;
   return <div ref={panel} id={id} popover="auto" role="dialog" aria-labelledby={`${id}-title`} className="channel-panel glass" data-placement={placement} data-open={open || undefined} onToggle={(event) => {
     if (event.newState === "open") {
       const source = (event.nativeEvent as Event & { source?: Element }).source;
       opener.current = source instanceof HTMLElement ? source : document.activeElement instanceof HTMLElement && document.activeElement.getAttribute("popovertarget") === id ? document.activeElement : null;
-    } else setExpanded(false);
+    } else {
+      setExpanded(false);
+      if (contactMode) opener.current?.focus({ preventScroll: true });
+    }
     setOpen(event.newState === "open");
   }}>
     <div className="channel-heading"><h2 id={`${id}-title`}>{title}</h2><button className="icon-button popover-close" type="button" popoverTarget={id} popoverTargetAction="hide" aria-label={`Fechar ${title.toLowerCase()}`}><X size={18} aria-hidden="true" /></button></div>
-    {kind === "contact" ? <>
+    {kind === "contact" ? contactMode ? people : <>
       <button type="button" className="channel-row flow-glass flow-capsule whatsapp-toggle" aria-expanded={expanded} aria-controls={`${id}-people`} onClick={() => setExpanded(!expanded)}><WhatsAppIcon /><span><strong>WhatsApp</strong></span></button>
       <div id={`${id}-people`} className="whatsapp-collapse" data-expanded={expanded} inert={!expanded} aria-hidden={!expanded}><div>{people}</div></div>
       <a className="channel-row flow-glass flow-capsule" href={`mailto:${digitalChannels.email}`}><Mail size={20} aria-hidden="true" /><span><strong>E-mail</strong></span></a>

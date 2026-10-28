@@ -1,0 +1,9 @@
+{
+  "normalization": "Both images 665x1182, source left / implementation right",
+  "meanAbsoluteChannelDifference": 13.751123154756604,
+  "channelRange": [
+    0,
+    255
+  ],
+  "note": "Raw pixel difference includes reconstructed background, vector icon differences, font rasterization and antialiasing. This is not a fidelity percentage."
+}

@@ -1,81 +1,146 @@
 # ZURY CORRETORA
 
-Landing page Next.js App Router, TypeScript, Tailwind CSS e GSAP. A fonte é Inter Tight, hospedada pela própria aplicação via `next/font`. Requisitos e conteúdo oficiais: `ZURY-SITE-SPEC.md`. Processo: `AGENTS.md`.
+Landing page institucional/comercial em Next.js App Router, com identidade grafite/prata/off-white, Inter Tight, superfícies Liquid Glass e animações GSAP, CSS e WAAPI.
+
+> Documentação consolidada em **26/10/2026**, a partir do código do commit `2d93bc6`. Esta atualização documental não implementa as melhorias pendentes da auditoria nem libera publicação comercial.
+
+## Documentos do projeto
+
+| Documento | Função |
+| --- | --- |
+| [ZURY-SITE-SPEC.md](./ZURY-SITE-SPEC.md) | Conteúdo literal, layout, tipografia, materiais, motion, comportamento, dados, pendências, critérios de aceite e referência integral dos oito CSS da landing |
+| [AGENTS.md](./AGENTS.md) | Processo de trabalho, preservação de arquivos, ferramentas, permissões e verificação |
+| [README.md](./README.md) | Instalação, comandos, arquitetura resumida e estado verificável |
+
+A especificação foi consolidada para remover contradições históricas: não restaurar versões antigas de Hero, navbar, parceiros ou trilhos. O histórico permanece no Git.
 
 ## Executar localmente
 
-No ambiente Codex auditado, o PATH é configurado somente para a sessão:
+Use o gerenciador declarado em `package.json`: **pnpm@11.25.0**. Node observado no ambiente: **v24.22.1**; o projeto não declara uma versão mínima em `engines`.
 
 ```sh
-export PATH="/Users/thiagocareca/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH"
 pnpm install --frozen-lockfile
-pnpm dev --hostname 127.0.0.1 --port 3001
+pnpm dev --hostname 127.0.0.1 --port 3000
 ```
 
-Site: http://127.0.0.1:3001/
+Landing page: [http://127.0.0.1:3000/](http://127.0.0.1:3000/). Prévia do escudo: [http://127.0.0.1:3000/preview/escudo](http://127.0.0.1:3000/preview/escudo).
 
-Escudo isolado: http://127.0.0.1:3001/preview/escudo
+Cartão digital independente: [http://localhost:3000/cartao](http://localhost:3000/cartao). A rota não é incluída na navegação da landing. Reutiliza a marca, o escudo, o modal de cotação e os dados oficiais. WhatsApp e Contato abrem os três atendentes com seus cargos; Contato usa `tel:`. Facebook permanece desabilitado até receber endereço oficial. Cotação mantém o resumo provisório, sem envio.
 
-## Verificações
+O cartão usa `app/cartao/page.tsx`, estilos exclusivos em `app/cartao/cartao.css` e vetores locais em `public/card-icons/` (origens/licença na mesma pasta). No servidor de desenvolvimento desta sessão, usar `localhost`: o acesso por `127.0.0.1` apresentou falha de WebSocket e impediu a hidratação. O build de produção foi validado separadamente.
+
+Refinamento do cartão: logo ligeiramente elevada, glow prateado no hover/foco e fade de entrada em sequência; movimento reduzido mantém tudo visível sem animação.
+
+Se a porta estiver ocupada, use `--port 3001` e ajuste a URL. No host Codex desta sessão, se Node/pnpm não estiverem no PATH:
+
+```sh
+export PATH="/Users/thiagocareca/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/thiagocareca/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:$PATH"
+```
+
+Esse caminho é específico do computador da sessão; não é requisito para outros desenvolvedores.
+
+## Produção e prévias
+
+```sh
+pnpm build
+pnpm start --hostname 127.0.0.1 --port 3000
+```
+
+Produção padrão: **Hero → Soluções → Diferenciais → Companhias → Footer**. Indicações e Benefícios ficam omitidos, com links da navbar omitidos independentemente.
+
+Desenvolvimento exibe ambas as ofertas. Para avaliar uma prévia completa em build local:
+
+```sh
+ZURY_REFERRAL_PREVIEW=true ZURY_BENEFITS_PREVIEW=true pnpm build
+pnpm start --hostname 127.0.0.1 --port 3000
+```
+
+As flags são resolvidas na geração; somente reiniciar o start não muda a página construída. Não são autenticação nem autorização comercial. Não publicar a prévia sem validar parcerias, condições, regras de indicação, comissões, códigos e claims com o responsável.
+
+## Stack resolvida
+
+Next 16.4.2; React/React DOM 19.3.0; GSAP 3.15.0; Lucide React 1.59.0; Tailwind/@tailwindcss/turbopack 4.3.3; TypeScript 5.9.3; ESLint 9.39.5. Three 0.186.1, R3F 9.8.2 e Drei 10.7.9 estão preservados para o estudo de escudo; a Hero atual usa a imagem original animada, sem Canvas.
+
+`pnpm-lock.yaml` registra versões resolvidas; `package.json` registra faixas/dependências. Não instalar Motion/shadcn só por constarem em instruções de ferramentas.
+
+## Estado funcional atual
+
+- Hero com headline em três linhas: SEU PATRIMÔNIO MERECE / A MELHOR ESCOLHA: / ZURY.
+- Subtítulo EXPERIENCIA/AGILIDADE/SOLIDEZ, visualmente separado por losangos.
+- CTA COTAR AGORA, 335 px/21 px no desktop, painel modal compartilhado com os oito cards.
+- Soluções: oito categorias e 44 itens; Diferenciais: três cards. Desktop em grids e mobile em carrosséis manuais, sem autoplay.
+- Não há faixa de botões de categorias sob o título NOSSAS SOLUÇÕES.
+- COMPANHIAS: 37 PNGs cadastrados com dimensões e larguras ópticas, em cards claros de vidro; chamada de comparação.
+- Benefícios: ZAPP, GRUPO MV, ÓTICA VEMOS e LABORATÓRIO CENTROLAB. FarMelhor não é renderizada.
+- Companhias/Benefícios: loop para a direita a 76 px/s quando há mais de um item em desktop e sem reduced motion; grid estático mobile/reduced motion. Pausa por foco/interação/aba oculta, não por hover.
+- CONTATO e CTA da Hero têm beam de 4.6 s e glow de 3.2 s; detalhes e limitações no §6 da especificação.
+- Botões habilitados têm hover lift global de 2 px; há pendência de reduced motion e soma do lift no WhatsApp.
+- Header claro, navbar com hover móvel de 180 ms; fade-out 320 ms/retorno240 ms. Hamburger autorizado no mobile.
+- Rodapé em Navegação/Institucional/Feedback; menus compartilhados de contato e redes, Facebook desabilitado.
+- WhatsApp flutuante abre três contatos oficiais; nenhuma mensagem é enviada automaticamente.
+
+### Cotação ainda provisória
+
+A seleção avança para resumo com aviso de que nenhuma solicitação foi enviada. Não há campos pessoais, backend, envio, CRM ou roteamento por produto. Os dois CTAs de Indicações são diferentes: abrem WhatsApp do Thiago com mensagens aprovadas pré-preenchidas, que o visitante decide enviar.
+
+### Escudo
+
+Hero usa `public/shield/references/geometry.png`, 1254 × 1254, com Next Image e dimensões reservadas. Entrada/órbita/scroll/tilt/reflexo ficam em camadas separadas; reduced motion usa a mesma imagem estática; loops pausam conforme visibilidade.
+
+A integração dessa imagem foi autorizada. Isso não aprova o estudo procedural nem libera ofertas comerciais. A nota na interface de `/preview/escudo` que diz “sem integração à Hero” está desatualizada; documentar essa divergência não a corrige automaticamente.
+
+## Mapa das fontes
+
+- `app/page.tsx`: estrutura e gates; `app/layout.tsx`: fonte, idioma, metadata.
+- `lib/content.ts`: serviços, diferenças, contatos, ofertas, mensagens, navegação, companhias.
+- `components/site/`: header, cotação, carrosséis, canais, motion, logos, seções.
+- `components/shield/image-*`: escudo da Hero; demais arquivos de shield preservam o estudo.
+- `lib/site-motion.mjs`, `navigation.ts`, `header-visibility.ts`, `benefit-loop.mjs`: regras compartilhadas.
+- `public/brand/`: quatro SVGs oficiais; `public/companies/`: 37 logos; `public/partners/`: parceiros; `public/shield/`: arte/referências.
+- Estilos têm regras concorrentes entre globals e CSS de componentes; conferir cascata computada antes de relatar medidas universais.
+
+## Verificação e limitações
 
 ```sh
 pnpm typecheck
 pnpm lint
 pnpm test
 pnpm build
+git diff --check
 ```
 
-Os testes comparam os conteúdos à especificação e verificam aberturas reais, chanfros expostos, continuidade das malhas, orçamento geométrico e limites de movimento do escudo. O Node pode emitir um aviso não bloqueante sobre inferência ESM dos arquivos TypeScript nesses testes.
+Antes da atualização documental, em 26/10/2026: typecheck, lint e 44 testes passaram. Há warning não bloqueante do Node sobre inferência ESM em arquivos TypeScript.
 
-Se o executor retornar `binding to a port: Operation not permitted` no Turbopack, o build não está validado nessa execução. É possível tentar o mesmo comando diretamente com Node, sem reinstalações; a tentativa também pode depender das permissões do host:
+**Build não confirmado:** primeira tentativa sem acesso à fonte falhou em Google Fonts; tentativa seguinte terminou em erro Turbopack ao criar processo/bind de porta (`Operation not permitted`). Executar novamente em ambiente com permissões/rede adequadas; não tratar esse registro como build aprovado.
+
+**Atualização de 27/10/2026 — cartão digital:** typecheck, lint, 44 testes e build de produção passaram. O erro de bind acima reapareceu e foi resolvido preservando/removendo o cache antigo do Turbopack antes de repetir o build com permissões adequadas. `/cartao` foi gerada como rota estática. Playwright validou oito resoluções em Chrome e WebKit, menus, cotação, links configurados, teclado, reduced motion e falha do escudo. Evidências e limites: [design-qa.md](./design-qa.md), [captura principal](./artifacts/cartao/cartao-864x1536.png) e [comparação](./artifacts/cartao/comparacao.png). Esses testes não homologam a publicação comercial da landing.
+
+Inspeção visual anterior cobriu Hero desktop1440/mobile375, dialog, menu mobile, Diferenciais, rodapé e contato. Companhias em captura específica, hover/foco completos, Safari, toque físico, matriz inteira e Core Web Vitals ainda não foram homologados. Capturas full-page com reveals ainda ocultos não comprovam seções vazias.
+
+## Melhorias sob autorização individual
+
+O checklist completo e o status estão **somente no §16.2 da especificação**. Item01 de inspeção visual autorizado e ainda em andamento; itens02–15 aguardam permissão, um por vez. Este pedido de documentação não autoriza implementá-los.
+
+As sugestões incluem tipografia, proporção real de ZURY, composição responsiva, legibilidade, beam de perímetro, pulsação, hover/reduced motion, navbar, cards, companhias e fluxo final de cotação. Não assumir a antiga nota14/20 como avaliação válida; foi retirada.
+
+## Colaboração e Git
+
+Repositório público: [thiagosilva235-gif/zury-corretora-site](https://github.com/thiagosilva235-gif/zury-corretora-site), branch principal `main`. A entrega de 28/10/2026 inclui a landing existente, o cartão `/cartao`, os refinamentos de logo/glow/fade e a documentação consolidada. Publicação do código no GitHub não significa deploy do site.
+
+### Continuar a partir do ZIP
+
+Extraia o ZIP e abra a pasta `zury-corretora-site`. Use Node.js 24 e pnpm 11.25.0. No terminal dessa pasta:
 
 ```sh
-node node_modules/next/dist/bin/next build
-node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3001
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-## Estado da entrega
+Acesse `http://localhost:3000/` para a landing e `http://localhost:3000/cartao` para o cartão. O código atual não exige arquivo `.env` para desenvolvimento. O ZIP contém fontes, ativos, lockfile, testes, evidências e instruções; dependências, caches e histórico `.git` ficam fora. Para trabalhar com o histórico e enviar mudanças, prefira clonar o repositório acima.
 
-### Hero, indicações, benefícios e menus — etapa 7
+Leia `AGENTS.md` e o resumo de `ZURY-SITE-SPEC.md` antes de alterar o projeto. Cotação continua provisória; Facebook está sem endereço; os gates comerciais de Indicações/Benefícios permanecem vigentes. Verificação: `pnpm typecheck`, `pnpm lint`, `pnpm test` e `pnpm build`.
 
-Tracking centralizado em nove tokens semânticos; Hero ampliada, três linhas desktop e reserva 40%/60%. Cards de Indicações perceptivelmente mais altos e redistribuídos. Título comercial único sem ponto e mensagem provisória branca/negrito em duas linhas quando couber, para contratação própria de afiliados/parceiros. Benefícios sem chamada ou descrição auxiliar.
-
-CNPJ e SUSEP abrem as páginas oficiais de consulta da Receita Federal e SUSEP em nova aba, sem parâmetros presumidos. Reutilizam as mesmas classes Flow Glass dos links do rodapé, incluindo repouso, hover e foco. Isso não constitui validação independente dos registros.
-
-`FloatingWhatsApp` reutiliza `contacts` e o ícone existente. Botão fixo de Liquid Glass com entrada única e verde restrito à borda/glow em hover/foco; menu horizontal à esquerda, três nomes/cargos confirmados, sem telefones ou e-mail. Popover nativo fecha por Escape, clique fora, segundo clique e seleção. Safe areas, foco e reduced motion preservados. Menus do rodapé reutilizam `ChannelsPopover` integralmente, com prioridade de abertura acima para evitar clipping.
-
-FARMELHOR UNAÍ, ZAPP e GRUPO MV permanecem estáticos quando couberem. `BenefitTrack` mede largura real e mínimo legível de 260 px + gap 14 px; excedentes no desktop/tablet ativam cards completos em loop à direita a 42 px/s, pausável por hover/foco/interação. Mobile e reduced motion usam grid estático. A faixa de logos isoladas permanece cancelada. Logos preservadas em `public/partners/`; ZAPP usa o ativo metálico centralizado. Navbar usa SOLUÇÕES e INDICAÇÕES; menus verticais de contato/social compartilham `ChannelsPopover` com o rodapé, sem telefones, e-mail visível ou handles. Facebook sem destino fica desabilitado.
-
-Benefícios aparece em desenvolvimento ou com `ZURY_BENEFITS_PREVIEW=true` durante o build local. Para a prévia completa: `ZURY_REFERRAL_PREVIEW=true ZURY_BENEFITS_PREVIEW=true pnpm build`, seguido do start local. Sem as variáveis, o build público padrão omite as duas ofertas e seus links. Não publicar o artefato de prévia: parcerias, marcas e condições ainda exigem validação. Remover avisos da interface não constitui aprovação comercial. Não há backend, pagamentos ou códigos implementados.
-
-### Prévia do Programa de Indicações
-
-Em `pnpm dev`, a seção e o link INDICAÇÕES ficam visíveis. Para avaliar um build local de produção, use `ZURY_REFERRAL_PREVIEW=true pnpm build` (ou o mesmo prefixo no comando direto de Node acima) e depois inicie o servidor. A opção é resolvida no build: reiniciar o servidor não altera um artefato já gerado.
-
-**Não publicar o artefato de prévia.** Sem essa variável, o build de produção omite seção e link; isso ainda não libera o restante do site, cujo escudo segue pendente. Regras comerciais, regulamento, pagamentos/estornos, atribuição, comissões, privacidade e exigências regulatórias precisam de validação expressa. A headline mensal proposta continua documentada como pendente; a headline provisória anterior foi removida da interface, sem substituta. Confirmar emissão real dos códigos e política de redução/repasse de comissão por produto. CTAs somente abrem uma conversa preparada com o WhatsApp oficial do Thiago, sem enviar mensagens automaticamente.
-
-O redesign utiliza gradientes neutros, divisões luminosas sutis e Flow Glass sem spotlight. Navbar sai em 475 ms e só reaparece no topo; foco e menus abertos são protegidos. CONTATOS do rodapé prioriza abertura acima; CONTATO da navbar abre abaixo. Ambos oferecem WhatsApp/e-mail sem números/endereço visíveis. REDES SOCIAIS tem dois links oficiais e Facebook desabilitado. O antigo botão WhatsApp do rodapé continua removido; o flutuante é independente. NOS AVALIE NO GOOGLE preserva o perfil oficial. Serviços e diferenciais mantêm seus carrosséis manuais mobile. SVGs oficiais intactos.
-
-O responsável autorizou integrar a própria imagem do escudo à Hero após a prévia isolada. `HeroShield` reutiliza `ImageShield`, preservando o PNG original e a headline atual: escala próxima da captura fornecida, perspectiva contida e luz difusa/curva prateada somente atrás da arte. No mobile, texto acima e escudo abaixo. A imagem ocupa espaço reservado, não usa Canvas e mantém reduced motion; entrada do escudo começa depois do início da headline. Esta integração não libera a publicação das ofertas comerciais nem substitui o checklist final.
-
-### Estudo cinematográfico do escudo — 20/10/2026
-
-**Alternativa atual autorizada:** Hero e `/preview/escudo` usam diretamente o PNG original transparente `public/shield/references/geometry.png`, idêntico ao arquivo recebido, sem filtros/reconstrução. `ImageShield` separa entrada, flutuação e inclinação de até 3° em camadas; a prévia permite visualização estática. Reduced motion fica estático e toque não inclina. Na Hero, `HeroShield` mantém a pose inclinada e os efeitos de fundo separados dessas camadas, sem conflito de transforms. Os arquivos do estudo 3D abaixo foram preservados, mas não são carregados pelo site.
-
-#### Histórico do estudo procedural — não utilizado pela Hero atual
-
-Em `/preview/escudo`, o componente independente usa as duas imagens fornecidas: imagem 2 para traçado da silhueta/recortes do Z e imagem 1 apenas para direção da luz. Extrusões reais, aro com perfil inclinado, chanfros, metal PBR e iluminação de ambiente de estúdio. Contornos e motions ficam centralizados em `components/shield/`; nenhuma dependência nova. Canvas transparente, DPR limitado, suspensão fora da área visível/aba oculta, cleanup e poster PNG derivado do estudo. Reduced motion dispensa o Canvas. Controles permitem comparar frente, três quartos, perfil, traçado e fallback.
-
-**Não é uma reprodução hiper-realista aprovada.** A inspeção mostrou diferenças no relevo, escovação e resposta das bordas. A Hero foi preservada por esse motivo, não por falta de autorização para integrar. Para atingir a prioridade de fidelidade: modelagem dedicada em Blender/CAD sobre a imagem 2, revisão frontal dos contornos e volumes, UV/PBR de metal escovado, iluminação inspirada na imagem 1 e exportação GLB otimizada com poster do mesmo modelo. A parte oculta e a espessura absoluta não são determinadas pelas imagens; exigem validação, sem inventar detalhes. O componente permite reaproveitar motion, lifecycle e fallback na futura integração.
-
-Refinamento seguinte: checkpoint local `cff6386` preserva o estudo anterior. Silhueta ajustada à borda alpha do PNG, com tolerância de 2 px nos pontos de referência cobertos pelos testes; isso não certifica todos os contornos nem a geometria oculta. Terminações dos canais e aro revistas, chanfros mais finos, laterais grafite separadas da frente prateada e paredes sem coplanaridade. Normais dos caps não herdam os fillets. UV/tangentes direcionam a escovação; materiais neutros usam microaltura/rugosidade, anisotropia e dithering. Câmera ortográfica evita uma segunda distorção de perspectiva na comparação frontal. Ambiente HDR com orientação vertical corrigida e duas luzes de área físicas; inspeção em três quartos e perfil mais pronunciados. A Hero permanece intacta e o resultado continua sujeito a avaliação visual.
-# Logos das companhias
-
-A seção COMPANHIAS está preparada sem marcas fictícias. Ao receber os PNGs autorizados, salvar em `public/companies/` e cadastrar `id`, `name`, `src`, `width` e `height` em `companyLogos`, em `lib/content.ts`. Não criar a pasta vazia antecipadamente. As logos ficam livres, sem cards; quando excederem a largura desktop, o trilho compartilhado com Benefícios move para a direita a 42 px/s. Mobile e movimento reduzido ficam estáticos. Sem arquivos cadastrados, aparece apenas o título.
-
-## Colaboração com Git
-
-O projeto usa `main` como branch principal. Para iniciar uma tarefa, crie uma branch a partir de `main`:
+Fluxo recomendado de colaboração:
 
 ```sh
 git switch main
@@ -83,14 +148,6 @@ git pull --ff-only origin main
 git switch -c codex/nome-da-tarefa
 ```
 
-Faça commits pequenos e descritivos na branch de trabalho. Não faça force push, não altere `main` diretamente e não versiona arquivos `.env`, credenciais, tokens, `node_modules`, `.next` ou caches.
+Depois, commits pequenos na branch e Pull Request para main. Não fazer force push, descartar alterações ou commitar segredos. Cada colaborador autentica sua conta; GitHub Desktop é alternativa quando o terminal não tem credenciais.
 
-Ao terminar, envie a branch e abra um Pull Request contra `main`:
-
-```sh
-git push -u origin codex/nome-da-tarefa
-```
-
-O outro desenvolvedor deve revisar o diff, os testes disponíveis e a preservação dos assets antes do merge. Depois do merge, atualize o clone local com `git switch main && git pull --ff-only origin main` e remova a branch de trabalho apenas quando ela não for mais necessária.
-
-Para colaborar pelo Codex em outro computador, cada desenvolvedor deve autenticar sua própria conta GitHub, clonar o repositório privado e trabalhar em uma branch própria. Convites são gerenciados em GitHub: **Settings → Collaborators** do repositório. O Codex pode auxiliar na criação, revisão e atualização de branches/PRs quando a integração GitHub estiver conectada.
+Checkpoints e envios para `main` dependem de pedido expresso. A entrega pública e o ZIP de 28/10/2026 foram solicitados pelo usuário; isso não constitui autorização permanente para novos envios.

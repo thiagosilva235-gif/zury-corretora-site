@@ -1,0 +1,9 @@
+{
+  "normalTransition": "0.24s, 0.24s, 0.24s",
+  "reducedTransition": "0s",
+  "keyboard": "passed",
+  "imageFailure": "passed",
+  "externalNavigation": "passed (intercepted)",
+  "landingQuote": "passed",
+  "errors": []
+}
